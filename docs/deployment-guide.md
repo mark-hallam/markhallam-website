@@ -57,7 +57,7 @@ Update `.env.local` and Vercel with:
 Access Sanity Studio at `https://markhallam.com.au/studio` and create:
 - Site Settings (singleton document)
 - Learn Page (singleton document)
-- Projects (LunarPDF, Curble, etc.)
+- Projects (LunarPDF, Nomlie, etc.)
 - Blog Posts
 
 ## Resend Setup

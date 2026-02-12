@@ -31,12 +31,12 @@ export function Footer() {
               LunarPDF <ExternalLink size={12} />
             </a>
             <a
-              href={siteSettings.projectLinks.curble}
+              href={siteSettings.projectLinks.nomlie}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
             >
-              Curble <ExternalLink size={12} />
+              Nomlie <ExternalLink size={12} />
             </a>
           </div>
 

@@ -39,7 +39,7 @@ export interface SiteSettings {
   };
   projectLinks: {
     lunarpdf: string;
-    curble: string;
+    nomlie: string;
   };
 }
 
@@ -53,7 +53,7 @@ export const siteSettings: SiteSettings = {
   },
   projectLinks: {
     lunarpdf: "https://lunarpdf.com",
-    curble: "https://curble.com",
+    nomlie: "https://nomlie.com",
   },
 };
 
@@ -89,60 +89,74 @@ Speed kills perfectionism in the best way. By shipping fast, I got real user fee
     order: 1,
   },
   {
-    slug: "curble",
-    title: "Curble",
-    description: "AI-powered health and longevity tracking. Understand your body, extend your healthspan.",
-    status: "building",
-    url: "https://curble.com",
-    keyStat: "Currently in development",
-    body: `Curble is an AI-powered health and longevity platform that helps you understand and optimize your healthspan. It takes the complexity out of health data by connecting your wearables, blood work, and daily habits into one intelligent dashboard.
+    slug: "nomlie",
+    title: "Nomlie",
+    description: "AI-powered health, fitness & longevity platform. Nutrition tracking, workout plans, meal planning, toxin analysis, and longevity insights — all personalised by AI.",
+    status: "live",
+    url: "https://nomlie.com",
+    keyStat: "Launched today",
+    body: `Nomlie is an AI-powered health, fitness and longevity platform that learns your goals, tracks your nutrition and fitness, plans your meals, detects hidden toxins, and guides your longevity journey — all personalised by AI.
 
 ## The Problem
 
-Health data is fragmented. Your Apple Watch tracks activity, your blood tests sit in a PDF somewhere, and your sleep data lives in another app. Nobody connects the dots. Curble does.
+The average health-conscious person juggles 4+ apps for calories, workouts, recipes, and tracking. None of them talk to each other. Most apps completely ignore what's actually in your food — over 3,000 chemical additives approved in US food are banned in Europe, Japan, and Canada. And zero personalisation: generic meal plans and cookie-cutter workouts that don't know your goals, your body, or how your nutrition and fitness connect.
 
-## What it will do
+## What Nomlie Does
 
-Curble uses AI to analyze patterns across all your health data sources, giving you actionable insights rather than raw numbers. Think of it as having a health analyst that knows your complete picture and can tell you exactly what to focus on.
+One AI platform covering every dimension of your health:
 
-## Current status
+- **Nutrition Intelligence** — AI-powered food logging, calorie and macro tracking, and nutrient analysis personalised to your body and goals
+- **Fitness & Workouts** — Workout plans, tracking, and AI coaching that adapts to your fitness level, recovery, and schedule
+- **Meal Planning** — AI-generated weekly meal plans, recipes, and shopping lists based on your preferences, allergies, and targets
+- **Toxin Analysis** — Scan any product to detect 500+ toxins, banned additives, artificial colourings, GMOs, and harmful chemicals
+- **Longevity Dashboard** — Track your health trajectory over time with AI-driven longevity recommendations linked to your workouts, nutrition, and habits
 
-In active development. The core data integration layer is built, and I'm working on the AI analysis engine. Expected to launch in early 2026.`,
-    techStack: ["Next.js", "TypeScript", "Python", "OpenAI API", "Supabase", "Tailwind CSS"],
+## How it was built
+
+Built with the same AI-first approach as every other project — described, not hand-coded. The entire platform went from concept to live product through conversation with AI.`,
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "OpenAI API", "Resend", "Vercel"],
     features: [
-      "Wearable data integration (Apple Health, Garmin, Whoop)",
-      "Blood work analysis and tracking",
-      "AI-powered health insights",
-      "Longevity score and recommendations",
-      "Daily habit tracking and correlation",
-      "Personalised health protocols",
+      "AI-powered nutrition tracking and analysis",
+      "Personalised fitness plans and workout coaching",
+      "AI-generated meal plans and shopping lists",
+      "Product scanner for 500+ toxins and banned additives",
+      "Longevity dashboard with health trajectory tracking",
+      "Early access waitlist with 2,000+ signups",
     ],
-    learned: undefined,
+    learned: "Health is fragmented across dozens of apps. The opportunity is in connecting everything into one intelligent platform that actually knows you.",
     order: 2,
   },
   {
     slug: "markhallam-website",
     title: "markhallam.com.au",
-    description: "This website. A digital magazine for builders — built with AI, open-sourced as proof.",
-    status: "building",
+    description: "This website. A digital magazine for builders — built entirely with AI, open-sourced as proof that anyone can ship.",
+    status: "live",
     url: "https://markhallam.com.au",
-    keyStat: "Built with Claude Code",
+    keyStat: "Live — built with AI",
     body: `This very website is itself a project. Built entirely through conversation with AI, it serves as both a home base and living proof that you don't need a dev team to ship a professional web presence.
 
 ## How it was built
 
-Every line of code on this site was generated through natural language conversation with Claude. From the design system to the responsive layouts to the SEO optimization — all of it described, not hand-coded.
+Every line of code on this site was generated through natural language conversation with Claude. From the design system to the CMS integration to the deployment pipeline — all of it described, not hand-coded.
+
+The site went from zero to a fully deployed, production-grade website with CMS, email integration, RSS feeds, SEO, and a custom domain — all through AI-assisted development.
+
+## The stack
+
+Next.js 16 with the App Router handles the frontend, Sanity CMS powers the content, Resend handles transactional email for the waitlist, and the whole thing deploys automatically to Vercel on every git push. Tailwind CSS v4 with a custom dark-first design system, Framer Motion for page transitions, and full SEO with OpenGraph, Twitter Cards, and JSON-LD structured data.
 
 ## Why it matters
 
 This site is the message. If I can build a polished, production-grade website by describing what I want, so can you. That's the whole point of the "Learn to Build" mission.`,
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
+    techStack: ["Next.js", "TypeScript", "Sanity CMS", "Tailwind CSS", "Framer Motion", "Resend", "Vercel"],
     features: [
-      "Responsive dark-first design",
-      "Blog with category filtering",
-      "Project showcase with status tracking",
-      "RSS feed for cross-posting",
-      "SEO optimised with structured data",
+      "Responsive dark-first design system",
+      "Sanity CMS with embedded Studio",
+      "Blog with category filtering and RSS feed",
+      "Project showcase with live status tracking",
+      "Waitlist with Resend email integration",
+      "SEO optimised with OpenGraph, Twitter Cards, and JSON-LD",
+      "Auto-deploy via GitHub to Vercel",
     ],
     learned: "The best portfolio is one that demonstrates its own creation story. Meta? Maybe. Effective? Absolutely.",
     order: 3,
@@ -150,6 +164,41 @@ This site is the message. If I can build a polished, production-grade website by
 ];
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "markhallam-com-au-is-live",
+    title: "markhallam.com.au Is Live",
+    excerpt: "From zero to a fully deployed website with CMS, email integration, and custom domain — built entirely through conversation with AI.",
+    category: "build-log",
+    body: `Today I shipped markhallam.com.au. The site you're reading this on went from an empty folder to a fully deployed, production-grade website — and every line of code was generated through conversation with AI.
+
+## What got built
+
+This isn't a template or a drag-and-drop site. It's a custom Next.js 16 application with:
+
+- **Sanity CMS** with an embedded Studio for content management
+- **Resend** for waitlist email integration
+- **Full SEO** — OpenGraph, Twitter Cards, JSON-LD structured data
+- **RSS feed** for cross-posting to other platforms
+- **Framer Motion** page transitions throughout
+- **Auto-deploy** — push to GitHub, Vercel builds and deploys automatically
+
+The whole thing runs on a custom dark-first design system built with Tailwind CSS v4.
+
+## How it was deployed
+
+The deployment pipeline is straightforward: code lives on GitHub, Vercel watches for pushes to main, builds automatically, and serves from the edge. Domain DNS was pointed from GoDaddy to Vercel, and SSL certificates were provisioned automatically.
+
+Environment variables for Sanity, Resend, and analytics are managed through Vercel's dashboard — nothing sensitive in the repo.
+
+## What's next
+
+The site is live but the content is just getting started. Next steps: seed real content through Sanity Studio, add Google Analytics, and set up automated cross-posting with Zapier and Buffer.
+
+This is the starting line, not the finish line. Building in public means you get to watch it evolve.`,
+    publishedAt: "2026-02-12",
+    readTime: 3,
+    featured: true,
+  },
   {
     slug: "i-built-a-pdf-editor-in-two-days",
     title: "I Built a Full PDF Editor in 2 Days",
@@ -230,34 +279,34 @@ This isn't an anomaly. This is the new normal. Welcome to the builder era.`,
     featured: true,
   },
   {
-    slug: "announcing-curble",
-    title: "Announcing Curble: AI-Powered Health Tracking",
-    excerpt: "I'm building Curble — an AI health platform that connects your wearables, blood work, and habits into one intelligent dashboard.",
+    slug: "announcing-nomlie",
+    title: "Announcing Nomlie: AI-Powered Health, Fitness & Longevity",
+    excerpt: "Nomlie is live — an AI health platform that tracks nutrition, plans workouts, generates meal plans, scans for toxins, and guides your longevity journey.",
     category: "announcement",
-    body: `I'm excited to share what I've been working on: Curble, an AI-powered health and longevity tracking platform.
+    body: `Nomlie is live. An AI-powered health, fitness and longevity platform that does what no single app has managed to do: connect every dimension of your health into one intelligent system.
 
 ## The problem
 
-Your health data is everywhere. Apple Watch tracks your steps, your blood tests are in a PDF from the lab, your sleep data is in another app, and your supplement stack is in a spreadsheet. Nobody connects the dots.
+The average health-conscious person juggles 4+ separate apps — one for calories, one for workouts, one for recipes, one for tracking. None of them talk to each other. And most of them completely ignore what's actually in your food.
 
-## What Curble does
+Over 3,000 chemical additives approved in US food are banned in Europe, Japan, and Canada. Most health apps pretend this problem doesn't exist.
 
-Curble brings all your health data into one intelligent dashboard. It connects to your wearables, imports your blood work, tracks your daily habits, and uses AI to find patterns and give you actionable insights.
+## What Nomlie does
 
-Instead of raw numbers, you get answers: "Your sleep quality drops when you exercise after 7pm" or "Your HRV trends suggest you need more recovery days."
+Nomlie brings it all together: nutrition tracking, fitness plans, AI-generated meal plans, a product toxin scanner, and a longevity dashboard. Everything is personalised by AI that learns your goals, your body, and your habits.
 
-## Current status
+Scan any product barcode to instantly detect harmful additives. Get workout plans that adapt to your recovery. Receive meal plans that match your allergies, preferences, and nutrition targets.
 
-Curble is in active development. The core data integration layer is built, and I'm working on the AI analysis engine. I'm building it the same way I built LunarPDF — describing what I want, iterating fast, and shipping as soon as it's ready.
+## Built the same way
 
-## Follow along
+Like every project on this site, Nomlie was built through conversation with AI. Described, not hand-coded. From concept to live product, shipped by a solo builder.
 
-I'll be documenting the entire build process here on my blog. If you're interested in health optimization or want to see how a solo builder ships an AI product, follow along on X (@MarkHallam) or subscribe to the RSS feed.
+## Try it
 
-More updates coming soon.`,
-    publishedAt: "2026-02-10",
+Visit nomlie.com to get early access or try the free product scanner.`,
+    publishedAt: "2026-02-12",
     readTime: 2,
-    featured: false,
+    featured: true,
   },
 ];
 
@@ -313,19 +362,32 @@ export const aboutData = {
 
 I'm a solo builder based in Australia, shipping live products using AI as my development partner. I don't write code in the traditional sense — I describe what I want to build, iterate on the output, and ship.
 
-LunarPDF, a complete PDF editor, was built in 2 days. This website was built entirely through conversation with Claude. Curble, an AI health platform, is in active development. Every project is proof that the barriers to building have collapsed.`,
+LunarPDF, a complete PDF editor, was built in 2 days. Nomlie, an AI-powered health and longevity platform, launched today. This website was built entirely through conversation with Claude. Every project is proof that the barriers to building have collapsed.`,
   philosophy: `I believe we're in the early days of a fundamental shift. The ability to build software is no longer gated by technical skill, capital, or connections. It's gated by clarity of thought and willingness to ship.
 
 My mission is to help people realise this. If you can describe an idea clearly, you can build it. Not in theory — in practice, today, with tools that already exist.
 
 This isn't about replacing developers. It's about empowering everyone else. The world has more good ideas than it has people to build them. AI closes that gap.`,
   currentFocus: [
-    "Shipping Curble (AI-powered health tracking)",
-    "Building this website as proof of the AI builder workflow",
+    "Growing Nomlie (AI-powered health, fitness & longevity)",
+    "Growing markhallam.com.au — now live and deployed",
     "Developing the Learn to Build curriculum",
     "Writing about the solo builder journey",
   ],
 };
+
+// Stats derived from project data
+export function getHomeStats() {
+  const total = projects.length;
+  const live = projects.filter((p) => p.status === "live").length;
+  const building = projects.filter((p) => p.status === "building").length;
+  return [
+    { value: String(total), label: "Products Shipped" },
+    { value: String(live), label: "Live Now" },
+    { value: String(building), label: "Building" },
+    { value: "2 Days", label: "Fastest Ship" },
+  ];
+}
 
 // Helper functions
 export function getProject(slug: string): Project | undefined {

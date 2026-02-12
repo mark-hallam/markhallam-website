@@ -33,7 +33,7 @@ export const siteSettings = defineType({
       type: "object",
       fields: [
         defineField({ name: "lunarpdf", title: "LunarPDF URL", type: "url" }),
-        defineField({ name: "curble", title: "Curble URL", type: "url" }),
+        defineField({ name: "nomlie", title: "Nomlie URL", type: "url" }),
       ],
     }),
     defineField({
