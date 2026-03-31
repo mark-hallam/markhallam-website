@@ -90,7 +90,7 @@ export default async function BlogPostPage({
       <article className="mx-auto max-w-[680px]">
         {/* Header */}
         <div className="flex items-center gap-3">
-          <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+          <span className="rounded-full bg-accent-light px-2.5 py-0.5 text-xs font-medium text-accent">
             {getCategoryLabel(post.category)}
           </span>
           <span className="text-xs text-muted">
@@ -99,7 +99,7 @@ export default async function BlogPostPage({
           <span className="text-xs text-muted">{post.readTime} min read</span>
         </div>
 
-        <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-warm md:text-4xl">
           {post.title}
         </h1>
 
@@ -213,7 +213,7 @@ export default async function BlogPostPage({
                 className="block rounded-lg border border-border p-4 transition-colors hover:border-muted"
               >
                 <div className="flex items-center gap-2">
-                  <span className="rounded-full bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent">
+                  <span className="rounded-full bg-accent-light px-2 py-0.5 text-xs font-medium text-accent">
                     {getCategoryLabel(r.category)}
                   </span>
                   <span className="text-xs text-muted">{r.readTime} min read</span>

@@ -37,7 +37,7 @@ export default function BlogPage() {
   return (
     <PageTransition>
     <Section>
-      <h1 className="text-4xl font-bold tracking-tight md:text-5xl">Blog</h1>
+      <h1 className="text-4xl font-bold tracking-tight text-warm md:text-5xl">Blog</h1>
       <p className="mt-3 text-lg text-muted">
         Build logs, insights, and updates from the journey.
       </p>
@@ -67,7 +67,7 @@ export default function BlogPage() {
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+                    <span className="rounded-full bg-accent-light px-2.5 py-0.5 text-xs font-medium text-accent">
                       {getCategoryLabel(post.category)}
                     </span>
                     <span className="text-xs text-muted">

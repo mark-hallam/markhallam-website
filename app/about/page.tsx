@@ -6,14 +6,14 @@ import { aboutData, siteSettings } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "AI Transformation Advisor with 15 years enterprise tech leadership and hands-on AI building experience across Claude, Gemini, Grok, and OpenAI.",
+  description: "AI Transformation Advisor. Background spanning aerospace, aviation, defence consulting, and enterprise technology. Hands-on builder across Claude, Gemini, Grok, and OpenAI.",
 };
 
 export default function AboutPage() {
   return (
     <Section>
       <div className="mx-auto max-w-[680px]">
-        <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
+        <h1 className="text-4xl font-bold tracking-tight text-warm md:text-5xl">
           {aboutData.name}
         </h1>
         <p className="mt-2 text-xl text-accent">{aboutData.title}</p>
@@ -28,14 +28,13 @@ export default function AboutPage() {
         </div>
 
         {/* Credentials */}
-        <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3">
           {[
             { value: "PMP", label: "Certified" },
-            { value: "AWS", label: "Certified" },
-            { value: "15+", label: "Years Enterprise" },
-            { value: "5+", label: "AI Products" },
+            { value: ">$2B", label: "Benefits Case Led" },
+            { value: "4", label: "AI Platforms" },
           ].map((cred) => (
-            <div key={cred.label + cred.value} className="rounded-lg border border-border bg-surface/50 p-3 text-center">
+            <div key={cred.label + cred.value} className="rounded-lg border border-border bg-white p-3 text-center">
               <p className="text-lg font-bold text-accent">{cred.value}</p>
               <p className="text-xs text-muted">{cred.label}</p>
             </div>
@@ -44,7 +43,7 @@ export default function AboutPage() {
 
         {/* Approach */}
         <div className="mt-10">
-          <h2 className="mb-4 text-2xl font-bold">My Approach</h2>
+          <h2 className="mb-4 text-2xl font-bold text-warm">My Approach</h2>
           {aboutData.philosophy.split("\n\n").map((paragraph, i) => (
             <p key={i} className="mb-4 leading-relaxed text-muted">
               {paragraph}
@@ -54,7 +53,7 @@ export default function AboutPage() {
 
         {/* Current Focus */}
         <div className="mt-10">
-          <h2 className="mb-4 text-2xl font-bold">Current Focus</h2>
+          <h2 className="mb-4 text-2xl font-bold text-warm">Current Focus</h2>
           <ul className="space-y-2">
             {aboutData.currentFocus.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-muted">
@@ -67,7 +66,7 @@ export default function AboutPage() {
 
         {/* Contact */}
         <div className="mt-10 border-t border-border pt-8">
-          <h2 className="mb-4 text-2xl font-bold">Let&apos;s Talk</h2>
+          <h2 className="mb-4 text-2xl font-bold text-warm">Let&apos;s Talk</h2>
           <p className="mb-4 text-sm text-muted">
             Whether you&apos;re exploring AI for the first time or looking to accelerate an existing initiative,
             I&apos;m happy to have an honest conversation about what&apos;s realistic for your organisation.

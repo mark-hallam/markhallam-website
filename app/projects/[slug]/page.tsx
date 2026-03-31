@@ -56,7 +56,7 @@ export default async function ProjectPage({
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
+            <h1 className="text-4xl font-bold tracking-tight text-warm md:text-5xl">
               {project.title}
             </h1>
             <StatusBadge status={project.status} />
@@ -71,7 +71,7 @@ export default async function ProjectPage({
       </div>
 
       {/* Key stat */}
-      <div className="mt-6 rounded-lg border border-amber/20 bg-amber/5 px-4 py-3">
+      <div className="mt-6 rounded-lg border border-amber/20 bg-amber-light px-4 py-3">
         <span className="text-sm font-medium text-amber">{project.keyStat}</span>
       </div>
 
@@ -116,7 +116,7 @@ export default async function ProjectPage({
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="rounded-md border border-border bg-surface px-3 py-1 font-mono text-xs text-muted"
+                className="rounded-md border border-border bg-background px-3 py-1 font-mono text-xs text-muted"
               >
                 {tech}
               </span>
@@ -127,7 +127,7 @@ export default async function ProjectPage({
 
       {/* What I learned */}
       {project.learned && (
-        <div className="mt-10 max-w-[680px] rounded-lg border border-border bg-surface p-6">
+        <div className="mt-10 max-w-[680px] rounded-lg border border-border bg-white p-6">
           <h2 className="mb-2 text-lg font-semibold">What I Learned</h2>
           <p className="text-sm leading-relaxed text-muted">{project.learned}</p>
         </div>

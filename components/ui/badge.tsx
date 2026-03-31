@@ -1,9 +1,9 @@
 import { type ProjectStatus, getStatusLabel } from "@/lib/data";
 
 const statusStyles: Record<ProjectStatus, string> = {
-  live: "bg-success/10 text-success border-success/20",
-  building: "bg-building/10 text-building border-building/20",
-  "coming-soon": "bg-coming/10 text-coming border-coming/20",
+  live: "bg-success-light text-success border-success/20",
+  building: "bg-accent-light text-building border-building/20",
+  "coming-soon": "bg-surface-hover text-coming border-coming/20",
 };
 
 const dotStyles: Record<ProjectStatus, string> = {

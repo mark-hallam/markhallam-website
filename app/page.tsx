@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, ExternalLink, Rss } from "lucide-react";
+import { ArrowRight, ExternalLink, Rss, CheckCircle } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { StatusBadge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -11,7 +11,6 @@ import {
   siteSettings,
   getFeaturedProjects,
   getLatestPost,
-  getHomeStats,
   formatDate,
   servicesData,
 } from "@/lib/data";
@@ -19,66 +18,61 @@ import {
 export default function Home() {
   const featuredProjects = getFeaturedProjects();
   const latestPost = getLatestPost();
-  const stats = getHomeStats();
 
   return (
     <>
       {/* Hero */}
-      <section className="relative px-6 pb-12 pt-24 md:pt-32">
+      <section className="relative px-6 pb-16 pt-28 md:pt-36">
         <div className="mx-auto w-full max-w-[1200px]">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <h1 className="max-w-3xl text-5xl font-extrabold leading-tight tracking-tight md:text-7xl lg:text-8xl">
-              Mark Hallam
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent">
+              AI Transformation Advisor
+            </p>
+            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-warm md:text-5xl lg:text-6xl">
+              Helping organisations move from AI curiosity to AI capability.
             </h1>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.12, ease: "easeOut" }}
           >
-            <p className="mt-4 max-w-2xl text-lg text-accent font-medium md:text-xl">
-              {siteSettings.heroTagline}
-            </p>
-            <p className="mt-2 max-w-xl text-base text-muted">
-              {siteSettings.heroSubtitle}
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+              I help business leaders figure out where AI fits, choose the right tools,
+              and implement workflows that actually stick — not pilots that go nowhere.
             </p>
           </motion.div>
 
-          {/* Stats Row */}
+          {/* Trust signals */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-            className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6"
+            transition={{ duration: 0.5, delay: 0.24, ease: "easeOut" }}
+            className="mt-8 flex flex-wrap gap-x-6 gap-y-2"
           >
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.4 + i * 0.1, ease: "easeOut" }}
-                className="rounded-xl border border-border bg-surface/50 px-5 py-4"
-              >
-                <p className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-xs font-medium uppercase tracking-widest text-muted">
-                  {stat.label}
-                </p>
-              </motion.div>
+            {[
+              "PMP Certified",
+              "Multiple AI products shipped",
+              "Enterprise tech program delivery",
+              "Hands-on across Claude, Gemini, Grok & OpenAI",
+            ].map((item) => (
+              <span key={item} className="inline-flex items-center gap-1.5 text-sm text-muted">
+                <CheckCircle size={14} className="text-success flex-shrink-0" />
+                {item}
+              </span>
             ))}
           </motion.div>
 
           {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.36, ease: "easeOut" }}
             className="mt-10 flex flex-wrap gap-4"
           >
             <Button href="/services" size="lg">
@@ -89,16 +83,13 @@ export default function Home() {
             </Button>
           </motion.div>
         </div>
-
-        {/* Gradient accent */}
-        <div className="pointer-events-none absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-accent/5 blur-[120px]" />
       </section>
 
       {/* Services Preview */}
-      <Section className="!py-16 border-y border-border bg-surface/30">
+      <Section className="!py-16 border-y border-border bg-white">
         <div className="flex items-end justify-between">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-warm md:text-4xl">
               What I Do
             </h2>
             <p className="mt-2 text-muted">
@@ -110,17 +101,17 @@ export default function Home() {
           </Button>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
           {servicesData.services.map((service) => (
             <Link key={service.title} href="/services">
               <Card className="flex h-full flex-col gap-3">
                 <div className="flex items-start justify-between">
-                  <h3 className="text-lg font-semibold">{service.title}</h3>
-                  <span className="rounded-lg bg-accent/10 px-2.5 py-1 text-xs font-bold text-accent whitespace-nowrap">
+                  <h3 className="text-lg font-semibold text-warm">{service.title}</h3>
+                  <span className="rounded-lg bg-accent-light px-2.5 py-1 text-xs font-bold text-accent whitespace-nowrap">
                     {service.stat}
                   </span>
                 </div>
-                <p className="flex-1 text-sm text-muted">{service.description}</p>
+                <p className="flex-1 text-sm leading-relaxed text-muted">{service.description}</p>
                 <div className="border-t border-border pt-3">
                   <span className="text-xs font-medium text-accent">
                     Learn more <ArrowRight size={12} className="inline" />
@@ -142,7 +133,7 @@ export default function Home() {
       <Section>
         <div className="flex items-end justify-between">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-warm md:text-4xl">
               Portfolio
             </h2>
             <p className="mt-2 text-muted">
@@ -160,7 +151,7 @@ export default function Home() {
               <Card className="group flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-3">
-                    <h3 className="text-xl font-semibold">{project.title}</h3>
+                    <h3 className="text-xl font-semibold text-warm">{project.title}</h3>
                     <StatusBadge status={project.status} />
                   </div>
                   <p className="mt-2 text-sm text-muted md:max-w-lg">
@@ -170,7 +161,7 @@ export default function Home() {
                     {project.techStack.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-md bg-surface px-2 py-0.5 text-xs text-muted border border-border"
+                        className="rounded-md bg-background px-2 py-0.5 text-xs text-muted border border-border"
                       >
                         {tech}
                       </span>
@@ -178,7 +169,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-center gap-4 md:flex-col md:items-end md:gap-2">
-                  <span className="rounded-lg bg-amber/10 px-3 py-1.5 text-sm font-bold text-amber whitespace-nowrap">
+                  <span className="rounded-lg bg-amber-light px-3 py-1.5 text-sm font-bold text-amber whitespace-nowrap">
                     {project.keyStat}
                   </span>
                   {project.url && (
@@ -201,10 +192,10 @@ export default function Home() {
 
       {/* Latest Post */}
       {latestPost && (
-        <Section className="bg-surface/30">
+        <Section className="bg-white">
           <div className="flex items-end justify-between">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-warm md:text-4xl">
                 Latest
               </h2>
               <p className="mt-2 text-muted">Insights on AI adoption, tool comparisons, and lessons from the field.</p>
@@ -218,7 +209,7 @@ export default function Home() {
             <Card className="md:flex md:items-center md:gap-8">
               <div className="flex-1">
                 <div className="flex items-center gap-3">
-                  <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+                  <span className="rounded-full bg-accent-light px-2.5 py-0.5 text-xs font-medium text-accent">
                     {latestPost.category === "build-log"
                       ? "Build Log"
                       : latestPost.category === "insight"
@@ -229,7 +220,7 @@ export default function Home() {
                     {formatDate(latestPost.publishedAt)}
                   </span>
                 </div>
-                <h3 className="mt-3 text-xl font-semibold md:text-2xl">
+                <h3 className="mt-3 text-xl font-semibold text-warm md:text-2xl">
                   {latestPost.title}
                 </h3>
                 <p className="mt-2 text-sm text-muted">{latestPost.excerpt}</p>
@@ -253,8 +244,8 @@ export default function Home() {
 
       {/* CTA */}
       <Section>
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+        <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-white p-10 text-center shadow-sm md:p-14">
+          <h2 className="text-3xl font-bold tracking-tight text-warm md:text-4xl">
             Ready to Move on AI?
           </h2>
           <p className="mt-4 text-lg text-muted">

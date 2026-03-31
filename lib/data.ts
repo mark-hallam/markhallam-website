@@ -45,7 +45,7 @@ export interface SiteSettings {
 
 export const siteSettings: SiteSettings = {
   heroTagline: "Helping organisations move from AI curiosity to AI capability.",
-  heroSubtitle: "AI Transformation Advisor. 15 years enterprise tech leadership. Hands-on builder across Claude, Gemini, Grok & OpenAI.",
+  heroSubtitle: "AI Transformation Advisor. Enterprise tech program delivery. Hands-on builder across Claude, Gemini, Grok & OpenAI.",
   socialLinks: {
     x: "https://x.com/MarkHallam",
     linkedin: "https://www.linkedin.com/in/mark-hallam/",
@@ -171,22 +171,22 @@ The experience of leading a technology venture from the ground up — dealing wi
   {
     slug: "markhallam-website",
     title: "markhallam.com.au",
-    description: "This website — a production-grade Next.js application built entirely through conversation with AI. Living proof that the tools work.",
+    description: "This website — a production-grade Next.js application built with AI. Living proof that the tools work.",
     status: "live",
     url: "https://markhallam.com.au",
     keyStat: "Built with AI",
-    body: `This very website is itself a case study. Built entirely through conversation with AI, it serves as proof that production-quality software can be created without traditional development processes.
+    body: `This very website is itself a case study. Built with AI, it serves as proof that production-quality software can be created without traditional development processes.
 
 ## The Stack
 
-Next.js with the App Router for the frontend, Sanity CMS for content management, Resend for transactional email, and automatic deployment to Vercel via GitHub. Custom dark-first design system with Tailwind CSS, Framer Motion animations, and full SEO.
+Next.js with the App Router for the frontend, Sanity CMS for content management, Resend for transactional email, and automatic deployment to Vercel via GitHub. Clean light-themed design system with Tailwind CSS, Framer Motion animations, and full SEO.
 
 ## What It Demonstrates
 
-This isn't a template or a drag-and-drop site. It's a custom-built application with CMS integration, email automation, RSS feeds, and structured data — all generated through natural language conversation with AI. The same approach can build internal tools, customer portals, dashboards, and operational software for any organisation.`,
+This isn't a template or a drag-and-drop site. It's a custom-built application with CMS integration, email automation, RSS feeds, and structured data — all built using AI as the primary development tool. The same approach can build internal tools, customer portals, dashboards, and operational software for any organisation.`,
     techStack: ["Next.js", "TypeScript", "Sanity CMS", "Tailwind CSS", "Framer Motion", "Resend", "Vercel"],
     features: [
-      "Custom dark-first design system",
+      "Clean, professional design system",
       "Sanity CMS with embedded Studio",
       "Blog with category filtering and RSS feed",
       "Project showcase with status tracking",
@@ -202,7 +202,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "from-builder-to-advisor",
     title: "From Builder to Advisor: Why I'm Helping Organisations Adopt AI",
-    excerpt: "After shipping 5+ AI products and spending 15 years in enterprise tech, I've seen both sides. Here's why I'm now helping organisations bridge the gap.",
+    excerpt: "After shipping multiple AI products and leading enterprise tech programs, I've seen both sides. Here's why I'm now helping organisations bridge the gap.",
     category: "insight",
     body: `I spent the last two months building. Five products across multiple AI platforms — Claude, Gemini, Grok. I built a health platform, an AI-native workflow tool, a rapid-validation product, and more. I didn't sleep much. I spent a lot on subscriptions. I learned an enormous amount.
 
@@ -216,7 +216,7 @@ Most organisations are stuck in one of three places: they know AI matters but do
 
 ## Why I'm positioned to help
 
-I've spent 15 years leading complex technology programmes in defence and aerospace — SAP migrations, SaaS rollouts, stakeholder management across organisations like Boeing and Airbus. I understand how enterprises actually make technology decisions.
+I've led complex technology programmes in defence, aerospace, and aviation — including leading programs underpinning a >$2 billion national benefits case at Airservices Australia. I understand how enterprises actually make technology decisions.
 
 And I've now spent intensive weeks building with every major AI platform. Not reading about them. Building with them. I know which tools work for what, where they fall short, and what it actually takes to go from demo to production.
 
@@ -232,9 +232,9 @@ If you're a business leader who knows AI matters but isn't sure where to start �
   {
     slug: "what-organisations-get-wrong-about-ai",
     title: "The 3 Things Every Organisation Gets Wrong When They Start With AI",
-    excerpt: "After building with AI tools daily and leading enterprise tech programmes for 15 years, I see the same mistakes everywhere. Here's how to avoid them.",
+    excerpt: "After building with AI tools daily and leading enterprise tech programmes, I see the same mistakes everywhere. Here's how to avoid them.",
     category: "insight",
-    body: `I've spent the last two months building products with Claude, Gemini, Grok, and OpenAI every day. Before that, I spent 15 years leading enterprise technology programmes. From both perspectives, I see the same three mistakes organisations make when they start with AI.
+    body: `I've spent the last two months building products with Claude, Gemini, Grok, and OpenAI every day. Before that, I led enterprise technology programmes in defence, aerospace, and aviation. From both perspectives, I see the same three mistakes organisations make when they start with AI.
 
 ## Mistake 1: Starting with the technology
 
@@ -347,9 +347,9 @@ export const servicesData = {
     },
   ],
   proofPoints: [
-    { value: "5+", label: "AI Products Shipped" },
-    { value: "15 yrs", label: "Enterprise Tech Leadership" },
-    { value: "4", label: "AI Platforms Tested" },
+    { value: ">$2B", label: "National Benefits Case" },
+    { value: "4", label: "AI Platforms" },
+    { value: "PMP", label: "Certified" },
   ],
   faqItems: [
     {
@@ -388,9 +388,9 @@ export const aboutData = {
   title: "AI Transformation Advisor",
   bio: `I help organisations move from AI curiosity to AI capability — bridging the gap between what AI tools can do and how your business can actually adopt them.
 
-My background is enterprise technology. For 15 years, I've directed complex technology programmes in defence and aerospace — SAP migrations, SaaS rollouts, commercial relationships with clients like Boeing and Airbus. I hold PMP and AWS certifications. I understand how large organisations actually make technology decisions: procurement, stakeholder alignment, change management, risk.
+My background spans aerospace engineering, aviation, defence consulting, and enterprise technology. At Airservices Australia, I led complex technology programs underpinning a >$2 billion national benefits case. Before that, I spent years in aerospace and aviation — from freelance defence consulting to working with companies like PPG Aerospace, and a research role in clean propulsion at Swinburne. I'm PMP certified and hold an aerospace engineering degree from RMIT. I understand how large organisations actually make technology decisions: procurement, stakeholder alignment, change management, risk.
 
-In early 2026, I spent two intensive months doing something different: building. I shipped 5+ AI-powered products using Claude, Gemini, Grok, and OpenAI — not to create startups, but to understand from the inside what these tools can actually do, where they fall short, and what it takes to go from experiment to production.`,
+In early 2026, I went deep on AI — not just reading about it, but building with it. I shipped multiple AI-powered products using Claude, Gemini, Grok, and OpenAI — not to create startups, but to understand from the inside what these tools can actually do, where they fall short, and what it takes to go from experiment to production.`,
   philosophy: `Most AI consultants have either built things with AI or led enterprise technology programmes. I've done both. That intersection is where real value gets delivered.
 
 The organisations I work with don't need another demo or another pilot that goes nowhere. They need someone who can assess their workflows, recommend the right AI tools for each job, implement working solutions, and manage the change required to make it stick. That's what I do.
@@ -404,13 +404,12 @@ I'm not here to sell AI hype. I'm here to help you figure out where it actually 
   ],
 };
 
-// Stats for homepage
+// Stats for homepage — verified facts only
 export function getHomeStats() {
   return [
-    { value: "15+", label: "Years Enterprise Tech" },
-    { value: "5+", label: "AI Products Shipped" },
-    { value: "4", label: "AI Platforms Mastered" },
-    { value: "PMP", label: "& AWS Certified" },
+    { value: ">$2B", label: "Benefits Case Led" },
+    { value: "4", label: "AI Platforms" },
+    { value: "PMP", label: "Certified" },
   ];
 }
 

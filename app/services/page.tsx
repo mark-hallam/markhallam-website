@@ -31,7 +31,7 @@ function FAQ({
       className="w-full border-b border-border py-4 text-left"
     >
       <div className="flex items-center justify-between gap-4">
-        <span className="font-medium">{question}</span>
+        <span className="font-medium text-warm">{question}</span>
         <ChevronDown
           size={18}
           className={`flex-shrink-0 text-muted transition-transform ${
@@ -62,7 +62,7 @@ export default function ServicesPage() {
       {/* Hero */}
       <Section>
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+          <h1 className="text-4xl font-bold tracking-tight text-warm md:text-5xl lg:text-6xl">
             {servicesData.headline}
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-muted">
@@ -77,8 +77,8 @@ export default function ServicesPage() {
       </Section>
 
       {/* Services */}
-      <Section className="bg-surface/30">
-        <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">
+      <Section className="bg-white">
+        <h2 className="text-center text-3xl font-bold tracking-tight text-warm md:text-4xl">
           How I Work With Organisations
         </h2>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -87,17 +87,17 @@ export default function ServicesPage() {
             return (
               <Card key={i} hover={false} className="flex flex-col gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-accent-light">
                     <Icon size={20} className="text-accent" />
                   </div>
                   <div>
-                    <span className="rounded-lg bg-accent/10 px-2.5 py-1 text-xs font-bold text-accent">
+                    <span className="rounded-lg bg-accent-light px-2.5 py-1 text-xs font-bold text-accent">
                       {service.stat}
                     </span>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold">{service.title}</h3>
+                  <h3 className="text-xl font-semibold text-warm">{service.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">
                     {service.description}
                   </p>
@@ -111,31 +111,22 @@ export default function ServicesPage() {
       {/* Proof Points */}
       <Section>
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-warm md:text-4xl">
             Why Me
           </h2>
           <p className="mt-4 text-muted">
             Most AI consultants have either built things with AI or led enterprise technology programmes. I&apos;ve done both.
           </p>
         </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {servicesData.proofPoints.map((point) => (
-            <div key={point.label} className="rounded-lg border border-border p-5 text-center">
-              <div className="text-3xl font-bold text-accent">{point.value}</div>
-              <p className="mt-1 text-sm text-muted">{point.label}</p>
-            </div>
-          ))}
-        </div>
         <div className="mx-auto mt-8 max-w-xl">
-          <div className="rounded-xl border border-border bg-surface/50 p-6">
+          <div className="rounded-xl border border-border bg-white p-6">
             <p className="text-sm leading-relaxed text-muted">
-              <span className="font-semibold text-foreground">Enterprise credibility:</span>{" "}
-              15 years leading complex tech programmes in defence and aerospace. PMP certified. AWS certified.
-              Boeing, Airbus, SAP migrations, SaaS rollouts.
+              <span className="font-semibold text-warm">Enterprise credibility:</span>{" "}
+              Led complex technology programs underpinning a &gt;$2 billion national benefits case at Airservices Australia. PMP certified. Background spanning aerospace, aviation, and defence consulting.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              <span className="font-semibold text-foreground">Hands-on AI experience:</span>{" "}
-              5+ products shipped across Claude, Gemini, Grok, and OpenAI. Not demos. Production products.
+              <span className="font-semibold text-warm">Hands-on AI experience:</span>{" "}
+              Multiple products shipped across Claude, Gemini, Grok, and OpenAI. Not demos. Production products.
               I know which tool fits which job from real usage, not reviews.
             </p>
           </div>
@@ -143,9 +134,9 @@ export default function ServicesPage() {
       </Section>
 
       {/* FAQ */}
-      <Section className="bg-surface/30">
+      <Section className="bg-white">
         <div className="mx-auto max-w-2xl">
-          <h2 className="text-center text-3xl font-bold tracking-tight md:text-4xl">
+          <h2 className="text-center text-3xl font-bold tracking-tight text-warm md:text-4xl">
             Questions
           </h2>
           <div className="mt-8">
@@ -159,7 +150,7 @@ export default function ServicesPage() {
       {/* Bottom CTA */}
       <Section>
         <div className="mx-auto max-w-md text-center">
-          <h2 className="text-2xl font-bold">Ready to get started?</h2>
+          <h2 className="text-2xl font-bold text-warm">Ready to get started?</h2>
           <p className="mt-2 text-sm text-muted">
             The first step is a conversation. No pitch decks, no pressure — just an honest assessment
             of where AI can help your organisation.

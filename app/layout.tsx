@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Mark Hallam",
   },
   description:
-    "Helping organisations move from AI curiosity to AI capability. 15 years enterprise tech leadership combined with hands-on AI building across Claude, Gemini, Grok & OpenAI.",
+    "Helping organisations move from AI curiosity to AI capability. Enterprise tech program delivery combined with hands-on AI building across Claude, Gemini, Grok & OpenAI.",
   openGraph: {
     title: "Mark Hallam — AI Transformation Advisor",
     description:
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Mark Hallam — AI Transformation Advisor",
     description:
-      "Helping organisations move from AI curiosity to AI capability. 15 years enterprise tech leadership + hands-on AI building across Claude, Gemini, Grok & OpenAI.",
+      "Helping organisations move from AI curiosity to AI capability. Enterprise tech program delivery + hands-on AI building across Claude, Gemini, Grok & OpenAI.",
     creator: "@MarkHallam",
   },
   robots: {

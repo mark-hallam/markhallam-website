@@ -18,9 +18,9 @@ export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
+    <header className="fixed top-0 z-50 w-full border-b border-border bg-white/80 backdrop-blur-md">
       <nav className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4">
-        <Link href="/" className="text-lg font-bold tracking-tight text-foreground">
+        <Link href="/" className="text-lg font-bold tracking-tight text-warm">
           Mark Hallam
         </Link>
 
@@ -59,7 +59,7 @@ export function Nav() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="overflow-hidden border-b border-border bg-background md:hidden"
+            className="overflow-hidden border-b border-border bg-white md:hidden"
           >
             <div className="flex flex-col gap-1 px-6 pb-4">
               {navItems.map((item) => (
@@ -69,8 +69,8 @@ export function Nav() {
                   onClick={() => setMobileOpen(false)}
                   className={`rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
                     pathname === item.href || pathname.startsWith(item.href + "/")
-                      ? "bg-accent/10 text-accent"
-                      : "text-muted hover:bg-surface hover:text-foreground"
+                      ? "bg-accent-light text-accent"
+                      : "text-muted hover:bg-surface-hover hover:text-foreground"
                   }`}
                 >
                   {item.label}
