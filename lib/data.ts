@@ -38,354 +38,379 @@ export interface SiteSettings {
     email: string;
   };
   projectLinks: {
-    lunarpdf: string;
     nomlie: string;
+    octti: string;
   };
 }
 
 export const siteSettings: SiteSettings = {
-  heroTagline: "The only skill you need today is the ability to communicate your idea.",
-  heroSubtitle: "Solo builder. Shipping real products with AI. Teaching others to do the same.",
+  heroTagline: "Helping organisations move from AI curiosity to AI capability.",
+  heroSubtitle: "AI Transformation Advisor. 15 years enterprise tech leadership. Hands-on builder across Claude, Gemini, Grok & OpenAI.",
   socialLinks: {
     x: "https://x.com/MarkHallam",
     linkedin: "https://www.linkedin.com/in/mark-hallam/",
     email: "mailto:mark@markhallam.com.au",
   },
   projectLinks: {
-    lunarpdf: "https://lunarpdf.com",
     nomlie: "https://nomlie.com",
+    octti: "https://octti.ai",
   },
 };
 
 export const projects: Project[] = [
   {
-    slug: "lunarpdf",
-    title: "LunarPDF",
-    description: "A full Adobe Acrobat alternative. Edit, merge, split, and annotate PDFs — entirely in the browser.",
-    status: "live",
-    url: "https://lunarpdf.com",
-    keyStat: "Built in 2 days",
-    body: `LunarPDF started as a frustration with overpriced PDF software. Adobe charges $20/month for features most people use once a week. I built a complete alternative in 2 days using AI.
-
-The app handles everything you'd expect from a PDF editor — merging documents, splitting pages, adding annotations, filling forms, and converting between formats. It runs entirely in the browser with no file uploads required, meaning your documents never leave your device.
-
-## How it was built
-
-I used Claude as my development partner, describing each feature I needed and iterating on the implementation. The entire product went from idea to live deployment in 48 hours. No backend servers, no complex infrastructure — just a clean frontend application that processes everything client-side.
-
-## What I learned
-
-Speed kills perfectionism in the best way. By shipping fast, I got real user feedback within days instead of months. The features users actually wanted were different from what I would have built if I'd spent 6 months planning.`,
-    techStack: ["Next.js", "TypeScript", "PDF.js", "Tailwind CSS", "Vercel"],
-    features: [
-      "Merge multiple PDFs into one",
-      "Split PDFs by page range",
-      "Add text annotations and highlights",
-      "Fill and sign PDF forms",
-      "Convert between PDF and image formats",
-      "100% client-side — files never leave your device",
-    ],
-    learned: "Speed kills perfectionism in the best way. Ship fast, get real feedback, iterate. The features users actually wanted were different from what I would have planned.",
-    order: 1,
-  },
-  {
     slug: "nomlie",
     title: "Nomlie",
-    description: "AI-powered health, fitness & longevity platform. Nutrition tracking, workout plans, meal planning, toxin analysis, and longevity insights — all personalised by AI.",
+    description: "AI-powered health, fitness & longevity platform. Built end-to-end using AI tools to demonstrate what a solo operator can ship in weeks, not months.",
     status: "live",
     url: "https://nomlie.com",
-    keyStat: "Launched today",
-    body: `Nomlie is an AI-powered health, fitness and longevity platform that learns your goals, tracks your nutrition and fitness, plans your meals, detects hidden toxins, and guides your longevity journey — all personalised by AI.
+    keyStat: "Full platform in weeks",
+    body: `Nomlie is an AI-powered health, fitness and longevity platform — and a case study in what's possible when you combine domain vision with AI development tools.
 
-## The Problem
+## The Challenge
 
-The average health-conscious person juggles 4+ apps for calories, workouts, recipes, and tracking. None of them talk to each other. Most apps completely ignore what's actually in your food — over 3,000 chemical additives approved in US food are banned in Europe, Japan, and Canada. And zero personalisation: generic meal plans and cookie-cutter workouts that don't know your goals, your body, or how your nutrition and fitness connect.
+Health and wellness is fragmented across dozens of apps. Nutrition trackers don't talk to fitness apps. Meal planners ignore what's actually in your food. No single platform connects the dots between what you eat, how you move, and your long-term health trajectory.
 
-## What Nomlie Does
+## What Was Built
 
-One AI platform covering every dimension of your health:
+A comprehensive platform covering nutrition intelligence, fitness coaching, AI-generated meal plans, a product toxin scanner, and a longevity dashboard — all personalised by AI.
 
-- **Nutrition Intelligence** — AI-powered food logging, calorie and macro tracking, and nutrient analysis personalised to your body and goals
-- **Fitness & Workouts** — Workout plans, tracking, and AI coaching that adapts to your fitness level, recovery, and schedule
-- **Meal Planning** — AI-generated weekly meal plans, recipes, and shopping lists based on your preferences, allergies, and targets
-- **Toxin Analysis** — Scan any product to detect 500+ toxins, banned additives, artificial colourings, GMOs, and harmful chemicals
-- **Longevity Dashboard** — Track your health trajectory over time with AI-driven longevity recommendations linked to your workouts, nutrition, and habits
+## Why This Matters for Organisations
 
-## How it was built
-
-Built with the same AI-first approach as every other project — described, not hand-coded. The entire platform went from concept to live product through conversation with AI.`,
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "OpenAI API", "Resend", "Vercel"],
+This project demonstrates a pattern that applies directly to enterprise: identifying a fragmented workflow, designing an AI-augmented solution, and shipping a production-quality product without a traditional dev team. The same approach works for internal tools, customer-facing products, and operational workflows.`,
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "OpenAI API", "Vercel"],
     features: [
       "AI-powered nutrition tracking and analysis",
       "Personalised fitness plans and workout coaching",
       "AI-generated meal plans and shopping lists",
       "Product scanner for 500+ toxins and banned additives",
       "Longevity dashboard with health trajectory tracking",
-      "Early access waitlist with 2,000+ signups",
     ],
-    learned: "Health is fragmented across dozens of apps. The opportunity is in connecting everything into one intelligent platform that actually knows you.",
+    learned: "Complex, multi-feature platforms can be built by a single person with AI tools — if you have clarity on the problem and disciplined execution.",
+    order: 1,
+  },
+  {
+    slug: "octti-ai",
+    title: "Octti.ai",
+    description: "AI-native platform exploring the intersection of automation and intelligent workflows. Built to test the boundaries of current AI capabilities.",
+    status: "live",
+    url: "https://octti.ai",
+    keyStat: "AI-native architecture",
+    body: `Octti.ai was built to explore what happens when you design a product around AI capabilities from the ground up, rather than bolting AI onto an existing workflow.
+
+## The Approach
+
+Rather than starting with a traditional feature list and adding AI later, Octti was designed with AI at the core — every workflow, every interaction, every decision point leverages intelligent automation.
+
+## What This Demonstrates
+
+Most organisations try to adopt AI by adding it to existing processes. That's like putting a jet engine on a horse cart. The real opportunity is in redesigning workflows around what AI can actually do. Octti is a working example of that approach.`,
+    techStack: ["Next.js", "TypeScript", "AI APIs", "Vercel"],
+    features: [
+      "AI-native workflow design",
+      "Intelligent automation at every decision point",
+      "Built from first principles around AI capabilities",
+    ],
+    learned: "The biggest gains from AI come not from automation of existing workflows, but from redesigning workflows around AI's strengths.",
     order: 2,
+  },
+  {
+    slug: "pindeo",
+    title: "Pindeo",
+    description: "A product built to validate a market hypothesis rapidly using AI development tools. From concept to deployed product in days.",
+    status: "live",
+    url: "https://pindeo.com",
+    keyStat: "Concept to live in days",
+    body: `Pindeo demonstrates the speed at which ideas can be validated when you use AI as your development partner.
+
+## The Approach
+
+Traditional product development follows a months-long cycle: research, wireframes, design, development, testing, deployment. With AI development tools, this entire cycle compressed into days.
+
+## Why Speed Matters
+
+For organisations evaluating AI adoption, speed-to-validation is everything. The ability to test an idea in days instead of months changes the economics of innovation. You can afford to be wrong more often because the cost of being wrong has collapsed.
+
+## The Enterprise Lesson
+
+Every organisation has a backlog of ideas that never get built because the cost and timeline don't justify the risk. AI development tools change that equation fundamentally. Pindeo is proof.`,
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    features: [
+      "Rapid concept-to-deployment pipeline",
+      "AI-assisted full-stack development",
+      "Production-quality output at prototype speed",
+    ],
+    learned: "The cost of validating ideas has collapsed. Organisations that recognise this will out-innovate those still stuck in 6-month development cycles.",
+    order: 3,
+  },
+  {
+    slug: "skycot",
+    title: "Skycot",
+    description: "Robotics venture exploring autonomous systems. Founded and led as CEO, navigating the intersection of hardware, software, and emerging technology.",
+    status: "live",
+    url: "https://skycot.com",
+    keyStat: "CEO & Founder",
+    body: `Skycot represents an earlier chapter in my technology journey — a robotics venture where I served as Founder and CEO.
+
+## The Experience
+
+Leading a robotics company required navigating complex technical challenges, managing hardware-software integration, building partnerships, and making strategic decisions under uncertainty. These are the same challenges organisations face when adopting AI — just in a different domain.
+
+## How This Informs AI Advisory
+
+The experience of leading a technology venture from the ground up — dealing with technical risk, managing stakeholder expectations, and making build-vs-buy decisions — directly informs how I advise organisations on AI adoption. The technology changes, but the leadership challenges are remarkably similar.`,
+    techStack: ["Robotics", "Autonomous Systems", "Hardware Integration"],
+    features: [
+      "Autonomous systems development",
+      "Hardware-software integration",
+      "Strategic technology leadership",
+    ],
+    learned: "Leading a technology venture teaches you that adoption challenges are rarely technical — they're organisational, cultural, and strategic.",
+    order: 4,
   },
   {
     slug: "markhallam-website",
     title: "markhallam.com.au",
-    description: "This website. A digital magazine for builders — built entirely with AI, open-sourced as proof that anyone can ship.",
+    description: "This website — a production-grade Next.js application built entirely through conversation with AI. Living proof that the tools work.",
     status: "live",
     url: "https://markhallam.com.au",
-    keyStat: "Live — built with AI",
-    body: `This very website is itself a project. Built entirely through conversation with AI, it serves as both a home base and living proof that you don't need a dev team to ship a professional web presence.
+    keyStat: "Built with AI",
+    body: `This very website is itself a case study. Built entirely through conversation with AI, it serves as proof that production-quality software can be created without traditional development processes.
 
-## How it was built
+## The Stack
 
-Every line of code on this site was generated through natural language conversation with Claude. From the design system to the CMS integration to the deployment pipeline — all of it described, not hand-coded.
+Next.js with the App Router for the frontend, Sanity CMS for content management, Resend for transactional email, and automatic deployment to Vercel via GitHub. Custom dark-first design system with Tailwind CSS, Framer Motion animations, and full SEO.
 
-The site went from zero to a fully deployed, production-grade website with CMS, email integration, RSS feeds, SEO, and a custom domain — all through AI-assisted development.
+## What It Demonstrates
 
-## The stack
-
-Next.js 16 with the App Router handles the frontend, Sanity CMS powers the content, Resend handles transactional email for the waitlist, and the whole thing deploys automatically to Vercel on every git push. Tailwind CSS v4 with a custom dark-first design system, Framer Motion for page transitions, and full SEO with OpenGraph, Twitter Cards, and JSON-LD structured data.
-
-## Why it matters
-
-This site is the message. If I can build a polished, production-grade website by describing what I want, so can you. That's the whole point of the "Learn to Build" mission.`,
+This isn't a template or a drag-and-drop site. It's a custom-built application with CMS integration, email automation, RSS feeds, and structured data — all generated through natural language conversation with AI. The same approach can build internal tools, customer portals, dashboards, and operational software for any organisation.`,
     techStack: ["Next.js", "TypeScript", "Sanity CMS", "Tailwind CSS", "Framer Motion", "Resend", "Vercel"],
     features: [
-      "Responsive dark-first design system",
+      "Custom dark-first design system",
       "Sanity CMS with embedded Studio",
       "Blog with category filtering and RSS feed",
-      "Project showcase with live status tracking",
-      "Waitlist with Resend email integration",
-      "SEO optimised with OpenGraph, Twitter Cards, and JSON-LD",
-      "Auto-deploy via GitHub to Vercel",
+      "Project showcase with status tracking",
+      "Email integration via Resend",
+      "SEO with OpenGraph, Twitter Cards, and JSON-LD",
     ],
-    learned: "The best portfolio is one that demonstrates its own creation story. Meta? Maybe. Effective? Absolutely.",
-    order: 3,
+    learned: "The best way to demonstrate AI capability is to use it to build the thing that demonstrates AI capability.",
+    order: 5,
   },
 ];
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "markhallam-com-au-is-live",
-    title: "markhallam.com.au Is Live",
-    excerpt: "From zero to a fully deployed website with CMS, email integration, and custom domain — built entirely through conversation with AI.",
-    category: "build-log",
-    body: `Today I shipped markhallam.com.au. The site you're reading this on went from an empty folder to a fully deployed, production-grade website — and every line of code was generated through conversation with AI.
+    slug: "from-builder-to-advisor",
+    title: "From Builder to Advisor: Why I'm Helping Organisations Adopt AI",
+    excerpt: "After shipping 5+ AI products and spending 15 years in enterprise tech, I've seen both sides. Here's why I'm now helping organisations bridge the gap.",
+    category: "insight",
+    body: `I spent the last two months building. Five products across multiple AI platforms — Claude, Gemini, Grok. I built a health platform, an AI-native workflow tool, a rapid-validation product, and more. I didn't sleep much. I spent a lot on subscriptions. I learned an enormous amount.
 
-## What got built
+## What I discovered
 
-This isn't a template or a drag-and-drop site. It's a custom Next.js 16 application with:
+The tools are extraordinary. What took teams of engineers months to build can now be shipped by a single person in days. But here's the thing — knowing that the tools exist and knowing how to actually use them in an organisation are two completely different problems.
 
-- **Sanity CMS** with an embedded Studio for content management
-- **Resend** for waitlist email integration
-- **Full SEO** — OpenGraph, Twitter Cards, JSON-LD structured data
-- **RSS feed** for cross-posting to other platforms
-- **Framer Motion** page transitions throughout
-- **Auto-deploy** — push to GitHub, Vercel builds and deploys automatically
+## The gap
 
-The whole thing runs on a custom dark-first design system built with Tailwind CSS v4.
+Most organisations are stuck in one of three places: they know AI matters but don't know where to start, they've run a pilot that went nowhere, or they've adopted one tool but haven't changed any workflows around it. The technology isn't the blocker. The blocker is strategy, change management, and knowing which tool fits which job.
 
-## How it was deployed
+## Why I'm positioned to help
 
-The deployment pipeline is straightforward: code lives on GitHub, Vercel watches for pushes to main, builds automatically, and serves from the edge. Domain DNS was pointed from GoDaddy to Vercel, and SSL certificates were provisioned automatically.
+I've spent 15 years leading complex technology programmes in defence and aerospace — SAP migrations, SaaS rollouts, stakeholder management across organisations like Boeing and Airbus. I understand how enterprises actually make technology decisions.
 
-Environment variables for Sanity, Resend, and analytics are managed through Vercel's dashboard — nothing sensitive in the repo.
+And I've now spent intensive weeks building with every major AI platform. Not reading about them. Building with them. I know which tools work for what, where they fall short, and what it actually takes to go from demo to production.
 
-## What's next
+## What I offer
 
-The site is live but the content is just getting started. Next steps: seed real content through Sanity Studio, add Google Analytics, and set up automated cross-posting with Zapier and Buffer.
+I help organisations move from AI curiosity to AI capability. That starts with understanding where AI will have the highest impact on your specific workflows, choosing the right tools, and implementing in a way that sticks — not as a one-off experiment, but as a fundamental shift in how your team works.
 
-This is the starting line, not the finish line. Building in public means you get to watch it evolve.`,
-    publishedAt: "2026-02-12",
-    readTime: 3,
-    featured: true,
-  },
-  {
-    slug: "i-built-a-pdf-editor-in-two-days",
-    title: "I Built a Full PDF Editor in 2 Days",
-    excerpt: "Adobe charges $20/month for PDF editing. I built a complete alternative in a weekend using AI. Here's exactly how.",
-    category: "build-log",
-    body: `Adobe charges $20/month for PDF editing. I built a complete alternative in a weekend using AI. Here's exactly how.
-
-## The frustration
-
-Every time I needed to merge two PDFs or add a signature, I'd hit a paywall. Adobe Acrobat, Smallpdf, iLovePDF — they all want your money for basic operations. And most of them upload your files to their servers, which is a privacy nightmare for sensitive documents.
-
-## The decision
-
-Instead of paying another subscription, I decided to build my own. With AI, I figured I could ship something usable in a weekend. I was right.
-
-## Day 1: Core functionality
-
-I started by describing to Claude what I wanted: a browser-based PDF editor that processes everything client-side. No uploads, no servers, no subscriptions. Within hours, I had a working prototype that could:
-
-- Open and render PDFs
-- Merge multiple files
-- Split by page range
-
-The key insight was using PDF.js for rendering and pdf-lib for manipulation. Claude suggested this architecture, and it turned out to be exactly right.
-
-## Day 2: Polish and ship
-
-Day two was about adding the features that make it feel complete: annotations, form filling, format conversion. Then I built the landing page, set up the domain, and deployed to Vercel.
-
-By Sunday evening, LunarPDF was live at lunarpdf.com.
-
-## The lesson
-
-You don't need months. You don't need a team. You need a clear idea and the ability to describe what you want. The tools exist now to turn conversation into software. Stop planning, start building.`,
-    publishedAt: "2026-01-15",
+If you're a business leader who knows AI matters but isn't sure where to start — let's talk.`,
+    publishedAt: "2026-03-31",
     readTime: 4,
     featured: true,
   },
   {
+    slug: "what-organisations-get-wrong-about-ai",
+    title: "The 3 Things Every Organisation Gets Wrong When They Start With AI",
+    excerpt: "After building with AI tools daily and leading enterprise tech programmes for 15 years, I see the same mistakes everywhere. Here's how to avoid them.",
+    category: "insight",
+    body: `I've spent the last two months building products with Claude, Gemini, Grok, and OpenAI every day. Before that, I spent 15 years leading enterprise technology programmes. From both perspectives, I see the same three mistakes organisations make when they start with AI.
+
+## Mistake 1: Starting with the technology
+
+Most organisations begin their AI journey by picking a tool. They get a ChatGPT Enterprise licence, run a few demos, and then try to figure out where to use it. This is backwards. You should start with your highest-friction workflows and then find the AI tool that addresses them. Technology-first adoption leads to expensive experiments that don't stick.
+
+## Mistake 2: Running pilots that go nowhere
+
+The pilot programme is where AI adoption goes to die. A small team experiments with AI for 6 weeks, produces a report, and then nothing happens. The problem isn't the pilot — it's that most pilots are designed to evaluate the technology rather than to deliver a working workflow change. A good AI implementation should deliver measurable time or cost savings within 2-4 weeks, not a PowerPoint deck.
+
+## Mistake 3: Treating AI as a tool instead of a workflow shift
+
+Adding AI to an existing workflow is like putting a turbo engine in a car that still has a horse harness attached. The real gains come from redesigning workflows around AI's capabilities — not from automating individual tasks within broken processes. This requires someone who understands both the technology and the organisational dynamics. That's rare.
+
+## The path forward
+
+Start with your most painful workflows. Pick one. Implement AI-augmented processes that deliver measurable results in weeks. Use that success to build momentum for broader adoption. That's the playbook that actually works.`,
+    publishedAt: "2026-03-28",
+    readTime: 4,
+    featured: true,
+  },
+  {
+    slug: "claude-vs-gemini-vs-grok-vs-openai-honest-comparison",
+    title: "Claude vs Gemini vs Grok vs OpenAI: An Honest Comparison From Someone Who's Built With All Four",
+    excerpt: "Not a feature comparison chart. A real-world assessment from weeks of building production products across all four platforms.",
+    category: "insight",
+    body: `Most AI tool comparisons are written by people who've tried each platform for an afternoon. I've spent weeks building production products across Claude, Gemini, Grok, and OpenAI. Here's what I've actually found.
+
+## The short version
+
+Each platform has genuine strengths, and the right choice depends entirely on what you're building. There is no single best tool — but there is a best tool for your specific use case.
+
+## Claude (Anthropic)
+
+Claude excels at complex, multi-step reasoning and code generation. For building software products — which is what I've been doing most — Claude has been my primary partner. It handles nuanced requirements well, maintains context over long conversations, and produces clean, production-ready code. Where it falls short: it can be overly cautious, sometimes refusing tasks that are perfectly reasonable.
+
+## Gemini (Google)
+
+Gemini's strength is its integration with the Google ecosystem and its ability to handle multimodal inputs. If your organisation is already in Google Workspace, the integration story is compelling. It's strong on data analysis and research tasks. Where it falls short: for pure code generation and complex technical tasks, it doesn't match Claude's depth.
+
+## OpenAI (GPT)
+
+OpenAI's GPT models are the most widely recognised and have the broadest ecosystem of integrations. For organisations already using Microsoft 365, the Copilot integration is a natural entry point. GPT is strong across general-purpose tasks and has the most mature plugin and API ecosystem. Where it falls short: for complex code generation and nuanced reasoning, Claude tends to outperform, and the sheer number of product tiers and options can create confusion about what you're actually paying for.
+
+## Grok (xAI)
+
+Grok brings real-time information access and a less filtered approach. For tasks that require current data or a more direct conversational style, it has advantages. Where it falls short: for enterprise use cases, the safety and reliability story isn't as mature.
+
+## What this means for organisations
+
+Don't pick one tool and standardise on it. Different teams and different workflows will benefit from different platforms. The winning strategy is to have someone who understands all four and can recommend the right tool for each job. That's a capability most organisations don't have internally yet.`,
+    publishedAt: "2026-03-25",
+    readTime: 5,
+    featured: true,
+  },
+  {
     slug: "the-builder-era",
-    title: "The Builder Era: Why Everyone Can Ship Now",
-    excerpt: "The barriers to building software have collapsed. No funding required. No dev team. No excuses. Here's what changed.",
+    title: "The Builder Era: Why the Rules Have Changed",
+    excerpt: "The barriers to building software have collapsed. What took teams months now takes days. Here's what that means for organisations.",
     category: "insight",
     body: `The barriers to building software have collapsed. Not gradually — they fell off a cliff.
 
 ## What changed
 
-Two years ago, turning an idea into a working product required one of three things: the ability to code, money to hire someone who could, or a technical co-founder willing to work for equity. Those were your options.
+Two years ago, turning an idea into a working product required the ability to code, money to hire someone who could, or a technical co-founder. Today, you need the ability to describe what you want clearly. That's it.
 
-Today? You need the ability to describe what you want. That's it.
+## The new economics
 
-## The new stack
+I built a full health and longevity platform in weeks. A complete PDF editor in 2 days. Five production products shipped rapidly. Not prototypes — live products that people use. The total infrastructure cost to run these is somewhere between $0 and $20 per month each.
 
-The builder stack in 2026 looks like this:
+Compare that to the old model: $150k-$500k for an MVP, 6-18 months of development, a team of 3-5 people.
 
-1. **An idea** — Something that solves a real problem
-2. **An AI coding partner** — Claude, GPT, or similar
-3. **A deployment platform** — Vercel, Netlify, Railway
-4. **A domain name** — $12/year
+## What this means for organisations
 
-Total monthly cost to run a production web app: somewhere between $0 and $20.
+This isn't just about startups. Every organisation has a backlog of internal tools, workflow improvements, and customer-facing products that never get built because the cost and timeline don't justify the risk.
 
-Compare that to the old model: $150k-$500k for an MVP, 6-18 months of development, a team of 3-5 people. That model isn't just expensive — it's obsolete for a huge category of products.
+AI development tools change that equation. An internal dashboard that would have taken a dev team 3 months can be prototyped in a week. A customer portal that sat in the backlog for a year can be validated in days.
 
-## What this means
+The organisations that recognise this shift and act on it will have a fundamental advantage over those that are still budgeting 6-month development cycles for every initiative.
 
-It means the bottleneck is no longer technical skill. It's not capital. It's not connections. The bottleneck is now **clarity of thought** and **willingness to ship**.
+## The bottleneck has moved
 
-Can you clearly describe what you want to build? Can you articulate the problem it solves? Can you iterate on feedback? Then you can build software in 2026.
-
-## The proof
-
-I built LunarPDF — a complete PDF editor — in 2 days. Not a prototype. Not a mockup. A live product that people use. And I did it by describing what I wanted to an AI.
-
-This isn't an anomaly. This is the new normal. Welcome to the builder era.`,
+The bottleneck is no longer technical skill or capital. It's clarity of thought, willingness to ship, and — critically — having someone who can bridge the gap between what AI tools can do and what your organisation needs. That's the new leadership challenge.`,
     publishedAt: "2026-02-01",
-    readTime: 3,
-    featured: true,
-  },
-  {
-    slug: "announcing-nomlie",
-    title: "Announcing Nomlie: AI-Powered Health, Fitness & Longevity",
-    excerpt: "Nomlie is live — an AI health platform that tracks nutrition, plans workouts, generates meal plans, scans for toxins, and guides your longevity journey.",
-    category: "announcement",
-    body: `Nomlie is live. An AI-powered health, fitness and longevity platform that does what no single app has managed to do: connect every dimension of your health into one intelligent system.
-
-## The problem
-
-The average health-conscious person juggles 4+ separate apps — one for calories, one for workouts, one for recipes, one for tracking. None of them talk to each other. And most of them completely ignore what's actually in your food.
-
-Over 3,000 chemical additives approved in US food are banned in Europe, Japan, and Canada. Most health apps pretend this problem doesn't exist.
-
-## What Nomlie does
-
-Nomlie brings it all together: nutrition tracking, fitness plans, AI-generated meal plans, a product toxin scanner, and a longevity dashboard. Everything is personalised by AI that learns your goals, your body, and your habits.
-
-Scan any product barcode to instantly detect harmful additives. Get workout plans that adapt to your recovery. Receive meal plans that match your allergies, preferences, and nutrition targets.
-
-## Built the same way
-
-Like every project on this site, Nomlie was built through conversation with AI. Described, not hand-coded. From concept to live product, shipped by a solo builder.
-
-## Try it
-
-Visit nomlie.com to get early access or try the free product scanner.`,
-    publishedAt: "2026-02-12",
-    readTime: 2,
+    readTime: 4,
     featured: true,
   },
 ];
 
-export const learnPageData = {
-  headline: "You Have Ideas. Learn to Ship Them.",
-  valueProp: "The tools have changed. You no longer need a technical co-founder, a dev team, or a six-figure budget. You need the ability to communicate your idea clearly. I'll teach you the rest.",
-  pillars: [
+export const servicesData = {
+  headline: "AI Transformation That Actually Delivers",
+  valueProp: "Most AI initiatives stall at the pilot stage. I help organisations identify the highest-impact opportunities, choose the right tools, and implement AI workflows that deliver measurable results — not PowerPoint decks.",
+  services: [
     {
-      title: "Think Like a Builder",
-      description: "Learn to break down any idea into buildable pieces. No coding knowledge required — just clear thinking and the ability to describe what you want.",
+      title: "AI Readiness Audit",
+      description: "A focused assessment of your current workflows to identify the 3-5 highest-impact opportunities for AI to save time and money. You get a prioritised roadmap with specific tool recommendations and estimated ROI.",
+      stat: "2-3 hours",
+      statLabel: "Workshop + Report",
     },
     {
-      title: "Ship With AI",
-      description: "Master the art of working with AI to turn descriptions into working software. From your first prompt to your first deployment.",
+      title: "AI Implementation Sprint",
+      description: "I build AI-augmented workflows directly into your team's processes over 2-4 weeks. Not recommendations — working systems with trained team members and a handover document so you're self-sufficient.",
+      stat: "2-4 weeks",
+      statLabel: "Concept to working",
     },
     {
-      title: "Launch and Iterate",
-      description: "Shipping is just the start. Learn how to get your product in front of users, collect feedback, and improve fast.",
+      title: "Fractional AI Advisor",
+      description: "Ongoing AI strategy and implementation leadership 1-2 days per week. Get the expertise of a Head of AI without the full-time salary. Tool evaluation, team training, and implementation oversight.",
+      stat: "1-2 days/wk",
+      statLabel: "Ongoing advisory",
     },
-    {
-      title: "Build in Public",
-      description: "Document your journey, attract an audience, and create opportunities by sharing what you build and how you build it.",
-    },
+  ],
+  proofPoints: [
+    { value: "5+", label: "AI Products Shipped" },
+    { value: "15 yrs", label: "Enterprise Tech Leadership" },
+    { value: "4", label: "AI Platforms Tested" },
   ],
   faqItems: [
     {
-      question: "Do I need to know how to code?",
-      answer: "No. That's the whole point. The only skill you need is the ability to clearly describe what you want to build. AI handles the technical implementation. You handle the vision.",
+      question: "What size organisations do you work with?",
+      answer: "I work with mid-market companies (50-500 employees) and enterprise organisations. Small enough that decisions happen fast, large enough that AI adoption has meaningful impact on operations and revenue.",
     },
     {
-      question: "What tools will I learn to use?",
-      answer: "You'll learn to work with AI coding assistants (like Claude), deployment platforms (like Vercel), and the modern builder stack. Everything you need to go from idea to live product.",
+      question: "Do you do the technical implementation or just advise?",
+      answer: "Both. I can advise on strategy and tool selection, and I can build working AI workflows directly. Most engagements start with an audit, then move to hands-on implementation.",
     },
     {
-      question: "Is this just for web apps?",
-      answer: "We start with web apps because they're the fastest to ship and the easiest to share. But the principles apply to mobile apps, browser extensions, APIs, and more.",
+      question: "Which AI tools do you recommend?",
+      answer: "It depends entirely on your use case. I've built production products across Claude, Gemini, Grok, and OpenAI. Each has genuine strengths for different tasks. I recommend based on your specific workflows, not brand loyalty.",
     },
     {
-      question: "How is this different from a coding bootcamp?",
-      answer: "Coding bootcamps teach you to write code. This teaches you to build products. The difference is focus: we care about shipping, not syntax. You'll learn enough technical context to be dangerous, but your primary skill is communication, not code.",
+      question: "How quickly can we see results?",
+      answer: "The AI Readiness Audit delivers a prioritised roadmap within a week. Implementation Sprints deliver working AI workflows in 2-4 weeks. I don't believe in 6-month pilots that produce reports instead of results.",
     },
     {
-      question: "When does it launch?",
-      answer: "I'm building the curriculum now. Join the waitlist to get early access and updates. The first cohort will be small and hands-on.",
+      question: "What industries do you specialise in?",
+      answer: "My background is in defence, aerospace, and aviation, but the AI adoption challenges are universal. I've worked with organisations across government services, professional services, and technology. The methodology applies regardless of industry.",
     },
   ],
+};
+
+// Keep for backwards compat — maps to servicesData
+export const learnPageData = {
+  headline: servicesData.headline,
+  valueProp: servicesData.valueProp,
+  pillars: servicesData.services.map(s => ({ title: s.title, description: s.description })),
+  faqItems: servicesData.faqItems,
 };
 
 export const aboutData = {
   name: "Mark Hallam",
-  title: "Builder. Maker. Teacher.",
-  bio: `I build real products with AI and teach others how to do the same.
+  title: "AI Transformation Advisor",
+  bio: `I help organisations move from AI curiosity to AI capability — bridging the gap between what AI tools can do and how your business can actually adopt them.
 
-I'm a solo builder based in Australia, shipping live products using AI as my development partner. I don't write code in the traditional sense — I describe what I want to build, iterate on the output, and ship.
+My background is enterprise technology. For 15 years, I've directed complex technology programmes in defence and aerospace — SAP migrations, SaaS rollouts, commercial relationships with clients like Boeing and Airbus. I hold PMP and AWS certifications. I understand how large organisations actually make technology decisions: procurement, stakeholder alignment, change management, risk.
 
-LunarPDF, a complete PDF editor, was built in 2 days. Nomlie, an AI-powered health and longevity platform, launched today. This website was built entirely through conversation with Claude. Every project is proof that the barriers to building have collapsed.`,
-  philosophy: `I believe we're in the early days of a fundamental shift. The ability to build software is no longer gated by technical skill, capital, or connections. It's gated by clarity of thought and willingness to ship.
+In early 2026, I spent two intensive months doing something different: building. I shipped 5+ AI-powered products using Claude, Gemini, Grok, and OpenAI — not to create startups, but to understand from the inside what these tools can actually do, where they fall short, and what it takes to go from experiment to production.`,
+  philosophy: `Most AI consultants have either built things with AI or led enterprise technology programmes. I've done both. That intersection is where real value gets delivered.
 
-My mission is to help people realise this. If you can describe an idea clearly, you can build it. Not in theory — in practice, today, with tools that already exist.
+The organisations I work with don't need another demo or another pilot that goes nowhere. They need someone who can assess their workflows, recommend the right AI tools for each job, implement working solutions, and manage the change required to make it stick. That's what I do.
 
-This isn't about replacing developers. It's about empowering everyone else. The world has more good ideas than it has people to build them. AI closes that gap.`,
+I'm not here to sell AI hype. I'm here to help you figure out where it actually works, choose the right tools, and make it stick.`,
   currentFocus: [
-    "Growing Nomlie (AI-powered health, fitness & longevity)",
-    "Growing markhallam.com.au — now live and deployed",
-    "Developing the Learn to Build curriculum",
-    "Writing about the solo builder journey",
+    "AI Readiness Audits for mid-market and enterprise organisations",
+    "Hands-on AI implementation sprints — building workflows, not slide decks",
+    "Fractional AI advisory — Head of AI expertise without the full-time hire",
+    "Writing about what actually works in AI adoption (and what doesn't)",
   ],
 };
 
-// Stats derived from project data
+// Stats for homepage
 export function getHomeStats() {
-  const total = projects.length;
-  const live = projects.filter((p) => p.status === "live").length;
-  const building = projects.filter((p) => p.status === "building").length;
   return [
-    { value: String(total), label: "Products Shipped" },
-    { value: String(live), label: "Live Now" },
-    { value: String(building), label: "Building" },
-    { value: "2 Days", label: "Fastest Ship" },
+    { value: "15+", label: "Years Enterprise Tech" },
+    { value: "5+", label: "AI Products Shipped" },
+    { value: "4", label: "AI Platforms Mastered" },
+    { value: "PMP", label: "& AWS Certified" },
   ];
 }
 

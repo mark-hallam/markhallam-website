@@ -13,18 +13,17 @@ import {
   getLatestPost,
   getHomeStats,
   formatDate,
-  projects,
+  servicesData,
 } from "@/lib/data";
 
 export default function Home() {
   const featuredProjects = getFeaturedProjects();
   const latestPost = getLatestPost();
-  const nowBuilding = projects.filter((p) => p.status === "building");
   const stats = getHomeStats();
 
   return (
     <>
-      {/* Hero — compact with stats */}
+      {/* Hero */}
       <section className="relative px-6 pb-12 pt-24 md:pt-32">
         <div className="mx-auto w-full max-w-[1200px]">
           <motion.div
@@ -42,7 +41,10 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
           >
-            <p className="mt-4 max-w-xl text-lg text-muted md:text-xl">
+            <p className="mt-4 max-w-2xl text-lg text-accent font-medium md:text-xl">
+              {siteSettings.heroTagline}
+            </p>
+            <p className="mt-2 max-w-xl text-base text-muted">
               {siteSettings.heroSubtitle}
             </p>
           </motion.div>
@@ -79,11 +81,11 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
             className="mt-10 flex flex-wrap gap-4"
           >
-            <Button href="/projects" size="lg">
-              View Projects <ArrowRight size={18} />
+            <Button href="/services" size="lg">
+              How I Can Help <ArrowRight size={18} />
             </Button>
-            <Button href="/learn" variant="secondary" size="lg">
-              Learn to Build
+            <Button href="/about" variant="secondary" size="lg">
+              About Me
             </Button>
           </motion.div>
         </div>
@@ -92,53 +94,59 @@ export default function Home() {
         <div className="pointer-events-none absolute -top-40 right-0 h-[500px] w-[500px] rounded-full bg-accent/5 blur-[120px]" />
       </section>
 
-      {/* Now Building — Featured Cards */}
-      {nowBuilding.length > 0 && (
-        <Section className="!py-12 border-y border-border bg-surface/30">
-          <div className="mb-6 flex items-center gap-3">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-accent" />
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-muted">
-              Now Building
+      {/* Services Preview */}
+      <Section className="!py-16 border-y border-border bg-surface/30">
+        <div className="flex items-end justify-between">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+              What I Do
             </h2>
+            <p className="mt-2 text-muted">
+              From audit to implementation — AI adoption that delivers results, not reports.
+            </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {nowBuilding.map((project) => (
-              <Link key={project.slug} href={`/projects/${project.slug}`}>
-                <Card className="flex h-full flex-col gap-3">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-accent" />
-                      <h3 className="text-lg font-semibold">{project.title}</h3>
-                    </div>
-                    <StatusBadge status={project.status} />
-                  </div>
-                  <p className="flex-1 text-sm text-muted">{project.description}</p>
-                  <div className="flex items-center justify-between border-t border-border pt-3">
-                    {project.url && (
-                      <span className="text-xs text-muted">
-                        {new URL(project.url).hostname}
-                      </span>
-                    )}
-                    <span className="text-xs font-medium text-accent">
-                      View project <ArrowRight size={12} className="inline" />
-                    </span>
-                  </div>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </Section>
-      )}
+          <Button href="/services" variant="ghost" className="hidden md:flex">
+            Learn more <ArrowRight size={16} />
+          </Button>
+        </div>
 
-      {/* Ship Log — All Projects */}
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {servicesData.services.map((service) => (
+            <Link key={service.title} href="/services">
+              <Card className="flex h-full flex-col gap-3">
+                <div className="flex items-start justify-between">
+                  <h3 className="text-lg font-semibold">{service.title}</h3>
+                  <span className="rounded-lg bg-accent/10 px-2.5 py-1 text-xs font-bold text-accent whitespace-nowrap">
+                    {service.stat}
+                  </span>
+                </div>
+                <p className="flex-1 text-sm text-muted">{service.description}</p>
+                <div className="border-t border-border pt-3">
+                  <span className="text-xs font-medium text-accent">
+                    Learn more <ArrowRight size={12} className="inline" />
+                  </span>
+                </div>
+              </Card>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-6 md:hidden">
+          <Button href="/services" variant="secondary" className="w-full">
+            View all services <ArrowRight size={16} />
+          </Button>
+        </div>
+      </Section>
+
+      {/* Portfolio */}
       <Section>
         <div className="flex items-end justify-between">
           <div>
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              Ship Log
+              Portfolio
             </h2>
             <p className="mt-2 text-muted">
-              Real products. Shipped fast. Built with AI.
+              Real products built with AI. Each one a case study in what&apos;s possible.
             </p>
           </div>
           <Button href="/projects" variant="ghost" className="hidden md:flex">
@@ -147,7 +155,7 @@ export default function Home() {
         </div>
 
         <div className="mt-8 flex flex-col gap-4">
-          {featuredProjects.map((project) => (
+          {featuredProjects.slice(0, 3).map((project) => (
             <Link key={project.slug} href={`/projects/${project.slug}`}>
               <Card className="group flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div className="flex-1">
@@ -159,7 +167,7 @@ export default function Home() {
                     {project.description}
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {project.techStack.slice(0, 5).map((tech) => (
+                    {project.techStack.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
                         className="rounded-md bg-surface px-2 py-0.5 text-xs text-muted border border-border"
@@ -199,7 +207,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
                 Latest
               </h2>
-              <p className="mt-2 text-muted">Thoughts, build logs, and updates.</p>
+              <p className="mt-2 text-muted">Insights on AI adoption, tool comparisons, and lessons from the field.</p>
             </div>
             <Button href="/blog" variant="ghost" className="hidden md:flex">
               All posts <ArrowRight size={16} />
@@ -243,36 +251,31 @@ export default function Home() {
         </Section>
       )}
 
-      {/* The Mission */}
+      {/* CTA */}
       <Section>
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Learn to Build
+            Ready to Move on AI?
           </h2>
           <p className="mt-4 text-lg text-muted">
-            You have ideas but don&apos;t know how to build them. The tools have
-            changed. You no longer need a technical co-founder. I&apos;ll show
-            you how to go from idea to shipped product.
+            If you&apos;re a business leader who knows AI matters but isn&apos;t sure
+            where to start — let&apos;s talk. No pitch decks, no jargon. Just an honest
+            conversation about where AI can help your organisation.
           </p>
-          <div className="mt-8">
-            <Button href="/learn" size="lg">
-              Join the Waitlist <ArrowRight size={18} />
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button href="/services" size="lg">
+              View Services <ArrowRight size={18} />
+            </Button>
+            <Button href={siteSettings.socialLinks.email} variant="secondary" size="lg">
+              Get in Touch
             </Button>
           </div>
         </div>
       </Section>
 
-      {/* Social Proof Strip */}
+      {/* Social Strip */}
       <section className="border-t border-border px-6 py-12">
         <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-center gap-8">
-          <a
-            href={siteSettings.socialLinks.x}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-muted transition-colors hover:text-foreground"
-          >
-            X (@MarkHallam)
-          </a>
           <a
             href={siteSettings.socialLinks.linkedin}
             target="_blank"
@@ -282,20 +285,18 @@ export default function Home() {
             LinkedIn
           </a>
           <a
-            href={siteSettings.projectLinks.lunarpdf}
+            href={siteSettings.socialLinks.x}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
+            className="text-sm text-muted transition-colors hover:text-foreground"
           >
-            lunarpdf.com <ExternalLink size={12} />
+            X (@MarkHallam)
           </a>
           <a
-            href={siteSettings.projectLinks.nomlie}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
+            href={siteSettings.socialLinks.email}
+            className="text-sm text-muted transition-colors hover:text-foreground"
           >
-            nomlie.com <ExternalLink size={12} />
+            mark@markhallam.com.au
           </a>
           <Link
             href="/rss.xml"

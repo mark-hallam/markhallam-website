@@ -27,9 +27,9 @@ export default function ProjectsPage() {
   return (
     <PageTransition>
     <Section>
-      <h1 className="text-4xl font-bold tracking-tight md:text-5xl">Projects</h1>
+      <h1 className="text-4xl font-bold tracking-tight md:text-5xl">Portfolio</h1>
       <p className="mt-3 text-lg text-muted">
-        Real products. Shipped fast. Built with AI. No funding. No dev team. No excuses.
+        Real products built with AI. Each one a case study in what organisations can achieve with the right tools and approach.
       </p>
 
       {/* Filters */}

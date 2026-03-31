@@ -44,15 +44,15 @@ export async function POST(req: NextRequest) {
       await resend.emails.send({
         from: "Mark Hallam <hello@markhallam.com.au>",
         to: email,
-        subject: "Welcome — You're on the Learn to Build waitlist",
+        subject: "Thanks for getting in touch — Mark Hallam",
         html: `
           <div style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; max-width: 480px; margin: 0 auto; padding: 40px 20px;">
-            <h1 style="font-size: 24px; font-weight: 700; color: #EDEDED; margin-bottom: 16px;">You're in.</h1>
+            <h1 style="font-size: 24px; font-weight: 700; color: #EDEDED; margin-bottom: 16px;">Thanks for reaching out.</h1>
             <p style="font-size: 16px; line-height: 1.6; color: #888888;">
-              Thanks for joining the Learn to Build waitlist. I'm putting together something for people who have ideas but haven't had the tools to build them — until now.
+              I help organisations move from AI curiosity to AI capability — from readiness audits to hands-on implementation.
             </p>
             <p style="font-size: 16px; line-height: 1.6; color: #888888;">
-              I'll be in touch when the first cohort is ready. In the meantime, check out what I'm building at <a href="https://markhallam.com.au" style="color: #3B82F6;">markhallam.com.au</a>.
+              I'll be in touch shortly. In the meantime, you can learn more about my services and recent work at <a href="https://markhallam.com.au" style="color: #3B82F6;">markhallam.com.au</a>.
             </p>
             <p style="font-size: 16px; line-height: 1.6; color: #888888; margin-top: 24px;">
               — Mark

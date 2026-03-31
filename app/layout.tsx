@@ -18,15 +18,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://markhallam.com.au"),
   title: {
-    default: "Mark Hallam — Builder, Maker, Teacher",
+    default: "Mark Hallam — AI Transformation Advisor",
     template: "%s | Mark Hallam",
   },
   description:
-    "Solo builder shipping real products with AI. Building in public and teaching others that the only skill you need is the ability to communicate your idea.",
+    "Helping organisations move from AI curiosity to AI capability. 15 years enterprise tech leadership combined with hands-on AI building across Claude, Gemini, Grok & OpenAI.",
   openGraph: {
-    title: "Mark Hallam — Builder, Maker, Teacher",
+    title: "Mark Hallam — AI Transformation Advisor",
     description:
-      "Solo builder shipping real products with AI. Building in public and teaching others to do the same.",
+      "Helping organisations move from AI curiosity to AI capability. AI Readiness Audits, Implementation Sprints, and Fractional AI Advisory.",
     url: "https://markhallam.com.au",
     siteName: "Mark Hallam",
     locale: "en_AU",
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mark Hallam — Builder, Maker, Teacher",
+    title: "Mark Hallam — AI Transformation Advisor",
     description:
-      "Solo builder shipping real products with AI. Building in public and teaching others to do the same.",
+      "Helping organisations move from AI curiosity to AI capability. 15 years enterprise tech leadership + hands-on AI building across Claude, Gemini, Grok & OpenAI.",
     creator: "@MarkHallam",
   },
   robots: {

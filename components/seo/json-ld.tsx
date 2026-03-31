@@ -4,7 +4,8 @@ export function PersonJsonLd() {
     "@type": "Person",
     name: "Mark Hallam",
     url: "https://markhallam.com.au",
-    jobTitle: "Solo Builder",
+    jobTitle: "AI Transformation Advisor",
+    description: "Helping organisations move from AI curiosity to AI capability. 15 years enterprise tech leadership combined with hands-on AI building.",
     sameAs: [
       "https://x.com/MarkHallam",
       "https://www.linkedin.com/in/mark-hallam/",

@@ -13,31 +13,33 @@ export function Footer() {
               Mark Hallam
             </Link>
             <p className="mt-2 text-sm text-muted">
-              Building in public. Shipping for real.
+              AI Transformation Advisor. Helping organisations move from AI curiosity to AI capability.
             </p>
           </div>
 
           {/* Links */}
           <div className="flex flex-col gap-2">
             <span className="text-xs font-medium uppercase tracking-wider text-muted">
-              Projects
+              Services
             </span>
-            <a
-              href={siteSettings.projectLinks.lunarpdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
+            <Link
+              href="/services"
+              className="text-sm text-muted transition-colors hover:text-foreground"
             >
-              LunarPDF <ExternalLink size={12} />
-            </a>
-            <a
-              href={siteSettings.projectLinks.nomlie}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
+              AI Readiness Audit
+            </Link>
+            <Link
+              href="/services"
+              className="text-sm text-muted transition-colors hover:text-foreground"
             >
-              Nomlie <ExternalLink size={12} />
-            </a>
+              Implementation Sprint
+            </Link>
+            <Link
+              href="/services"
+              className="text-sm text-muted transition-colors hover:text-foreground"
+            >
+              Fractional AI Advisor
+            </Link>
           </div>
 
           {/* Social */}
@@ -45,6 +47,14 @@ export function Footer() {
             <span className="text-xs font-medium uppercase tracking-wider text-muted">
               Connect
             </span>
+            <a
+              href={siteSettings.socialLinks.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
+            >
+              LinkedIn <ExternalLink size={12} />
+            </a>
             <a
               href={siteSettings.socialLinks.x}
               target="_blank"
@@ -54,12 +64,10 @@ export function Footer() {
               X (@MarkHallam)
             </a>
             <a
-              href={siteSettings.socialLinks.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={siteSettings.socialLinks.email}
               className="text-sm text-muted transition-colors hover:text-foreground"
             >
-              LinkedIn
+              mark@markhallam.com.au
             </a>
             <Link
               href="/rss.xml"
@@ -71,7 +79,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-border pt-6 text-center text-xs text-muted">
-          &copy; {new Date().getFullYear()} Mark Hallam. Built with AI.
+          &copy; {new Date().getFullYear()} Mark Hallam. AI Transformation Advisor.
         </div>
       </div>
     </footer>

@@ -28,7 +28,7 @@ export async function GET() {
   <channel>
     <title>Mark Hallam</title>
     <link>${baseUrl}</link>
-    <description>Solo builder shipping real products with AI. Build logs, insights, and updates.</description>
+    <description>AI Transformation Advisor. Insights on AI adoption, tool comparisons, and lessons from building with Claude, Gemini and Grok.</description>
     <language>en-au</language>
     <atom:link href="${baseUrl}/rss.xml" rel="self" type="application/rss+xml"/>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>

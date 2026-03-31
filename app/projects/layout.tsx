@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: "Portfolio",
   description:
-    "Real products shipped fast with AI. No funding, no dev team, no excuses.",
+    "AI products built as case studies demonstrating what organisations can achieve with the right AI tools and approach.",
 };
 
 export default function ProjectsLayout({

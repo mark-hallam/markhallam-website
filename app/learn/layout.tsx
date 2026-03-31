@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Learn to Build",
+  title: "Services",
   description:
-    "You have ideas. Learn to ship them. No coding required — just the ability to communicate your idea clearly.",
+    "AI Readiness Audits, Implementation Sprints, and Fractional AI Advisory. Helping organisations move from AI curiosity to AI capability.",
 };
 
 export default function LearnLayout({

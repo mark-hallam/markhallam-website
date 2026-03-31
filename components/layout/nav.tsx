@@ -7,9 +7,9 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
-  { label: "Projects", href: "/projects" },
+  { label: "Services", href: "/services" },
+  { label: "Portfolio", href: "/projects" },
   { label: "Blog", href: "/blog" },
-  { label: "Learn to Build", href: "/learn" },
   { label: "About", href: "/about" },
 ];
 
