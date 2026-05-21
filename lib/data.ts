@@ -3,6 +3,7 @@
 
 export type ProjectStatus = "live" | "building" | "coming-soon";
 export type PostCategory = "build-log" | "insight" | "announcement";
+export type LearnCategory = "ai-coding" | "ai-strategy" | "working-with-ai" | "tools";
 
 export interface Project {
   slug: string;
@@ -23,6 +24,17 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   category: PostCategory;
+  body: string;
+  publishedAt: string;
+  readTime: number;
+  featured: boolean;
+}
+
+export interface LearnEntry {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: LearnCategory;
   body: string;
   publishedAt: string;
   readTime: number;
@@ -464,4 +476,124 @@ export function getStatusLabel(status: ProjectStatus): string {
     "coming-soon": "Coming Soon",
   };
   return labels[status];
+}
+
+// ──────────────────────────────────────────────────────────────────────
+// /learn — AI coding techniques + working-with-AI patterns
+// Populated by Mark + the markmark-site agent (Wednesdays).
+// ──────────────────────────────────────────────────────────────────────
+
+export const learnEntries: LearnEntry[] = [
+  {
+    slug: "optometrist-method-for-ui-design",
+    title: "The Optometrist Method: How I Use AI to Design UI Fast",
+    excerpt: "When asking an AI to design a screen, don't ask once. Ask for 3-5 wildly different versions in different design languages first, then narrow. It's how an optometrist finds your prescription.",
+    category: "ai-coding",
+    publishedAt: "2026-05-20",
+    readTime: 4,
+    featured: true,
+    body: `When I ask an AI to design a page for me — a landing page, a workflow editor, an audit timeline — the worst thing I can do is ask once.
+
+The first version is always plausible. It might even be good. But it's the AI's best guess at the middle of the road. And the middle of the road is exactly where every other product lives.
+
+So instead, I ask for **3-5 wildly varied versions**. Each one pinned to a distinct design language:
+
+- "Bold editorial / magazine cover"
+- "Industrial / terminal / dev-tool"
+- "Apple-clean / minimal"
+- "Hand-drawn / friendly / illustrated"
+- "Brutalist / statement-piece"
+
+They should look like they came from different companies, not different days at the same studio.
+
+Then I look at all 5. Almost always, one of them sparks something — usually NOT the version closest to what I'd have asked for. The brutalist one has a typography choice I love. The illustrated one has a friendliness the brand needs. The Apple-clean one has the right whitespace rhythm.
+
+I pick a direction, then ask for **2-3 variants within that direction** — narrowing the prescription like an optometrist flipping lenses. "Better with the gradient or without?" "Better with the chip or the badge?"
+
+By the time I've gone through one round of wide exploration plus one round of narrowing, I have something I'm proud of — and it took maybe 20 minutes of conversation. Without the wide round first, I'd have spent an hour iterating on a mediocre starting point.
+
+The principle: **AI is best as a divergent generator, not a single-shot oracle.** Use it for breadth first, then narrow.`,
+  },
+  {
+    slug: "plain-language-beats-jargon-with-ai-tools",
+    title: "Why I Make AI Tools Speak Plain English to Me",
+    excerpt: "I'm not a developer. When AI coding assistants throw jargon at me, the answer slows down. So I tell them to expand every abbreviation and explain every dev term inline. The output stays technical, but I can keep up.",
+    category: "working-with-ai",
+    publishedAt: "2026-05-19",
+    readTime: 3,
+    featured: true,
+    body: `I run a company that builds AI workers. I work with Claude, Cursor, and other coding tools every day. But I'm not a developer. I never learned the difference between a CORS error and a 404 in school.
+
+For a long time, this slowed me down. AI tools would tell me things like "the CORS preflight is failing on the cross-origin gateway" and I'd nod, copy that into a search, spend 10 minutes learning what each word meant, then come back.
+
+So I gave the AI a standing instruction: **every time you use a developer term I might not know, expand the abbreviation and add a one-line plain-English summary on first use.**
+
+Now I get this:
+
+> CORS (Cross-Origin Resource Sharing — a browser rule that controls when a webpage can talk to a server on a different web address) preflight is failing. That means the browser asked the server "can I send you this?" and got "address not found."
+
+The technical accuracy is the same. The vocabulary is the same. But the explanation is right there, so I don't have to context-switch to learn what each term means before I can act on the advice.
+
+This works for every dev term: CORS, API, JWT, cookie, rewrite, proxy, fetch, regex, RBAC, migration, schema. I have it in my Claude memory as a permanent standing instruction. It's the single highest-leverage thing I've done to work faster with AI coding tools as a non-developer CEO.
+
+The principle: **the tool should adapt to your vocabulary, not the other way around.** Tell it once; it'll keep doing it forever.`,
+  },
+  {
+    slug: "grep-before-you-write",
+    title: "Grep Before You Write: A Hard-Earned Pattern from Building With AI Agents",
+    excerpt: "When an AI agent proposes adding a new type, function, or table — make it search the codebase first to check whether that thing already exists. 30 seconds of verification beats 6 hours of fighting parallel abstractions.",
+    category: "ai-coding",
+    publishedAt: "2026-05-18",
+    readTime: 4,
+    featured: false,
+    body: `One of the hardest problems I've hit while running an autonomous agent swarm is **parallel abstraction drift**. The AI agent goes to add a new type called \`SessionId\` — totally reasonable. Except \`SessionId\` already exists, in a different module, with different fields. Now I have two of them.
+
+This happens often enough that we wrote a hard rule into the swarm protocol: **grep before you write.**
+
+Before any agent declares a new \`pub struct\`, \`pub enum\`, or \`type alias\`, it has to run:
+
+\`\`\`bash
+rg 'pub (struct|enum|type) <Name>' crates/
+\`\`\`
+
+If a same-named or near-same-named surface exists, the agent either extends it, supersedes it, or writes a one-line justification for why a parallel surface is genuinely needed.
+
+The same pattern applies when I'm working with AI directly. Before I let it propose a new \`AuditRow\` type, I make it look first:
+
+> "Before you add this — search the codebase for any existing AuditRow / AuditEvent / AuditRecord type. Show me what's already there."
+
+30 seconds of that check saves hours of refactoring later. The AI is excellent at writing new code; it's weaker at noticing that the right code already exists somewhere.
+
+The principle: **AI tools optimize for shipping, not for archaeology.** Make them check before they create.
+
+We've extended this beyond types. Before adding a new database table, grep migrations. Before adding a new API endpoint, grep route handlers. Before adding a new config field, grep TOML files. Every "before you write" check has paid for itself ten times over in this swarm.`,
+  },
+];
+
+export function getLearnEntry(slug: string): LearnEntry | undefined {
+  return learnEntries.find((e) => e.slug === slug);
+}
+
+export function getLatestLearn(): LearnEntry | undefined {
+  return [...learnEntries].sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  )[0];
+}
+
+export function getLearnByCategory(category?: LearnCategory): LearnEntry[] {
+  const sorted = [...learnEntries].sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
+  if (!category) return sorted;
+  return sorted.filter((e) => e.category === category);
+}
+
+export function getLearnCategoryLabel(category: LearnCategory): string {
+  const labels: Record<LearnCategory, string> = {
+    "ai-coding": "AI Coding",
+    "ai-strategy": "AI Strategy",
+    "working-with-ai": "Working with AI",
+    tools: "Tools",
+  };
+  return labels[category];
 }
