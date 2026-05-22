@@ -1,26 +1,150 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-ink: #0f1419;
+  --color-body: #4b5563;
+  --color-muted: #9ca3af;
+  --color-soft: #6b7280;
+  --color-rule: #ebeaed;
+  --color-brand-purple: #8B5CF6;
+  --color-brand-pink: #EC4899;
+  --color-brand-cyan: #0891B2;
+  --font-sans: var(--font-inter);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* The 3px brand gradient bar that sits at the very top of every page */
+.gradient-line {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-brand-purple) 0%,
+    var(--color-brand-pink) 50%,
+    var(--color-brand-cyan) 100%
+  );
+  width: 100%;
+}
+
+/* Used on eyebrow labels, accent phrases inside headings, and the SKYCOT footer signoff */
+.gradient-text {
+  background: linear-gradient(90deg, var(--color-brand-purple), var(--color-brand-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Writing-row anchor with the sliding gradient bar on the left */
+.writing-link {
+  position: relative;
+  transition: padding-left 0.2s ease;
+}
+.writing-link::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: linear-gradient(180deg, var(--color-brand-purple), var(--color-brand-pink));
+  transition: height 0.2s ease;
+  border-radius: 2px;
+}
+.writing-link:hover {
+  padding-left: 16px;
+}
+.writing-link:hover::before {
+  height: 60%;
+}
+
+/* Used on the "what I believe" cards on /about and the blockquote in essays */
+.gradient-border-left {
+  border-left: 3px solid transparent;
+  border-image: linear-gradient(180deg, var(--color-brand-purple), var(--color-brand-pink)) 1;
+}
+
+/* Used on related-essay cards under an essay — the hover bumps the border to brand */
+.essay-card {
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.essay-card:hover {
+  border-color: var(--color-brand-purple);
+  transform: translateY(-2px);
+}
+
+/* Long-form essay typography. Applied to <article class="essay-prose">.
+   Kept here (not as Tailwind utilities) because the rules need to nest
+   into <p>, <h2>, <blockquote> etc inside dangerouslySetInnerHTML output. */
+.essay-prose p {
+  font-size: 19px;
+  line-height: 1.75;
+  margin-bottom: 28px;
+  color: #2c2c54;
+  max-width: 64ch;
+}
+.essay-prose p:first-of-type::first-letter {
+  font-size: 1.25em;
+  font-weight: 500;
+}
+.essay-prose h2 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin: 56px 0 24px;
+  line-height: 1.25;
+  max-width: 28ch;
+  color: var(--color-ink);
+}
+.essay-prose blockquote {
+  margin: 40px 0;
+  padding: 8px 0 8px 28px;
+  border-left: 3px solid;
+  border-image: linear-gradient(180deg, var(--color-brand-purple), var(--color-brand-pink)) 1;
+  font-size: 22px;
+  line-height: 1.45;
+  color: #1e1b4b;
+  font-weight: 400;
+  max-width: 56ch;
+  font-style: italic;
+}
+.essay-prose em {
+  font-style: italic;
+}
+.essay-prose strong {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.essay-prose .accent {
+  background: linear-gradient(90deg, var(--color-brand-purple), var(--color-brand-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
+}
+.essay-prose a {
+  color: var(--color-ink);
+  border-bottom: 1px solid var(--color-rule);
+  text-decoration: none;
+  font-weight: 500;
+  transition: border-color 0.15s;
+}
+.essay-prose a:hover {
+  border-image: linear-gradient(90deg, var(--color-brand-purple), var(--color-brand-pink)) 1;
 }
