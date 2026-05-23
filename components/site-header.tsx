@@ -45,13 +45,9 @@ export function SiteHeader() {
       <div className="max-w-[880px] mx-auto px-6 sm:px-8 py-7 sm:py-9 flex justify-between items-center">
         <Link
           href="/"
-          className="flex items-center gap-3 text-[15px] font-medium tracking-[-0.01em] text-[var(--color-ink)] no-underline"
+          className="gradient-text text-[18px] sm:text-[20px] tracking-[0.02em] no-underline"
+          style={{ fontFamily: "var(--font-audiowide)" }}
         >
-          <span
-            aria-hidden
-            className="w-3 h-3 rounded-[3px]"
-            style={{ background: "linear-gradient(135deg, #8B5CF6, #EC4899)" }}
-          />
           Mark Hallam
         </Link>
 

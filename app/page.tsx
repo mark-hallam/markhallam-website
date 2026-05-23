@@ -70,33 +70,83 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* RECENT WRITING */}
+      {/* RECENT WRITING — latest essay featured, rest as compact rows */}
       <section className="max-w-[880px] mx-auto px-8 py-24 border-t border-[var(--color-rule)]">
         <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
           Recent writing
         </div>
-        <h2 className="text-[36px] font-semibold tracking-[-0.02em] leading-[1.15] mb-7 max-w-[24ch]">
+        <h2 className="text-[36px] font-semibold tracking-[-0.02em] leading-[1.15] mb-10 max-w-[24ch]">
           What I have been <span className="gradient-text">thinking about</span>.
         </h2>
-        <div className="mt-4">
-          {recentEssays.length === 0 && (
-            <p className="text-[var(--color-muted)] text-[15px]">Essays coming soon.</p>
-          )}
-          {recentEssays.map((essay) => (
+
+        {recentEssays.length === 0 && (
+          <p className="text-[var(--color-muted)] text-[15px]">Essays coming soon.</p>
+        )}
+
+        {recentEssays.length > 0 && (
+          <>
+            {/* FEATURED — latest essay */}
             <Link
-              key={essay.slug}
-              href={`/writing/${essay.slug}`}
-              className="writing-link flex flex-col sm:flex-row sm:justify-between sm:items-baseline py-7 gap-1 sm:gap-4 border-b border-[var(--color-rule)] last:border-b-0 no-underline text-inherit"
+              href={`/writing/${recentEssays[0].slug}`}
+              className="essay-card block p-8 sm:p-10 border border-[var(--color-rule)] rounded-xl no-underline text-inherit mb-12"
             >
-              <div className="text-[19px] font-medium text-[var(--color-ink)] max-w-[60ch] leading-[1.4]">
-                {essay.title}
+              <div className="flex items-center gap-3 mb-4">
+                <span className="gradient-text uppercase text-[12px] font-semibold tracking-[0.08em]">
+                  Latest essay
+                </span>
+                <span className="text-[var(--color-muted)] text-[12px]">·</span>
+                <span className="text-[12px] text-[var(--color-muted)] font-medium uppercase tracking-[0.04em]">
+                  {formatMonthYear(recentEssays[0].date)} · {recentEssays[0].readMinutes} min read
+                </span>
               </div>
-              <div className="text-[13px] text-[var(--color-muted)] font-medium flex-shrink-0">
-                {essay.readMinutes} min · {formatMonthYear(essay.date)}
-              </div>
+              <h3 className="text-[26px] sm:text-[32px] font-semibold leading-[1.15] tracking-[-0.02em] mb-4 max-w-[36ch] text-[var(--color-ink)]">
+                {recentEssays[0].title}
+              </h3>
+              {recentEssays[0].dek && (
+                <p className="text-[17px] leading-[1.55] text-[var(--color-body)] max-w-[60ch] mb-6">
+                  {recentEssays[0].dek}
+                </p>
+              )}
+              <span className="text-[14px] text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] inline-block pb-0.5">
+                Read the essay →
+              </span>
             </Link>
-          ))}
-        </div>
+
+            {/* COMPACT ROWS — the next 3 */}
+            {recentEssays.slice(1).length > 0 && (
+              <>
+                <div className="text-[13px] font-semibold text-[var(--color-muted)] tracking-[0.04em] uppercase mb-2">
+                  Earlier
+                </div>
+                <div>
+                  {recentEssays.slice(1).map((essay) => (
+                    <Link
+                      key={essay.slug}
+                      href={`/writing/${essay.slug}`}
+                      className="writing-link flex flex-col sm:flex-row sm:justify-between sm:items-baseline py-6 gap-1 sm:gap-4 border-b border-[var(--color-rule)] last:border-b-0 no-underline text-inherit"
+                    >
+                      <div className="text-[19px] font-medium text-[var(--color-ink)] max-w-[60ch] leading-[1.4]">
+                        {essay.title}
+                      </div>
+                      <div className="text-[13px] text-[var(--color-muted)] font-medium flex-shrink-0">
+                        {essay.readMinutes} min · {formatMonthYear(essay.date)}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
+
+            <div className="mt-10">
+              <Link
+                href="/writing"
+                className="text-[15px] text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline inline-block"
+              >
+                All writing →
+              </Link>
+            </div>
+          </>
+        )}
       </section>
 
       {/* ABOUT PREVIEW */}
