@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import fs from "node:fs";
 import path from "node:path";
 
-// Default OG image for the site — used when any URL without its own OG is shared.
+// Default share image for the site, used when a page without its own image is shared.
 // Renders to 1200x630 (the standard og:image size for LinkedIn, X, Slack, etc.)
 
 export const runtime = "nodejs";
@@ -87,14 +87,21 @@ export default async function OGImage() {
           <div
             style={{
               display: "flex",
+              flexDirection: "column",
               fontFamily: "Inter",
-              fontSize: 38,
+              fontSize: 40,
+              lineHeight: 1.25,
               color: "#0f1419",
               fontWeight: 600,
               letterSpacing: "-0.015em",
             }}
           >
-            First-principles builder · Founder of SKYCOT
+            <div style={{ display: "flex" }}>
+              Solving problems from first principles and shipping with agents.
+            </div>
+            <div style={{ display: "flex", color: "#6b7280" }}>
+              Building for agents first.
+            </div>
           </div>
         </div>
 

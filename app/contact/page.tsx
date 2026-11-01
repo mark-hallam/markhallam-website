@@ -1,5 +1,6 @@
 import { SOCIAL } from "@/lib/social";
-import { CONTACT_BODY, CONTACT_HEADING, CONTACT_TOPICS } from "@/lib/profile";
+import { WebAddress } from "@/components/web-address";
+import { CONTACT_BODY, CONTACT_HEADING, CONTACT_TOPICS, EMAIL } from "@/lib/profile";
 
 export const metadata = {
   title: "Contact",
@@ -10,69 +11,67 @@ type Channel = { label: string; href: string; value: string; note?: string };
 
 const CHANNELS: Channel[] = [
   {
-    label: "Email · Preferred",
-    href: "mailto:mark@skycot.com",
-    value: "mark@skycot.com",
-    note: "The first place anything substantive should go. Long emails welcome — I read all of them and reply to most.",
-  },
-  {
-    label: SOCIAL.x.label,
-    href: SOCIAL.x.url,
-    value: SOCIAL.x.handle,
-    note: "Mostly short notes on whatever I am thinking about. Replies and DMs are read intermittently.",
-  },
-  {
-    label: SOCIAL.linkedin.label,
-    href: SOCIAL.linkedin.url,
-    value: SOCIAL.linkedin.handle,
-    note: "Use for connection requests with context. I do not check inbox messages daily — email is faster.",
+    label: "Email",
+    href: `mailto:${EMAIL}`,
+    value: EMAIL,
+    note: "The most reliable way to reach me.",
   },
   {
     label: SOCIAL.github.label,
     href: SOCIAL.github.url,
     value: SOCIAL.github.handle,
+    note: "Public code, including DAC.",
+  },
+  {
+    label: SOCIAL.linkedin.label,
+    href: SOCIAL.linkedin.url,
+    value: SOCIAL.linkedin.handle,
+  },
+  {
+    label: SOCIAL.x.label,
+    href: SOCIAL.x.url,
+    value: SOCIAL.x.handle,
   },
   {
     label: SOCIAL.youtube.label,
     href: SOCIAL.youtube.url,
     value: SOCIAL.youtube.handle,
-    note: "Longer-form video — talks, walk-throughs, and the occasional essay-on-camera.",
   },
 ];
 
 export default function ContactPage() {
   return (
     <>
-      <section className="max-w-[880px] mx-auto px-8 pt-[120px] pb-16">
+      <section className="max-w-[880px] mx-auto px-6 sm:px-8 pt-[96px] sm:pt-[120px] pb-16">
         <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
           Contact
         </div>
         <h1 className="text-[38px] sm:text-[56px] leading-[1.05] font-semibold tracking-[-0.025em] max-w-[18ch] mb-8 text-[var(--color-ink)]">
           {CONTACT_HEADING}
         </h1>
-        <p className="text-[21px] leading-[1.55] text-[var(--color-body)] max-w-[56ch]">
+        <p className="text-[19px] sm:text-[21px] leading-[1.55] text-[var(--color-body)] max-w-[56ch]">
           {CONTACT_BODY}
         </p>
       </section>
 
-      <section className="max-w-[880px] mx-auto px-8 py-16 border-t border-[var(--color-rule)]">
+      <section className="max-w-[880px] mx-auto px-6 sm:px-8 py-16 border-t border-[var(--color-rule)]">
         {CHANNELS.map((c) => (
           <div
             key={c.label}
-            className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-4 md:gap-12 py-7 border-b border-[var(--color-rule)] last:border-b-0 items-start"
+            className="grid grid-cols-1 md:grid-cols-[160px_1fr] gap-3 md:gap-12 py-7 border-b border-[var(--color-rule)] last:border-b-0 items-start"
           >
             <div className="text-[13px] font-semibold tracking-[0.04em] uppercase text-[var(--color-muted)] pt-1">
               {c.label}
             </div>
-            <div>
+            <div className="min-w-0">
               <a
                 href={c.href}
-                className="text-[22px] font-medium text-[var(--color-ink)] no-underline border-b border-[#d1d5db] inline-block mb-2.5 hover:border-[var(--color-brand-purple)] transition-colors"
+                className="web-address text-[19px] sm:text-[22px] font-medium text-[var(--color-ink)] no-underline border-b border-[#d1d5db] inline mb-2.5 hover:border-[var(--color-brand-purple)] transition-colors"
               >
-                {c.value}
+                <WebAddress text={c.value} />
               </a>
               {c.note && (
-                <div className="text-[15px] text-[var(--color-soft)] leading-[1.55] max-w-[56ch]">
+                <div className="text-[15px] text-[var(--color-soft)] leading-[1.55] max-w-[56ch] mt-2.5">
                   {c.note}
                 </div>
               )}
@@ -81,8 +80,8 @@ export default function ContactPage() {
         ))}
       </section>
 
-      <section className="max-w-[880px] mx-auto px-8 py-20 border-t border-[var(--color-rule)]">
-        <h2 className="text-[28px] font-semibold tracking-[-0.015em] leading-[1.2] mb-7 max-w-[24ch]">
+      <section className="max-w-[880px] mx-auto px-6 sm:px-8 py-20 border-t border-[var(--color-rule)]">
+        <h2 className="text-[26px] sm:text-[28px] font-semibold tracking-[-0.015em] leading-[1.2] mb-7 max-w-[24ch]">
           What I&apos;m happy to <span className="gradient-text">talk about</span>
         </h2>
         <ul className="list-none mt-8 max-w-[64ch]">
@@ -95,23 +94,6 @@ export default function ContactPage() {
             </li>
           ))}
         </ul>
-      </section>
-
-      <section className="max-w-[880px] mx-auto px-8 py-20 border-t border-[var(--color-rule)]">
-        <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
-          How I respond
-        </div>
-        <div className="space-y-[18px] max-w-[64ch]">
-          <p className="text-[18px] leading-[1.7] text-[var(--color-body)]">
-            Most emails get a reply within a week. I write replies in batches, usually on Friday afternoons in Melbourne, which is why a Tuesday email may sit until Friday before a response.
-          </p>
-          <p className="text-[18px] leading-[1.7] text-[var(--color-body)]">
-            If your message is time-sensitive, say so in the subject line — that bumps it out of the Friday batch and into the same day.
-          </p>
-          <p className="text-[18px] leading-[1.7] text-[var(--color-body)]">
-            If a week passes and you have not heard from me, the email was lost or buried and a polite follow-up is welcome. It is never an intentional silence.
-          </p>
-        </div>
       </section>
     </>
   );

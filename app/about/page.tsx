@@ -1,64 +1,53 @@
 import Link from "next/link";
-import { ABOUT_PARAGRAPHS, BUILT, SITE_DESCRIPTION } from "@/lib/profile";
+import { WebAddress } from "@/components/web-address";
+import {
+  ABOUT_PARAGRAPHS,
+  BACKGROUND,
+  BACKGROUND_NOTE,
+  BELIEFS,
+  BUILT,
+  SITE_DESCRIPTION,
+} from "@/lib/profile";
 
 export const metadata = {
   title: "About",
   description: SITE_DESCRIPTION,
 };
 
-const BELIEFS = [
-  {
-    h: "The moat is not the model. The moat is your ideas.",
-    p: "Every team has access to the same models. The difference is what they decide to point them at.",
-  },
-  {
-    h: "Ship the eighty-percent solution.",
-    p: "Working software beats the perfect solution that arrives late. Real users teach you what the perfect solution should have been.",
-  },
-  {
-    h: "Operations is the variable nobody romanticises.",
-    p: "It is also the variable that decides every outcome.",
-  },
-  {
-    h: "Question the requirement first.",
-    p: "If something does not make sense, raise it. Do not invent. Most projects fail at requirement, not at delivery.",
-  },
-];
-
 export default function AboutPage() {
   return (
     <>
-      <section className="max-w-[880px] mx-auto px-8 pt-[120px] pb-20">
+      <section className="max-w-[880px] mx-auto px-6 sm:px-8 pt-[96px] sm:pt-[120px] pb-20">
         <h1 className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
           About
         </h1>
         <div className="space-y-[22px] max-w-[60ch]">
           {ABOUT_PARAGRAPHS.map((p) => (
-            <p key={p} className="text-[21px] sm:text-[24px] leading-[1.55] text-[var(--color-ink)]">
+            <p key={p} className="text-[20px] sm:text-[24px] leading-[1.55] text-[var(--color-ink)]">
               {p}
             </p>
           ))}
         </div>
       </section>
 
-      <section className="max-w-[880px] mx-auto px-8 py-16 border-t border-[var(--color-rule)]">
+      <section className="max-w-[880px] mx-auto px-6 sm:px-8 py-16 border-t border-[var(--color-rule)]">
         <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
           What I&apos;ve built
         </div>
         <div className="space-y-2 mt-4">
           {BUILT.map((item) => (
-            <div key={item.title} className="gradient-border-left py-6 pl-6">
+            <div key={item.title} className="gradient-border-left py-6 pl-6 min-w-0">
               <h3 className="text-[19px] font-semibold mb-1.5 text-[var(--color-ink)]">{item.title}</h3>
               <p className="text-[16px] text-[var(--color-body)] leading-[1.55]">{item.body}</p>
               {item.links.length > 0 && (
-                <div className="flex gap-5 flex-wrap mt-3">
+                <div className="flex flex-col gap-2 mt-3 items-start">
                   {item.links.map((l) => (
                     <a
                       key={l}
                       href={l}
-                      className="text-[14px] text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline break-all"
+                      className="web-address text-[14px] text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline"
                     >
-                      {l}
+                      <WebAddress text={l} />
                     </a>
                   ))}
                 </div>
@@ -68,11 +57,37 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="max-w-[880px] mx-auto px-8 py-16 border-t border-[var(--color-rule)]">
+      <section className="max-w-[880px] mx-auto px-6 sm:px-8 py-16 border-t border-[var(--color-rule)]">
+        <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
+          Background
+        </div>
+        <h2 className="text-[26px] sm:text-[28px] font-semibold tracking-[-0.015em] leading-[1.2] mb-7 max-w-[24ch]">
+          Aerospace and aviation, <span className="gradient-text">then agents</span>.
+        </h2>
+        <ul className="list-none max-w-[64ch]">
+          {BACKGROUND.map((r) => (
+            <li
+              key={r.role}
+              className="py-4 border-b border-[var(--color-rule)] last:border-b-0 flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-6"
+            >
+              <div className="min-w-0">
+                <div className="text-[16px] font-medium text-[var(--color-ink)] leading-[1.45]">{r.role}</div>
+                {r.where && (
+                  <div className="text-[15px] text-[var(--color-body)] leading-[1.5] mt-0.5">{r.where}</div>
+                )}
+              </div>
+              <div className="text-[13px] text-[var(--color-muted)] font-medium flex-shrink-0">{r.when}</div>
+            </li>
+          ))}
+        </ul>
+        <p className="text-[14px] text-[var(--color-soft)] mt-6 max-w-[64ch]">{BACKGROUND_NOTE}</p>
+      </section>
+
+      <section className="max-w-[880px] mx-auto px-6 sm:px-8 py-16 border-t border-[var(--color-rule)]">
         <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
           What I believe
         </div>
-        <h2 className="text-[28px] font-semibold tracking-[-0.015em] leading-[1.2] mb-7 max-w-[24ch]">
+        <h2 className="text-[26px] sm:text-[28px] font-semibold tracking-[-0.015em] leading-[1.2] mb-7 max-w-[24ch]">
           Operating principles I keep <span className="gradient-text">coming back to</span>.
         </h2>
         <div className="space-y-2 mt-4">
@@ -85,27 +100,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="max-w-[880px] mx-auto px-8 py-16 border-t border-[var(--color-rule)]">
-        <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
-          Outside the work
-        </div>
-        <h2 className="text-[28px] font-semibold tracking-[-0.015em] leading-[1.2] mb-7 max-w-[24ch]">
-          The unsexy details.
-        </h2>
-        <div className="space-y-[22px] max-w-[64ch]">
-          <p className="text-[18px] leading-[1.7] text-[#2c2c54]">
-            I live in Melbourne with my family. Most of my reading is operations history — Peter Drucker, Andy Grove, the older stuff that holds up. I cycle when the weather agrees. I write essays when something nags at me long enough that writing is cheaper than not writing.
-          </p>
-          <p className="text-[18px] leading-[1.7] text-[#2c2c54]">
-            If you have read this far and want to talk, the best way is below.
-          </p>
-        </div>
-      </section>
-
-      <section className="max-w-[880px] mx-auto px-8 py-24 border-t border-[var(--color-rule)]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <h2 className="text-[28px] font-semibold tracking-[-0.015em] leading-[1.2] max-w-[24ch]">
-            Let us <span className="gradient-text">talk</span>.
+      <section className="max-w-[880px] mx-auto px-6 sm:px-8 py-20 sm:py-24 border-t border-[var(--color-rule)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <h2 className="text-[26px] sm:text-[28px] font-semibold tracking-[-0.015em] leading-[1.2] max-w-[24ch]">
+            Say <span className="gradient-text">hello</span>.
           </h2>
           <div className="flex gap-4 items-center md:justify-end flex-wrap">
             <Link

@@ -23,7 +23,7 @@ const audiowide = Audiowide({
 export const metadata: Metadata = {
   title: {
     default: SITE_TITLE,
-    template: "%s — Mark Hallam",
+    template: "%s | Mark Hallam",
   },
   description: SITE_DESCRIPTION,
   metadataBase: new URL("https://markhallam.com.au"),
