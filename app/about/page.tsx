@@ -29,25 +29,12 @@ export default function AboutPage() {
   return (
     <>
       <section className="max-w-[880px] mx-auto px-8 pt-[120px] pb-20">
-        <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
+        <h1 className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
           About
-        </div>
-        <h1 className="text-[38px] sm:text-[56px] leading-[1.05] font-semibold tracking-[-0.025em] max-w-[22ch] text-[var(--color-ink)]">
-          I have spent twenty years finding leaks in machines and{" "}
-          <span className="gradient-text">sealing them</span>. AI is the latest instrument.
         </h1>
-      </section>
-
-      <section className="max-w-[880px] mx-auto px-8 py-16 border-t border-[var(--color-rule)]">
-        <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
-          The throughline
-        </div>
-        <h2 className="text-[28px] font-semibold tracking-[-0.015em] leading-[1.2] mb-7 max-w-[24ch]">
-          Twenty years across operations, growth and product.
-        </h2>
-        <div className="space-y-[22px] max-w-[64ch]">
+        <div className="space-y-[22px] max-w-[60ch]">
           {ABOUT_PARAGRAPHS.map((p) => (
-            <p key={p} className="text-[18px] leading-[1.7] text-[#2c2c54]">
+            <p key={p} className="text-[21px] sm:text-[24px] leading-[1.55] text-[var(--color-ink)]">
               {p}
             </p>
           ))}
@@ -67,11 +54,11 @@ export default function AboutPage() {
                 <div className="flex gap-5 flex-wrap mt-3">
                   {item.links.map((l) => (
                     <a
-                      key={l.href}
-                      href={l.href}
-                      className="text-[14px] text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline"
+                      key={l}
+                      href={l}
+                      className="text-[14px] text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline break-all"
                     >
-                      {l.label} →
+                      {l}
                     </a>
                   ))}
                 </div>

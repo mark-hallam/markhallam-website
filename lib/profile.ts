@@ -15,14 +15,14 @@ export const ABOUT_PARAGRAPHS = [
 export type BuiltItem = {
   title: string;
   body: string;
-  links: { label: string; href: string }[];
+  links: string[]; // shown exactly as written in the approved copy
 };
 
 export const BUILT: BuiltItem[] = [
   {
     title: "SKYCOT, the kids app.",
     body: "A Mac app where kids describe the app they want and AI builds it, with a parent in the loop. Took it from first beta to production through 39 beta releases.",
-    links: [{ label: "skycot.com", href: "https://skycot.com" }],
+    links: ["https://skycot.com"],
   },
   {
     title: "SKYCOT Business (in progress).",
@@ -38,8 +38,8 @@ export const BUILT: BuiltItem[] = [
     title: "GYSOM, now DAC.",
     body: "An open-source (MIT licence) prompt compiler that turns a plain-English idea into a plan many agents can run in parallel.",
     links: [
-      { label: "GitHub", href: "https://github.com/mark-hallam/DAC-Declarative-Agent-Compilation" },
-      { label: "gysom.com", href: "https://gysom.com" },
+      "https://github.com/mark-hallam/DAC-Declarative-Agent-Compilation",
+      "https://gysom.com",
     ],
   },
 ];
@@ -47,7 +47,7 @@ export const BUILT: BuiltItem[] = [
 export const HOW_I_THINK = {
   lead: "First principles, then the right question.",
   body: "Most failures with AI aren't execution failures. They're clever answers to the wrong problem. So before anything gets built, I ask what's actually true, what the real constraint is, and what 'done' looks like. Then I treat the work like engineering: small steps I can check, tests that prove it works, and fixing the root cause instead of patching symptoms. Agents are fast and literal. The person who frames the problem well gets the leverage.",
-  href: "/writing/first-principles-before-second-principles",
+  href: "https://www.markhallam.com.au/writing/first-principles-before-second-principles",
 };
 
 export const CONTACT_HEADING = "Say hello.";

@@ -83,7 +83,7 @@ export default function ContactPage() {
 
       <section className="max-w-[880px] mx-auto px-8 py-20 border-t border-[var(--color-rule)]">
         <h2 className="text-[28px] font-semibold tracking-[-0.015em] leading-[1.2] mb-7 max-w-[24ch]">
-          What I am best placed to <span className="gradient-text">talk to about</span>.
+          What I&apos;m happy to <span className="gradient-text">talk about</span>
         </h2>
         <ul className="list-none mt-8 max-w-[64ch]">
           {CONTACT_TOPICS.map((item) => (

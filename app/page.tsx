@@ -9,13 +9,19 @@ import {
   HOW_I_THINK,
 } from "@/lib/profile";
 
+const HOMEPAGE_HIDDEN_ESSAYS = ["why-most-enterprise-ai-pilots-die-in-committee"];
+
 function formatMonthYear(iso: string) {
   const d = new Date(iso);
   return d.toLocaleDateString("en-AU", { month: "long", year: "numeric" });
 }
 
 export default function HomePage() {
-  const recentEssays = getEssayMetaList().slice(0, 4);
+  // Mark asked (job 4) not to show the enterprise pilots essay on the homepage.
+  // It stays on the Writing page.
+  const recentEssays = getEssayMetaList()
+    .filter((e) => !HOMEPAGE_HIDDEN_ESSAYS.includes(e.slug))
+    .slice(0, 4);
 
   return (
     <>
@@ -67,11 +73,11 @@ export default function HomePage() {
                 <div className="flex gap-5 flex-wrap mt-4">
                   {item.links.map((l) => (
                     <a
-                      key={l.href}
-                      href={l.href}
-                      className="text-[14px] text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline"
+                      key={l}
+                      href={l}
+                      className="text-[14px] text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline break-all"
                     >
-                      {l.label} →
+                      {l}
                     </a>
                   ))}
                 </div>
@@ -93,16 +99,16 @@ export default function HomePage() {
           {HOW_I_THINK.body}
         </p>
         <p className="pt-6">
-          <Link
+          <a
             href={HOW_I_THINK.href}
-            className="text-[15px] text-[var(--color-ink)] border-b border-[var(--color-ink)] no-underline font-medium"
+            className="text-[15px] text-[var(--color-ink)] border-b border-[var(--color-ink)] no-underline font-medium break-all"
           >
-            Read: First principles before second principles →
-          </Link>
+            {HOW_I_THINK.href}
+          </a>
         </p>
       </section>
 
-      {/* RECENT WRITING — latest essay featured, rest as compact rows */}
+      {/* RECENT WRITING — plain list, no featured essay */}
       <section className="max-w-[880px] mx-auto px-8 py-24 border-t border-[var(--color-rule)]">
         <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
           Recent writing
@@ -117,57 +123,22 @@ export default function HomePage() {
 
         {recentEssays.length > 0 && (
           <>
-            {/* FEATURED — latest essay */}
-            <Link
-              href={`/writing/${recentEssays[0].slug}`}
-              className="essay-card block p-8 sm:p-10 border border-[var(--color-rule)] rounded-xl no-underline text-inherit mb-12"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <span className="gradient-text uppercase text-[12px] font-semibold tracking-[0.08em]">
-                  Latest essay
-                </span>
-                <span className="text-[var(--color-muted)] text-[12px]">·</span>
-                <span className="text-[12px] text-[var(--color-muted)] font-medium uppercase tracking-[0.04em]">
-                  {formatMonthYear(recentEssays[0].date)} · {recentEssays[0].readMinutes} min read
-                </span>
-              </div>
-              <h3 className="text-[26px] sm:text-[32px] font-semibold leading-[1.15] tracking-[-0.02em] mb-4 max-w-[36ch] text-[var(--color-ink)]">
-                {recentEssays[0].title}
-              </h3>
-              {recentEssays[0].dek && (
-                <p className="text-[17px] leading-[1.55] text-[var(--color-body)] max-w-[60ch] mb-6">
-                  {recentEssays[0].dek}
-                </p>
-              )}
-              <span className="text-[14px] text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] inline-block pb-0.5">
-                Read the essay →
-              </span>
-            </Link>
-
-            {/* COMPACT ROWS — the next 3 */}
-            {recentEssays.slice(1).length > 0 && (
-              <>
-                <div className="text-[13px] font-semibold text-[var(--color-muted)] tracking-[0.04em] uppercase mb-2">
-                  Earlier
-                </div>
-                <div>
-                  {recentEssays.slice(1).map((essay) => (
-                    <Link
-                      key={essay.slug}
-                      href={`/writing/${essay.slug}`}
-                      className="writing-link flex flex-col sm:flex-row sm:justify-between sm:items-baseline py-6 gap-1 sm:gap-4 border-b border-[var(--color-rule)] last:border-b-0 no-underline text-inherit"
-                    >
-                      <div className="text-[19px] font-medium text-[var(--color-ink)] max-w-[60ch] leading-[1.4]">
-                        {essay.title}
-                      </div>
-                      <div className="text-[13px] text-[var(--color-muted)] font-medium flex-shrink-0">
-                        {essay.readMinutes} min · {formatMonthYear(essay.date)}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </>
-            )}
+            <div>
+              {recentEssays.map((essay) => (
+                <Link
+                  key={essay.slug}
+                  href={`/writing/${essay.slug}`}
+                  className="writing-link flex flex-col sm:flex-row sm:justify-between sm:items-baseline py-6 gap-1 sm:gap-4 border-b border-[var(--color-rule)] last:border-b-0 no-underline text-inherit"
+                >
+                  <div className="text-[19px] font-medium text-[var(--color-ink)] max-w-[60ch] leading-[1.4]">
+                    {essay.title}
+                  </div>
+                  <div className="text-[13px] text-[var(--color-muted)] font-medium flex-shrink-0">
+                    {essay.readMinutes} min · {formatMonthYear(essay.date)}
+                  </div>
+                </Link>
+              ))}
+            </div>
 
             <div className="mt-10">
               <Link
