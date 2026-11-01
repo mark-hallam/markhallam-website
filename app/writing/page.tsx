@@ -5,7 +5,7 @@ import { FollowMe } from "@/components/follow-me";
 export const metadata = {
   title: "Writing",
   description:
-    "Essays on AI, operations, and what is actually working in the field. By Mark Hallam.",
+    "Essays on building real software with AI agents: framing work so agents can't misread it, keeping a swarm from drifting, and checking the result. By Mark Hallam.",
 };
 
 function formatShortMonth(iso: string) {
@@ -24,32 +24,32 @@ export default function WritingIndexPage() {
 
   return (
     <>
-      <section className="max-w-[880px] mx-auto px-8 pt-[120px] pb-20">
+      <section className="max-w-[880px] mx-auto px-6 sm:px-8 pt-[96px] sm:pt-[120px] pb-20">
         <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
           Writing
         </div>
         <h1 className="text-[38px] sm:text-[56px] leading-[1.05] font-semibold tracking-[-0.025em] max-w-[18ch] mb-8 text-[var(--color-ink)]">
-          Essays on AI, operations, and what is actually{" "}
-          <span className="gradient-text">working in the field</span>.
+          Essays on building with, and for,{" "}
+          <span className="gradient-text">AI agents</span>.
         </h1>
-        <p className="text-[21px] leading-[1.55] text-[var(--color-body)] max-w-[56ch]">
-          I write when something nags at me long enough that writing is cheaper than not writing. The throughline across most of these is the same: the AI conversation is upstream of the AI work, and most organisations are getting the order wrong.
+        <p className="text-[19px] sm:text-[21px] leading-[1.55] text-[var(--color-body)] max-w-[56ch]">
+          Notes from building real software with Claude, Codex and Gemini as the team: how to frame work so agents can&apos;t misread it, how to stop a swarm of agents drifting, and how to check the result like an engineer.
         </p>
         {essays.length > 0 && (
           <div className="mt-9 text-sm text-[var(--color-muted)]">
-            {essays.length} essay{essays.length === 1 ? "" : "s"} · roughly one a month
+            {essays.length} essay{essays.length === 1 ? "" : "s"}
           </div>
         )}
       </section>
 
       {essays.length === 0 && (
-        <section className="max-w-[880px] mx-auto px-8 py-16 border-t border-[var(--color-rule)] text-center text-[var(--color-muted)]">
+        <section className="max-w-[880px] mx-auto px-6 sm:px-8 py-16 border-t border-[var(--color-rule)] text-center text-[var(--color-muted)]">
           Essays coming soon.
         </section>
       )}
 
       {years.map((year) => (
-        <div key={year} className="max-w-[880px] mx-auto px-8 py-16 border-t border-[var(--color-rule)]">
+        <div key={year} className="max-w-[880px] mx-auto px-6 sm:px-8 py-16 border-t border-[var(--color-rule)]">
           <div className="text-sm font-semibold text-[var(--color-muted)] mb-6 tracking-[0.04em]">
             {year}
           </div>

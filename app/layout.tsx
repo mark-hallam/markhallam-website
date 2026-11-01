@@ -3,6 +3,7 @@ import { Inter, Audiowide } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/lib/profile";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,16 +22,14 @@ const audiowide = Audiowide({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mark Hallam — AI Transformation Advisor",
-    template: "%s — Mark Hallam",
+    default: SITE_TITLE,
+    template: "%s | Mark Hallam",
   },
-  description:
-    "Founder of Skycot. I help Australian enterprises ship AI work that actually moves the numbers — not pilots that die in committee.",
+  description: SITE_DESCRIPTION,
   metadataBase: new URL("https://markhallam.com.au"),
   openGraph: {
-    title: "Mark Hallam — AI Transformation Advisor",
-    description:
-      "Founder of Skycot. I help Australian enterprises ship AI work that actually moves the numbers.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     type: "website",
     locale: "en_AU",
   },

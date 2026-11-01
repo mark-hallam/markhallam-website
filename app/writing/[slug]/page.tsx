@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getEssayBySlug, getEssayMetaList, getEssaySlugs } from "@/lib/essays";
+import { EMAIL } from "@/lib/profile";
 
 export async function generateStaticParams() {
   return getEssaySlugs().map((slug) => ({ slug }));
@@ -46,7 +47,7 @@ export default async function EssayPage({
 
   return (
     <>
-      <div className="max-w-[680px] mx-auto px-8">
+      <div className="max-w-[680px] mx-auto px-6 sm:px-8">
         <div className="pt-12">
           <Link
             href="/writing"
@@ -57,11 +58,9 @@ export default async function EssayPage({
         </div>
 
         <section className="pt-16 pb-14 border-b border-[var(--color-rule)]">
-          {essay.number != null && (
-            <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-7">
-              Essay · No. {essay.number.toString().padStart(2, "0")}
-            </div>
-          )}
+          <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-7">
+            Essay
+          </div>
           <h1 className="text-[32px] sm:text-[48px] leading-[1.1] font-semibold tracking-[-0.025em] max-w-[22ch] mb-6 text-[var(--color-ink)]">
             {essay.title}
           </h1>
@@ -96,32 +95,22 @@ export default async function EssayPage({
             <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-4">
               A note from the author
             </div>
-            <p className="text-[16px] leading-[1.65] text-[var(--color-body)] mb-4">
-              I publish one essay a month, roughly, on AI and operations. If something here struck a chord — or struck the wrong chord — I would like to hear about it. Write to{" "}
-              <a
-                href="mailto:mark@skycot.com"
-                className="text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline"
-              >
-                mark@skycot.com
-              </a>
-              . Long emails are welcome; I read all of them and reply to most.
-            </p>
             <p className="text-[16px] leading-[1.65] text-[var(--color-body)]">
-              If your team is wrestling with the patterns above and you would like to talk, the best way is the{" "}
-              <Link
-                href="/contact"
+              I write about building real software with AI agents. If something here is useful, or wrong, I&apos;d like to hear about it:{" "}
+              <a
+                href={`mailto:${EMAIL}`}
                 className="text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline"
               >
-                contact page
-              </Link>
-              . Advisory engagements are limited but I keep one or two openings.
+                {EMAIL}
+              </a>
+              .
             </p>
           </div>
         </article>
       </div>
 
       {related.length > 0 && (
-        <section className="max-w-[880px] mx-auto px-8 py-20 border-t border-[var(--color-rule)]">
+        <section className="max-w-[880px] mx-auto px-6 sm:px-8 py-20 border-t border-[var(--color-rule)]">
           <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
             Keep reading
           </div>
