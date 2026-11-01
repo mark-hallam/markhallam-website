@@ -32,9 +32,11 @@ export default function HomePage() {
         <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
           Melbourne · Australia
         </div>
-        <h1 className="text-[34px] sm:text-[56px] leading-[1.08] font-semibold tracking-[-0.025em] max-w-[22ch] mb-8 text-[var(--color-ink)]">
-          {POSITIONING[0]}{" "}
-          <span className="gradient-text">{POSITIONING[1]}</span>
+        <h1 className="text-[32px] sm:text-[42px] lg:text-[48px] leading-[1.12] font-semibold tracking-[-0.025em] text-balance mb-8 text-[var(--color-ink)]">
+          {POSITIONING[0]}
+          <span className="block mt-2">
+            <span className="gradient-text">{POSITIONING[1]}</span>
+          </span>
         </h1>
         <p className="text-[19px] sm:text-[21px] leading-[1.55] text-[var(--color-body)] max-w-[58ch] mb-14">
           {HERO_BODY}

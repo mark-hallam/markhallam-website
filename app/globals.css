@@ -157,3 +157,16 @@ body {
 .web-address {
   overflow-wrap: anywhere;
 }
+
+/* Gradient words inside headings and paragraphs: the gradient is painted only
+   inside the box, and tight heading line-heights put letter tails (g, p, y)
+   below it, so they were clipped. Extend the painted area down, then pull the
+   layout back so spacing is unchanged. Scoped to inline text so it never
+   overrides the spacing classes on eyebrow labels. */
+h1 .gradient-text,
+h2 .gradient-text,
+h3 .gradient-text,
+p .gradient-text {
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
