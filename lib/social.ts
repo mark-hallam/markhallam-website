@@ -13,6 +13,11 @@ export const SOCIAL = {
     handle: "linkedin.com/in/mark-hallam",
     url: "https://www.linkedin.com/in/mark-hallam/",
   },
+  github: {
+    label: "GitHub",
+    handle: "github.com/mark-hallam",
+    url: "https://github.com/mark-hallam",
+  },
   youtube: {
     label: "YouTube",
     handle: "@markhallam-ai",

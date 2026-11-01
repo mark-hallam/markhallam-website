@@ -6,7 +6,7 @@ import path from "node:path";
 // Renders to 1200x630 (the standard og:image size for LinkedIn, X, Slack, etc.)
 
 export const runtime = "nodejs";
-export const alt = "Mark Hallam — AI Transformation Advisor";
+export const alt = "Mark Hallam: first-principles builder";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -94,7 +94,7 @@ export default async function OGImage() {
               letterSpacing: "-0.015em",
             }}
           >
-            AI Transformation Advisor · Founder of Skycot
+            First-principles builder · Founder of SKYCOT
           </div>
         </div>
 

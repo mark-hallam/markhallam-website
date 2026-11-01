@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { getEssayMetaList } from "@/lib/essays";
 import { SOCIAL } from "@/lib/social";
+import {
+  ABOUT_PARAGRAPHS,
+  BUILT,
+  CONTACT_BODY,
+  CONTACT_HEADING,
+  HOW_I_THINK,
+} from "@/lib/profile";
 
 function formatMonthYear(iso: string) {
   const d = new Date(iso);
@@ -17,19 +24,19 @@ export default function HomePage() {
         <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
           Melbourne · Australia
         </div>
-        <h1 className="text-[38px] sm:text-[56px] leading-[1.05] font-semibold tracking-[-0.025em] max-w-[18ch] mb-8 text-[var(--color-ink)]">
-          AI advisory and product work for organisations that need it to{" "}
-          <span className="gradient-text">move real numbers</span>.
+        <h1 className="text-[38px] sm:text-[56px] leading-[1.05] font-semibold tracking-[-0.025em] max-w-[20ch] mb-8 text-[var(--color-ink)]">
+          I don&apos;t write the code. I work out the problem, and{" "}
+          <span className="gradient-text">AI agents build it</span>.
         </h1>
         <p className="text-[21px] leading-[1.55] text-[var(--color-body)] max-w-[56ch] mb-14">
-          I help leadership teams ship AI work that survives contact with reality — not pilots that die in committee. Founder of Skycot. Twenty years across operations, growth and product.
+          Founder and CEO of SKYCOT. I solve problems from first principles, think like an engineer, and ship production software by directing teams of AI agents. Building for agents first, in public, from Melbourne.
         </p>
         <div className="flex gap-4 items-center flex-wrap">
           <Link
-            href="/contact"
+            href="#built"
             className="bg-[var(--color-ink)] text-white px-6 py-[13px] rounded-lg text-[15px] font-medium no-underline hover:opacity-85 transition-opacity"
           >
-            Get in touch
+            See what I&apos;ve built
           </Link>
           <Link
             href="/writing"
@@ -40,34 +47,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHAT I DO */}
+      {/* WHAT I'VE BUILT */}
+      <section
+        id="built"
+        className="max-w-[880px] mx-auto px-8 py-24 border-t border-[var(--color-rule)] scroll-mt-8"
+      >
+        <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
+          What I&apos;ve built
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-14 mt-4">
+          {BUILT.map((item, i) => (
+            <div key={item.title}>
+              <div className="text-[13px] text-[var(--color-muted)] font-medium mb-2">
+                {(i + 1).toString().padStart(2, "0")}
+              </div>
+              <h3 className="text-[17px] font-semibold mb-3">{item.title}</h3>
+              <p className="text-[var(--color-body)] text-[15px] leading-[1.6]">{item.body}</p>
+              {item.links.length > 0 && (
+                <div className="flex gap-5 flex-wrap mt-4">
+                  {item.links.map((l) => (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      className="text-[14px] text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline"
+                    >
+                      {l.label} →
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* HOW I THINK */}
       <section className="max-w-[880px] mx-auto px-8 py-24 border-t border-[var(--color-rule)]">
         <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
-          What I do
+          How I think
         </div>
         <h2 className="text-[36px] font-semibold tracking-[-0.02em] leading-[1.15] mb-7 max-w-[24ch]">
-          Three things, with the same <span className="gradient-text">operating principle</span>.
+          {HOW_I_THINK.lead}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
-          <div>
-            <h3 className="text-[17px] font-semibold mb-3">Advisory</h3>
-            <p className="text-[var(--color-body)] text-[15px] leading-[1.6]">
-              Working with executive teams on AI strategy that survives contact with the org chart. A small number of engagements at any time.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-[17px] font-semibold mb-3">Skycot</h3>
-            <p className="text-[var(--color-body)] text-[15px] leading-[1.6]">
-              Founder and CEO. Building an enterprise agent platform that takes AI work from pilot to production without the usual breakage.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-[17px] font-semibold mb-3">Writing</h3>
-            <p className="text-[var(--color-body)] text-[15px] leading-[1.6]">
-              Essays on AI, operations, and what is actually working in the field — not what the vendor decks claim.
-            </p>
-          </div>
-        </div>
+        <p className="text-[18px] leading-[1.7] text-[var(--color-body)] max-w-[64ch]">
+          {HOW_I_THINK.body}
+        </p>
+        <p className="pt-6">
+          <Link
+            href={HOW_I_THINK.href}
+            className="text-[15px] text-[var(--color-ink)] border-b border-[var(--color-ink)] no-underline font-medium"
+          >
+            Read: First principles before second principles →
+          </Link>
+        </p>
       </section>
 
       {/* RECENT WRITING — latest essay featured, rest as compact rows */}
@@ -159,13 +191,9 @@ export default function HomePage() {
             Twenty years of <span className="gradient-text">operations, growth and product</span>.
           </h2>
           <div className="space-y-[18px] text-[17px] text-[var(--color-body)]">
-            <p>
-              I work from Melbourne with a small number of advisory clients alongside Skycot — focused on organisations that want AI to move <span className="gradient-text font-medium">real numbers</span>, not headlines.
-            </p>
-            <p>
-              Before Skycot I held operating roles across growth-stage businesses, mostly in roles that ended in &quot;of operations&quot; or &quot;of growth&quot;. The throughline has always been: someone has a complicated machine, the machine is leaking value, and the work is to find the leak and seal it.
-            </p>
-            <p>That is still the work. AI is the new instrument. The job has not changed.</p>
+            {ABOUT_PARAGRAPHS.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
             <p className="pt-2">
               <Link href="/about" className="text-[var(--color-ink)] border-b border-[var(--color-ink)] no-underline font-medium">
                 Read the full story →
@@ -181,19 +209,19 @@ export default function HomePage() {
           Contact
         </div>
         <h2 className="text-[36px] font-semibold tracking-[-0.02em] leading-[1.15] mb-7 max-w-[24ch]">
-          The best way to <span className="gradient-text">reach me</span>.
+          {CONTACT_HEADING}
         </h2>
-        <p className="text-[var(--color-body)] max-w-[60ch] mt-4">
-          Direct email is reliably read. I keep a LinkedIn presence but treat it as a public square — for anything substantive, write.
-        </p>
+        <p className="text-[var(--color-body)] max-w-[60ch] mt-4">{CONTACT_BODY}</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12">
           <ContactItem label="Email" value="mark@skycot.com" href="mailto:mark@skycot.com" />
+          <ContactItem label="X" value={SOCIAL.x.handle} href={SOCIAL.x.url} />
           <ContactItem
             label="LinkedIn"
             value={SOCIAL.linkedin.handle}
             href={SOCIAL.linkedin.url}
           />
-          <ContactItem label="X" value={SOCIAL.x.handle} href={SOCIAL.x.url} />
+          <ContactItem label="GitHub" value={SOCIAL.github.handle} href={SOCIAL.github.url} />
+          <ContactItem label="YouTube" value={SOCIAL.youtube.handle} href={SOCIAL.youtube.url} />
         </div>
       </section>
     </>

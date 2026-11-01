@@ -1,9 +1,9 @@
 import Link from "next/link";
+import { ABOUT_PARAGRAPHS, BUILT, SITE_DESCRIPTION } from "@/lib/profile";
 
 export const metadata = {
   title: "About",
-  description:
-    "Mark Hallam — twenty years across operations, growth and product. Founder of Skycot. Advisor to leadership teams across Australia.",
+  description: SITE_DESCRIPTION,
 };
 
 const BELIEFS = [
@@ -32,13 +32,10 @@ export default function AboutPage() {
         <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
           About
         </div>
-        <h1 className="text-[38px] sm:text-[56px] leading-[1.05] font-semibold tracking-[-0.025em] max-w-[22ch] mb-8 text-[var(--color-ink)]">
+        <h1 className="text-[38px] sm:text-[56px] leading-[1.05] font-semibold tracking-[-0.025em] max-w-[22ch] text-[var(--color-ink)]">
           I have spent twenty years finding leaks in machines and{" "}
           <span className="gradient-text">sealing them</span>. AI is the latest instrument.
         </h1>
-        <p className="text-[21px] leading-[1.55] text-[var(--color-body)] max-w-[56ch]">
-          Founder of Skycot. Advisor to leadership teams across Australia. The job has not changed — only the toolkit has.
-        </p>
       </section>
 
       <section className="max-w-[880px] mx-auto px-8 py-16 border-t border-[var(--color-rule)]">
@@ -49,36 +46,38 @@ export default function AboutPage() {
           Twenty years across operations, growth and product.
         </h2>
         <div className="space-y-[22px] max-w-[64ch]">
-          <p className="text-[18px] leading-[1.7] text-[#2c2c54]">
-            Before Skycot I held operating roles across growth-stage businesses, most of them with titles ending in &quot;of operations&quot; or &quot;of growth&quot;. The work changed every few years — different industries, different scales, different problems on paper — but the underlying job was always the same.
-          </p>
-          <p className="text-[18px] leading-[1.7] text-[#2c2c54]">
-            Someone has a complicated machine. The machine is leaking value somewhere. The work is to find the leak and seal it. Repeat.
-          </p>
-          <p className="text-[18px] leading-[1.7] text-[#2c2c54]">
-            That is what I learned to do, and that is still what I do. AI did not change the job. AI changed the instruments I have to do the job with — and the instruments are markedly better than the ones I started with twenty years ago.
-          </p>
+          {ABOUT_PARAGRAPHS.map((p) => (
+            <p key={p} className="text-[18px] leading-[1.7] text-[#2c2c54]">
+              {p}
+            </p>
+          ))}
         </div>
       </section>
 
       <section className="max-w-[880px] mx-auto px-8 py-16 border-t border-[var(--color-rule)]">
         <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
-          Why Skycot, why now
+          What I&apos;ve built
         </div>
-        <h2 className="text-[28px] font-semibold tracking-[-0.015em] leading-[1.2] mb-7 max-w-[24ch]">
-          Most organisations are losing the AI moment{" "}
-          <span className="gradient-text">in slow motion</span>.
-        </h2>
-        <div className="space-y-[22px] max-w-[64ch]">
-          <p className="text-[18px] leading-[1.7] text-[#2c2c54]">
-            By 2024 it was clear that the constraint on enterprise AI work was not the model. The model was already good enough. The constraint was the operating layer underneath it — the agents, the governance, the audit trails, the way work gets handed between humans and machines. Without that layer, every pilot dies in committee. With it, the same pilot ships in nine months and is invisible by month twelve.
-          </p>
-          <p className="text-[18px] leading-[1.7] text-[#2c2c54]">
-            I started Skycot in late 2024 because I wanted to build that operating layer for Australian and enterprise-grade organisations that wanted AI to move real numbers, not headlines. We are still small, intentionally, and the work is going well.
-          </p>
-          <p className="text-[18px] leading-[1.7] text-[#2c2c54]">
-            I keep a small advisory practice alongside the company. The two activities feed each other — the advisory work tells me what enterprises actually need, and Skycot tells me what is technically possible. Most weeks I do both.
-          </p>
+        <div className="space-y-2 mt-4">
+          {BUILT.map((item) => (
+            <div key={item.title} className="gradient-border-left py-6 pl-6">
+              <h3 className="text-[19px] font-semibold mb-1.5 text-[var(--color-ink)]">{item.title}</h3>
+              <p className="text-[16px] text-[var(--color-body)] leading-[1.55]">{item.body}</p>
+              {item.links.length > 0 && (
+                <div className="flex gap-5 flex-wrap mt-3">
+                  {item.links.map((l) => (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      className="text-[14px] text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline"
+                    >
+                      {l.label} →
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 

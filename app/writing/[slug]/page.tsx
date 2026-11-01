@@ -96,7 +96,7 @@ export default async function EssayPage({
             <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-4">
               A note from the author
             </div>
-            <p className="text-[16px] leading-[1.65] text-[var(--color-body)] mb-4">
+            <p className="text-[16px] leading-[1.65] text-[var(--color-body)]">
               I publish one essay a month, roughly, on AI and operations. If something here struck a chord — or struck the wrong chord — I would like to hear about it. Write to{" "}
               <a
                 href="mailto:mark@skycot.com"
@@ -105,16 +105,6 @@ export default async function EssayPage({
                 mark@skycot.com
               </a>
               . Long emails are welcome; I read all of them and reply to most.
-            </p>
-            <p className="text-[16px] leading-[1.65] text-[var(--color-body)]">
-              If your team is wrestling with the patterns above and you would like to talk, the best way is the{" "}
-              <Link
-                href="/contact"
-                className="text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline"
-              >
-                contact page
-              </Link>
-              . Advisory engagements are limited but I keep one or two openings.
             </p>
           </div>
         </article>

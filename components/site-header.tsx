@@ -147,6 +147,12 @@ export function SiteHeader() {
             LinkedIn · {SOCIAL.linkedin.handle}
           </a>
           <a
+            href={SOCIAL.github.url}
+            className="py-2 text-[var(--color-soft)] no-underline hover:text-[var(--color-ink)]"
+          >
+            GitHub · {SOCIAL.github.handle}
+          </a>
+          <a
             href={SOCIAL.youtube.url}
             className="py-2 text-[var(--color-soft)] no-underline hover:text-[var(--color-ink)]"
           >
