@@ -43,7 +43,7 @@ export function getEssayMetaList(): EssayMeta[] {
   });
   return essays
     .filter((e) => !e.draft)
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
+    .sort((a, b) => (a.date === b.date ? a.title.localeCompare(b.title) : a.date < b.date ? 1 : -1));
 }
 
 export async function getEssayBySlug(slug: string): Promise<Essay | null> {

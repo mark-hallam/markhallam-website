@@ -1,6 +1,6 @@
 ---
 title: "The room is the architecture"
-date: "2025-12-04"
+date: "2026-05-23"
 dek: "The interesting unit of senior knowledge work is no longer the conversation with one agent. It is the room — the conductor, the workers, the audit loop, the marketing cron. The operator becomes the architect of how agents talk to each other and to the work."
 readMinutes: 7
 category: "Practice"

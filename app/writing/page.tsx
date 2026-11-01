@@ -33,7 +33,7 @@ export default function WritingIndexPage() {
           <span className="gradient-text">AI agents</span>.
         </h1>
         <p className="text-[19px] sm:text-[21px] leading-[1.55] text-[var(--color-body)] max-w-[56ch]">
-          Notes from building real software with Claude, Codex and Gemini as the team: how to frame work so agents can&apos;t misread it, how to stop a swarm of agents drifting, and how to check the result like an engineer.
+          Notes from building real software with Claude and Codex as the team: how to frame work so agents can&apos;t misread it, how to stop a swarm of agents drifting, and how to check the result like an engineer.
         </p>
         {essays.length > 0 && (
           <div className="mt-9 text-sm text-[var(--color-muted)]">
