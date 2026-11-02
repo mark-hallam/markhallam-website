@@ -1,0 +1,1213 @@
+<!--
+Design language, Option D "Bento": an Apple keynote summary slide that has come alive. The page is a calm, light, Apple-familiar grid of rounded white tiles of varied sizes on a soft grey canvas, set in the system font with the Audiowide name mark as the only brand flourish. Every tile tells exactly one story and carries its own small, looping, purposeful animation drawn in inline SVG and CSS: an A320 taking off while a fleet counter ticks to ten, manual pages riffling, a radar resolving a conflict. Colour is restrained to Mark's purple, pink and cyan, used as accents and in a soft aurora behind the hero. Tiles spring into place with a staggered entrance, tilt gently under a mouse pointer with a light sheen, pause when off screen, and fall back to finished, static illustrations for reduced motion or no JavaScript. Playful in the details, quiet in the whole.
+-->
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mark Hallam</title>
+<meta name="description" content="Mark Hallam, Melbourne, Australia. Solving hard problems from first principles and shipping with agents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F5F7; --tile:#FFFFFF; --ink:#1D1D1F; --ink2:#3A3A3C; --ink3:#515154;
+  --line:#E2E2E7; --tint:#F4F4F8; --tint2:#E6E6EE;
+  --p:#8B5CF6; --k:#EC4899; --c:#0891B2; --ok:#16A34A; --amber:#F59E0B;
+  --link:#5B21B6; --btn:#1D1D1F; --btnInk:#FFFFFF;
+  --navbg:rgba(245,245,247,.78); --veil:rgba(255,255,255,.58);
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 10px 30px rgba(17,17,26,.06);
+  --shadowHi:0 2px 6px rgba(0,0,0,.06),0 24px 60px rgba(76,29,149,.14);
+  --sheen:rgba(139,92,246,.12);
+  --r:24px; --gap:16px;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display",Inter,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --bg:#000000; --tile:#1C1C1E; --ink:#F5F5F7; --ink2:#D1D1D6; --ink3:#B4B4BA;
+  --line:#3A3A3C; --tint:#242427; --tint2:#3A3A3E;
+  --link:#C4B5FD; --btn:#F5F5F7; --btnInk:#1D1D1F;
+  --navbg:rgba(0,0,0,.7); --veil:rgba(28,28,30,.66);
+  --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 30px rgba(0,0,0,.4);
+  --shadowHi:0 2px 6px rgba(0,0,0,.5),0 24px 60px rgba(139,92,246,.22);
+  --sheen:rgba(196,181,253,.10);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--font);-webkit-font-smoothing:antialiased;overflow-x:clip;transition:background-color .3s,color .3s}
+a{color:var(--link)}
+:focus-visible{outline:3px solid var(--p);outline-offset:3px;border-radius:10px}
+.skip{position:absolute;left:16px;top:-60px;background:var(--btn);color:var(--btnInk);padding:10px 16px;border-radius:12px;z-index:99;text-decoration:none;font-weight:600}
+.skip:focus{top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+@media (min-width:768px){.wrap{padding:0 24px}}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:var(--navbg);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:grid;grid-template-columns:1fr auto;grid-template-areas:"brand tog" "links links";align-items:center;column-gap:12px;padding-top:8px;padding-bottom:2px}
+.brand{grid-area:brand;font-family:Audiowide,var(--font);font-size:21px;letter-spacing:.01em;text-decoration:none;background:linear-gradient(90deg,#8B5CF6,#EC4899);-webkit-background-clip:text;background-clip:text;color:transparent;justify-self:start;padding:6px 0}
+.nav ul{grid-area:links;list-style:none;margin:0 -8px;padding:0;display:flex;flex-wrap:wrap}
+.nav ul a{display:inline-flex;align-items:center;min-height:44px;padding:0 8px;color:var(--ink2);text-decoration:none;font-size:15px;font-weight:500;border-radius:10px}
+.nav ul a:hover{color:var(--ink)}
+.tog{grid-area:tog;display:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--tile);color:var(--ink);align-items:center;justify-content:center;cursor:pointer}
+.js .tog{display:inline-flex}
+.tog svg{width:18px;height:18px}
+.tog .sun{display:none}
+[data-theme="dark"] .tog .sun{display:block}
+[data-theme="dark"] .tog .moon{display:none}
+@media (min-width:820px){
+  .nav .wrap{grid-template-columns:auto 1fr auto;grid-template-areas:"brand links tog";padding-top:6px;padding-bottom:6px}
+  .nav ul{justify-content:flex-end;margin:0 4px 0 0}
+}
+
+/* Bento grid */
+.bento{display:grid;gap:var(--gap);grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .s2,.s3,.s4{grid-column:span 2}
+}
+@media (min-width:1024px){
+  .bento{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .s3{grid-column:span 3}
+  .s4{grid-column:span 4}
+  .r2{grid-row:span 2}
+}
+
+/* Tile */
+.tile{position:relative;background:var(--tile);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow);overflow:hidden;min-width:0;
+  transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,opacity .7s ease var(--d,0s),translate .8s cubic-bezier(.2,.9,.25,1.15) var(--d,0s),scale .8s cubic-bezier(.2,.9,.25,1.15) var(--d,0s),background-color .3s}
+.tile::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(520px circle at var(--mx,50%) var(--my,50%),var(--sheen),transparent 42%)}
+.motion .tile{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+.motion .tile.tilting{transition-duration:.15s,.35s,.7s,.8s,.8s,.3s;box-shadow:var(--shadowHi)}
+.motion .tile.tilting::after{opacity:1}
+.motion .tile.pre{opacity:0;translate:0 32px;scale:.965}
+.tile h3{font-size:20px;line-height:1.25;letter-spacing:-.012em;margin:0 0 4px;font-weight:650}
+.tile p{margin:0;color:var(--ink2)}
+.tile p + p{margin-top:10px}
+.no{font:600 12px/1 var(--mono);letter-spacing:.08em;color:var(--ink3);display:block;margin-bottom:8px}
+.meta{font-size:14px;color:var(--ink3);margin:0 0 8px !important;font-weight:500}
+.ill{position:relative;height:150px;margin:-8px -8px 18px;border-radius:16px;background:var(--tint);overflow:hidden;display:grid;place-items:center}
+.ill svg{display:block;width:100%;height:100%}
+.more{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-weight:600;font-size:15px;text-decoration:none;min-height:44px}
+.more svg{width:14px;height:14px;transition:transform .25s}
+.more:hover svg{transform:translateX(3px)}
+.more + .more{margin-left:18px}
+
+/* Hero */
+.hero{padding:24px 22px 26px;min-height:460px;display:flex;flex-direction:column;isolation:isolate}
+@media (min-width:768px){.hero{padding:32px 40px 40px;min-height:520px}}
+.aurora{position:absolute;inset:0;z-index:-1;overflow:hidden;background:var(--tile)}
+.aurora i{position:absolute;width:75%;aspect-ratio:1;border-radius:50%}
+.aurora i:nth-child(1){background:radial-gradient(closest-side,rgba(139,92,246,.62),rgba(139,92,246,0));left:-18%;top:-34%}
+.aurora i:nth-child(2){background:radial-gradient(closest-side,rgba(236,72,153,.48),rgba(236,72,153,0));right:-24%;top:-12%}
+.aurora i:nth-child(3){background:radial-gradient(closest-side,rgba(8,145,178,.42),rgba(8,145,178,0));left:18%;bottom:-52%}
+.aurora i:nth-child(4){width:40%;background:radial-gradient(closest-side,rgba(236,72,153,.30),rgba(236,72,153,0));left:-6%;bottom:-18%}
+.aurora::after{content:"";position:absolute;inset:0;background:var(--veil)}
+.aurora b{position:absolute;inset:0;z-index:1;background-image:radial-gradient(rgba(29,29,31,.10) 1px,transparent 1.2px);background-size:22px 22px;-webkit-mask-image:linear-gradient(110deg,transparent 30%,#000 75%);mask-image:linear-gradient(110deg,transparent 30%,#000 75%)}
+[data-theme="dark"] .aurora b{background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1.2px)}
+.chip{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-size:14px;font-weight:500;color:var(--ink2);background:var(--tile);border:1px solid var(--line);padding:6px 12px 6px 10px;border-radius:999px}
+.pulse{position:relative;width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ok);opacity:0}
+.hero .copy{margin-top:auto;padding-top:40px}
+.hero h1{font-size:clamp(32px,5.4vw,62px);line-height:1.04;letter-spacing:-.034em;font-weight:750;margin:0 0 12px;max-width:17ch}
+.accent{display:block;font-size:clamp(22px,3vw,34px);line-height:1.15;font-weight:700;letter-spacing:-.02em;margin:0 0 16px;background:linear-gradient(90deg,#7C3AED,#DB2777 50%,#0E7490 75%,#7C3AED);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+[data-theme="dark"] .accent{background-image:linear-gradient(90deg,#A78BFA,#F472B6 50%,#22D3EE 75%,#A78BFA)}
+.lede{max-width:62ch;color:var(--ink2);font-size:18px;margin:0}
+.btns{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 22px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.pri{background:var(--btn);color:var(--btnInk);box-shadow:0 6px 18px rgba(29,29,31,.18)}
+.btn.ghost{background:var(--tile);color:var(--ink);border:1px solid var(--line)}
+.btn svg{width:14px;height:14px}
+
+/* Stats */
+.stat{display:flex;flex-direction:column;justify-content:space-between;min-height:168px}
+.big{display:block;font-size:clamp(36px,4.2vw,50px);line-height:1;font-weight:750;letter-spacing:-.035em;font-variant-numeric:tabular-nums;background:linear-gradient(120deg,#6D28D9,#BE185D);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:4px}
+.big.c{background-image:linear-gradient(120deg,#0E7490,#6D28D9)}
+.big.k{background-image:linear-gradient(120deg,#BE185D,#7C3AED)}
+[data-theme="dark"] .big{background-image:linear-gradient(120deg,#C4B5FD,#F9A8D4)}
+[data-theme="dark"] .big.c{background-image:linear-gradient(120deg,#67E8F9,#C4B5FD)}
+.big small{font-size:.5em;letter-spacing:-.01em;margin-right:.15em}
+.stat p{font-size:15px;line-height:1.4;margin-top:10px}
+.meter{height:6px;border-radius:6px;background:var(--tint2);margin-top:16px;overflow:hidden}
+.meter i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--p),var(--k));transform-origin:0 50%}
+.meter.c i{background:linear-gradient(90deg,var(--c),var(--p))}
+
+/* Sections */
+.sec{margin:88px 0 22px;max-width:760px}
+.eyebrow{display:block;font-size:14px;font-weight:650;letter-spacing:.02em;color:var(--link);margin-bottom:6px}
+.sec h2{font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.03em;margin:0 0 12px;font-weight:750}
+.intro{font-size:18px;color:var(--ink2);margin:0}
+</style>
+<style>
+/* Career, credentials, writing, about, contact */
+.when{display:inline-block;font-size:13px;font-weight:600;color:var(--ink2);background:var(--tint);border:1px solid var(--line);border-radius:999px;padding:3px 10px;margin-bottom:12px;font-variant-numeric:tabular-nums}
+.roles{display:grid;gap:14px;margin-top:16px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.roles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.role{background:var(--tint);border-radius:16px;padding:16px;position:relative}
+.role h4{margin:0 0 2px;font-size:16px;font-weight:650}
+.role .meta{font-size:13px}
+.role p{font-size:15px}
+.rail{padding:18px 22px}
+.rail svg{display:block;width:100%;height:64px}
+.cred{display:flex;gap:14px;align-items:flex-start}
+.badge{flex:0 0 auto;position:relative;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#8B5CF6,#EC4899);color:#fff;overflow:hidden}
+.badge.c{background:linear-gradient(135deg,#0891B2,#8B5CF6)}
+.badge svg{width:24px;height:24px}
+.badge::after{content:"";position:absolute;top:-20%;bottom:-20%;width:40%;left:-60%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg)}
+.cred strong{display:block;font-size:16px;line-height:1.3;font-weight:650}
+.cred p span{display:block;font-size:15px;color:var(--ink2);margin-top:2px}
+.list{list-style:none;margin:6px 0 0;padding:0}
+.list li + li{border-top:1px solid var(--line)}
+.list a{display:flex;align-items:center;gap:14px;min-height:60px;padding:12px 6px;color:var(--ink);text-decoration:none;border-radius:12px;transition:background-color .2s}
+.list a:hover{background:var(--tint)}
+.list .t{flex:1;font-weight:600;font-size:17px;line-height:1.3}
+.list .d{font-size:14px;color:var(--ink3);white-space:nowrap}
+.list .chev{width:12px;height:12px;color:var(--ink3);flex:0 0 auto;transition:transform .2s}
+.list a:hover .chev{transform:translateX(3px)}
+.list .ix{font:600 12px/1 var(--mono);color:var(--ink3);width:22px}
+.contact{isolation:isolate}
+.contact h2{font-size:clamp(30px,4vw,46px);letter-spacing:-.03em;line-height:1.08;margin:0 0 10px}
+.mail{display:inline-block;font-size:clamp(20px,2.6vw,28px);font-weight:700;letter-spacing:-.015em;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--p);margin:16px 0 18px;padding-bottom:2px;word-break:break-word}
+.social{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:0}
+.social a{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:var(--tile);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px}
+.sub{margin-top:26px}
+.sub label{display:block;font-weight:600;margin-bottom:8px}
+.sub .row{display:flex;gap:10px;flex-wrap:wrap}
+.sub input{flex:1 1 220px;min-width:0;min-height:46px;padding:0 16px;border-radius:12px;border:1px solid var(--line);background:var(--tile);color:var(--ink);font:inherit;font-size:16px}
+.sub button{min-height:46px;padding:0 22px;border-radius:12px;border:0;background:var(--btn);color:var(--btnInk);font:inherit;font-weight:600;cursor:pointer}
+footer{margin:56px 0 0;padding:28px 0 40px;border-top:1px solid var(--line);color:var(--ink3);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+footer .brand{font-size:17px}
+
+/* SVG paint classes (theme aware) */
+svg text{font-family:var(--font);font-weight:700}
+.f0{fill:var(--tile)} .f1{fill:var(--ink)} .f2{fill:var(--ink2)} .f3{fill:var(--ink3)}
+.fl{fill:var(--line)} .ft{fill:var(--tint2)} .fp{fill:var(--p)} .fk{fill:var(--k)} .fc{fill:var(--c)} .fo{fill:var(--ok)} .fa{fill:var(--amber)}
+.fg{fill:url(#gPK)} .fgc{fill:url(#gCP)} .fn{fill:none}
+.s0{stroke:var(--tile)} .s1{stroke:var(--ink)} .s3{stroke:var(--ink3)} .sl{stroke:var(--line)} .st2{stroke:var(--tint2)} .sp{stroke:var(--p)} .sk{stroke:var(--k)} .sc{stroke:var(--c)} .so{stroke:var(--ok)} .sg{stroke:url(#gPKh)}
+.fb{transform-box:fill-box;transform-origin:center}
+.fbb{transform-box:fill-box;transform-origin:50% 100%}
+.fbl{transform-box:fill-box;transform-origin:0 50%}
+.mo{display:none}
+.motion .mo{display:inline}
+.motion div.mo{display:block}
+.motion .stc{display:none}
+
+/* Static end states (reduced motion and no JS) */
+.pl{transform:translate(236px,40px) rotate(-12deg)}
+.gx{transform:translateX(92px)}
+.edp{transform:translate(124px,73px)}
+.tb{transform:translate(4px,82px)}
+.ta{transform:translate(52px,34px)}
+.al{opacity:0}
+.card{transform:translateX(256px)}
+
+/* Motion: paused off screen, running in view */
+.motion .tile:not(.on) *, .motion .tile:not(.on)::before{animation-play-state:paused !important}
+.motion .hero .copy > *{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.motion .hero .copy > :nth-child(2){animation-delay:.08s}
+.motion .hero .copy > :nth-child(3){animation-delay:.16s}
+.motion .hero .copy > :nth-child(4){animation-delay:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.motion .aurora i{animation:drift 16s ease-in-out infinite alternate}
+.motion .aurora i:nth-child(2){animation-duration:21s;animation-delay:-6s}
+.motion .aurora i:nth-child(3){animation-duration:19s;animation-delay:-11s}
+.motion .aurora i:nth-child(4){animation-duration:13s;animation-delay:-3s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(9%,7%) scale(1.14)}100%{transform:translate(-7%,11%) scale(.94)}}
+.motion .accent{animation:flow 9s linear infinite}
+@keyframes flow{to{background-position:-200% 0}}
+.motion .pulse::after{animation:ping 2s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{0%{transform:scale(1);opacity:.6}80%,100%{transform:scale(3);opacity:0}}
+.motion .meter i{animation:fill 1.6s cubic-bezier(.2,.8,.2,1) both}
+.motion .tile:not(.seen) .meter i{transform:scaleX(0);animation:none}
+@keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* 01 A320s */
+.motion .pl{animation:takeoff 3.4s cubic-bezier(.45,0,.55,1) infinite}
+@keyframes takeoff{
+  0%{transform:translate(-90px,100px) rotate(0);opacity:0}
+  6%{opacity:1}
+  46%{transform:translate(150px,100px) rotate(0)}
+  62%{transform:translate(222px,80px) rotate(-11deg)}
+  92%{opacity:1}
+  100%{transform:translate(430px,6px) rotate(-15deg);opacity:0}}
+.fleet circle{fill:var(--p);transition:fill .3s,transform .3s}
+.fleet circle.off{fill:var(--tint2)}
+.motion .cloud{animation:cloud 18s linear infinite}
+.motion .cloud.b{animation-duration:26s;animation-delay:-9s}
+@keyframes cloud{from{transform:translateX(60px)}to{transform:translateX(-120px)}}
+.motion .rwy{animation:rwy .5s linear infinite}
+@keyframes rwy{to{stroke-dashoffset:-28}}
+
+/* 02 Manuals */
+.book{position:relative;width:180px;height:108px;perspective:800px}
+.book::after{content:"";position:absolute;left:6%;right:6%;bottom:-12px;height:12px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.14),transparent)}
+.pg{position:absolute;top:0;width:50%;height:100%;background-color:var(--tile);border:1px solid var(--line);background-image:repeating-linear-gradient(to bottom,var(--tint2) 0 3px,transparent 3px 12px);background-size:68% 72%;background-repeat:no-repeat;background-position:center 16px}
+.pg.l{left:0;border-radius:8px 2px 2px 8px;box-shadow:inset -8px 0 12px -10px rgba(0,0,0,.25)}
+.pg.r,.pg.f{left:50%;border-radius:2px 8px 8px 2px;box-shadow:inset 8px 0 12px -10px rgba(0,0,0,.25)}
+.pg.f{transform-origin:0 50%}
+.pg.tab{border-left:0}
+.pg.tab::before{content:"";position:absolute;right:-7px;top:14px;width:7px;height:16px;border-radius:0 4px 4px 0;background:var(--k)}
+.pg.tab.c::before{top:36px;background:var(--c)}
+.pg.tab.p::before{top:58px;background:var(--p)}
+.motion .pg.f{animation:flip 3.8s cubic-bezier(.5,.05,.3,1) infinite}
+.motion .pg.f:nth-child(4){animation-delay:.22s}
+.motion .pg.f:nth-child(5){animation-delay:.44s}
+@keyframes flip{0%{transform:rotateY(0)}42%,100%{transform:rotateY(-180deg)}}
+
+/* 03 Adelaide */
+.motion .pin{animation:drop 4.4s cubic-bezier(.3,0,.3,1) infinite}
+@keyframes drop{0%{transform:translateY(-70px);opacity:0}12%{opacity:1}20%{transform:translateY(0)}25%{transform:translateY(-7px)}30%,100%{transform:translateY(0);opacity:1}}
+.motion .ripple{animation:ripple 4.4s ease-out infinite}
+@keyframes ripple{0%,19%{transform:scale(.2);opacity:0}21%{opacity:.8}45%,100%{transform:scale(2.4);opacity:0}}
+.motion .h2{animation:raise 4.4s cubic-bezier(.3,1.4,.5,1) infinite}
+@keyframes raise{0%,30%{transform:scaleY(0);opacity:0}32%{opacity:1}46%,100%{transform:scaleY(1);opacity:1}}
+.motion .p1{animation:pa 4.4s steps(1) infinite}
+.motion .p2{animation:pb 4.4s steps(1) infinite}
+@keyframes pa{0%{opacity:1}44%,100%{opacity:0}}
+@keyframes pb{0%{opacity:0}44%,100%{opacity:1}}
+
+/* 04 Engine wash */
+.motion .fan{animation:spin 5s cubic-bezier(.55,0,.9,.6) infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(2160deg)}}
+.gauge{stroke-dasharray:100}
+.motion .gauge{animation:gauge 5s cubic-bezier(.3,0,.3,1) infinite}
+@keyframes gauge{0%{stroke-dashoffset:100}84%,100%{stroke-dashoffset:0}}
+.needle{transform-origin:290px 104px;transform:rotate(86deg)}
+.motion .needle{animation:needle 5s cubic-bezier(.3,0,.3,1) infinite}
+@keyframes needle{0%{transform:rotate(-90deg)}84%{transform:rotate(90deg)}88%,100%{transform:rotate(86deg)}}
+.motion .spray{animation:spray 5s ease-out infinite}
+.motion .spray:nth-child(2){animation-delay:.12s}
+.motion .spray:nth-child(3){animation-delay:.24s}
+.motion .spray:nth-child(4){animation-delay:.36s}
+@keyframes spray{0%{transform:translate(-40px,0);opacity:0}4%{opacity:.9}18%,100%{transform:translate(30px,0);opacity:0}}
+</style>
+<style>
+/* 05 Data migration */
+.motion .blk{animation:stream 2.6s linear infinite}
+.motion .blk:nth-child(2){animation-delay:-.52s}
+.motion .blk:nth-child(3){animation-delay:-1.04s}
+.motion .blk:nth-child(4){animation-delay:-1.56s}
+.motion .blk:nth-child(5){animation-delay:-2.08s}
+@keyframes stream{0%{transform:translateX(0);opacity:0}10%{opacity:1}88%{opacity:1}100%{transform:translateX(170px);opacity:0}}
+.motion .lvR{animation:lvR 7.8s ease-in-out infinite}
+.motion .lvL{animation:lvL 7.8s ease-in-out infinite}
+@keyframes lvR{0%{transform:scaleY(.08)}80%,100%{transform:scaleY(1)}}
+@keyframes lvL{0%{transform:scaleY(1)}80%,100%{transform:scaleY(.08)}}
+.lvL{transform:scaleY(.08)}
+.motion .chk{animation:chk 2.6s ease-out infinite}
+@keyframes chk{0%,90%{transform:scale(1)}95%{transform:scale(1.18)}100%{transform:scale(1)}}
+
+/* 06 Gate to gate */
+.knob{transform:translateX(0)}
+.motion .knob{animation:knob 5s cubic-bezier(.3,1.3,.5,1) infinite}
+@keyframes knob{0%,12%{transform:translateX(-16px)}20%,92%{transform:translateX(0)}100%{transform:translateX(-16px)}}
+.motion .trkOn{animation:trk 5s ease infinite}
+@keyframes trk{0%,12%{opacity:0}20%,92%{opacity:1}100%{opacity:0}}
+.motion .gx{animation:gx 5s linear infinite}
+@keyframes gx{0%,24%{transform:translateX(0)}84%,100%{transform:translateX(92px)}}
+.motion .gy{animation:gy 5s infinite}
+@keyframes gy{0%,24%{transform:translateY(0);animation-timing-function:cubic-bezier(.3,.6,.6,1)}54%{transform:translateY(-44px);animation-timing-function:cubic-bezier(.4,0,.7,.4)}84%,100%{transform:translateY(0)}}
+.motion .gtr{animation:gtr 5s linear infinite}
+@keyframes gtr{0%,24%{stroke-dashoffset:100}84%,100%{stroke-dashoffset:0}}
+.gtr{stroke-dasharray:100}
+
+/* 07 EDTO */
+.motion .edp{animation:edto 8s linear infinite}
+@keyframes edto{0%{transform:translate(24px,112px);opacity:0}6%{opacity:1}94%{opacity:1}100%{transform:translate(216px,38px);opacity:0}}
+.motion .ring{animation:ring 2.4s ease-in-out infinite alternate}
+@keyframes ring{from{transform:scale(.9);opacity:.75}to{transform:scale(1.08);opacity:1}}
+.motion .alt{animation:alt 2.4s ease-in-out infinite alternate}
+@keyframes alt{from{opacity:.35}to{opacity:1}}
+
+/* 08 COVID bars */
+.motion .bar1{animation:bar1 5s cubic-bezier(.2,.9,.3,1) infinite}
+.motion .bar2{animation:bar2 5s cubic-bezier(.2,1.2,.4,1) infinite}
+@keyframes bar1{0%{transform:scaleY(0)}22%,92%{transform:scaleY(1)}100%{transform:scaleY(0)}}
+@keyframes bar2{0%,14%{transform:scaleY(0)}44%,92%{transform:scaleY(1)}100%{transform:scaleY(0)}}
+.motion .arrow{animation:arrow 5s ease infinite}
+@keyframes arrow{0%,40%{opacity:0;transform:translateY(8px)}50%,90%{opacity:1;transform:none}100%{opacity:0}}
+
+/* 09 Hydrogen drone */
+.motion .hov{animation:hov 3.2s ease-in-out infinite}
+@keyframes hov{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.motion .shadow{animation:shd 3.2s ease-in-out infinite}
+@keyframes shd{0%,100%{transform:scaleX(1);opacity:.5}50%{transform:scaleX(.82);opacity:.3}}
+.motion .rot{animation:rot .16s linear infinite}
+@keyframes rot{0%{transform:scaleX(1)}50%{transform:scaleX(.18)}100%{transform:scaleX(1)}}
+.motion .bub{animation:bub 3.6s ease-in infinite}
+.motion .bub:nth-child(2){animation-delay:-.6s}.motion .bub:nth-child(3){animation-delay:-1.2s}
+.motion .bub:nth-child(4){animation-delay:-1.8s}.motion .bub:nth-child(5){animation-delay:-2.4s}.motion .bub:nth-child(6){animation-delay:-3s}
+@keyframes bub{0%{transform:translateY(40px) scale(.5);opacity:0}20%{opacity:.95}100%{transform:translateY(-60px) scale(1.05);opacity:0}}
+
+/* 10 CMATS radar */
+.sweep{transform-origin:120px 75px}
+.motion .sweep{animation:spin1 4s linear infinite}
+@keyframes spin1{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.motion .ta{animation:ta 7s linear infinite}
+@keyframes ta{0%{transform:translate(0,0)}100%{transform:translate(80px,52px)}}
+.motion .tb{animation:tb 7s linear infinite}
+@keyframes tb{0%{transform:translate(0,0)}38%{transform:translate(-30.7px,16.8px)}100%{transform:translate(4px,82px)}}
+.motion .al{animation:al 7s linear infinite}
+@keyframes al{0%,10%{opacity:0}15%,34%{opacity:1}22%,27%{opacity:.35}39%,100%{opacity:0}}
+.motion .ok{animation:okr 7s linear infinite}
+@keyframes okr{0%,39%{opacity:0}45%,93%{opacity:1}100%{opacity:0}}
+.motion .pjb{animation:pjb 7s linear infinite}
+@keyframes pjb{0%,36%{opacity:1}42%,100%{opacity:0}}
+.motion .pjb2{animation:pjb2 7s linear infinite}
+@keyframes pjb2{0%,38%{opacity:0}46%,100%{opacity:1}}
+.pjb{opacity:0}
+
+/* Cool things */
+.motion .bprog{animation:bprog 5s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes bprog{0%{transform:scaleX(0)}72%,100%{transform:scaleX(1)}}
+.motion .app{animation:app 5s cubic-bezier(.3,1.5,.5,1) infinite}
+.motion .app:nth-child(2){animation-delay:.35s}.motion .app:nth-child(3){animation-delay:.7s}
+.motion .app:nth-child(4){animation-delay:1.05s}.motion .app:nth-child(5){animation-delay:1.4s}.motion .app:nth-child(6){animation-delay:1.75s}
+@keyframes app{0%{transform:scale(0);opacity:0}12%{transform:scale(1);opacity:1}88%{transform:scale(1);opacity:1}100%{transform:scale(.6);opacity:0}}
+.motion .card{animation:job 6s cubic-bezier(.6,0,.3,1) infinite}
+.motion .lane2 .card{animation-delay:-2s}
+.motion .lane3 .card{animation-delay:-4s}
+@keyframes job{0%{transform:translateX(0);opacity:0}6%{opacity:1}28%{transform:translateX(0)}42%{transform:translateX(128px)}60%{transform:translateX(128px)}74%{transform:translateX(256px)}94%{transform:translateX(256px);opacity:1}100%{transform:translateX(256px);opacity:0}}
+.motion .typ{animation:typ 6s steps(14) infinite}
+.motion .typ.b{animation-name:typ2}
+@keyframes typ{0%{transform:scaleX(0)}18%,100%{transform:scaleX(1)}}
+@keyframes typ2{0%,18%{transform:scaleX(0)}30%,100%{transform:scaleX(1)}}
+.lane{stroke-dasharray:100}
+.motion .lane{animation:lane 6s cubic-bezier(.4,0,.2,1) infinite}
+.motion .lane:nth-of-type(2){animation-delay:.08s}.motion .lane:nth-of-type(3){animation-delay:.16s}.motion .lane:nth-of-type(4){animation-delay:.24s}
+@keyframes lane{0%,30%{stroke-dashoffset:100}48%,100%{stroke-dashoffset:0}}
+.motion .node{animation:node 6s ease infinite}
+@keyframes node{0%,28%{transform:scale(1)}33%{transform:scale(1.25)}40%,100%{transform:scale(1)}}
+.motion .tk{animation:tk 6s cubic-bezier(.4,0,.2,1) infinite}
+.motion .tk.t2{animation-delay:.3s}.motion .tk.t3{animation-delay:.6s}.motion .tk.t4{animation-delay:.15s}
+@keyframes tk{0%,44%{transform:translateX(-70px);opacity:0}50%{opacity:1}88%{transform:translateX(0);opacity:1}100%{transform:translateX(0);opacity:0}}
+.motion .caret{animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+.motion .fly{animation:flyx 9s linear infinite}
+@keyframes flyx{from{transform:translateX(-70px)}to{transform:translateX(470px)}}
+.motion .flyy{animation:flyy 2.25s ease-in-out infinite alternate}
+@keyframes flyy{from{transform:translateY(-10px)}to{transform:translateY(12px)}}
+.motion .play{animation:playp 2.4s ease-in-out infinite}
+@keyframes playp{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.motion .halo{animation:ping 2.4s cubic-bezier(0,0,.2,1) infinite}
+
+/* Career rail, about glyph, badges */
+.railp{stroke-dasharray:100}
+.motion .railp{animation:railp 9s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes railp{0%{stroke-dashoffset:100}55%,100%{stroke-dashoffset:0}}
+.motion .rdot{animation:rdot 9s ease infinite}
+@keyframes rdot{0%{transform:scale(0)}8%,100%{transform:scale(1)}}
+.motion .rdot.d2{animation-name:rdot2}.motion .rdot.d3{animation-name:rdot3}.motion .rdot.d4{animation-name:rdot4}.motion .rdot.d5{animation-name:rdot5}
+@keyframes rdot2{0%,10%{transform:scale(0)}16%,100%{transform:scale(1)}}
+@keyframes rdot3{0%,32%{transform:scale(0)}38%,100%{transform:scale(1)}}
+@keyframes rdot4{0%,46%{transform:scale(0)}52%,100%{transform:scale(1)}}
+@keyframes rdot5{0%,54%{transform:scale(0)}60%,100%{transform:scale(1)}}
+.motion .strip{animation:strip 6s cubic-bezier(.6,0,.3,1) infinite}
+.motion .strip.s-b{animation-delay:.25s}.motion .strip.s-c{animation-delay:.5s}
+@keyframes strip{0%,10%{transform:scale(1);opacity:1}45%{transform:scale(.12);opacity:0}70%{transform:scale(.12);opacity:0}100%{transform:scale(1);opacity:1}}
+.motion .core{animation:core 6s ease infinite}
+@keyframes core{0%,35%{transform:scale(1)}50%{transform:scale(1.9)}65%,100%{transform:scale(1)}}
+.motion .badge::after{animation:gleam 6s ease-in-out infinite}
+.motion .tile:nth-child(2) .badge::after{animation-delay:1.2s}
+.motion .tile:nth-child(3) .badge::after{animation-delay:2.4s}
+.motion .tile:nth-child(4) .badge::after{animation-delay:3.6s}
+@keyframes gleam{0%,70%{left:-60%}90%,100%{left:130%}}
+@media print{.tile{opacity:1 !important;translate:none !important}}
+</style>
+<style>
+.duo{margin-top:88px}
+.tile h2{font-size:clamp(26px,3vw,34px);letter-spacing:-.025em;line-height:1.1;margin:0 0 8px;font-weight:750}
+.contact h2{font-size:clamp(30px,4vw,46px)}
+.contact > p{max-width:60ch;font-size:18px}
+.about-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:6px}
+.glyph{width:64px;height:64px;flex:0 0 auto}
+.about p{font-size:18px}
+.track{position:relative;height:58px;margin:0 18px}
+.track::before{content:"";position:absolute;left:0;right:0;top:12px;height:4px;border-radius:4px;background:var(--tint2)}
+.fillbar{position:absolute;left:0;right:0;top:12px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--p),var(--k),var(--c));transform-origin:0 50%}
+.motion .fillbar{animation:railx 9s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes railx{0%{transform:scaleX(0)}55%,92%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+.yr{position:absolute;top:30px;transform:translateX(-50%);font-size:13px;font-weight:600;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.yr::before{content:"";position:absolute;left:50%;top:-24px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--tile);border:3px solid var(--p);box-sizing:border-box}
+.yr.end::before{border-color:var(--c)}
+.fly{transform:translateX(110px)}
+[data-theme="dark"] .skybg{opacity:.38}
+.aurora.soft i{width:60%}
+.contact .aurora i:nth-child(1){left:auto;right:-14%;top:-70%}
+.contact .aurora i:nth-child(2){right:auto;left:-20%;top:auto;bottom:-80%}
+.contact .aurora i:nth-child(3){left:40%;bottom:-90%}
+.big.long{font-size:clamp(30px,2.6vw,40px)}
+.mini{display:block;width:100%;max-width:220px;height:64px;margin:18px 0 4px}
+.rt{stroke-dasharray:100}
+.motion .rt{animation:rt 6s cubic-bezier(.4,0,.2,1) infinite}
+.motion .rt.r2{animation-delay:.3s}.motion .rt.r3{animation-delay:.6s}
+@keyframes rt{0%{stroke-dashoffset:100}40%,90%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+.motion .mp{animation:mp 6s cubic-bezier(.3,1.5,.5,1) infinite}
+@keyframes mp{0%{transform:scale(0);opacity:0}8%,90%{transform:scale(1);opacity:1}100%{transform:scale(1);opacity:0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gPK" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8B5CF6"/><stop offset="1" stop-color="#EC4899"/></linearGradient>
+    <linearGradient id="gCP" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0891B2"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+    <linearGradient id="gPKh" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8B5CF6"/><stop offset=".55" stop-color="#EC4899"/><stop offset="1" stop-color="#0891B2"/></linearGradient>
+    <linearGradient id="gSw" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#0891B2" stop-opacity=".45"/><stop offset="1" stop-color="#0891B2" stop-opacity="0"/></linearGradient>
+    <linearGradient id="gSky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EDE9FE"/><stop offset=".55" stop-color="#FCE7F3"/><stop offset="1" stop-color="#CFFAFE"/></linearGradient>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#main" aria-label="Mark Hallam, home">Mark Hallam</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#career">Career</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="tog" id="theme" type="button" aria-pressed="false" aria-label="Dark mode">
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+
+<section class="bento" aria-labelledby="hero-h" style="margin-top:20px">
+  <article class="tile hero s3 r2 big-tilt">
+    <div class="aurora" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+    <span class="chip"><span class="pulse" aria-hidden="true"></span>Melbourne, Australia</span>
+    <div class="copy">
+      <h1 id="hero-h">Solving hard problems from first principles and shipping with agents.</h1>
+      <p class="accent">Building for agents first.</p>
+      <p class="lede">I solve hard problems and make things that work in the real world. Most of my career has been in aviation: bringing ten Airbus A320s into Australia, writing the maintenance manuals a new airline started flying with, and getting a hydrogen drone program up and flying. Now I work out the problem from first principles and get AI agents to build it.</p>
+      <div class="btns">
+        <a class="btn pri" href="#problems">See the hard problems <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn ghost" href="#writing">Read my writing</a>
+      </div>
+    </div>
+  </article>
+
+  <h2 class="sr">Numbers</h2>
+  <article class="tile stat">
+    <div><span class="big"><span data-tw="10">10</span></span><p>Airbus A320s brought into Australia</p></div>
+    <svg class="mini" viewBox="0 0 132 52" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false">
+      <defs><g id="miniPlane" transform="scale(1.55)"><path d="M6 0 C6.8 0 7.1 .8 7.1 1.6 V4.3 L12 7 V8.3 L7.1 6.9 V9.6 L8.6 10.8 V11.8 L6 11.1 L3.4 11.8 V10.8 L4.9 9.6 V6.9 L0 8.3 V7 L4.9 4.3 V1.6 C4.9 .8 5.2 0 6 0Z"/></g></defs>
+      <g><use href="#miniPlane" x="0" y="2" class="mp fb fp" style="animation-delay:0.00s"/><use href="#miniPlane" x="26" y="2" class="mp fb fk" style="animation-delay:0.14s"/><use href="#miniPlane" x="52" y="2" class="mp fb fp" style="animation-delay:0.28s"/><use href="#miniPlane" x="78" y="2" class="mp fb fk" style="animation-delay:0.42s"/><use href="#miniPlane" x="104" y="2" class="mp fb fp" style="animation-delay:0.56s"/><use href="#miniPlane" x="0" y="30" class="mp fb fk" style="animation-delay:0.70s"/><use href="#miniPlane" x="26" y="30" class="mp fb fp" style="animation-delay:0.84s"/><use href="#miniPlane" x="52" y="30" class="mp fb fk" style="animation-delay:0.98s"/><use href="#miniPlane" x="78" y="30" class="mp fb fp" style="animation-delay:1.12s"/><use href="#miniPlane" x="104" y="30" class="mp fb fk" style="animation-delay:1.26s"/></g>
+    </svg>
+    <div class="meter"><i></i></div>
+  </article>
+  <article class="tile stat">
+    <div><span class="big c">$<span data-tw="2.7" data-dec="1">2.7</span><small style="margin:0 0 0 .2em">billion</small></span><p>in benefits: the air traffic system I work on today (business case value over 20 years)</p></div>
+    <svg class="mini" viewBox="0 0 132 52" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false">
+      <path class="rt fn sg" pathLength="100" stroke-width="2.4" stroke-linecap="round" d="M6 44 C34 4 80 4 126 26"/>
+      <path class="rt r2 fn sg" pathLength="100" stroke-width="2.4" stroke-linecap="round" d="M6 44 C40 30 84 44 126 10"/>
+      <path class="rt r3 fn sg" pathLength="100" stroke-width="2.4" stroke-linecap="round" d="M6 44 C50 50 92 48 126 42"/>
+      <circle cx="6" cy="44" r="4" class="f1"/><circle cx="126" cy="26" r="3.5" class="fc"/><circle cx="126" cy="10" r="3.5" class="fp"/><circle cx="126" cy="42" r="3.5" class="fk"/>
+    </svg>
+    <div class="meter c"><i></i></div>
+  </article>
+  <article class="tile stat">
+    <div><span class="big k"><span data-tw="10.5" data-dec="1">10.5</span></span><p>years at Tigerair</p></div>
+    <div class="meter"><i></i></div>
+  </article>
+  <article class="tile stat">
+    <div><span class="big c long">$<span data-tw="500000" data-comma="1">500,000</span>+</span><p>a year in fuel saved by an engine wash program</p></div>
+    <div class="meter c"><i></i></div>
+  </article>
+  <article class="tile stat">
+    <div><span class="big"><span data-tw="133">133</span>%</span><p>sales in May 2020, against the year before</p></div>
+    <div class="meter"><i></i></div>
+  </article>
+  <article class="tile stat">
+    <div><span class="big k"><small>About</small><span data-tw="300">300</span></span><p>hours flying as a private pilot</p></div>
+    <div class="meter"><i></i></div>
+  </article>
+  <article class="tile stat s2">
+    <div><span class="big"><span data-tw="39">39</span></span><p>SKYCOT beta builds in 8 days</p></div>
+    <div class="meter"><i></i></div>
+  </article>
+  <article class="tile stat s2">
+    <div><span class="big c"><span data-tw="95">95</span></span><p>jobs closed by AI agents across 3 computers in 8 days</p></div>
+    <div class="meter c"><i></i></div>
+  </article>
+</section>
+
+<div id="work">
+<section id="problems" aria-labelledby="problems-h">
+  <div class="sec">
+    <span class="eyebrow">Work</span>
+    <h2 id="problems-h">Hard problems I've solved</h2>
+    <p class="intro">Most of my career has been spent on problems where getting it wrong grounds aircraft. These are the ones I'm proudest of.</p>
+  </div>
+  <div class="bento">
+
+  <article class="tile s2">
+    <div class="ill" aria-hidden="true">
+      <svg viewBox="0 0 400 150" focusable="false">
+        <g class="cloud"><circle cx="300" cy="40" r="9" class="f0"/><circle cx="313" cy="33" r="12" class="f0"/><circle cx="328" cy="41" r="8" class="f0"/><rect x="291" y="40" width="44" height="9" rx="4.5" class="f0"/></g>
+        <g class="cloud b"><circle cx="196" cy="30" r="7" class="f0"/><circle cx="206" cy="25" r="9" class="f0"/><circle cx="217" cy="31" r="6" class="f0"/><rect x="189" y="30" width="33" height="7" rx="3.5" class="f0"/></g>
+        <rect x="0" y="116" width="400" height="16" class="ft"/>
+        <line class="rwy s0" x1="0" y1="124" x2="400" y2="124" stroke-width="2" stroke-dasharray="14 14"/>
+        <text x="24" y="60" font-size="46" class="f1" data-iter="10">10</text>
+        <text x="24" y="80" font-size="13" class="f3" font-weight="600">A320s into Australia</text>
+        <g class="fleet"><circle cx="29" cy="97" r="4.5"/><circle cx="42" cy="97" r="4.5"/><circle cx="55" cy="97" r="4.5"/><circle cx="68" cy="97" r="4.5"/><circle cx="81" cy="97" r="4.5"/><circle cx="94" cy="97" r="4.5"/><circle cx="107" cy="97" r="4.5"/><circle cx="120" cy="97" r="4.5"/><circle cx="133" cy="97" r="4.5"/><circle cx="146" cy="97" r="4.5"/></g>
+        <g class="pl sync"><g transform="scale(1.3)">
+          <path class="fg" d="M-27 -1 L-32 -14 H-25.5 L-17 -3Z"/>
+          <path class="f0 s1" stroke-width="1.2" d="M-30 2 Q-30 -3 -24 -3 H20 Q30 -3 33 1 Q30 5 20 5 H-24 Q-30 5 -30 2Z"/>
+          <path class="f3" d="M-30 2 L-37 4.5 H-27Z"/>
+          <path class="f1" d="M-4 2.5 H6 L-7 12.5 H-12Z"/>
+          <rect x="-7" y="5" width="10" height="4.2" rx="2" class="f1"/>
+          <line x1="-18" y1="-0.4" x2="22" y2="-0.4" class="s3" stroke-width="1.4" stroke-dasharray="1.6 2.6"/>
+        </g></g>
+      </svg>
+    </div>
+    <span class="no">01</span>
+    <h3>Bringing ten A320s into Australia.</h3>
+    <p class="meta">Tigerair, 2007 to 2014.</p>
+    <p>Every aircraft needed regulator approvals, paperwork and a delivery slot before it could carry a passenger. I held all three, through to the airline's last A320 in 2014.</p>
+  </article>
+
+  <article class="tile">
+    <div class="ill" aria-hidden="true">
+      <div class="book"><div class="pg l"></div><div class="pg r tab"></div><div class="pg f mo tab c"></div><div class="pg f mo tab p"></div><div class="pg f mo"></div></div>
+    </div>
+    <span class="no">02</span>
+    <h3>Writing the rules a new airline flew by.</h3>
+    <p class="meta">Tigerair, 2007.</p>
+    <p>When Tigerair Australia started up, I wrote its maintenance documents, including the aircraft maintenance schedule, minimum equipment list and configuration deviation list.</p>
+  </article>
+
+  <article class="tile">
+    <div class="ill" aria-hidden="true">
+      <svg viewBox="0 0 240 150" focusable="false">
+        <g transform="translate(12 22) scale(1.05)">
+          <path class="f0 sl" stroke-width="1.6" stroke-linejoin="round" d="M8 40 L20 30 L30 28 L38 18 L48 20 L52 12 L60 16 L66 10 L72 22 L78 4 L84 14 L88 28 L98 38 L106 52 L104 66 L96 78 L86 86 L76 84 L70 78 L62 72 L56 74 L48 68 L36 70 L22 76 L12 74 L8 62 L4 50Z"/>
+          <path class="f0 sl" stroke-width="1.6" stroke-linejoin="round" d="M83 92 L92 92 L90 99 L85 99Z"/>
+          <circle cx="84" cy="80" r="3" class="fp"/><circle cx="98" cy="64" r="3" class="fp"/><circle cx="102" cy="48" r="3" class="fp"/>
+          <path d="M84 80 Q76 70 66 74 M98 64 Q80 62 66 74" class="fn sp" stroke-width="1.2" stroke-dasharray="2 3" opacity=".7"/>
+        </g>
+        <g transform="translate(81.3 99.7)">
+          <circle class="ripple mo fb fn sk" r="6" stroke-width="1.6"/>
+          <g class="pin"><path class="fk" d="M0 0 C-5 -7 -8 -11 -8 -16 A8 8 0 1 1 8 -16 C8 -11 5 -7 0 0Z"/><circle cy="-16" r="3" class="f0"/></g>
+        </g>
+        <line x1="138" y1="96" x2="234" y2="96" class="sl" stroke-width="2"/>
+        <g transform="translate(142 66)"><path class="f0 s3" stroke-width="1.6" d="M0 30 V12 Q0 0 19 0 Q38 0 38 12 V30Z"/><path class="fn s3" stroke-width="1.4" d="M8 30 V16 H30 V30 M14 16 V30 M19 16 V30 M24 16 V30"/></g>
+        <g transform="translate(190 66)"><g class="h2 fbb"><path class="fg" d="M0 30 V12 Q0 0 19 0 Q38 0 38 12 V30Z"/><path class="fn s0" stroke-width="1.4" d="M8 30 V16 H30 V30 M14 16 V30 M19 16 V30 M24 16 V30"/></g></g>
+        <text x="142" y="126" font-size="12" class="f3" font-weight="600">ports</text>
+        <text x="180" y="128" font-size="22" class="f1 p1 mo">1</text>
+        <text x="180" y="128" font-size="22" class="f1 p2">2</text>
+      </svg>
+    </div>
+    <span class="no">03</span>
+    <h3>A maintenance base from a blank page.</h3>
+    <p class="meta">Tigerair.</p>
+    <p>Took the Adelaide line maintenance base from tender to regulator approval, doubling the maintenance ports in the network.</p>
+  </article>
+
+  <article class="tile s2">
+    <div class="ill" aria-hidden="true">
+      <svg viewBox="0 0 400 150" focusable="false">
+        <defs><path id="blade" d="M90 75 C86 60 82 40 84 26 C90 23 96 24 100 28 C98 45 95 62 90 75Z"/></defs>
+        <g class="mo"><circle class="spray fc" cx="20" cy="56" r="3"/><circle class="spray fc" cx="16" cy="72" r="2.5"/><circle class="spray fc" cx="22" cy="88" r="3"/><circle class="spray fc" cx="14" cy="100" r="2"/></g>
+        <circle cx="90" cy="75" r="58" class="f0 sl" stroke-width="8"/>
+        <circle cx="90" cy="75" r="50" class="ft"/>
+        <g class="fan fb">
+          <use href="#blade" class="f3"/><use href="#blade" class="f3" transform="rotate(30 90 75)"/><use href="#blade" class="f3" transform="rotate(60 90 75)"/><use href="#blade" class="f3" transform="rotate(90 90 75)"/><use href="#blade" class="f3" transform="rotate(120 90 75)"/><use href="#blade" class="f3" transform="rotate(150 90 75)"/><use href="#blade" class="f3" transform="rotate(180 90 75)"/><use href="#blade" class="f3" transform="rotate(210 90 75)"/><use href="#blade" class="f3" transform="rotate(240 90 75)"/><use href="#blade" class="f3" transform="rotate(270 90 75)"/><use href="#blade" class="f3" transform="rotate(300 90 75)"/><use href="#blade" class="f3" transform="rotate(330 90 75)"/>
+          <circle cx="90" cy="75" r="12" class="f1"/><path d="M90 67 A8 8 0 0 1 97 79" class="fn s0" stroke-width="2.2" stroke-linecap="round"/>
+        </g>
+        <path d="M232 104 A58 58 0 0 1 348 104" class="fn st2" stroke-width="12" stroke-linecap="round"/>
+        <path d="M232 104 A58 58 0 0 1 348 104" class="gauge sync fn sg" stroke-width="12" stroke-linecap="round" pathLength="100"/>
+        <g class="needle"><line x1="290" y1="104" x2="290" y2="62" class="s1" stroke-width="3" stroke-linecap="round"/></g>
+        <circle cx="290" cy="104" r="6" class="f1"/>
+        <text x="290" y="140" text-anchor="middle" font-size="22" class="f1">$<tspan data-loop="500000" data-comma="1" data-b=".84">500,000</tspan>+</text>
+      </svg>
+    </div>
+    <span class="no">04</span>
+    <h3>Finding fuel in the engines.</h3>
+    <p class="meta">Tigerair.</p>
+    <p>An engine wash program recovered 2 to 3 percent engine performance and saved more than $500,000 a year in fuel.</p>
+  </article>
+
+  <article class="tile s2">
+    <div class="ill" aria-hidden="true">
+      <svg viewBox="0 0 400 150" focusable="false">
+        <rect x="104" y="66" width="192" height="18" rx="9" class="ft"/>
+        <g class="mo"><rect class="blk fp" x="110" y="70" width="16" height="10" rx="3"/><rect class="blk fk" x="110" y="70" width="16" height="10" rx="3"/><rect class="blk fc" x="110" y="70" width="16" height="10" rx="3"/><rect class="blk fp" x="110" y="70" width="16" height="10" rx="3"/><rect class="blk fk" x="110" y="70" width="16" height="10" rx="3"/></g>
+        <path d="M24 38 V108 A38 11 0 0 0 100 108 V38" class="f0 sl" stroke-width="2"/>
+        <rect class="lvL fbb" x="29" y="52" width="66" height="62" rx="8" fill="url(#gCP)" opacity=".8"/>
+        <path d="M24 61 A38 11 0 0 0 100 61 M24 84 A38 11 0 0 0 100 84" class="fn sl" stroke-width="2"/>
+        <ellipse cx="62" cy="38" rx="38" ry="11" class="f0 sl" stroke-width="2"/>
+        <path d="M300 38 V108 A38 11 0 0 0 376 108 V38" class="f0 sl" stroke-width="2"/>
+        <rect class="lvR fbb" x="305" y="52" width="66" height="62" rx="8" fill="url(#gPK)" opacity=".85"/>
+        <path d="M300 61 A38 11 0 0 0 376 61 M300 84 A38 11 0 0 0 376 84" class="fn sl" stroke-width="2"/>
+        <ellipse cx="338" cy="38" rx="38" ry="11" class="f0 sl" stroke-width="2"/>
+        <g class="chk fb"><circle cx="372" cy="24" r="11" class="fo"/><path d="M367 24 l3.5 3.5 6.5 -7" class="fn s0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <text x="62" y="140" text-anchor="middle" font-size="12" class="f3" font-weight="600">SAP</text>
+        <text x="338" y="140" text-anchor="middle" font-size="12" class="f3" font-weight="600">Air New Zealand</text>
+      </svg>
+    </div>
+    <span class="no">05</span>
+    <h3>Moving every maintenance record without losing one.</h3>
+    <p class="meta">Tigerair, 2015.</p>
+    <p>Migrated the fleet's maintenance data from SIA Engineering's SAP system to Air New Zealand: the records that prove every aircraft is safe to fly.</p>
+  </article>
+
+  <article class="tile">
+    <div class="ill" aria-hidden="true">
+      <svg viewBox="0 0 240 150" focusable="false">
+        <rect x="20" y="14" width="66" height="122" rx="13" class="f0 s1" stroke-width="2.4"/>
+        <rect x="26" y="21" width="54" height="108" rx="8" class="ft"/>
+        <rect x="44" y="25" width="18" height="5" rx="2.5" class="f1"/>
+        <path class="f1" d="M53 44 c1.4 0 2.2 1.2 2.2 2.8 v7.2 l11 6.4 v3 l-11 -3.4 v6.6 l3.4 2.6 v2.4 l-5.6 -1.6 -5.6 1.6 v-2.4 l3.4 -2.6 v-6.6 l-11 3.4 v-3 l11 -6.4 v-7.2 c0 -1.6 .8 -2.8 2.2 -2.8z"/>
+        <rect x="35" y="92" width="36" height="21" rx="10.5" class="fl"/>
+        <rect x="35" y="92" width="36" height="21" rx="10.5" class="trkOn fa"/>
+        <circle cx="60.5" cy="102.5" r="8.5" class="knob f0"/>
+        <line x1="100" y1="124" x2="236" y2="124" class="sl" stroke-width="2"/>
+        <rect x="110" y="112" width="26" height="12" rx="2" class="ft"/>
+        <rect x="202" y="112" width="26" height="12" rx="2" class="ft"/>
+        <path d="M123 108 Q169 20 215 108" class="fn s3" stroke-width="1.6" stroke-dasharray="3 5" opacity=".6"/>
+        <path d="M123 108 Q169 20 215 108" class="gtr fn sp" stroke-width="2.2" pathLength="100" stroke-linecap="round"/>
+        <g transform="translate(123 104)"><g class="gx"><g class="gy"><g transform="scale(.62)">
+          <path class="fg" d="M-27 -1 L-32 -14 H-25.5 L-17 -3Z"/>
+          <path class="f0 s1" stroke-width="1.6" d="M-30 2 Q-30 -3 -24 -3 H20 Q30 -3 33 1 Q30 5 20 5 H-24 Q-30 5 -30 2Z"/>
+          <path class="f1" d="M-4 2.5 H6 L-7 12.5 H-12Z"/>
+        </g></g></g></g>
+      </svg>
+    </div>
+    <span class="no">06</span>
+    <h3>Phones on, gate to gate.</h3>
+    <p class="meta">Tigerair, 2014.</p>
+    <p>Ran the program that won CASA approval for passengers to use their devices from boarding to arrival.</p>
+    <a class="more" href="https://australianaviation.com.au/2014/09/tigerair-australia-joins-gate-to-gate-club/" target="_blank" rel="noopener noreferrer">Australian Aviation, September 2014 <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </article>
+
+  <article class="tile">
+    <div class="ill" aria-hidden="true">
+      <svg viewBox="0 0 240 150" focusable="false">
+        <path d="M0 150 V98 Q22 90 36 102 Q50 114 62 150Z" class="f0 sl" stroke-width="1.5"/>
+        <path d="M240 0 V58 Q220 64 206 50 Q194 38 198 0Z" class="f0 sl" stroke-width="1.5"/>
+        <line x1="24" y1="112" x2="216" y2="38" class="s3" stroke-width="1.6" stroke-dasharray="4 5" opacity=".7"/>
+        <circle cx="24" cy="112" r="4.5" class="f1"/><circle cx="216" cy="38" r="4.5" class="f1"/>
+        <g class="alt"><rect x="92" y="54" width="8" height="8" rx="2" class="fc"/></g>
+        <g class="alt"><rect x="146" y="104" width="8" height="8" rx="2" class="fc"/></g>
+        <g class="edp">
+          <g class="ring fb"><circle r="36" class="sc" stroke-width="1.6" stroke-dasharray="3 4" style="fill:rgba(8,145,178,.10)"/></g>
+          <g transform="rotate(-21) scale(1.15)">
+            <path class="f1" d="M2 -2 L-4 -16 H-7.5 L-3 -2Z M2 2 L-4 16 H-7.5 L-3 2Z M-10 -1 L-14 -6.5 H-11.5 L-8 -1Z M-10 1 L-14 6.5 H-11.5 L-8 1Z"/>
+            <path class="f0 s1" stroke-width="1" d="M-14 0 Q-14 -2.2 -10 -2.2 H10 Q15 -2.2 16.5 0 Q15 2.2 10 2.2 H-10 Q-14 2.2 -14 0Z"/>
+            <ellipse cx="-1" cy="-8" rx="2.6" ry="1.5" class="fp"/><ellipse cx="-1" cy="8" rx="2.6" ry="1.5" class="fp"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <span class="no">07</span>
+    <h3>New rules for twin-engine jets.</h3>
+    <p class="meta">Tigerair, 2015.</p>
+    <p>Moved the fleet onto CASA's new extended diversion time rules (EDTO), which set how far a two-engine jet may fly from a suitable airport.</p>
+  </article>
+
+  <article class="tile s2">
+    <div class="ill" aria-hidden="true">
+      <svg viewBox="0 0 400 150" focusable="false">
+        <line x1="44" y1="124" x2="250" y2="124" class="sl" stroke-width="2"/>
+        <line x1="44" y1="60" x2="250" y2="60" class="s3" stroke-width="1.2" stroke-dasharray="4 4" opacity=".7"/>
+        <text x="38" y="64" text-anchor="end" font-size="11" class="f3" font-weight="600">100%</text>
+        <rect class="bar1 fbb ft" x="76" y="60" width="60" height="64" rx="8"/>
+        <rect class="bar2 fbb sync fg" x="160" y="39" width="60" height="85" rx="8"/>
+        <text x="106" y="142" text-anchor="middle" font-size="11" class="f3" font-weight="600">the year before</text>
+        <text x="190" y="142" text-anchor="middle" font-size="11" class="f3" font-weight="600">May 2020</text>
+        <g class="arrow"><path d="M320 30 l9 10 h-5 v8 h-8 v-8 h-5z" class="fk"/></g>
+        <text x="320" y="96" text-anchor="middle" font-size="48" class="f1"><tspan data-loop="133" data-a=".14" data-b=".44">133</tspan>%</text>
+      </svg>
+    </div>
+    <span class="no">08</span>
+    <h3>Selling through COVID.</h3>
+    <p class="meta">PPG Aerospace, 2020.</p>
+    <p>My best sales month came in May 2020, at 133 percent of the year before.</p>
+  </article>
+
+  <article class="tile s2">
+    <div class="ill" aria-hidden="true">
+      <svg viewBox="0 0 400 150" focusable="false">
+        <ellipse class="shadow fb f1" cx="200" cy="136" rx="74" ry="5" style="fill-opacity:.14"/>
+        <g class="bubs">
+          <g class="bub fb"><circle cx="100" cy="44" r="9" class="fn sc" stroke-width="1.6"/><text x="100" y="47.5" text-anchor="middle" font-size="9" class="fc">H<tspan font-size="6.5" dy="1.5">2</tspan></text></g>
+          <g class="bub fb"><circle cx="118" cy="82" r="5" class="fn sc" stroke-width="1.4"/></g>
+          <g class="bub fb"><circle cx="300" cy="60" r="9" class="fn sp" stroke-width="1.6"/><text x="300" y="63.5" text-anchor="middle" font-size="9" class="fp">H<tspan font-size="6.5" dy="1.5">2</tspan></text></g>
+          <g class="bub fb"><circle cx="286" cy="100" r="4" class="fn sp" stroke-width="1.4"/></g>
+          <g class="bub fb"><circle cx="78" cy="96" r="6" class="fn sk" stroke-width="1.4"/></g>
+          <g class="bub fb"><circle cx="322" cy="30" r="5" class="fn sc" stroke-width="1.4"/></g>
+        </g>
+        <g class="hov">
+          <path d="M174 64 L134 54 M226 64 L266 54" class="fn s1" stroke-width="5" stroke-linecap="round"/>
+          <rect x="124" y="44" width="18" height="13" rx="3" class="f1"/><rect x="258" y="44" width="18" height="13" rx="3" class="f1"/>
+          <ellipse cx="133" cy="41" rx="38" ry="5.5" class="fp" style="fill-opacity:.18"/><ellipse cx="267" cy="41" rx="38" ry="5.5" class="fp" style="fill-opacity:.18"/>
+          <ellipse cx="133" cy="41" rx="38" ry="3.2" class="rot fb fp"/><ellipse cx="267" cy="41" rx="38" ry="3.2" class="rot fb fp"/>
+          <path d="M182 78 L172 114 H160 M218 78 L228 114 H240" class="fn s1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="168" y="52" width="64" height="27" rx="11" class="f1"/>
+          <circle cx="200" cy="65.5" r="5.5" class="fc"/>
+          <rect x="176" y="84" width="48" height="19" rx="9.5" class="fgc"/>
+          <text x="200" y="97.5" text-anchor="middle" font-size="11" fill="#FFFFFF">H<tspan font-size="8" dy="2">2</tspan></text>
+        </g>
+      </svg>
+    </div>
+    <span class="no">09</span>
+    <h3>A hydrogen drone, legal to fly.</h3>
+    <p class="meta">Swinburne AIR Hub, 2022 to 2023.</p>
+    <p>Set up the university's drone operator's certificate and was the person accountable to CASA for it. Worked through the rules for carrying hydrogen gas, and held the schedule and budget for Hydrogen to the Skies.</p>
+    <a class="more" href="https://www.youtube.com/watch?v=sqEgjOA--dY" target="_blank" rel="noopener noreferrer">Watch: Hydrogen to the Skies <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </article>
+
+  <article class="tile s2">
+    <div class="ill" aria-hidden="true">
+      <svg viewBox="0 0 400 150" focusable="false">
+        <defs>
+          <clipPath id="radarClip"><circle cx="120" cy="75" r="66"/></clipPath>
+          <linearGradient id="gSw2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0891B2" stop-opacity="0"/><stop offset="1" stop-color="#0891B2" stop-opacity=".42"/></linearGradient>
+        </defs>
+        <circle cx="120" cy="75" r="66" class="f0 sl" stroke-width="1.5"/>
+        <circle cx="120" cy="75" r="44" class="fn sl" stroke-width="1.2"/>
+        <circle cx="120" cy="75" r="22" class="fn sl" stroke-width="1.2"/>
+        <path d="M54 75 H186 M120 9 V141" class="fn sl" stroke-width="1"/>
+        <g clip-path="url(#radarClip)">
+          <g class="sweep"><path d="M120 75 L120 9 A66 66 0 0 1 166.7 28.3 Z" fill="url(#gSw2)"/><line x1="120" y1="75" x2="166.7" y2="28.3" class="sc" stroke-width="1.6"/></g>
+          <line x1="78" y1="30" x2="138" y2="69" class="sp" stroke-width="1.2" stroke-dasharray="3 4" opacity=".55"/>
+          <line class="pjb sk" x1="172" y1="22" x2="100" y2="61" stroke-width="1.2" stroke-dasharray="3 4"/>
+          <line class="pjb2 so" x1="141.3" y1="38.8" x2="180" y2="111" stroke-width="1.2" stroke-dasharray="3 4"/>
+          <g class="al"><circle cx="114.3" cy="53.6" r="13" class="fn sk" stroke-width="2"/><circle cx="114.3" cy="53.6" r="3" class="fk"/></g>
+          <g class="ok"><circle cx="114.3" cy="53.6" r="13" class="fn so" stroke-width="2"/></g>
+          <g transform="translate(78 30)"><g class="ta"><line x1="-9" y1="-6" x2="0" y2="0" class="sp" stroke-width="2" opacity=".5"/><circle r="4.5" class="fp"/><rect x="7" y="-14" width="22" height="9" rx="2" class="fn sp" stroke-width="1"/></g></g>
+          <g transform="translate(172 22)"><g class="tb"><circle r="4.5" class="fc"/><rect x="7" y="-14" width="22" height="9" rx="2" class="fn sc" stroke-width="1"/></g></g>
+        </g>
+        <rect x="222" y="40" width="160" height="72" rx="14" class="f0 sl" stroke-width="1.5"/>
+        <g class="al"><circle cx="242" cy="64" r="5" class="fk"/><text x="254" y="68.5" font-size="13" class="f1">Conflict</text></g>
+        <g class="ok"><circle cx="242" cy="64" r="5" class="fo"/><text x="254" y="68.5" font-size="13" class="f1">Resolved</text></g>
+        <rect x="238" y="84" width="96" height="6" rx="3" class="ft"/>
+        <rect x="238" y="96" width="64" height="6" rx="3" class="ft"/>
+      </svg>
+    </div>
+    <span class="no">10</span>
+    <h3>A $2.7 billion air traffic system.</h3>
+    <p class="meta">Airservices Australia, now.</p>
+    <p>I turn CMATS, Australia's new civil and military air traffic system, into real benefits for the people who fly: user preferred routes, a single flight data region, wake turbulence management, and conflict detection tools.</p>
+  </article>
+
+  </div>
+</section>
+
+<section id="made" aria-labelledby="made-h">
+  <div class="sec">
+    <span class="eyebrow">Work</span>
+    <h2 id="made-h">Cool things I've made</h2>
+    <p class="intro">Not all of it is software. Lately most of it is.</p>
+  </div>
+  <div class="bento">
+
+  <article class="tile s2">
+    <div class="ill" aria-hidden="true">
+      <svg viewBox="0 0 400 150" focusable="false">
+        <rect x="16" y="12" width="368" height="126" rx="12" class="f0 sl" stroke-width="1.5"/>
+        <line x1="16" y1="34" x2="384" y2="34" class="sl" stroke-width="1.5"/>
+        <circle cx="32" cy="23" r="4.5" fill="#FF5F57"/><circle cx="45" cy="23" r="4.5" fill="#FEBC2E"/><circle cx="58" cy="23" r="4.5" fill="#28C840"/>
+        <text x="40" y="64" font-size="12" class="f3" font-weight="600">beta builds</text>
+        <text x="40" y="106" font-size="44" class="f1"><tspan data-loop="39" data-from="1" data-b=".72">39</tspan></text>
+        <rect x="40" y="118" width="150" height="6" rx="3" class="ft"/>
+        <rect class="bprog fbl sync" x="40" y="118" width="150" height="6" rx="3" fill="url(#gPKh)"/>
+        <g>
+          <g class="app fb"><rect x="226" y="46" width="38" height="38" rx="10" class="fg"/><circle cx="245" cy="65" r="8" fill="#FFFFFF"/></g>
+          <g class="app fb"><rect x="272" y="46" width="38" height="38" rx="10" class="fgc"/><path d="M291 55 l10 18 h-20z" fill="#FFFFFF"/></g>
+          <g class="app fb"><rect x="318" y="46" width="38" height="38" rx="10" class="fk"/><path d="M337 56 l2.6 5.6 6 .7 -4.5 4.1 1.2 6 -5.3 -3 -5.3 3 1.2 -6 -4.5 -4.1 6 -.7z" fill="#FFFFFF"/></g>
+          <g class="app fb"><rect x="226" y="92" width="38" height="38" rx="10" class="fc"/><rect x="236" y="102" width="18" height="18" rx="4" fill="#FFFFFF"/></g>
+          <g class="app fb"><rect x="272" y="92" width="38" height="38" rx="10" class="fp"/><path d="M283 117 v-8 M291 117 v-14 M299 117 v-10" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/></g>
+          <g class="app fb"><rect x="318" y="92" width="38" height="38" rx="10" class="fg"/><circle cx="337" cy="111" r="8" fill="none" stroke="#FFFFFF" stroke-width="3.5"/></g>
+        </g>
+      </svg>
+    </div>
+    <h3>SKYCOT</h3>
+    <p>A Mac app where kids describe the app they want and AI builds it, with a parent in the loop. 39 beta builds in eight days.</p>
+    <a class="more" href="https://skycot.com" target="_blank" rel="noopener noreferrer">skycot.com <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </article>
+
+  <article class="tile s2">
+    <div class="ill" aria-hidden="true">
+      <svg viewBox="0 0 400 150" focusable="false">
+        <rect x="16" y="12" width="112" height="126" rx="12" class="f0 sl" stroke-width="1.5"/>
+        <rect x="144" y="12" width="112" height="126" rx="12" class="f0 sl" stroke-width="1.5"/>
+        <rect x="272" y="12" width="112" height="126" rx="12" class="f0 sl" stroke-width="1.5"/>
+        <text x="28" y="33" font-size="12" class="f3" font-weight="600">To do</text>
+        <text x="156" y="33" font-size="12" class="f3" font-weight="600">Doing</text>
+        <text x="284" y="33" font-size="12" class="f3" font-weight="600">Done</text>
+        <circle cx="338" cy="29" r="4" class="fo"/>
+        <text x="372" y="33" text-anchor="end" font-size="13" class="f1"><tspan data-loop="95" data-b=".9">95</tspan></text>
+        <g class="lane1" transform="translate(0 44)"><g class="card sync"><rect x="24" y="0" width="96" height="26" rx="7" class="f0 sl" stroke-width="1.5"/><rect x="31" y="8" width="4" height="10" rx="2" class="fp"/><rect x="41" y="7" width="54" height="4.5" rx="2" class="ft"/><rect x="41" y="15" width="36" height="4.5" rx="2" class="ft"/></g></g>
+        <g class="lane2" transform="translate(0 76)"><g class="card"><rect x="24" y="0" width="96" height="26" rx="7" class="f0 sl" stroke-width="1.5"/><rect x="31" y="8" width="4" height="10" rx="2" class="fk"/><rect x="41" y="7" width="48" height="4.5" rx="2" class="ft"/><rect x="41" y="15" width="40" height="4.5" rx="2" class="ft"/></g></g>
+        <g class="lane3" transform="translate(0 108)"><g class="card"><rect x="24" y="0" width="96" height="26" rx="7" class="f0 sl" stroke-width="1.5"/><rect x="31" y="8" width="4" height="10" rx="2" class="fc"/><rect x="41" y="7" width="58" height="4.5" rx="2" class="ft"/><rect x="41" y="15" width="30" height="4.5" rx="2" class="ft"/></g></g>
+      </svg>
+    </div>
+    <h3>My agent job board</h3>
+    <p>I post jobs on GitHub and Claude and Codex pick them up, do the work, ask me when something is unclear, and report back done or blocked. My first board closed 95 jobs across three computers in eight days.</p>
+  </article>
+
+  <article class="tile s2">
+    <div class="ill" aria-hidden="true">
+      <svg viewBox="0 0 400 150" focusable="false">
+        <rect x="14" y="48" width="126" height="54" rx="14" class="f0 sl" stroke-width="1.5"/>
+        <path d="M30 102 l-6 12 16 -12" class="f0 sl" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="30" y="102" width="12" height="2" class="f0"/>
+        <rect class="typ fbl f3" x="28" y="64" width="96" height="6" rx="3"/>
+        <rect class="typ b fbl f3" x="28" y="80" width="60" height="6" rx="3"/>
+        <rect class="caret mo fp" x="93" y="77" width="2" height="12" rx="1"/>
+        <g>
+          <path class="lane fn sg" pathLength="100" stroke-width="2.5" stroke-linecap="round" d="M180 75 C212 75 212 28 244 28 H384"/>
+          <path class="lane fn sg" pathLength="100" stroke-width="2.5" stroke-linecap="round" d="M180 75 C212 75 212 58 244 58 H384"/>
+          <path class="lane fn sg" pathLength="100" stroke-width="2.5" stroke-linecap="round" d="M180 75 C212 75 212 92 244 92 H384"/>
+          <path class="lane fn sg" pathLength="100" stroke-width="2.5" stroke-linecap="round" d="M180 75 C212 75 212 122 244 122 H384"/>
+        </g>
+        <rect class="tk f0 sp" x="318" y="21" width="44" height="14" rx="7" stroke-width="1.5"/>
+        <rect class="tk t2 f0 sk" x="300" y="51" width="44" height="14" rx="7" stroke-width="1.5"/>
+        <rect class="tk t3 f0 sc" x="326" y="85" width="44" height="14" rx="7" stroke-width="1.5"/>
+        <rect class="tk t4 f0 sp" x="308" y="115" width="44" height="14" rx="7" stroke-width="1.5"/>
+        <line x1="140" y1="75" x2="156" y2="75" class="s3" stroke-width="2" stroke-linecap="round"/>
+        <g class="node fb"><circle cx="168" cy="75" r="13" class="fg"/><path d="M162 75 h12 M169 70 l5 5 -5 5" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+      </svg>
+    </div>
+    <h3>DAC (Declarative Agent Compilation)</h3>
+    <p>An open-source prompt compiler, MIT licensed, that turns a plain-English idea into a plan many agents can run in parallel. It started life as GYSOM.</p>
+    <a class="more" href="https://github.com/mark-hallam/DAC-Declarative-Agent-Compilation" target="_blank" rel="noopener noreferrer">GitHub <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="more" href="https://gysom.com" target="_blank" rel="noopener noreferrer">gysom.com <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </article>
+
+  <article class="tile s2">
+    <div class="ill sky" aria-hidden="true">
+      <svg viewBox="0 0 400 150" focusable="false" preserveAspectRatio="xMidYMid slice">
+        <rect class="skybg" x="0" y="0" width="400" height="150" fill="url(#gSky)"/>
+        <g class="cloud"><circle cx="90" cy="112" r="10" fill="#FFFFFF"/><circle cx="104" cy="104" r="14" fill="#FFFFFF"/><circle cx="121" cy="112" r="9" fill="#FFFFFF"/><rect x="80" y="112" width="50" height="10" rx="5" fill="#FFFFFF"/></g>
+        <g class="cloud b"><circle cx="320" cy="40" r="8" fill="#FFFFFF"/><circle cx="332" cy="33" r="11" fill="#FFFFFF"/><circle cx="346" cy="40" r="7" fill="#FFFFFF"/><rect x="312" y="40" width="40" height="8" rx="4" fill="#FFFFFF"/></g>
+        <g transform="translate(0 46)"><g class="fly"><g class="flyy">
+          <path d="M-18 0 H18" stroke="#1D1D1F" stroke-width="3" stroke-linecap="round"/>
+          <rect x="-8" y="-4" width="16" height="9" rx="4" fill="#1D1D1F"/>
+          <ellipse cx="-18" cy="-4" rx="11" ry="1.8" fill="#8B5CF6"/><ellipse cx="18" cy="-4" rx="11" ry="1.8" fill="#8B5CF6"/>
+          <rect x="-6" y="6" width="12" height="5" rx="2.5" fill="#0891B2"/>
+        </g></g></g>
+        <circle class="halo fb" cx="200" cy="80" r="26" fill="#FFFFFF" opacity=".6"/>
+        <g class="play fb"><circle cx="200" cy="80" r="26" fill="#FFFFFF"/><path d="M193 68 L213 80 L193 92Z" fill="#DB2777"/></g>
+      </svg>
+    </div>
+    <h3>Hydrogen to the Skies</h3>
+    <p>Team project at Swinburne's AIR Hub: Australia's first hydrogen-propelled drone program.</p>
+    <a class="more" href="https://www.youtube.com/watch?v=sqEgjOA--dY" target="_blank" rel="noopener noreferrer">Watch: Hydrogen to the Skies <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </article>
+
+  </div>
+</section>
+</div>
+
+<section id="career" aria-labelledby="career-h">
+  <div class="sec">
+    <h2 id="career-h">Career</h2>
+    <p class="intro">Eighteen years, one pattern: find where a complicated system isn't working, work out what's actually true, and fix the cause.</p>
+  </div>
+  <div class="bento">
+    <div class="tile s4 rail" aria-hidden="true">
+      <div class="track"><span class="fillbar"></span>
+        <span class="yr" style="left:0%">2004</span>
+        <span class="yr" style="left:13.6%">2007</span>
+        <span class="yr" style="left:63.6%">2018</span>
+        <span class="yr" style="left:86.4%">2023</span>
+        <span class="yr end" style="left:100%">now</span>
+      </div>
+    </div>
+
+    <article class="tile s2">
+      <span class="when">Nov 2023 to now</span>
+      <h3>Airservices Australia</h3>
+      <p class="meta">Project Manager.</p>
+      <p>Enabling the benefits of CMATS, the national civil and military air traffic management system Airservices is delivering with Defence through OneSKY: user preferred routes, a single flight data region, wake turbulence management, and medium-term and long-term conflict detection.</p>
+    </article>
+    <article class="tile s2">
+      <span class="when">Jan 2025 to now</span>
+      <h3>SKYCOT</h3>
+      <p class="meta">Founder.</p>
+      <p>The family-friendly AI developer: kids dream it up, SKYCOT builds it, and nothing goes online without a grown-up's code. Separate from my work at Airservices.</p>
+    </article>
+    <article class="tile s2">
+      <span class="when">Aug 2022 to Jun 2023</span>
+      <h3>Swinburne University of Technology, AIR Hub</h3>
+      <p class="meta">Project Leader, Clean Propulsion (drones and advanced air mobility).</p>
+      <p>Hydrogen to the Skies. Set up the university's CASA drone operator's certificate and was the person accountable to CASA for it; the regulatory requirements for hydrogen gas, the schedule, the budget, design work and training.</p>
+    </article>
+    <article class="tile">
+      <span class="when">Jul 2020 to Aug 2022</span>
+      <h3>Independent consultant, aerospace, aviation and defence.</h3>
+      <p>Clients confidential.</p>
+    </article>
+    <article class="tile">
+      <span class="when">Jun 2019 to Jun 2020</span>
+      <h3>PPG Aerospace</h3>
+      <p class="meta">Account Manager, Military and General Aviation.</p>
+      <p>Best sales month in May 2020, at 133 percent of the year before, in the middle of COVID.</p>
+    </article>
+    <article class="tile s4">
+      <span class="when">Oct 2007 to Mar 2018</span>
+      <h3>Tigerair Australia, ten and a half years.</h3>
+      <div class="roles">
+        <div class="role">
+          <h4>Project Manager (Engineering)</h4>
+          <p class="meta">Apr 2012 to Mar 2018.</p>
+          <p>Entry into service of ten A320s, the move to the new EDTO rules, gate-to-gate device approval, the digital maintenance records program, and the 2015 migration of maintenance data to Air New Zealand.</p>
+        </div>
+        <div class="role">
+          <h4>Deputy Quality Manager</h4>
+          <p class="meta">May 2015 to Mar 2018, alongside the project role.</p>
+          <p>Ran the engineering audit program, raised risks and findings, tracked every corrective action to closure, and reported to the executive team on quality, risk and change.</p>
+        </div>
+        <div class="role">
+          <h4>Executive Engineer</h4>
+          <p class="meta">Oct 2007 to Mar 2012.</p>
+          <p>Wrote the start-up maintenance documents, set up the Adelaide maintenance base, introduced the engine wash program, contracted ground support equipment across the network, and recovered more than $1 million in hail damage insurance claims.</p>
+        </div>
+      </div>
+    </article>
+    <article class="tile s2">
+      <span class="when">2005 to 2007</span>
+      <h3>RMIT University</h3>
+      <p class="meta">Bachelor of Aerospace Engineering studies.</p>
+      <p>Left to join Tigerair.</p>
+    </article>
+    <article class="tile s2">
+      <span class="when">2004</span>
+      <h3>RMIT University</h3>
+      <p class="meta">Advanced Diploma of Aerospace Engineering.</p>
+    </article>
+  </div>
+</section>
+
+<section id="credentials" aria-labelledby="cred-h">
+  <div class="sec"><h2 id="cred-h">Credentials</h2></div>
+  <div class="bento">
+    <div class="tile cred">
+      <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6h10M10 12h10M10 18h10"/><path d="M3.5 6l1.5 1.5L7.5 5M3.5 12l1.5 1.5 2.5-2.5M3.5 18l1.5 1.5 2.5-2.5"/></svg></span>
+      <p><strong>Project Management Professional (PMP)</strong><span>Project Management Institute, since 2018</span></p>
+    </div>
+    <div class="tile cred">
+      <span class="badge c" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.6"/><path d="M1.5 9.5c3.5 0 6 .9 8 2.2M22.5 9.5c-3.5 0-6 .9-8 2.2M3 13.5c2.6 0 4.6.4 6.3 1M21 13.5c-2.6 0-4.6.4-6.3 1M5.5 17c1.4 0 2.6.2 3.8.6M18.5 17c-1.4 0-2.6.2-3.8.6"/></svg></span>
+      <p><strong>Private Pilot Licence</strong><span>about 300 hours, including a four-day outback navigation trip</span></p>
+    </div>
+    <div class="tile cred">
+      <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3.5 2.4 8.5 2.4 12 0v-5M22 9v6"/></svg></span>
+      <p><strong>Advanced Diploma of Aerospace Engineering</strong><span>RMIT University</span></p>
+    </div>
+    <div class="tile cred">
+      <span class="badge c" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8M7 12l3-3 2 2 4-4"/></svg></span>
+      <p><strong>Certificate IV in Training and Assessment</strong></p>
+    </div>
+  </div>
+</section>
+
+<div class="bento duo">
+  <section class="tile s2 r2 writing" id="writing" aria-labelledby="writing-h">
+    <span class="eyebrow">Writing</span>
+    <h2 id="writing-h">Notes from building with agents.</h2>
+    <ul class="list">
+      <li><a href="/writing/the-path-of-least-resistance-for-agents"><span class="ix" aria-hidden="true">01</span><span class="t">The path of least resistance for agents</span><span class="d">May 2026</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="/writing/drift-is-the-silent-killer"><span class="ix" aria-hidden="true">02</span><span class="t">Drift is the silent killer of agent swarms</span><span class="d">May 2026</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="/writing/code-that-writes-code"><span class="ix" aria-hidden="true">03</span><span class="t">Code that writes code</span><span class="d">May 2026</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="/writing/if-you-ask-for-it-twice-automate-it"><span class="ix" aria-hidden="true">04</span><span class="t">If you ask for it twice, automate it</span><span class="d">May 2026</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="/writing/mission-shape-zoom-out-to-100000-feet"><span class="ix" aria-hidden="true">05</span><span class="t">Mission shape: zoom out to one hundred thousand feet</span><span class="d">May 2026</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="/writing/the-room-is-the-architecture"><span class="ix" aria-hidden="true">06</span><span class="t">The room is the architecture</span><span class="d">May 2026</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    </ul>
+    <a class="more" href="/writing">All writing <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M4 2l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </section>
+
+  <section class="tile s2 r2 about" id="about" aria-labelledby="about-h">
+    <div class="about-top">
+      <h2 id="about-h">About</h2>
+      <svg class="glyph" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <rect class="strip fb fn sp" x="8" y="8" width="48" height="48" rx="8" stroke-width="2"/>
+        <path class="strip s-b fb fn sk" d="M32 15 L47 23.5 V40.5 L32 49 L17 40.5 V23.5Z" stroke-width="2"/>
+        <circle class="strip s-c fb fn sc" cx="32" cy="32" r="10" stroke-width="2"/>
+        <circle class="core fb fg" cx="32" cy="32" r="4"/>
+      </svg>
+    </div>
+    <p>I'm not a developer. My background is aerospace and aviation, and in every role the job was the same: find where a complicated system isn't working, work out what's actually true, and fix the cause.</p>
+    <p>Now I use the same method with AI. I strip a problem back to what's actually true, write it down so clearly that an agent can't misread it, then let a team of AI agents build it while I check the results like an engineer would. I'm doing all of this in public, from Melbourne.</p>
+  </section>
+
+  <section class="tile s4 contact" id="contact" aria-labelledby="contact-h">
+    <div class="aurora soft" aria-hidden="true"><i></i><i></i><i></i></div>
+    <span class="eyebrow">Contact</span>
+    <h2 id="contact-h">Say hello.</h2>
+    <p>Get in touch about roles and projects building with, or for, AI agents.</p>
+    <a class="mail" href="mailto:markhallam@skycot.com">markhallam@skycot.com</a>
+    <ul class="social">
+      <li><a href="https://x.com/MarkHallam" target="_blank" rel="noopener noreferrer">X</a></li>
+      <li><a href="https://www.linkedin.com/in/mark-hallam/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+      <li><a href="https://www.youtube.com/@markhallam-ai" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+    </ul>
+    <div class="sub" role="group" aria-labelledby="sub-label">
+      <label id="sub-label" for="sub-email">Get new essays by email.</label>
+      <div class="row"><input id="sub-email" type="email" name="email" autocomplete="email"><button type="button">Subscribe</button></div>
+    </div>
+  </section>
+</div>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#main">Mark Hallam</a>
+    <span>© 2026 Mark Hallam · Melbourne, Australia</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var d=document.documentElement;
+  d.classList.add('js');
+  var btn=document.getElementById('theme');
+  function apply(t){
+    if(t==='dark'){d.setAttribute('data-theme','dark');}else{d.removeAttribute('data-theme');}
+    if(btn){btn.setAttribute('aria-pressed',t==='dark'?'true':'false');}
+  }
+  var saved=null;
+  try{saved=window.localStorage.getItem('mh-theme');}catch(e){}
+  apply(saved==='dark'?'dark':'light');
+  if(btn){btn.addEventListener('click',function(){
+    var t=d.getAttribute('data-theme')==='dark'?'light':'dark';
+    apply(t);
+    try{window.localStorage.setItem('mh-theme',t);}catch(e){}
+  });}
+
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('IntersectionObserver' in window)){return;}
+  d.classList.add('motion');
+
+  var tiles=Array.prototype.slice.call(document.querySelectorAll('.tile'));
+  var vh=window.innerHeight||800;
+  tiles.forEach(function(t){ if(t.getBoundingClientRect().top>vh*0.9){t.classList.add('pre');} });
+
+  function fmt(v,el){
+    var dec=+(el.getAttribute('data-dec')||0);
+    var n=dec?v.toFixed(dec):String(Math.round(v));
+    if(el.hasAttribute('data-comma')){n=Number(n).toLocaleString('en-AU',{minimumFractionDigits:dec,maximumFractionDigits:dec});}
+    return n;
+  }
+  function easeOut(x){return 1-Math.pow(1-x,3);}
+  function easeInOut(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;}
+
+  /* One shot count up for the number tiles */
+  function countUp(tile){
+    var els=Array.prototype.slice.call(tile.querySelectorAll('[data-tw]'));
+    if(!els.length){return;}
+    var t0=performance.now(),dur=1500;
+    els.forEach(function(el){el._to=parseFloat(el.getAttribute('data-tw'));el.textContent=fmt(0,el);});
+    function step(now){
+      var p=Math.min(1,(now-t0)/dur),e=easeOut(p);
+      els.forEach(function(el){el.textContent=fmt(p<1?el._to*e:el._to,el);});
+      if(p<1){requestAnimationFrame(step);}
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* Looping counters, locked to the tile's CSS animation clock */
+  var loops=[];
+  tiles.forEach(function(t){
+    var s=t.querySelector('.sync');
+    if(!s){return;}
+    Array.prototype.forEach.call(t.querySelectorAll('[data-loop],[data-iter]'),function(el){loops.push({t:t,el:el,s:s,a:null,last:null});});
+  });
+  function fleet(t,v){
+    var cs=t.querySelectorAll('.fleet circle');
+    for(var j=0;j<cs.length;j++){cs[j].classList.toggle('off',j>=v);}
+  }
+  function tick(){
+    for(var i=0;i<loops.length;i++){
+      var L=loops[i];
+      if(!L.t.classList.contains('on')){continue;}
+      if(!L.a&&L.s.getAnimations){var as=L.s.getAnimations();L.a=as.length?as[0]:null;}
+      if(!L.a||!L.a.effect){continue;}
+      var ct=L.a.effect.getComputedTiming(),p=ct.progress==null?0:ct.progress,txt;
+      if(L.el.hasAttribute('data-iter')){
+        var n=+L.el.getAttribute('data-iter'),v=((ct.currentIteration||0)%n)+1;
+        txt=String(v);
+        if(txt!==L.last){fleet(L.t,v);}
+      }else{
+        var to=+L.el.getAttribute('data-loop'),from=+(L.el.getAttribute('data-from')||0);
+        var A=+(L.el.getAttribute('data-a')||0),B=+(L.el.getAttribute('data-b')||1);
+        var x=Math.max(0,Math.min(1,(p-A)/(B-A)));
+        txt=fmt(from+(to-from)*easeInOut(x),L.el);
+      }
+      if(txt!==L.last){L.el.textContent=txt;L.last=txt;}
+    }
+    requestAnimationFrame(tick);
+  }
+  if(loops.length){requestAnimationFrame(tick);}
+
+  /* Visibility: run animations only on screen, spring tiles in with a stagger */
+  var io=new IntersectionObserver(function(entries){
+    var batch=0;
+    entries.forEach(function(e){
+      var t=e.target;
+      if(e.isIntersecting){
+        t.classList.add('on');
+        if(!t.classList.contains('seen')){
+          t.classList.add('seen');
+          if(t.classList.contains('pre')){
+            t.style.setProperty('--d',Math.min(batch++*80,480)+'ms');
+            requestAnimationFrame(function(){t.classList.remove('pre');});
+          }
+          countUp(t);
+        }
+      }else{
+        t.classList.remove('on');
+      }
+    });
+  },{threshold:0,rootMargin:'0px 0px -6% 0px'});
+  tiles.forEach(function(t){io.observe(t);});
+
+  /* Pointer tilt and sheen, mouse only */
+  if(window.matchMedia('(hover: hover) and (pointer: fine)').matches){
+    tiles.forEach(function(t){
+      var raf=0,px=0,py=0;
+      var max=(t.classList.contains('s4')||t.classList.contains('hero'))?2.5:(t.classList.contains('s2')?4:6);
+      function frame(){
+        raf=0;
+        var r=t.getBoundingClientRect();
+        var x=(px-r.left)/r.width,y=(py-r.top)/r.height;
+        t.style.setProperty('--ry',((x-.5)*max).toFixed(2)+'deg');
+        t.style.setProperty('--rx',((.5-y)*max).toFixed(2)+'deg');
+        t.style.setProperty('--mx',(x*100).toFixed(1)+'%');
+        t.style.setProperty('--my',(y*100).toFixed(1)+'%');
+      }
+      t.addEventListener('pointermove',function(e){
+        if(e.pointerType!=='mouse'){return;}
+        px=e.clientX;py=e.clientY;
+        t.classList.add('tilting');
+        if(!raf){raf=requestAnimationFrame(frame);}
+      });
+      t.addEventListener('pointerleave',function(){
+        t.classList.remove('tilting');
+        t.style.setProperty('--rx','0deg');
+        t.style.setProperty('--ry','0deg');
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
