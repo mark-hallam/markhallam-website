@@ -1,22 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Audiowide } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/lib/profile";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
-
-const audiowide = Audiowide({
+// Fonts are served from the site itself: no build-time download from Google Fonts
+// (a Google Fonts change broke Vercel builds on 2 Nov 2026). Body text uses the
+// Apple system font, matching the homepage.
+const audiowide = localFont({
+  src: "../public/fonts/Audiowide-Regular.ttf",
   variable: "--font-audiowide",
-  subsets: ["latin"],
-  weight: ["400"],
+  weight: "400",
   display: "swap",
 });
 
@@ -41,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU" className={`${inter.variable} ${audiowide.variable} h-full`}>
+    <html lang="en-AU" className={`${audiowide.variable} h-full`}>
       <body className="min-h-full flex flex-col">
         <div className="gradient-line" />
         <SiteHeader />
