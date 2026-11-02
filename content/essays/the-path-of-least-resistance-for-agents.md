@@ -1,8 +1,8 @@
 ---
 title: "The path of least resistance for agents"
-date: "2026-04-05"
+date: "2026-05-22"
 dek: "If your AI worker keeps asking for clarification, the problem isn't the model. The problem is the surface you handed it. The interesting craft is shaping the workspace so the agent can just go."
-readMinutes: 7
+readMinutes: 4
 category: "Practice"
 number: 12
 ---

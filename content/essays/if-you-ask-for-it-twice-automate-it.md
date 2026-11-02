@@ -1,8 +1,8 @@
 ---
 title: "If you ask for it twice, automate it"
-date: "2025-11-08"
+date: "2026-05-23"
 dek: "Most of the wasted cycles I see working with AI agents come from the gap between 'I noticed I am doing this often' and 'I built a thing so I do not have to do it any more'. That gap is where the entire compounding game lives."
-readMinutes: 6
+readMinutes: 4
 category: "Practice"
 number: 7
 ---

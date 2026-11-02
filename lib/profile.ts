@@ -3,14 +3,14 @@
 // House style: no dashes as punctuation, no "CEO" title, no advisory pitch.
 
 export const POSITIONING = [
-  "Solving problems from first principles and shipping with agents.",
+  "Solving hard problems from first principles and shipping with agents.",
   "Building for agents first.",
 ] as const;
 
 export const SITE_TITLE = "Mark Hallam: first-principles builder";
 
 export const SITE_DESCRIPTION =
-  "Solving problems from first principles and shipping with agents. Building for agents first. Founder of SKYCOT, aerospace background, building in public from Melbourne.";
+  "Solving hard problems from first principles and shipping with agents. Ten A320s into Australia, a hydrogen drone program up and flying, and now software built by AI agents. Melbourne.";
 
 export const EMAIL = "markhallam@skycot.com";
 
@@ -33,7 +33,7 @@ export type BuiltItem = {
 export const BUILT: BuiltItem[] = [
   {
     title: "SKYCOT, the kids app.",
-    body: "A Mac app where kids describe the app they want and AI builds it, with a parent in the loop. 39 beta releases shipped so far.",
+    body: "A Mac app where kids describe the app they want and AI builds it, with a parent in the loop. 39 beta builds in eight days, about 25 of them published for download.",
     links: ["https://skycot.com"],
   },
   {
@@ -43,7 +43,7 @@ export const BUILT: BuiltItem[] = [
   },
   {
     title: "My agent job board.",
-    body: "I post jobs on GitHub. Claude, Codex and Gemini pick them up, do the work, ask me when something is unclear, and report back done or blocked. A non-developer running a software team of AI agents.",
+    body: "I post jobs on GitHub. Claude and Codex pick them up, do the work, ask me when something is unclear, and report back done or blocked. A non-developer running a software team of AI agents.",
     links: [],
   },
   {
@@ -73,7 +73,7 @@ export const HOW_I_WORK: { step: string; body: string }[] = [
   },
   {
     step: "Let agents build.",
-    body: "Claude, Codex and Gemini work in small steps that can each be checked on their own.",
+    body: "Claude and Codex work in small steps that can each be checked on their own.",
   },
   {
     step: "Check it like an engineer.",

@@ -1,8 +1,8 @@
 ---
 title: "Code that writes code"
-date: "2025-10-22"
+date: "2026-05-23"
 dek: "The interesting questions are no longer 'what does the agent do for you'. They are 'what do you let the agent build, and how do you preserve enough understanding of the result to remain its operator'."
-readMinutes: 8
+readMinutes: 4
 category: "Strategy"
 number: 6
 ---

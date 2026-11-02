@@ -1,8 +1,8 @@
 ---
 title: "Mission shape: zoom out to one hundred thousand feet"
-date: "2026-01-12"
+date: "2026-05-23"
 dek: "Without a 100,000-foot view, every local decision is rational and the aggregate trajectory is nowhere in particular. The cure is dull: write down the load-bearing claims first, and only commit work that advances one of them."
-readMinutes: 6
+readMinutes: 4
 category: "Strategy"
 number: 9
 ---

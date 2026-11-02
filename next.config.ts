@@ -9,6 +9,10 @@ const UNPUBLISHED_ESSAYS = [
 ];
 
 const nextConfig: NextConfig = {
+  // The homepage is a hand-built static page (public/home.html) with its own motion and styles.
+  async rewrites() {
+    return { beforeFiles: [{ source: "/", destination: "/home.html" }], afterFiles: [], fallback: [] };
+  },
   async redirects() {
     return UNPUBLISHED_ESSAYS.map((slug) => ({
       source: `/writing/${slug}`,

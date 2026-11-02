@@ -9,7 +9,7 @@
   --color-brand-purple: #8B5CF6;
   --color-brand-pink: #EC4899;
   --color-brand-cyan: #0891B2;
-  --font-sans: var(--font-inter);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
 }
 
 html {
