@@ -3,14 +3,14 @@
 // House style: no dashes as punctuation, no "CEO" title, no advisory pitch.
 
 export const POSITIONING = [
-  "Solving problems from first principles and shipping with agents.",
+  "Solving hard problems from first principles and shipping with agents.",
   "Building for agents first.",
 ] as const;
 
 export const SITE_TITLE = "Mark Hallam: first-principles builder";
 
 export const SITE_DESCRIPTION =
-  "Solving problems from first principles and shipping with agents. Building for agents first. Founder of SKYCOT, aerospace background, building in public from Melbourne.";
+  "Solving hard problems from first principles and shipping with agents. Ten A320s into Australia, a hydrogen drone program up and flying, and now software built by AI agents. Melbourne.";
 
 export const EMAIL = "markhallam@skycot.com";
 

@@ -2,7 +2,7 @@
 title: "Drift is the silent killer of agent swarms"
 date: "2026-05-22"
 dek: "More agents in parallel feels like more throughput. It can be — but only if you have built the drift-prevention architecture underneath. Without it, the swarm invalidates its own work."
-readMinutes: 8
+readMinutes: 4
 category: "Practice"
 number: 11
 ---

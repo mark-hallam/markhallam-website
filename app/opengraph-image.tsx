@@ -97,7 +97,7 @@ export default async function OGImage() {
             }}
           >
             <div style={{ display: "flex" }}>
-              Solving problems from first principles and shipping with agents.
+              Solving hard problems from first principles and shipping with agents.
             </div>
             <div style={{ display: "flex", color: "#6b7280" }}>
               Building for agents first.
