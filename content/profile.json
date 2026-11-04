@@ -61,10 +61,11 @@
     {
       "name": "Argo",
       "status": "Retired in June 2026; code private; figures self-reported",
-      "summary": "Argo let a business hire AI teammates. You picked one of 37 role templates, such as receptionist, recruiter or executive assistant, or described the job in plain English and Argo's builder, Genesis, wrote the teammate for you: its role, its instructions and its safety rules, with anything sensitive set to wait for a person's approval. A lead teammate could hand work out to the rest of the team, every action went into a tamper evident audit log, and teammates worked with any AI model and connected to 17 business tools. It ran live as SKYCOT AI Teammates, with sign up, hiring and payment working; live voice teammates you could talk to, with every conversation transcribed into the audit log, were built, tested and tuned, but we couldn't pay to run voice in production. AI coding agents built it under my direction: 13,803 commits and 2,901 merged pull requests in 57 days. It had no paying customers, so I retired it in June 2026, put its lessons into SKYCOT and wrote up what went wrong.",
+      "summary": "Argo let a business hire AI teammates. You picked one of 37 role templates, such as receptionist, recruiter or executive assistant, or described the job in plain English and Argo's builder, Genesis, wrote the teammate for you: its role, its instructions and its safety rules, with anything sensitive set to wait for a person's approval. A lead teammate could hand work out to the rest of the team, every action went into a tamper evident audit log, and teammates worked with any AI model and connected to 17 business tools. It ran live as SKYCOT AI Teammates, with sign up, hiring and payment working; live voice teammates you could talk to, with every conversation transcribed into the audit log, were built, tested and tuned, but we couldn't pay to run voice in production. AI coding agents built it under my direction: 13,803 commits and 2,901 merged pull requests in 57 days. Its AI teammates, built from templates or plain English, were running live in June 2026, two months before Grok Bot launched with the same idea. It had no paying customers, so I retired it in June 2026, put its lessons into SKYCOT and wrote up what went wrong.",
       "links": [
         "https://www.markhallam.com.au/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"
-      ]
+      ],
+      "dates": "Argo verified live in production on 23 June 2026 (Argo's own verified state record); Grok Bot's beta launched on 11 August 2026, per press reports."
     },
     {
       "name": "My agent job board",

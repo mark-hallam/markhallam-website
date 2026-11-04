@@ -66,7 +66,10 @@ export function llmsTxt(): string {
     "",
     "## Things I've made",
     "",
-    ...p.builds.map((b) => `- ${b.name} (${b.status}): ${b.summary}${b.links.length ? " " + b.links.join(" ") : ""}`),
+    ...p.builds.map(
+      (b) =>
+        `- ${b.name} (${b.status}): ${b.summary}${b.links.length ? " " + b.links.join(" ") : ""}${"dates" in b && b.dates ? " Dates: " + b.dates : ""}`,
+    ),
     "",
     "## Hard problems I've solved",
     "",
