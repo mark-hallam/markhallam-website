@@ -23,11 +23,15 @@ const nextConfig: NextConfig = {
     };
   },
   async redirects() {
-    return UNPUBLISHED_ESSAYS.map((slug) => ({
-      source: `/writing/${slug}`,
-      destination: "/writing",
-      permanent: false,
-    }));
+    return [
+      ...UNPUBLISHED_ESSAYS.map((slug) => ({
+        source: `/writing/${slug}`,
+        destination: "/writing",
+        permanent: false,
+      })),
+      // Browsers, crawlers and some agents ask for /favicon.ico by default; the brand icon is at /icon.
+      { source: "/favicon.ico", destination: "/icon", permanent: true },
+    ];
   },
 };
 

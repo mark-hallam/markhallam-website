@@ -19,7 +19,13 @@ Section sources: nav = A; hero = D (problem tiles and micro-animations) with C a
 <meta property="og:title" content="Mark Hallam: solving hard problems and shipping with agents">
 <meta property="og:description" content="Ten A320s into Australia, a hydrogen drone program up and flying, and now software built by AI agents. Melbourne, Australia.">
 <meta property="og:image" content="https://www.markhallam.com.au/opengraph-image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mark Hallam: solving hard problems from first principles and shipping with agents">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mark Hallam: solving hard problems and shipping with agents">
+<meta name="twitter:description" content="Ten A320s into Australia, a hydrogen drone program up and flying, and now software built by AI agents. Melbourne, Australia.">
+<meta name="twitter:image" content="https://www.markhallam.com.au/opengraph-image">
 <meta name="twitter:site" content="@MarkHallam">
 <script defer src="/_vercel/insights/script.js"></script>
 
@@ -92,8 +98,8 @@ a:hover{text-decoration:underline}
 button{font:inherit;color:inherit}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .defs{position:absolute;width:0;height:0;overflow:hidden}
-.skip{position:absolute;left:16px;top:-64px;z-index:100;background:var(--text);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:600}
-.skip:focus{top:10px}
+.skip{position:absolute;left:16px;top:0;transform:translateY(-200%);z-index:100;background:var(--text);color:var(--bg);padding:10px 18px;border-radius:999px;font-weight:600}
+.skip:focus{transform:translateY(10px)}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 .wrap-c{max-width:1240px;margin:0 auto;padding:0 clamp(16px,4vw,56px)}
 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
@@ -165,7 +171,7 @@ button{font:inherit;color:inherit}
 /* Phones and tablets: headline plus a swipeable, snapping row of tiles (all variants share it) */
 .hp-grid{list-style:none;margin:16px 0 0;padding:4px 16px 14px;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;overscroll-behavior-x:contain;scrollbar-width:thin}
 .hp{--tr:22px;position:relative;flex:0 0 min(78vw,320px);scroll-snap-align:start;background:var(--tile);border:1px solid var(--line-s);border-radius:var(--tr);box-shadow:var(--t-shadow);container:hp / inline-size;min-width:0;transition:box-shadow .35s ease}
-.js .hp{height:clamp(260px,38svh,330px);container-type:size}
+.js .hp{height:clamp(16.25rem,38svh,20.625rem);container-type:size}
 .hp::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),var(--sheen),transparent 45%)}
 .hp.sheen::after{opacity:1}
 .hp:hover,.hp.open,.hp:focus-within{z-index:4}
@@ -193,6 +199,7 @@ html:not(.js) .hp-art{height:140px}
 
 .hero-role{margin-top:10px;font-size:1rem;line-height:1.4;color:var(--text);font-weight:500;max-width:34em}
 .motion .hero-role{opacity:0;transform:translate3d(0,18px,0);animation:rise 1s var(--ease-out) forwards;animation-delay:.66s}
+.contact-card>.mail-note{margin-top:8px;font-size:0.9375rem;color:var(--text-2)}
 /* Shipping now: current AI work, number first like the tiles, on the first screen */
 .hh-now{margin-top:18px}
 .hh-now-t{font-size:0.9375rem;font-weight:700;letter-spacing:-.015em;color:var(--text);margin-bottom:6px}
@@ -251,14 +258,14 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 }
 
 /* Desktop: the whole hero is one screen, edge to edge */
-@media (min-width:1024px) and (min-height:600px){
+@media (min-width:64em) and (min-height:37.5em){
   .js .hero{height:calc(100vh - var(--nav-h));height:calc(100svh - var(--nav-h));padding:var(--hg);display:grid;gap:var(--hgap);overflow:visible}
   .js .hero-head{padding:0}
   .js .hp-grid{margin:0;padding:0;overflow:visible;gap:var(--hgap);min-height:0}
   .js .hp{height:auto;flex:none;--tr:clamp(16px,1.35vw,24px)}
   .js .hero-switch{display:inline-flex}
   /* Floating expansion for Grid and Mosaic: grows out of the tile, anchored to stay on screen */
-  .js[data-hero="1"] .hp-more,.js[data-hero="2"] .hp-more{inset:auto;top:-1px;left:-1px;width:max(calc(100% + 2px),21.25rem);min-height:calc(100% + 2px);overflow:visible}
+  .js[data-hero="1"] .hp-more,.js[data-hero="2"] .hp-more{inset:auto;top:-1px;left:-1px;width:min(max(calc(100% + 2px),21.25rem),calc(100vw - 32px));min-height:calc(100% + 2px);overflow:visible}
   .js .hp[data-ax="r"] .hp-more{left:auto;right:-1px;--ox:100%}
   .js .hp[data-ay="b"] .hp-more{top:auto;bottom:-1px;--oy:100%}
 
@@ -295,15 +302,20 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
   .js[data-hero="2"] .hp:nth-child(9){grid-area:3/5/4/6}
   .js[data-hero="2"] .hp:nth-child(10){grid-area:3/6/4/7}
   .js[data-hero="2"] .hero-head{justify-content:flex-start}
-  .js[data-hero="2"] .hero-role{font-size:clamp(0.875rem,min(3.2cqw,2.1cqh),1.1875rem);margin-top:clamp(6px,1.4cqh,14px)}
-  .js[data-hero="2"] .hh-now{margin-top:clamp(8px,3cqh,36px)}
-  .js[data-hero="2"] .hh-side{margin-top:auto}
+  .js[data-hero="2"] .hero-role{font-size:clamp(0.8125rem,min(3.1cqw,1.95cqh),1.1875rem);margin-top:clamp(4px,1cqh,14px)}
+  .js[data-hero="2"] .hh-now{margin-top:clamp(6px,1.8cqh,26px)}
+  .js[data-hero="2"] .hh-side{margin-top:auto;padding-top:clamp(8px,1.4cqh,18px)}
   .js[data-hero="2"] .hh-now-t{font-size:clamp(0.9375rem,min(3.6cqw,2.5cqh),1.375rem);margin-bottom:clamp(4px,1cqh,10px)}
-  .js[data-hero="2"] .now-row{padding:clamp(6px,1.3cqh,13px) 2px}
+  .js[data-hero="2"] .now-row{padding:clamp(4px,0.9cqh,12px) 2px}
   .js[data-hero="2"] .now-stat{font-size:clamp(1.375rem,min(6.6cqw,4.6cqh),2.625rem)}
-  .js[data-hero="2"] .now-text{font-size:clamp(0.8125rem,min(3.2cqw,1.95cqh),1.0625rem)}
+  .js[data-hero="2"] .now-text{font-size:clamp(0.78rem,min(3.1cqw,1.8cqh),1.0625rem)}
   .js[data-hero="2"] .now-text b{font-size:clamp(0.875rem,min(3.6cqw,2.2cqh),1.1875rem)}
   .js[data-hero="1"] .hh-now,.js[data-hero="3"] .hh-now{display:none}
+  @container head (max-height: 760px){
+    .js[data-hero="2"] .hero-title{font-size:clamp(1.5rem,min(9.4cqw,8.4cqh),4.625rem)}
+    .js[data-hero="2"] .hero-accent{font-size:clamp(1.125rem,min(5cqw,4.6cqh),2.625rem)}
+    .js[data-hero="2"] .hero-head .eyebrow{margin-bottom:4px}
+  }
 
   /* Hero 3: Rail. Headline column, tiles drifting in opposite directions */
   .js[data-hero="3"] .hero{grid-template-columns:minmax(0,3fr) minmax(0,7fr);gap:clamp(16px,2vw,36px)}
@@ -634,7 +646,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 .writing-head .more{margin-top:26px}
 .hp-swipe{display:none;align-items:center;gap:4px;margin:0;padding:0 16px;font-size:0.875rem;font-weight:600;color:var(--text-2)}
 .hp-swipe .chev{width:.45em;height:.8em}
-@media (max-width:1023px),(max-height:599px){.js .hp-swipe{display:flex}}
+@media (max-width:63.99em),(max-height:37.49em){.js .hp-swipe{display:flex}}
 .posts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .posts a{display:flex;align-items:center;gap:20px;padding:26px 6px 26px 0;border-bottom:1px solid var(--line);color:var(--text)}
 .posts a:hover{text-decoration:none}
@@ -692,6 +704,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 
 /* Small screens */
 @media (max-width:699px){
+  .intro-body{text-align:left}
   .wrap,.intro-copy{padding-left:16px;padding-right:16px}
   .nav-inner{padding:0 16px;gap:8px}
   .nav-primary{display:none}
@@ -717,6 +730,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 .js .hp-more .more{margin-top:2px}
 .card-art .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transform:scale(1.04);transition:opacity .35s ease,transform .6s cubic-bezier(.2,.8,.2,1);pointer-events:none;z-index:1}
 .card-art .shot-top{object-position:top center}
+.card-art .shot-left{object-position:left top}
 .card:hover .card-art .shot,.card:focus-within .card-art .shot,.card.show-shot .card-art .shot{opacity:1;transform:none}
 .shot-hint{position:absolute;z-index:2;right:12px;bottom:12px;font-size:0.75rem;font-weight:600;line-height:1;padding:7px 11px;border-radius:999px;background:var(--tile);color:var(--text-2);box-shadow:0 2px 10px rgba(0,0,0,.08);transition:opacity .25s ease}
 .card:hover .shot-hint,.card:focus-within .shot-hint,.card.show-shot .shot-hint{opacity:0}
@@ -763,7 +777,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 
 <header class="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top">Mark Hallam</a>
+    <a class="brand" href="#top" aria-label="Mark Hallam, home">Mark Hallam</a>
     <nav class="nav-primary" aria-label="Primary">
       <ul class="nav-links">
         <li><a href="#made">Work</a></li>
@@ -806,7 +820,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
     <section class="hh-now" aria-labelledby="now-title">
       <h2 class="hh-now-t" id="now-title">Built with AI agents</h2>
       <ul class="now-list">
-        <li><a class="now-row" href="/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"><span class="now-stat">2,901</span><span class="now-text"><b>Argo</b> pull requests merged in eight weeks by a swarm of AI coding agents I directed. Retired in June 2026. Self-reported; the code is private.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><a class="now-row" href="/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"><span class="now-stat">2,901</span><span class="now-text"><b>Argo</b> pull requests merged in eight weeks by AI coding agents I directed. Retired in June 2026. Self-reported; the code is private.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
         <li><a class="now-row" href="https://skycot.com"><span class="now-stat">39</span><span class="now-text"><b>SKYCOT</b> beta builds in eight days of a Mac app where kids build apps with AI</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
         <li><a class="now-row" href="#job-board"><span class="now-stat">95</span><span class="now-text"><b>Agent job board</b> jobs closed by Claude and Codex in eight days. Self-reported; the board is private.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
         <li><a class="now-row" href="https://github.com/mark-hallam"><span class="now-stat">3</span><span class="now-text"><b>Open source</b> LVLme, mStack and DAC, on GitHub</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
@@ -1210,7 +1224,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
             <path class="st" d="M362 206 l5 5 9 -10"/>
           </svg>
           <img class="shot shot-top" src="assets/argo-team.jpg" alt="Screenshot of Argo: a team screen showing seven AI teammates, each with a role, a level and what it did today" loading="lazy" decoding="async">
-          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Show screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <h3>Argo</h3>
         <p>A platform for AI teammates, with permissions, approvals and a tamper-evident audit trail. A swarm of AI coding agents built it around the clock under my direction: 2,901 pull requests merged in eight weeks. Retired in June 2026; its lessons went into SKYCOT.</p>
@@ -1236,8 +1250,8 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
             <path class="wl" d="M162.5 202 v-4.5 a5.5 5.5 0 0 1 11 0 V202"/>
           </svg>
         
-          <img class="shot" src="assets/skycot-app.jpg" alt="Screenshot of the SKYCOT Mac app: a conversation list, a crew of AI helpers, and an “Ask me first” setting that asks before every change" loading="lazy" decoding="async">
-          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
+          <img class="shot shot-left" src="assets/skycot-app.jpg" alt="Screenshot of the SKYCOT Mac app: a conversation list, a crew of AI helpers, and an “Ask me first” setting that asks before every change" loading="lazy" decoding="async">
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Show screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <h3>SKYCOT</h3>
         <p>A Mac app where kids describe the app they want and AI builds it, with a parent in the loop. 39 beta builds in eight days.</p>
@@ -1264,7 +1278,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
         
           <img class="shot" src="https://www.swinburne.edu.au/content/dam/media/engagement/H2-above-edited.jpeg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/sqEgjOA--dY/hqdefault.jpg'" alt="Photo of the Hydrogen to the Skies drone in flight" loading="lazy" decoding="async" referrerpolicy="no-referrer">
           <span class="shot-credit" aria-hidden="true">Photo: Swinburne University of Technology</span>
-          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for the drone</span><span class="h-touch">Tap for the drone</span></span>
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Show the drone</span><span class="h-touch">Tap for the drone</span></span>
         </div>
         <h3>Hydrogen to the Skies</h3>
         <p>Team project at Swinburne's AIR Hub: Australia's first hydrogen-propelled drone program.</p>
@@ -1283,7 +1297,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
             <path class="st thin" d="M86 246 h40 M382 246 h40"/>
           </svg>
           <img class="shot shot-top" src="assets/lvlme-site.jpg" alt="Screenshot of lvlme.com: a fit score of 37 out of 100 for a target role, with a chart of the expected climb toward the offer zone (made-up example data)" loading="lazy" decoding="async">
-          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Show screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <h3>LVLme: open source software to land your dream job</h3>
         <p>LVLme is free, open source software that helps you land the job you want. It works with the AI you already use, such as Claude, Codex or Cursor, and runs on your own computer, so your information stays private. It starts by gathering your whole background: your CV, LinkedIn, past work and an interview about your career. It sorts through all of it, checks you against real job ads at the places you want to work, and shows exactly where the gaps are, with evidence behind every score. Then it turns those gaps into steps for this week and measures again, so you can watch yourself level up. Built in public.</p>
@@ -1337,7 +1351,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
           </svg>
         
           <img class="shot shot-top" src="assets/job-board-github.jpg" alt="Screenshot of the agent job board on GitHub: 95 closed issues, each a job an AI agent finished and reported back on" loading="lazy" decoding="async">
-          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Show screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <h3 id="job-board">My agent job board</h3>
         <p>I post jobs on GitHub and Claude and Codex pick them up, do the work, ask me when something is unclear, and report back done or blocked. My first board closed 95 jobs across three computers in eight days.</p>
@@ -1352,7 +1366,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
             <path class="st" d="M344 140 L372 168 M372 140 L344 168"/>
           </svg>
           <img class="shot shot-top" src="assets/limits-card.jpg" alt="Screenshot of an AI Insider Threat Test limits card for a practice business: read and act limits fixed after a retest, stop limit still open" loading="lazy" decoding="async">
-          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Show screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <p class="tag">Toolkit, not yet in use</p>
         <h3>AI Insider Threat Test</h3>
@@ -1369,7 +1383,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
             <path class="st" d="M282 150 l12 12 22 -24"/>
           </svg>
           <img class="shot shot-top" src="assets/alignment-research.jpg" alt="Screenshot of the AI Beyond Alignment research record on GitHub, frozen on 27 September 2026 with its audit history kept" loading="lazy" decoding="async">
-          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Show screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <p class="tag">Research, paused</p>
         <h3>AI Beyond Alignment</h3>
@@ -1590,10 +1604,11 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       <h2 class="hello" id="contact-title" data-split="letters">Say hello.</h2>
       <p>Get in touch about roles and projects building with, or for, AI agents.</p>
       <a class="mail" href="mailto:markhallam@skycot.com">markhallam@skycot.com</a>
+      <p class="mail-note">Email is the most reliable way to reach me.</p>
       <ul class="social">
-        <li><a href="https://x.com/MarkHallam">X</a></li>
         <li><a href="https://www.linkedin.com/in/mark-hallam/">LinkedIn</a></li>
         <li><a href="https://github.com/mark-hallam">GitHub</a></li>
+        <li><a href="https://x.com/MarkHallam">X</a></li>
         <li><a href="https://www.youtube.com/@markhallam-ai">YouTube</a></li>
       </ul>
     </div>
@@ -1697,7 +1712,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
   /* ---------- Hero tiles ---------- */
   var hero = doc.querySelector('.hero'), grid = hero.querySelector('.hp-grid');
   var originals = all('.hp', grid);
-  var deskMq = win.matchMedia('(min-width: 1024px) and (min-height: 600px)');
+  var deskMq = win.matchMedia('(min-width: 64em) and (min-height: 37.5em)');
   var wideMq = win.matchMedia('(min-width: 1280px)');
   var openTile = null, suppressFocusOpen = false, tileIO = null;
   var rail = { on: false, clones: [] };

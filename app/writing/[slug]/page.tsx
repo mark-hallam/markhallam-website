@@ -88,7 +88,7 @@ export default async function EssayPage({
               </Link>
             </span>
             <span>
-              <time dateTime={essay.date}>{formatMonth(essay.date)}</time> · {essay.readMinutes} min read
+              <time dateTime={essay.date}>{new Date(essay.date).toLocaleDateString("en-AU", { day: "numeric", month: "long", year: "numeric" })}</time> · {essay.readMinutes} min read
               {essay.category ? ` · ${essay.category}` : ""}
             </span>
           </div>

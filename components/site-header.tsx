@@ -102,6 +102,7 @@ export function SiteHeader() {
       <div className="h-full max-w-[1080px] mx-auto px-4 min-[700px]:px-6 lg:max-w-none lg:px-[clamp(18px,1.6vw,32px)] flex items-center gap-5">
         <Link
           href="/"
+          aria-label="Mark Hallam, home"
           className="gradient-text text-[1.1875rem] tracking-[0.01em] leading-none no-underline py-1.5"
           style={{ fontFamily: "var(--font-audiowide)" }}
         >
