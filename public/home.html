@@ -25,7 +25,7 @@ Section sources: nav = A; hero = D (problem tiles and micro-animations) with C a
 
 <script>
 (function(r){r.classList.add('js');var t=null;try{t=localStorage.getItem('mh-v2-theme');}catch(e){}if(t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){r.setAttribute('data-theme','dark');}
-var m=/[?&]hero=([123])\b/.exec(location.search);r.setAttribute('data-hero',m?m[1]:'2');if(/[?&]now=1\b/.test(location.search)){r.setAttribute('data-now','1');}
+var m=/[?&]hero=([123])\b/.exec(location.search);r.setAttribute('data-hero',m?m[1]:'2');
 if(window.matchMedia&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add('motion');setTimeout(function(){if(!window.__v2){r.classList.remove('motion');}},3000);}})(document.documentElement);
 </script>
 <link rel="preload" href="/fonts/Audiowide-Regular.ttf" as="font" type="font/ttf" crossorigin>
@@ -188,18 +188,23 @@ html:not(.js) .hp-art{height:140px}
   .hp-art{margin-top:clamp(8px,4cqh,16px)}
 }
 
-/* Proposal for Mark (shown only with ?now=1): current AI work on the first screen */
-.hh-now{display:none}
-[data-now="1"] .hh-now{display:block;margin-top:14px}
-@media (min-width:1024px) and (min-height:600px){.js[data-hero="2"][data-now="1"] .hero-head{gap:8px}.js[data-hero="2"][data-now="1"] .hh-now{margin-top:auto}.js[data-hero="2"][data-now="1"] .hh-side{padding-top:10px}}
-.hh-now-t{font-size:13px;font-weight:600;color:var(--text-2);letter-spacing:-.005em;margin-bottom:6px}
-.hh-now ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.hh-now a{display:flex;align-items:baseline;gap:10px;padding:clamp(4px,.8cqh,8px) 2px;border-bottom:1px solid var(--line);color:var(--text);font-size:15px}
-.hh-now a:hover{text-decoration:none}
-.hh-now a:hover b{color:var(--link)}
-.hh-now b{font-weight:650;flex:none}
-.hh-now span{flex:1;min-width:0;color:var(--text-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hh-now .chev{flex:none;align-self:center;color:var(--text-2)}
+/* Shipping now: current AI work, number first like the tiles, on the first screen */
+.hh-now{margin-top:18px}
+.hh-now-t{font-size:15px;font-weight:700;letter-spacing:-.015em;color:var(--text);margin-bottom:6px}
+.now-list{list-style:none;margin:0;padding:0 14px;background:var(--wash);border:1px solid var(--lilac-2);border-radius:16px}
+.now-list li:last-child .now-row{border-bottom:0}
+.now-row{display:flex;align-items:center;gap:14px;padding:10px 2px;border-bottom:1px solid var(--line);color:var(--text)}
+a.now-row:hover{text-decoration:none}
+a.now-row:hover b{color:var(--link)}
+.now-stat{flex:0 0 3.1em;font-size:26px;line-height:1;font-weight:750;letter-spacing:-.04em;font-variant-numeric:tabular-nums;background:var(--stat-a);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;padding-bottom:.06em}
+.now-list li:nth-child(2) .now-stat{background-image:var(--stat-b)}
+.now-list li:nth-child(3) .now-stat{background-image:var(--stat-c)}
+.now-list li:nth-child(4) .now-stat{background-image:var(--stat-b)}
+.now-text{flex:1;min-width:0;font-size:15px;line-height:1.35;color:var(--text-2)}
+.now-text b{display:block;color:var(--text);font-weight:650;font-size:16px;transition:color .3s}
+.now-text a{font-weight:600}
+.now-row .chev{flex:none;color:var(--text-2)}
+.motion .hh-now{opacity:0;transform:translate3d(0,18px,0);animation:rise 1s var(--ease-out) forwards;animation-delay:.7s}
 
 /* Expanding card with the full story */
 .hp-more-t{font-size:clamp(16px,1.15vw,19px);font-weight:700;letter-spacing:-.02em;line-height:1.25;color:var(--text)}
@@ -254,7 +259,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 
   /* Hero 2: Mosaic. Asymmetric bento, headline in the top left tile, four big stories larger */
   .js[data-hero="2"] .hero{grid-template-columns:repeat(2,minmax(0,1.14fr)) repeat(4,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr))}
-  .js[data-hero="2"] .hero-head{grid-column:1/3;grid-row:1/3;display:flex;flex-direction:column;justify-content:space-between;gap:16px;padding:clamp(18px,2vw,40px);background:var(--tile);border:1px solid var(--line-s);border-radius:clamp(16px,1.35vw,24px);box-shadow:var(--t-shadow);overflow:hidden;isolation:isolate;container:head / size}
+  .js[data-hero="2"] .hero-head{grid-column:1/3;grid-row:1/4;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(10px,2cqh,16px);padding:clamp(18px,2vw,40px);background:var(--tile);border:1px solid var(--line-s);border-radius:clamp(16px,1.35vw,24px);box-shadow:var(--t-shadow);overflow:hidden;isolation:isolate;container:head / size}
   .js[data-hero="2"] .hero-title{font-size:clamp(24px,min(10.4cqw,10.6cqh),74px)}
   .js[data-hero="2"] .hero-accent{font-size:clamp(18px,min(5.6cqw,6cqh),42px)}
   .js[data-hero="2"] .hh-side{margin:0;padding-top:clamp(12px,2.4cqh,22px);border-top:1px solid var(--line)}
@@ -269,10 +274,19 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
   .js[data-hero="2"] .hp:nth-child(4){grid-area:2/5/3/7}
   .js[data-hero="2"] .hp:nth-child(5){grid-area:2/3/3/4}
   .js[data-hero="2"] .hp:nth-child(6){grid-area:2/4/3/5}
-  .js[data-hero="2"] .hp:nth-child(7){grid-area:3/1/4/2}
-  .js[data-hero="2"] .hp:nth-child(8){grid-area:3/2/4/3}
-  .js[data-hero="2"] .hp:nth-child(9){grid-area:3/3/4/5}
-  .js[data-hero="2"] .hp:nth-child(10){grid-area:3/5/4/7}
+  .js[data-hero="2"] .hp:nth-child(7){grid-area:3/3/4/4}
+  .js[data-hero="2"] .hp:nth-child(8){grid-area:3/4/4/5}
+  .js[data-hero="2"] .hp:nth-child(9){grid-area:3/5/4/6}
+  .js[data-hero="2"] .hp:nth-child(10){grid-area:3/6/4/7}
+  .js[data-hero="2"] .hero-head{justify-content:flex-start}
+  .js[data-hero="2"] .hh-now{margin-top:clamp(8px,3cqh,36px)}
+  .js[data-hero="2"] .hh-side{margin-top:auto}
+  .js[data-hero="2"] .hh-now-t{font-size:clamp(15px,min(3.6cqw,2.5cqh),22px);margin-bottom:clamp(4px,1cqh,10px)}
+  .js[data-hero="2"] .now-row{padding:clamp(6px,1.3cqh,13px) 2px}
+  .js[data-hero="2"] .now-stat{font-size:clamp(22px,min(6.6cqw,4.6cqh),42px)}
+  .js[data-hero="2"] .now-text{font-size:clamp(13px,min(3.2cqw,1.95cqh),17px)}
+  .js[data-hero="2"] .now-text b{font-size:clamp(14px,min(3.6cqw,2.2cqh),19px)}
+  .js[data-hero="1"] .hh-now,.js[data-hero="3"] .hh-now{display:none}
 
   /* Hero 3: Rail. Headline column, tiles drifting in opposite directions */
   .js[data-hero="3"] .hero{grid-template-columns:minmax(0,3fr) minmax(0,7fr);gap:clamp(16px,2vw,36px)}
@@ -771,14 +785,15 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       <h1 class="hero-title" id="hero-title"><span class="w" style="--i:0">Solving</span> <span class="w" style="--i:1">hard</span> <span class="w" style="--i:2">problems</span> <span class="w" style="--i:3">from</span> <span class="w" style="--i:4">first</span> <span class="w" style="--i:5">principles</span> <span class="w" style="--i:6">and</span> <span class="w" style="--i:7">shipping</span> <span class="w" style="--i:8">with</span> <span class="w" style="--i:9">agents.</span></h1>
       <p class="hero-accent"><span class="grad-text">Building for agents first.</span></p>
     </div>
-    <div class="hh-now">
-      <h2 class="hh-now-t">Shipping now, with AI agents</h2>
-      <ul>
-        <li><a href="https://lvlme.com"><b>LVLme</b><span>Open source, built in public</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
-        <li><a href="/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"><b>Argo</b><span>2,901 pull requests in eight weeks</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
-        <li><a href="https://github.com/mark-hallam/mstack"><b>mStack</b><span>Open source skills for any agent</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+    <section class="hh-now" aria-labelledby="now-title">
+      <h2 class="hh-now-t" id="now-title">Shipping now, with AI agents</h2>
+      <ul class="now-list">
+        <li><a class="now-row" href="/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"><span class="now-stat">2,901</span><span class="now-text"><b>Argo</b> pull requests merged in eight weeks by a swarm of AI coding agents I directed</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><a class="now-row" href="https://skycot.com"><span class="now-stat">39</span><span class="now-text"><b>SKYCOT</b> beta builds in eight days of a Mac app where kids build apps with AI</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><div class="now-row"><span class="now-stat">95</span><span class="now-text"><b>Agent job board</b> jobs closed by Claude and Codex in eight days</span></div></li>
+        <li><div class="now-row"><span class="now-stat">3</span><span class="now-text"><b>Open source</b> <a href="https://lvlme.com">LVLme</a>, <a href="https://github.com/mark-hallam/mstack">mStack</a> and <a href="https://github.com/mark-hallam/DAC-Declarative-Agent-Compilation">DAC</a>, on GitHub</span></div></li>
       </ul>
-    </div>
+    </section>
     <div class="hh-side">
       <h2 class="hh-label" id="hp-title">Hard problems I've solved</h2>
       <p class="hh-intro">Most of my career has been spent on problems where getting it wrong grounds aircraft. These are the ones I'm proudest of.</p>
