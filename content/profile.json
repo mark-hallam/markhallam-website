@@ -45,7 +45,7 @@
     {
       "name": "mStack",
       "status": "Open source, MIT licensed",
-      "summary": "My open source collection of skills: reusable instructions that work with whichever AI agent you already use, built for people and agents alike. The first is the design review loop I run on this site: two AI reviewers from different makers score every journey out of 10, I fix what they find, and we repeat until both give it 10. An outcome-first skill for autonomous work is next.",
+      "summary": "My open source collection of skills: reusable instructions that work with whichever AI agent you already use, built for people and agents alike. The first is the design review loop I run on this site: two AI reviewers from different makers score every journey out of 10, I fix what they find, and we repeat until both give it 10. It also has an outcome-first skill for autonomous work.",
       "links": [
         "https://github.com/mark-hallam/mstack"
       ]
@@ -53,7 +53,7 @@
     {
       "name": "SKYCOT",
       "status": "Free beta for Mac",
-      "summary": "A Mac app where families build together with AI. Risky steps wait for a grown-up, and nothing goes online without a parent's code. Free beta: 39 beta builds in eight days.",
+      "summary": "A Mac app where families build together with AI. Risky steps wait for a grown-up, and nothing goes online without a grown-up's code. Free beta: 39 beta builds in eight days.",
       "links": [
         "https://skycot.com"
       ]
