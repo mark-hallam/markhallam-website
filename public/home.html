@@ -731,6 +731,8 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 .card-art .shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transform:scale(1.04);transition:opacity .35s ease,transform .6s cubic-bezier(.2,.8,.2,1);pointer-events:none;z-index:1}
 .card-art .shot-top{object-position:top center}
 .card-art .shot-left{object-position:left top}
+html:not(.js) .shot-hint{display:none}
+html:not(.js) .card-art .shot{opacity:1;transform:none}
 .card:hover .card-art .shot,.card:focus-within .card-art .shot,.card.show-shot .card-art .shot{opacity:1;transform:none}
 .shot-hint{position:absolute;z-index:2;right:12px;bottom:12px;font-size:0.75rem;font-weight:600;line-height:1;padding:7px 11px;border-radius:999px;background:var(--tile);color:var(--text-2);box-shadow:0 2px 10px rgba(0,0,0,.08);transition:opacity .25s ease}
 .card:hover .shot-hint,.card:focus-within .shot-hint,.card.show-shot .shot-hint{opacity:0}
@@ -993,7 +995,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       <div class="hp-more" id="hp-6-more">
         <p class="hp-more-t" aria-hidden="true">Phones on, gate to gate.</p>
         <p class="hp-body">Ran the program that won CASA approval for passengers to use their devices from boarding to arrival.</p>
-        <a class="more" href="https://australianaviation.com.au/2014/09/tigerair-australia-joins-gate-to-gate-club/">Australian Aviation, September 2014<svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a>
+        <a class="more" href="https://australianaviation.com.au/2014/09/tigerair-australia-joins-gate-to-gate-club/">The approval, reported by Australian Aviation (September 2014)<svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a>
       </div>
     </li>
 
@@ -1276,7 +1278,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
             </g>
           </svg>
         
-          <img class="shot" src="https://www.swinburne.edu.au/content/dam/media/engagement/H2-above-edited.jpeg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/sqEgjOA--dY/hqdefault.jpg'" alt="Photo of the Hydrogen to the Skies drone in flight" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+          <img class="shot" src="https://www.swinburne.edu.au/content/dam/media/engagement/H2-above-edited.jpeg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/sqEgjOA--dY/hqdefault.jpg'" alt="Photo from above of the Hydrogen to the Skies aircraft on an airstrip, with three of the team preparing it" loading="lazy" decoding="async" referrerpolicy="no-referrer">
           <span class="shot-credit" aria-hidden="true">Photo: Swinburne University of Technology</span>
           <span class="shot-hint" aria-hidden="true"><span class="h-hover">Show the drone</span><span class="h-touch">Tap for the drone</span></span>
         </div>
@@ -1353,6 +1355,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
           <img class="shot shot-top" src="assets/job-board-github.jpg" alt="Screenshot of the agent job board on GitHub: 95 closed issues, each a job an AI agent finished and reported back on" loading="lazy" decoding="async">
           <span class="shot-hint" aria-hidden="true"><span class="h-hover">Show screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
+        <p class="tag">Private; figures self-reported.</p>
         <h3 id="job-board">My agent job board</h3>
         <p>I post jobs on GitHub and Claude and Codex pick them up, do the work, ask me when something is unclear, and report back done or blocked. My first board closed 95 jobs across three computers in eight days.</p>
       </article>
@@ -1368,7 +1371,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
           <img class="shot shot-top" src="assets/limits-card.jpg" alt="Screenshot of an AI Insider Threat Test limits card for a practice business: read and act limits fixed after a retest, stop limit still open" loading="lazy" decoding="async">
           <span class="shot-hint" aria-hidden="true"><span class="h-hover">Show screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
-        <p class="tag">Toolkit, not yet in use</p>
+        <p class="tag">Toolkit, not yet in use. Private; figures self-reported.</p>
         <h3>AI Insider Threat Test</h3>
         <p>A toolkit that checks whether a business's AI assistant stays inside its agreed limits: 23 tests on what it can read, what it can do without approval, and whether it stops when told. It comes with a practice business whose weak spots can be switched on and off. Built in September 2026; not yet run with a real client.</p>
       </article>
@@ -1382,10 +1385,10 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
             <path class="st" d="M333 183 L376 226"/>
             <path class="st" d="M282 150 l12 12 22 -24"/>
           </svg>
-          <img class="shot shot-top" src="assets/alignment-research.jpg" alt="Screenshot of the AI Beyond Alignment research record on GitHub, frozen on 27 September 2026 with its audit history kept" loading="lazy" decoding="async">
+          <img class="shot shot-top" src="assets/alignment-research.jpg" alt="Screenshot of the AI Beyond Alignment research record (a private repository), frozen on 27 September 2026 with its audit history kept" loading="lazy" decoding="async">
           <span class="shot-hint" aria-hidden="true"><span class="h-hover">Show screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
-        <p class="tag">Research, paused</p>
+        <p class="tag">Research, paused. Private record; figures self-reported.</p>
         <h3>AI Beyond Alignment</h3>
         <p>An independent research record asking whether behavioural alignment is enough to keep highly capable autonomous AI safe. 139 claims checked against 219 sources over 33 audit rounds, including an adversarial review that withdrew two of my own claims. Paused in September 2026; no paper yet.</p>
       </article>
@@ -1745,6 +1748,13 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
     if (!li || e.target.closest('a')) { return; }
     if (e.target.closest('.hp-more')) { setOpen(li, false); return; }
     if (e.target.closest('.hp-btn')) { setOpen(li, !li.classList.contains('open')); }
+  });
+  grid.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter') { return; }
+    var b = e.target.closest ? e.target.closest('.hp-btn') : null;
+    if (!b) { return; }
+    e.preventDefault();
+    var li = b.closest('.hp'); setOpen(li, !li.classList.contains('open'));
   });
   grid.addEventListener('focusin', function (e) {
     var b = e.target.closest ? e.target.closest('.hp-btn') : null;

@@ -68,7 +68,7 @@ export function llmsTxt(): string {
     "",
     "## Hard problems I've solved",
     "",
-    ...p.hardProblems.map((h) => `- ${h.title} ${h.where} ${h.story}${"source" in h && h.source ? " Source: " + h.source : ""}`),
+    ...p.hardProblems.map((h) => `- ${h.title} ${h.where} ${h.story}${"source" in h && h.source ? " Reported at: " + h.source : ""}`),
     "",
     "## Career",
     "",

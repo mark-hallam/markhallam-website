@@ -83,13 +83,13 @@
     },
     {
       "name": "AI Insider Threat Test",
-      "status": "Toolkit, not yet in use",
+      "status": "Toolkit, not yet in use; private; figures self-reported",
       "summary": "A toolkit that checks whether a business's AI assistant stays inside its agreed limits: 23 tests on what it can read, what it can do without approval, and whether it stops when told. Built in September 2026; not yet run with a real client.",
       "links": []
     },
     {
       "name": "AI Beyond Alignment",
-      "status": "Research, paused",
+      "status": "Research, paused; private record; figures self-reported",
       "summary": "An independent research record asking whether behavioural alignment is enough to keep highly capable autonomous AI safe. 139 claims checked against 219 sources over 33 audit rounds, including an adversarial review that withdrew two of my own claims. Paused in September 2026; no paper yet.",
       "links": []
     },

@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { WebAddress } from "@/components/web-address";
-import { BELIEFS, SITE_DESCRIPTION } from "@/lib/profile";
+import { BELIEFS } from "@/lib/profile";
 import { pageMeta, profile } from "@/lib/agent";
 
 // About tells the same story as the homepage, from the same facts (content/profile.json), so a person
 // and an agent get one answer whichever page they read.
-export const metadata = pageMeta("/about", "About", SITE_DESCRIPTION);
+export const metadata = pageMeta("/about", "About", profile.about[0]);
 
 const label = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 
