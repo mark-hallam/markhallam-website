@@ -24,7 +24,7 @@ export function argoMarkdown(): string {
     ARGO.wrong.map((p) => `- ${p}`).join("\n"),
     ARGO.learnedLead,
     ARGO.learned.map((p, i) => `${i + 1}. ${p}`).join("\n"),
-    "## Proof you can check",
+    "## Related work you can check",
     ARGO_PROOF.map((p) => `- [${p.label}](${link(p.url)})`).join("\n"),
     "## What I want next",
     `${ARGO.wants} Email: ${profile.email}`,

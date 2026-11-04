@@ -6,7 +6,7 @@
 export const ARGO = {
   title: "Argo: AI teammates, built by one person directing AI agents",
   lede:
-    "Between April and June 2026 I built Argo, a platform where a business hires AI teammates from a template or a plain English description. A person approves anything sensitive, and every action goes into a tamper evident log. It ran live. It had no paying customers. This page is the evidence, with what worked, what didn't and what I learned.",
+    "Between April and June 2026 I built Argo, a platform where a business hires AI teammates from a template or a plain English description. A person approves anything sensitive, and every action goes into a tamper evident log. It ran live in production for about two weeks in June 2026. It had no paying customers. This page is the evidence, with what worked, what didn't and what I learned.",
   stats: [
     { n: "57", l: "days, 29 April to 24 June 2026" },
     { n: "2,901", l: "merged pull requests" },
@@ -34,9 +34,10 @@ export const ARGO = {
     { date: "6 May 2026", who: "Argo", what: "Genesis: a plain English description becomes a teammate, with a rule that every sensitive action waits for approval." },
     { date: "11 May 2026", who: "Argo", what: "Delegation contracts: what one teammate may hand to another." },
     { date: "1 to 2 Jun 2026", who: "Argo", what: "Voice teammates you could talk to in real time, built and tested in development, with both sides of each conversation saved to the audit log; not switched on in production." },
-    { date: "23 Jun 2026", who: "Argo", what: "Verified live in production: sign up, hiring through Genesis, the audit log and payment." },
+    { date: "12 Jun 2026", who: "Argo", what: "First production deployment passes its checks, on AWS in Sydney." },
+    { date: "23 Jun 2026", who: "Argo", what: "Checked live in production by my own verification agents (record private): sign up, hiring through Genesis, the audit log and payment." },
     { date: "24 Jun 2026", who: "Argo", what: "Last change merged; retired, production torn down in late June." },
-    { date: "11 Aug 2026", who: "xAI", what: "Grok Bot beta: AI teammates you can give real work to, each on its own cloud computer.", source: 0 },
+    { date: "11 Aug 2026", who: "xAI", what: "Grok Bot public beta, after an internal prototype: AI teammates you can give real work to, each on its own cloud computer.", source: 0 },
     { date: "8 Sep 2026", who: "Meta", what: "Muse, a personal AI agent that asks permission before sensitive actions.", source: 2 },
     { date: "17 Sep 2026", who: "xAI", what: "Grok Bot adds voice.", source: 1 },
     { date: "29 Sep 2026", who: "OpenAI", what: "dots: always on agents, with approval needed for actions that affect your accounts.", source: 3 },
@@ -45,7 +46,7 @@ export const ARGO = {
     "These are other companies' products with their own scope, and they go further than Argo did: their agents act on their own, on their own computers, which Argo built but kept switched off. The overlap is the dated part: Genesis, approvals and the audit log were live in Argo's production by 23 June 2026; templates and voice were built in May and June but were not part of that production check. Approvals and audit logs for AI agents weren't new in 2026. What I'm showing is that one person directing agents built a working stack like this in 57 days.",
 
   status: [
-    { item: "Genesis: plain English to a working teammate", state: "Live", note: "Verified in production with a real AI model, 23 June 2026." },
+    { item: "Genesis: plain English to a working teammate", state: "Live", note: "Checked in production with a real AI model by my own verification agents, 23 June 2026." },
     { item: "Approvals and permissions", state: "Live", note: "Deny by default; new teammates start read only." },
     { item: "Hash chained audit log", state: "Live", note: "Verify and export worked in production." },
     { item: "Sign up, workspaces and payment", state: "Live", note: "Email sign in, tenant isolation, Stripe subscription." },

@@ -161,7 +161,7 @@ export default function ArgoPage() {
       </section>
 
       <section aria-labelledby="proof" className={section}>
-        <h2 id="proof" className={h2}>Proof you can check</h2>
+        <h2 id="proof" className={h2}>Related work you can check</h2>
         <ul className="list-none p-0 m-0 border-t border-[var(--color-rule)]">
           {ARGO_PROOF.map((p) => (
             <li key={p.url}>
