@@ -23,7 +23,7 @@ const CHANNELS: Channel[] = [
     label: SOCIAL.github.label,
     href: SOCIAL.github.url,
     value: SOCIAL.github.handle,
-    note: "Public code, including DAC.",
+    note: "Public code: LVLme, mStack and DAC.",
   },
   {
     label: SOCIAL.x.label,

@@ -6,6 +6,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import profile from "@/content/profile.json";
 import { getEssayMetaList, type EssayMeta } from "@/lib/essays";
+import { argoMarkdown } from "@/lib/argo-md";
 
 export const SITE = profile.url; // https://www.markhallam.com.au, the address the site is served from
 
@@ -66,7 +67,14 @@ export function llmsTxt(): string {
     "",
     "## Things I've made",
     "",
-    ...p.builds.map((b) => `- ${b.name} (${b.status}): ${b.summary}${b.links.length ? " " + b.links.join(" ") : ""}`),
+    ...p.builds.map(
+      (b) =>
+        `- ${b.name} (${b.status}): ${b.summary}${b.links.length ? " " + b.links.join(" ") : ""}${"dates" in b && b.dates ? " Dates: " + b.dates : ""}`,
+    ),
+    "",
+    "## The Argo story",
+    "",
+    `The full, dated account of Argo, with sources: ${SITE}/argo (Markdown: ${SITE}/argo.md).`,
     "",
     "## Hard problems I've solved",
     "",
@@ -92,6 +100,7 @@ export function llmsTxt(): string {
     `- [Writing](${SITE}/writing): every essay`,
     `- [About](${SITE}/about): background and how I work`,
     `- [Contact](${SITE}/contact): email and links`,
+    `- [The Argo story](${SITE}/argo) ([Markdown](${SITE}/argo.md)): what Argo was, the dated timeline beside similar launches, what was live and what was only built, how it was built and what went wrong`,
     `- [DAC](${SITE}/dac): what DAC is and where its code and documentation live`,
     `- [RSS feed](${SITE}/feed.xml): new essays`,
     "",
@@ -101,7 +110,7 @@ export function llmsTxt(): string {
 
 export function llmsFullTxt(): string {
   const essays = getEssayMetaList();
-  return [llmsTxt(), "", "# Essays in full", "", ...essays.map((e) => essayMarkdown(e.slug) + "\n")].join("\n");
+  return [llmsTxt(), "", "# The Argo story in full", "", argoMarkdown(), "", "# Essays in full", "", ...essays.map((e) => essayMarkdown(e.slug) + "\n")].join("\n");
 }
 
 /** schema.org structured data: the person, and each thing he made, with him as its creator. */

@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/contact`, priority: 0.6 },
     ...essays.map((e) => ({ url: `${SITE}/writing/${e.slug}`, lastModified: e.date, priority: 0.7 })),
     ...essays.map((e) => ({ url: `${SITE}/writing/${e.slug}.md`, lastModified: e.date, priority: 0.3 })),
+    { url: `${SITE}/argo`, priority: 0.9 },
+    { url: `${SITE}/argo.md`, priority: 0.4 },
     { url: `${SITE}/dac`, priority: 0.4 },
     { url: `${SITE}/llms.txt`, priority: 0.5 },
     { url: `${SITE}/llms-full.txt`, priority: 0.4 },

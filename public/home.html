@@ -645,6 +645,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 .writing-head{position:sticky;top:110px}
 .writing-sub{margin-top:16px;font-size:clamp(1.0625rem,1.5vw,1.3125rem);line-height:1.45;color:var(--text-2);font-weight:500}
 .writing-head .more{margin-top:26px}
+.writing-head .more+.more{margin-left:24px}
 .hp-swipe{display:none;align-items:center;gap:4px;margin:0;padding:0 16px;font-size:0.875rem;font-weight:600;color:var(--text-2)}
 .hp-swipe .chev{width:.45em;height:.8em}
 @media (max-width:63.99em),(max-height:37.49em){.js .hp-swipe{display:flex}}
@@ -823,7 +824,7 @@ html:not(.js) .card-art .shot{opacity:1;transform:none}
     <section class="hh-now" aria-labelledby="now-title">
       <h2 class="hh-now-t" id="now-title">Built with AI agents</h2>
       <ul class="now-list">
-        <li><a class="now-row" href="/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"><span class="now-stat">2,901</span><span class="now-text"><b>Argo</b> pull requests merged in eight weeks by AI coding agents I directed. Retired in June 2026. Self-reported; the code is private.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><a class="now-row" href="/argo"><span class="now-stat">2,901</span><span class="now-text"><b>Argo</b> merged pull requests from agents I directed: AI teammates with approvals and an audit log, live June 2026. No paying customers. Self-reported.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
         <li><a class="now-row" href="https://skycot.com"><span class="now-stat">39</span><span class="now-text"><b>SKYCOT</b> beta builds in eight days of a Mac app where families build together with AI</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
         <li><a class="now-row" href="#job-board"><span class="now-stat">95</span><span class="now-text"><b>Agent job board</b> jobs closed by Claude and Codex in eight days. Self-reported; the board is private.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
         <li><a class="now-row" href="https://github.com/mark-hallam"><span class="now-stat">3</span><span class="now-text"><b>Open source</b> LVLme, mStack and DAC, on GitHub</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
@@ -1216,7 +1217,7 @@ html:not(.js) .card-art .shot{opacity:1;transform:none}
     </div>
     <div class="card-grid">
             <article class="card">
-        <div class="card-art" aria-hidden="true">
+        <div class="card-art">
           <svg class="art" aria-hidden="true" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
             <circle class="sg" cx="240" cy="140" r="34"/>
             <path class="st" d="M228 132 h24 M228 146 h16"/>
@@ -1227,10 +1228,12 @@ html:not(.js) .card-art .shot{opacity:1;transform:none}
             <path class="st thin" d="M100 70 h20 M100 210 h20 M360 70 h20 M360 210 h20"/>
             <path class="st" d="M362 206 l5 5 9 -10"/>
           </svg>
+          <img class="shot shot-top" src="assets/argo-team.jpg" alt="Screenshot of Argo's team screen in a sample workspace, from when it ran hosted under the SKYCOT name: seven AI teammates, each with a role and a level" loading="lazy" decoding="async">
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Show screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <h3>Argo</h3>
-        <p>A platform for AI teammates, with permissions, approvals and a tamper evident audit trail. AI coding agents built it around the clock under my direction: 13,803 commits and 2,901 merged pull requests in 57 days. It had no paying customers; I retired it in June 2026, put its lessons into SKYCOT and wrote up what went wrong.</p>
-        <div class="card-links"><a class="more" href="/writing/eight-weeks-running-a-swarm-of-ai-coding-agents">Read the case study<svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></div>
+        <p>Argo let a business hire AI teammates from 37 role templates or a plain English description, with a person approving anything sensitive and every action in a tamper evident audit log. AI coding agents built it under my direction in 57 days: 2,901 merged pull requests and 13,803 commits, about 9,000 of them ledger updates. It ran live in production in June 2026, seven weeks before xAI's Grok Bot, an internal prototype until then, opened a public beta with similar AI teammates. It had no paying customers, so I retired it, put its lessons into SKYCOT and wrote up what went wrong.</p>
+        <div class="card-links"><a class="more" href="/argo">The Argo story<svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a><a class="more" href="/writing/eight-weeks-running-a-swarm-of-ai-coding-agents">Read the case study<svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></div>
       </article>
 
       <article class="card">
@@ -1587,6 +1590,7 @@ html:not(.js) .card-art .shot{opacity:1;transform:none}
   <div class="wrap writing-grid">
     <div class="writing-head" data-reveal>
       <h2 class="h2 h2-md" id="writing-title">Notes from building with agents.</h2>
+      <a class="more" href="/argo">The Argo story<svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a>
       <a class="more" href="/writing">All writing<svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a>
     </div>
     <!-- posts:start (rebuilt from content/essays at build time by app/home-page) -->
