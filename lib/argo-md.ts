@@ -5,7 +5,7 @@ import { SITE, profile } from "@/lib/agent";
 export function argoMarkdown(): string {
   const link = (u: string) => (u.startsWith("/") ? SITE + u : u);
   return [
-    `# ${ARGO.title}`,
+    `# ${ARGO.title}. ${ARGO.titleAccent}`,
     `By ${profile.name}. Web page: ${SITE}/argo`,
     ARGO.lede,
     ARGO.voiceLine,

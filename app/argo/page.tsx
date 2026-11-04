@@ -21,7 +21,7 @@ export default function ArgoPage() {
   const data = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: ARGO.title,
+    headline: `${ARGO.title}. ${ARGO.titleAccent}`,
     description: ARGO.lede,
     url: `${SITE}/argo`,
     datePublished: "2026-11-05",
@@ -44,6 +44,7 @@ export default function ArgoPage() {
         <h1 className="text-[2.125rem] sm:text-[3.25rem] leading-[1.06] font-semibold tracking-[-0.03em] max-w-[20ch] mb-7 text-[var(--color-ink)]">
           {ARGO.title}.
         </h1>
+        <p className="gradient-text text-[1.5rem] sm:text-[2.125rem] leading-[1.15] font-semibold tracking-[-0.025em] -mt-3 mb-7">{ARGO.titleAccent}</p>
         <p className="text-[1.1875rem] sm:text-[1.3125rem] leading-[1.55] text-[var(--color-ink)] max-w-[60ch]">{ARGO.lede}</p>
         <p className="mt-4 text-[1.0625rem] sm:text-[1.125rem] leading-[1.6] text-[var(--color-body)] max-w-[60ch]">{ARGO.voiceLine}</p>
         <blockquote className="gradient-border-left mt-8 pl-5 m-0 text-[1.1875rem] sm:text-[1.375rem] leading-[1.45] font-semibold text-[var(--color-ink)] max-w-[52ch]">

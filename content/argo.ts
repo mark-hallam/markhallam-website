@@ -4,7 +4,8 @@
 // Other companies' launch dates come from the press sources listed in `sources`. No dashes in Mark's voice.
 
 export const ARGO = {
-  title: "Six months ago I started building AI agent teams like the ones launching today",
+  title: "Six months ago I started building a team of AI agents I could talk to and hand work to",
+  titleAccent: "Now there's Grok Bot, Muse and dots.",
   lede:
     "My first commit on Argo was on 29 April 2026. By 23 June it was live in production: describe a teammate in plain English and Argo built it, with a person approving anything sensitive and every action in a tamper evident audit log. Role templates and a lead teammate that hands work to the others were built too, but weren't part of that check; voice teammates were built, and the check found voice switched off in production. Seven weeks later, on 11 August, xAI opened Grok Bot's public beta with AI teammates, and added voice on 17 September.",
   voiceLine:
