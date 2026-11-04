@@ -37,8 +37,11 @@ export default function WritingIndexPage() {
         <p className="text-[1.1875rem] sm:text-[1.3125rem] leading-[1.55] text-[var(--color-body)] max-w-[56ch]">
           Notes from building real software with Claude and Codex as the team: how to frame work so agents can&apos;t misread it, how to stop a swarm of agents drifting, and how to check the result like an engineer.
         </p>
+        <p className="mt-6 text-[1rem] leading-[1.55] text-[var(--color-body)] max-w-[56ch]">
+          By <Link href="/about" className="text-[var(--color-ink)] no-underline hover:underline">Mark Hallam</Link>. New here? Start with the Argo case study; the other essays lean on it.
+        </p>
         {essays.length > 0 && (
-          <div className="mt-9 text-sm text-[var(--color-muted)]">
+          <div className="mt-6 text-sm text-[var(--color-muted)]">
             {essays.length} essay{essays.length === 1 ? "" : "s"}
           </div>
         )}
