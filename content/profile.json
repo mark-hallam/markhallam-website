@@ -61,7 +61,7 @@
     {
       "name": "Argo",
       "status": "Retired in June 2026; code private; figures self-reported",
-      "summary": "A platform for AI teammates, with permissions, approvals and a tamper evident audit trail. AI coding agents built it around the clock under my direction: 13,803 commits and 2,901 merged pull requests in 57 days. It had no paying customers; I retired it in June 2026, put its lessons into SKYCOT and wrote up what went wrong.",
+      "summary": "A platform for putting AI teammates to work inside a business safely. Each teammate had a role and a set of permissions it had to declare, risky actions waited for a person's approval, and every action went into a tamper evident audit log. It worked with any AI model provider, connected to other tools through the Model Context Protocol, and ran hosted under the SKYCOT name. AI coding agents built it under my direction: 13,803 commits and 2,901 merged pull requests in 57 days. It had no paying customers, so I retired it in June 2026, put its lessons into SKYCOT and wrote up what went wrong.",
       "links": [
         "https://www.markhallam.com.au/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"
       ]
