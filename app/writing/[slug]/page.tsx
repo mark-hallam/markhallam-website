@@ -133,7 +133,7 @@ export default async function EssayPage({
             </p>
             <ul className="flex flex-wrap gap-x-6 gap-y-2 mt-4 list-none p-0 text-[0.9375rem] font-medium">
               <li><a className="text-[var(--color-link)] no-underline hover:underline" href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
-              <li><Link className="text-[var(--color-link)] no-underline hover:underline" href="/#work">See my work</Link></li>
+              <li><Link className="text-[var(--color-link)] no-underline hover:underline" href="/#made">See my work</Link></li>
               <li><a className="text-[var(--color-link)] no-underline hover:underline" href={SOCIAL.linkedin.url}>LinkedIn</a></li>
               <li><a className="text-[var(--color-link)] no-underline hover:underline" href={SOCIAL.github.url}>GitHub</a></li>
             </ul>
