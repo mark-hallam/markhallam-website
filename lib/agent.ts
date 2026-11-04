@@ -72,7 +72,7 @@ export function llmsTxt(): string {
     "",
     "Figures are from Mark's own records unless a source is given.",
     "",
-    ...p.hardProblems.map((h) => `- ${h.title} ${h.where} ${h.story}${"source" in h && h.source ? " Reported at: " + h.source : ""}`),
+    ...p.hardProblems.map((h) => `- ${h.title} ${h.where} ${h.story}${"source" in h && h.source ? " Reported at: " + h.source : ""}${"register" in h && h.register ? " CASA register: " + h.register : ""}${"video" in h && h.video ? " Program video: " + h.video : ""}`),
     "",
     "## Career",
     "",
@@ -143,7 +143,8 @@ export function personJsonLd() {
         name: b.name,
         description: b.summary,
         creativeWorkStatus: b.status,
-        creator: me,
+        // A team project credits Mark as a contributor; his own builds as their creator.
+        ...(b.status.startsWith("Team project") ? { contributor: me } : { creator: me }),
         ...(b.links.length ? { url: b.links[0], sameAs: b.links.slice(1) } : {}),
       })),
     ],
