@@ -74,6 +74,7 @@ export function llmsTxt(): string {
     `- [Writing](${SITE}/writing): every essay`,
     `- [About](${SITE}/about): background and how I work`,
     `- [Contact](${SITE}/contact): email and links`,
+    `- [RSS feed](${SITE}/feed.xml): new essays`,
     "",
   ];
   return out.join("\n");

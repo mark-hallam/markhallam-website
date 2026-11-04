@@ -25,7 +25,7 @@ Section sources: nav = A; hero = D (problem tiles and micro-animations) with C a
 
 <script>
 (function(r){r.classList.add('js');var t=null;try{t=localStorage.getItem('mh-v2-theme');}catch(e){}if(t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){r.setAttribute('data-theme','dark');}
-var m=/[?&]hero=([123])\b/.exec(location.search);r.setAttribute('data-hero',m?m[1]:'2');
+var m=/[?&]hero=([123])\b/.exec(location.search);r.setAttribute('data-hero',m?m[1]:'2');if(/[?&]now=1\b/.test(location.search)){r.setAttribute('data-now','1');}
 if(window.matchMedia&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add('motion');setTimeout(function(){if(!window.__v2){r.classList.remove('motion');}},3000);}})(document.documentElement);
 </script>
 <link rel="preload" href="/fonts/Audiowide-Regular.ttf" as="font" type="font/ttf" crossorigin>
@@ -113,7 +113,7 @@ button{font:inherit;color:inherit}
 @keyframes rise{to{opacity:1;transform:none}}
 
 /* Reveal (A): start states only exist when JS has added .motion */
-.motion [data-reveal]{opacity:0;transform:translate3d(0,36px,0);transition:opacity 1s var(--ease-out),transform 1.2s var(--ease-out);transition-delay:var(--rd,0s)}
+.motion [data-reveal]{opacity:0;transform:translate3d(0,24px,0);transition:opacity .5s var(--ease-out),transform .6s var(--ease-out);transition-delay:var(--rd,0s)}
 .motion [data-reveal].in{opacity:1;transform:none}
 
 /* ===== Nav (A) ===== */
@@ -187,6 +187,19 @@ html:not(.js) .hp-art{height:140px}
   .hp-meta{align-self:start}
   .hp-art{margin-top:clamp(8px,4cqh,16px)}
 }
+
+/* Proposal for Mark (shown only with ?now=1): current AI work on the first screen */
+.hh-now{display:none}
+[data-now="1"] .hh-now{display:block;margin-top:14px}
+@media (min-width:1024px) and (min-height:600px){.js[data-hero="2"][data-now="1"] .hero-head{gap:8px}.js[data-hero="2"][data-now="1"] .hh-now{margin-top:auto}.js[data-hero="2"][data-now="1"] .hh-side{padding-top:10px}}
+.hh-now-t{font-size:13px;font-weight:600;color:var(--text-2);letter-spacing:-.005em;margin-bottom:6px}
+.hh-now ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.hh-now a{display:flex;align-items:baseline;gap:10px;padding:clamp(4px,.8cqh,8px) 2px;border-bottom:1px solid var(--line);color:var(--text);font-size:15px}
+.hh-now a:hover{text-decoration:none}
+.hh-now a:hover b{color:var(--link)}
+.hh-now b{font-weight:650;flex:none}
+.hh-now span{flex:1;min-width:0;color:var(--text-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hh-now .chev{flex:none;align-self:center;color:var(--text-2)}
 
 /* Expanding card with the full story */
 .hp-more-t{font-size:clamp(16px,1.15vw,19px);font-weight:700;letter-spacing:-.02em;line-height:1.25;color:var(--text)}
@@ -552,8 +565,8 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 .tl-sub h4{font-size:19px;letter-spacing:-.02em;line-height:1.3;font-weight:700}
 .tl-subdate{margin-top:2px;font-size:15px;font-weight:600;color:var(--text-2)}
 /* C's title card sweep, done with a composited cover instead of clip-path */
-.motion .tl-date{translate:-40px 0;transition:translate 1.2s cubic-bezier(.2,.9,.2,1)}
-.motion .tl-date::after{content:"";position:absolute;inset:-6px -8px;background:var(--bg-2);transform-origin:100% 50%;transition:transform 1.1s cubic-bezier(.7,0,.15,1) .08s}
+.motion .tl-date{translate:-24px 0;transition:translate .6s cubic-bezier(.2,.9,.2,1)}
+.motion .tl-date::after{content:"";position:absolute;inset:-6px -8px;background:var(--bg-2);transform-origin:100% 50%;transition:transform .55s cubic-bezier(.7,0,.15,1) .04s}
 .motion .tl-item.in .tl-date{translate:0 0}
 .motion .tl-item.in .tl-date::after{transform:scaleX(0)}
 @media (max-width:699px){
@@ -588,10 +601,15 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 .writing-head{position:sticky;top:110px}
 .writing-sub{margin-top:16px;font-size:clamp(17px,1.5vw,21px);line-height:1.45;color:var(--text-2);font-weight:500}
 .writing-head .more{margin-top:26px}
+.hp-swipe{display:none;align-items:center;gap:4px;margin:0;padding:0 16px;font-size:14px;font-weight:600;color:var(--text-2)}
+.hp-swipe .chev{width:.45em;height:.8em}
+@media (max-width:1023px),(max-height:599px){.js .hp-swipe{display:flex}}
 .posts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .posts a{display:flex;align-items:center;gap:20px;padding:26px 6px 26px 0;border-bottom:1px solid var(--line);color:var(--text)}
 .posts a:hover{text-decoration:none}
-.post-title{flex:1;font-size:clamp(19px,1.9vw,24px);font-weight:600;letter-spacing:-.022em;line-height:1.25;transition:color .3s}
+.post-text{flex:1;min-width:0}
+.post-meta{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:6px;font-size:15px;line-height:1.45;color:var(--text-2)}
+.post-title{display:block;font-size:clamp(19px,1.9vw,24px);font-weight:600;letter-spacing:-.022em;line-height:1.25;transition:color .3s}
 .posts .chev{color:var(--text-2);width:.55em;height:.95em}
 .posts a:hover .post-title{color:var(--link)}
 .posts a:hover .chev{transform:translateX(4px)}
@@ -633,7 +651,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 .motion .kin.in .wi{translate:0 0}
 .motion .rv{opacity:0;translate:0 30px;transition:opacity .7s,translate .9s cubic-bezier(.2,.9,.2,1)}
 .motion .rv.in{opacity:1;translate:0 0}
-.motion .hello .ch{animation:assemble .9s cubic-bezier(.2,.9,.25,1.15) both;animation-delay:calc(var(--i) * 45ms);animation-play-state:paused}
+.motion .hello .ch{animation:assemble .5s cubic-bezier(.2,.9,.25,1.15) both;animation-delay:calc(var(--i) * 22ms);animation-play-state:paused}
 .motion .hello.in .ch{animation-play-state:running}
 
 /* Footer (A) */
@@ -752,6 +770,14 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       <p class="eyebrow">Melbourne, Australia</p>
       <h1 class="hero-title" id="hero-title"><span class="w" style="--i:0">Solving</span> <span class="w" style="--i:1">hard</span> <span class="w" style="--i:2">problems</span> <span class="w" style="--i:3">from</span> <span class="w" style="--i:4">first</span> <span class="w" style="--i:5">principles</span> <span class="w" style="--i:6">and</span> <span class="w" style="--i:7">shipping</span> <span class="w" style="--i:8">with</span> <span class="w" style="--i:9">agents.</span></h1>
       <p class="hero-accent"><span class="grad-text">Building for agents first.</span></p>
+    </div>
+    <div class="hh-now">
+      <h2 class="hh-now-t">Shipping now, with AI agents</h2>
+      <ul>
+        <li><a href="https://lvlme.com"><b>LVLme</b><span>Open source, built in public</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><a href="/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"><b>Argo</b><span>2,901 pull requests in eight weeks</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><a href="https://github.com/mark-hallam/mstack"><b>mStack</b><span>Open source skills for any agent</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+      </ul>
     </div>
     <div class="hh-side">
       <h2 class="hh-label" id="hp-title">Hard problems I've solved</h2>
@@ -1048,6 +1074,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       </div>
     </li>
   </ol>
+  <p class="hp-swipe" aria-hidden="true"><span class="hp-count">1 of 10</span> · Swipe for more<svg class="chev" viewBox="0 0 8 14"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></p>
 </section>
 
 <!-- INTRO + TAKEOFF (A) -->
@@ -1138,8 +1165,8 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
     </div>
     <div class="card-grid">
             <article class="card">
-        <div class="card-art" aria-hidden="true">
-          <svg class="art" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
+        <div class="card-art">
+          <svg class="art" aria-hidden="true" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
             <circle class="sg" cx="240" cy="140" r="34"/>
             <path class="st" d="M228 132 h24 M228 146 h16"/>
             <circle class="st" cx="110" cy="70" r="22"/><circle class="st" cx="110" cy="210" r="22"/>
@@ -1149,16 +1176,17 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
             <path class="st thin" d="M100 70 h20 M100 210 h20 M360 70 h20 M360 210 h20"/>
             <path class="st" d="M362 206 l5 5 9 -10"/>
           </svg>
-          <img class="shot shot-top" src="assets/argo-team.jpg" alt="" loading="lazy" decoding="async">
-          <span class="shot-hint"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
+          <img class="shot shot-top" src="assets/argo-team.jpg" alt="Screenshot of Argo: a team screen showing seven AI teammates, each with a role, a level and what it did today" loading="lazy" decoding="async">
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <h3>Argo</h3>
         <p>A platform for AI teammates, with permissions, approvals and a tamper-evident audit trail. A swarm of AI coding agents built it around the clock under my direction: 2,901 pull requests merged in eight weeks. Retired in June 2026; its lessons went into SKYCOT.</p>
+        <div class="card-links"><a class="more" href="/writing/eight-weeks-running-a-swarm-of-ai-coding-agents">Read the case study<svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></div>
       </article>
 
       <article class="card">
-        <div class="card-art" aria-hidden="true">
-          <svg class="art" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
+        <div class="card-art">
+          <svg class="art" aria-hidden="true" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
             <rect class="st" x="80" y="36" width="320" height="208" rx="16"/>
             <path class="st thin" d="M80 70 H400"/>
             <circle class="st" cx="102" cy="53" r="5"/><circle class="st" cx="120" cy="53" r="5"/><circle class="st" cx="138" cy="53" r="5"/>
@@ -1175,8 +1203,8 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
             <path class="wl" d="M162.5 202 v-4.5 a5.5 5.5 0 0 1 11 0 V202"/>
           </svg>
         
-          <img class="shot" src="assets/skycot-app.jpg" alt="" loading="lazy" decoding="async">
-          <span class="shot-hint"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
+          <img class="shot" src="assets/skycot-app.jpg" alt="Screenshot of the SKYCOT Mac app: a conversation list, a crew of AI helpers, and an “Ask me first” setting that asks before every change" loading="lazy" decoding="async">
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <h3>SKYCOT</h3>
         <p>A Mac app where kids describe the app they want and AI builds it, with a parent in the loop. 39 beta builds in eight days.</p>
@@ -1184,8 +1212,8 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       </article>
 
       <article class="card">
-        <div class="card-art" aria-hidden="true">
-          <svg class="art" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
+        <div class="card-art">
+          <svg class="art" aria-hidden="true" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
             <ellipse class="dsh" cx="240" cy="250" rx="96" ry="6"/>
             <g class="hover">
               <path class="st thin" d="M240 124 L172 90 M240 124 L308 90 M172 90 V82 M308 90 V82"/>
@@ -1201,9 +1229,9 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
             </g>
           </svg>
         
-          <img class="shot" src="https://www.swinburne.edu.au/content/dam/media/engagement/H2-above-edited.jpeg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/sqEgjOA--dY/hqdefault.jpg'" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-          <span class="shot-credit">Photo: Swinburne University of Technology</span>
-          <span class="shot-hint"><span class="h-hover">Hover for the drone</span><span class="h-touch">Tap for the drone</span></span>
+          <img class="shot" src="https://www.swinburne.edu.au/content/dam/media/engagement/H2-above-edited.jpeg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/sqEgjOA--dY/hqdefault.jpg'" alt="Photo of the Hydrogen to the Skies drone in flight" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+          <span class="shot-credit" aria-hidden="true">Photo: Swinburne University of Technology</span>
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for the drone</span><span class="h-touch">Tap for the drone</span></span>
         </div>
         <h3>Hydrogen to the Skies</h3>
         <p>Team project at Swinburne's AIR Hub: Australia's first hydrogen-propelled drone program.</p>
@@ -1211,8 +1239,8 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       </article>
 
       <article class="card">
-        <div class="card-art" aria-hidden="true">
-          <svg class="art" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
+        <div class="card-art">
+          <svg class="art" aria-hidden="true" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
             <path class="st thin" d="M70 230 H420 M70 230 V50"/>
             <path class="st thin" d="M70 170 H420 M70 110 H420" stroke-dasharray="4 8"/>
             <path class="sg" d="M80 214 C150 210 170 196 210 176 S300 120 340 98 S392 66 412 58"/>
@@ -1221,8 +1249,8 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
             <path class="fg pop" d="M404 46 l10 12 l-15 4 z"/>
             <path class="st thin" d="M86 246 h40 M382 246 h40"/>
           </svg>
-          <img class="shot shot-top" src="assets/lvlme-site.jpg" alt="" loading="lazy" decoding="async">
-          <span class="shot-hint"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
+          <img class="shot shot-top" src="assets/lvlme-site.jpg" alt="Screenshot of lvlme.com: a fit score of 37 out of 100 for a target role, with a chart of the expected climb toward the offer zone (made-up example data)" loading="lazy" decoding="async">
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <h3>LVLme: open source software to land your dream job</h3>
         <p>LVLme is free, open source software that helps you land the job you want. It works with the AI you already use, such as Claude, Codex or Cursor, and runs on your own computer, so your information stays private. It starts by gathering your whole background: your CV, LinkedIn, past work and an interview about your career. It sorts through all of it, checks you against real job ads at the places you want to work, and shows exactly where the gaps are, with evidence behind every score. Then it turns those gaps into steps for this week and measures again, so you can watch yourself level up. Built in public.</p>
@@ -1232,12 +1260,12 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
         </div>
       </article>
     </div>
-    <div class="more-wrap" id="more-things">
+    <div class="more-wrap" id="more-things" data-collapsible>
       <div class="more-inner">
         <div class="card-grid more-grid">
       <article class="card">
-        <div class="card-art" aria-hidden="true">
-          <svg class="art" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
+        <div class="card-art">
+          <svg class="art" aria-hidden="true" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
             <rect class="st thin" x="150" y="176" width="180" height="44" rx="12"/>
             <rect class="st" x="150" y="122" width="180" height="44" rx="12"/>
             <rect class="sg fb" x="150" y="68" width="180" height="44" rx="12"/>
@@ -1256,8 +1284,8 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       </article>
 
       <article class="card">
-        <div class="card-art" aria-hidden="true">
-          <svg class="art" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
+        <div class="card-art">
+          <svg class="art" aria-hidden="true" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
             <rect class="st" x="56" y="40" width="112" height="200" rx="14"/>
             <rect class="st" x="184" y="40" width="112" height="200" rx="14"/>
             <rect class="st" x="312" y="40" width="112" height="200" rx="14"/>
@@ -1275,23 +1303,23 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
             </g>
           </svg>
         
-          <img class="shot shot-top" src="assets/job-board-github.jpg" alt="" loading="lazy" decoding="async">
-          <span class="shot-hint"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
+          <img class="shot shot-top" src="assets/job-board-github.jpg" alt="Screenshot of the agent job board on GitHub: 95 closed issues, each a job an AI agent finished and reported back on" loading="lazy" decoding="async">
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <h3>My agent job board</h3>
         <p>I post jobs on GitHub and Claude and Codex pick them up, do the work, ask me when something is unclear, and report back done or blocked. My first board closed 95 jobs across three computers in eight days.</p>
       </article>
 
       <article class="card research">
-        <div class="card-art" aria-hidden="true">
-          <svg class="art" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
+        <div class="card-art">
+          <svg class="art" aria-hidden="true" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
             <rect class="st" x="70" y="60" width="104" height="150" rx="14"/><rect class="st" x="188" y="60" width="104" height="150" rx="14"/><rect class="sg" x="306" y="60" width="104" height="150" rx="14"/>
             <path class="st thin" d="M90 90 H150 M208 90 H268 M326 90 H386"/>
             <path class="st" d="M104 150 l12 12 22 -24 M222 150 l12 12 22 -24"/>
             <path class="st" d="M344 140 L372 168 M372 140 L344 168"/>
           </svg>
-          <img class="shot shot-top" src="assets/limits-card.jpg" alt="" loading="lazy" decoding="async">
-          <span class="shot-hint"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
+          <img class="shot shot-top" src="assets/limits-card.jpg" alt="Screenshot of an AI Insider Threat Test limits card for a practice business: read and act limits fixed after a retest, stop limit still open" loading="lazy" decoding="async">
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <p class="tag">Toolkit, not yet in use</p>
         <h3>AI Insider Threat Test</h3>
@@ -1299,16 +1327,16 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       </article>
 
       <article class="card research">
-        <div class="card-art" aria-hidden="true">
-          <svg class="art" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
+        <div class="card-art">
+          <svg class="art" aria-hidden="true" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
             <rect class="st" x="96" y="44" width="150" height="192" rx="12"/>
             <path class="st thin" d="M116 76 H226 M116 96 H226 M116 116 H200 M116 136 H226 M116 156 H210"/>
             <circle class="sg" cx="300" cy="150" r="46"/>
             <path class="st" d="M333 183 L376 226"/>
             <path class="st" d="M282 150 l12 12 22 -24"/>
           </svg>
-          <img class="shot shot-top" src="assets/alignment-research.jpg" alt="" loading="lazy" decoding="async">
-          <span class="shot-hint"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
+          <img class="shot shot-top" src="assets/alignment-research.jpg" alt="Screenshot of the AI Beyond Alignment research record on GitHub, frozen on 27 September 2026 with its audit history kept" loading="lazy" decoding="async">
+          <span class="shot-hint" aria-hidden="true"><span class="h-hover">Hover for a screenshot</span><span class="h-touch">Tap for a screenshot</span></span>
         </div>
         <p class="tag">Research, paused</p>
         <h3>AI Beyond Alignment</h3>
@@ -1497,6 +1525,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       <h2 class="h2 h2-md" id="writing-title">Notes from building with agents.</h2>
       <a class="more" href="/writing">All writing<svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a>
     </div>
+    <!-- posts:start (rebuilt from content/essays at build time by app/home-page) -->
     <ul class="posts">
       <li data-reveal><a href="/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"><span class="post-title">Eight weeks running a swarm of AI coding agents</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
       <li data-reveal><a href="/writing/the-path-of-least-resistance-for-agents"><span class="post-title">The path of least resistance for agents</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
@@ -1506,6 +1535,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       <li data-reveal><a href="/writing/mission-shape-zoom-out-to-100000-feet"><span class="post-title">Mission shape: zoom out to one hundred thousand feet</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
       <li data-reveal><a href="/writing/the-room-is-the-architecture"><span class="post-title">The room is the architecture</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
     </ul>
+    <!-- posts:end -->
   </div>
 </section>
 
@@ -1530,6 +1560,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       <ul class="social">
         <li><a href="https://x.com/MarkHallam">X</a></li>
         <li><a href="https://www.linkedin.com/in/mark-hallam/">LinkedIn</a></li>
+        <li><a href="https://github.com/mark-hallam">GitHub</a></li>
         <li><a href="https://www.youtube.com/@markhallam-ai">YouTube</a></li>
       </ul>
     </div>
@@ -1577,6 +1608,21 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
     menu.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('a')) { menu.removeAttribute('open'); } });
     doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.hasAttribute('open')) { menu.removeAttribute('open'); menu.querySelector('summary').focus(); } });
   }
+
+  /* ---------- Phone: which of the ten tiles is showing ---------- */
+  (function () {
+    var g = doc.querySelector('.hp-grid'), c = doc.querySelector('.hp-count');
+    if (!g || !c) { return; }
+    var n = g.querySelectorAll(':scope > .hp').length, t = null;
+    g.addEventListener('scroll', function () {
+      if (t) { return; }
+      t = win.requestAnimationFrame(function () {
+        t = null; var first = g.querySelector(':scope > .hp');
+        var w = first ? first.getBoundingClientRect().width + 12 : 1;
+        c.textContent = Math.min(n, Math.round(g.scrollLeft / w) + 1) + ' of ' + n;
+      });
+    }, { passive: true });
+  })();
 
   /* ---------- Hero tiles ---------- */
   var hero = doc.querySelector('.hero'), grid = hero.querySelector('.hp-grid');
@@ -2037,11 +2083,13 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 (function () {
   var b = document.querySelector('.more-toggle'), w = document.getElementById('more-things');
   if (!b || !w) return;
+  w.setAttribute('inert', '');
   b.addEventListener('click', function () {
     var open = !w.classList.contains('open');
     w.classList.toggle('open', open);
     b.setAttribute('aria-expanded', open ? 'true' : 'false');
     b.querySelector('.mt-label').textContent = open ? 'Show fewer' : 'Show 5 more';
+    if (open) { w.removeAttribute('inert'); } else { w.setAttribute('inert', ''); }
     if (open) { window.dispatchEvent(new Event('resize')); }
   });
 })();

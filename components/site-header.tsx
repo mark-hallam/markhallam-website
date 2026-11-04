@@ -17,10 +17,12 @@ const NAV = [
 const THEME_KEY = "mh-v2-theme"; // shared with the homepage
 
 function ThemeButton() {
-  const [dark, setDark] = useState<boolean | null>(null);
+  // The icon is set by CSS from data-theme; this keeps the switch's on or off state right for screen readers.
+  const button = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     const root = document.documentElement;
-    setDark(root.getAttribute("data-theme") === "dark");
+    const sync = () => button.current?.setAttribute("aria-pressed", String(root.getAttribute("data-theme") === "dark"));
+    sync();
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
     const follow = () => {
       let saved: string | null = null;
@@ -30,27 +32,28 @@ function ThemeButton() {
       if (!saved) {
         if (mq.matches) root.setAttribute("data-theme", "dark");
         else root.removeAttribute("data-theme");
-        setDark(mq.matches);
+        sync();
       }
     };
     mq.addEventListener("change", follow);
     return () => mq.removeEventListener("change", follow);
   }, []);
   const toggle = () => {
-    const next = !dark;
     const root = document.documentElement;
+    const next = root.getAttribute("data-theme") !== "dark";
     if (next) root.setAttribute("data-theme", "dark");
     else root.removeAttribute("data-theme");
     try {
       localStorage.setItem(THEME_KEY, next ? "dark" : "light");
     } catch {}
-    setDark(next);
+    button.current?.setAttribute("aria-pressed", String(next));
   };
   return (
     <button
+      ref={button}
       type="button"
       onClick={toggle}
-      aria-pressed={dark === true}
+      aria-pressed="false"
       aria-label="Dark mode"
       className="w-[34px] h-[34px] rounded-full inline-flex items-center justify-center text-[var(--color-ink)] hover:bg-[var(--color-rule)] flex-none"
     >
@@ -69,18 +72,18 @@ function ThemeButton() {
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  // The menu is open for the page it was opened on, so it closes by itself when the page changes.
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const open = openOn === pathname;
+  const setOpen = (v: boolean) => setOpenOn(v ? pathname : null);
   const menuButton = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     if (!open) return;
+    const close = () => setOpenOn(null);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setOpen(false);
+        close();
         menuButton.current?.focus();
       }
     };
@@ -136,7 +139,7 @@ export function SiteHeader() {
             aria-controls="mobile-nav"
             aria-label="Menu"
             className="min-[700px]:hidden w-10 h-10 flex items-center justify-center rounded-[10px] text-[var(--color-ink)]"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpen(!open)}
           >
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden>
               {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 8.5h16M4 15.5h16" />}

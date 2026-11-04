@@ -4,6 +4,7 @@ import { FollowMe } from "@/components/follow-me";
 
 export const metadata = {
   title: "Writing",
+  alternates: { canonical: "/writing", types: { "application/rss+xml": "/feed.xml" } },
   description:
     "Essays on building real software with AI agents: framing work so agents can't misread it, keeping a swarm from drifting, and checking the result. By Mark Hallam.",
 };
@@ -60,9 +61,9 @@ export default function WritingIndexPage() {
               className="writing-link block py-7 border-b border-[var(--color-rule)] last:border-b-0 no-underline text-inherit"
             >
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-6 mb-2">
-                <div className="text-[22px] font-medium text-[var(--color-ink)] leading-[1.3] max-w-[56ch]">
+                <h2 className="text-[22px] font-medium text-[var(--color-ink)] leading-[1.3] max-w-[56ch]">
                   {essay.title}
-                </div>
+                </h2>
                 <div className="text-[13px] text-[var(--color-muted)] font-medium flex-shrink-0">
                   {essay.readMinutes} min · {formatShortMonth(essay.date)}
                 </div>

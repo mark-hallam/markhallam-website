@@ -2,7 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getEssayBySlug, getEssayMetaList, getEssaySlugs } from "@/lib/essays";
-import { EMAIL } from "@/lib/profile";
+import { EMAIL, POSITIONING } from "@/lib/profile";
+import { SOCIAL } from "@/lib/social";
 import { JsonLd } from "@/components/json-ld";
 import { articleJsonLd } from "@/lib/agent";
 
@@ -104,21 +105,21 @@ export default async function EssayPage({
               aria-hidden
             />
           </div>
-          <div className="mt-16 pt-10 border-t border-[var(--color-rule)] max-w-[64ch]">
-            <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-4">
-              A note from the author
-            </div>
-            <p className="text-[16px] leading-[1.65] text-[var(--color-body)]">
-              I write about building real software with AI agents. If something here is useful, or wrong, I&apos;d like to hear about it:{" "}
-              <a
-                href={`mailto:${EMAIL}`}
-                className="text-[var(--color-ink)] font-medium border-b border-[var(--color-ink)] no-underline"
-              >
-                {EMAIL}
-              </a>
-              .
+          <aside aria-label="About the author" className="mt-16 pt-10 border-t border-[var(--color-rule)] max-w-[64ch]">
+            <p className="text-[17px] font-semibold text-[var(--color-ink)]">Mark Hallam</p>
+            <p className="text-[16px] leading-[1.6] text-[var(--color-body)] mt-1">
+              {POSITIONING.join(" ")} My background is aerospace and aviation.
             </p>
-          </div>
+            <p className="text-[16px] leading-[1.65] text-[var(--color-body)] mt-3">
+              I write about building real software with AI agents. If something here is useful, or wrong, I&apos;d like to hear about it.
+            </p>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 mt-4 list-none p-0 text-[15px] font-medium">
+              <li><a className="text-[var(--color-link)] no-underline hover:underline" href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+              <li><Link className="text-[var(--color-link)] no-underline hover:underline" href="/#work">See my work</Link></li>
+              <li><a className="text-[var(--color-link)] no-underline hover:underline" href={SOCIAL.linkedin.url}>LinkedIn</a></li>
+              <li><a className="text-[var(--color-link)] no-underline hover:underline" href={SOCIAL.github.url}>GitHub</a></li>
+            </ul>
+          </aside>
         </article>
       </div>
 

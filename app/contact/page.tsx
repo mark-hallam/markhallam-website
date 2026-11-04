@@ -4,6 +4,7 @@ import { CONTACT_BODY, CONTACT_HEADING, CONTACT_TOPICS, EMAIL } from "@/lib/prof
 
 export const metadata = {
   title: "Contact",
+  alternates: { canonical: "/contact" },
   description: CONTACT_BODY,
 };
 
