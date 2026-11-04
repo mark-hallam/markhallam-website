@@ -94,6 +94,25 @@ export default async function EssayPage({
           </div>
         </section>
 
+        {essay.sections.length >= 4 && (
+          <nav aria-label="In this essay" className="pt-8 sm:pt-10">
+            <h2 className="text-[0.8125rem] font-semibold uppercase tracking-[0.04em] text-[var(--color-muted)] mb-3">In this essay</h2>
+            <ol className="list-none m-0 p-0 border-t border-[var(--color-rule)]">
+              {essay.sections.map((sec) => (
+                <li key={sec.id}>
+                  <a
+                    href={`#${sec.id}`}
+                    className="flex justify-between gap-4 py-2.5 border-b border-[var(--color-rule)] text-[1rem] text-[var(--color-ink)] no-underline hover:text-[var(--color-link)]"
+                  >
+                    {sec.title}
+                    <span aria-hidden className="text-[var(--color-muted)]">›</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )}
+
         <article className="essay-prose py-10 sm:py-14 pb-10">
           <div dangerouslySetInnerHTML={{ __html: essay.body }} />
           <div className="my-16 text-center">

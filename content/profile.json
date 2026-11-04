@@ -60,7 +60,7 @@
     },
     {
       "name": "Argo",
-      "status": "Retired in June 2026; code private",
+      "status": "Retired in June 2026; code private; figures self-reported",
       "summary": "A platform for AI teammates, with permissions, approvals and a tamper-evident audit trail. A swarm of AI coding agents built it around the clock under my direction: 2,901 pull requests merged in eight weeks. Retired in June 2026; its lessons went into SKYCOT.",
       "links": [
         "https://www.markhallam.com.au/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"
@@ -68,7 +68,7 @@
     },
     {
       "name": "My agent job board",
-      "status": "Private",
+      "status": "Private; figures self-reported",
       "summary": "I post jobs on GitHub and Claude and Codex pick them up, do the work, ask me when something is unclear, and report back done or blocked. My first board closed 95 jobs across three computers in eight days.",
       "links": []
     },
@@ -160,10 +160,10 @@
       "source": "https://www.youtube.com/watch?v=sqEgjOA--dY"
     },
     {
-      "stat": "$2.7B",
-      "title": "Enabling $2.7 billion in industry benefits.",
+      "stat": "Now",
+      "title": "Enabling the benefits of CMATS, Australia's new air traffic system.",
       "where": "Airservices Australia, in progress.",
-      "story": "CMATS is Australia's new civil and military air traffic system, and its business case values the benefits at more than $2.7 billion over 20 years. My part is making those benefits real for the people who fly: user preferred routes, a single flight data region, wake turbulence management, and conflict detection tools."
+      "story": "CMATS is Australia's new civil and military air traffic system, and its business case estimates the benefits at more than $2.7 billion over 20 years: the programme's estimate, not my result. My part is making those benefits real for the people who fly: user preferred routes, a single flight data region, wake turbulence management, and conflict detection tools."
     }
   ],
   "career": [
@@ -247,5 +247,6 @@
       "name": "Certificate IV in Training and Assessment",
       "issuer": "HBA Learning Centres"
     }
-  ]
+  ],
+  "now": "Project manager at Airservices Australia and founder of SKYCOT. Open to roles building with, or for, AI agents."
 }

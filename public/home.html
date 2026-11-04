@@ -191,6 +191,8 @@ html:not(.js) .hp-art{height:140px}
   .hp-art{margin-top:clamp(8px,4cqh,16px)}
 }
 
+.hero-role{margin-top:10px;font-size:1rem;line-height:1.4;color:var(--text);font-weight:500;max-width:34em}
+.motion .hero-role{opacity:0;transform:translate3d(0,18px,0);animation:rise 1s var(--ease-out) forwards;animation-delay:.66s}
 /* Shipping now: current AI work, number first like the tiles, on the first screen */
 .hh-now{margin-top:18px}
 .hh-now-t{font-size:0.9375rem;font-weight:700;letter-spacing:-.015em;color:var(--text);margin-bottom:6px}
@@ -293,6 +295,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
   .js[data-hero="2"] .hp:nth-child(9){grid-area:3/5/4/6}
   .js[data-hero="2"] .hp:nth-child(10){grid-area:3/6/4/7}
   .js[data-hero="2"] .hero-head{justify-content:flex-start}
+  .js[data-hero="2"] .hero-role{font-size:clamp(0.875rem,min(3.2cqw,2.1cqh),1.1875rem);margin-top:clamp(6px,1.4cqh,14px)}
   .js[data-hero="2"] .hh-now{margin-top:clamp(8px,3cqh,36px)}
   .js[data-hero="2"] .hh-side{margin-top:auto}
   .js[data-hero="2"] .hh-now-t{font-size:clamp(0.9375rem,min(3.6cqw,2.5cqh),1.375rem);margin-bottom:clamp(4px,1cqh,10px)}
@@ -798,13 +801,14 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       <p class="eyebrow">Melbourne, Australia</p>
       <h1 class="hero-title" id="hero-title"><span class="w" style="--i:0">Solving</span> <span class="w" style="--i:1">hard</span> <span class="w" style="--i:2">problems</span> <span class="w" style="--i:3">from</span> <span class="w" style="--i:4">first</span> <span class="w" style="--i:5">principles</span> <span class="w" style="--i:6">and</span> <span class="w" style="--i:7">shipping</span> <span class="w" style="--i:8">with</span> <span class="w" style="--i:9">agents.</span></h1>
       <p class="hero-accent"><span class="grad-text">Building for agents first.</span></p>
+      <p class="hero-role">Project manager at Airservices Australia and founder of SKYCOT. Open to roles building with, or for, AI agents.</p>
     </div>
     <section class="hh-now" aria-labelledby="now-title">
       <h2 class="hh-now-t" id="now-title">Built with AI agents</h2>
       <ul class="now-list">
-        <li><a class="now-row" href="/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"><span class="now-stat">2,901</span><span class="now-text"><b>Argo</b> pull requests merged in eight weeks by a swarm of AI coding agents I directed. Retired in June 2026.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><a class="now-row" href="/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"><span class="now-stat">2,901</span><span class="now-text"><b>Argo</b> pull requests merged in eight weeks by a swarm of AI coding agents I directed. Retired in June 2026. Self-reported; the code is private.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
         <li><a class="now-row" href="https://skycot.com"><span class="now-stat">39</span><span class="now-text"><b>SKYCOT</b> beta builds in eight days of a Mac app where kids build apps with AI</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
-        <li><a class="now-row" href="#job-board"><span class="now-stat">95</span><span class="now-text"><b>Agent job board</b> jobs closed by Claude and Codex in eight days</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><a class="now-row" href="#job-board"><span class="now-stat">95</span><span class="now-text"><b>Agent job board</b> jobs closed by Claude and Codex in eight days. Self-reported; the board is private.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
         <li><a class="now-row" href="https://github.com/mark-hallam"><span class="now-stat">3</span><span class="now-text"><b>Open source</b> LVLme, mStack and DAC, on GitHub</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
       </ul>
     </section>
@@ -1070,8 +1074,8 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 
     <li class="hp" id="hp-10" style="--i:9;--sg:var(--stat-a)">
       <div class="hp-in">
-        <h3 class="hp-title"><button class="hp-btn" type="button" aria-expanded="false" aria-controls="hp-10-more">Enabling $2.7 billion in industry benefits.</button></h3>
-        <p class="hp-stat" aria-hidden="true"><span class="num" data-to="2.7" data-dec="1" data-pre="$" data-suf="B">$2.7B</span></p>
+        <h3 class="hp-title"><button class="hp-btn" type="button" aria-expanded="false" aria-controls="hp-10-more">Enabling the benefits of CMATS, Australia's new air traffic system.</button></h3>
+        <p class="hp-stat w" aria-hidden="true"><span>Now</span></p>
         <p class="hp-meta">Airservices Australia, in progress.</p>
         <div class="hp-art" aria-hidden="true">
           <svg viewBox="0 0 400 150" focusable="false">
@@ -1098,8 +1102,8 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
         </div>
       </div>
       <div class="hp-more" id="hp-10-more">
-        <p class="hp-more-t" aria-hidden="true">Enabling $2.7 billion in industry benefits.</p>
-        <p class="hp-body">CMATS is Australia's new civil and military air traffic system, and its business case values the benefits at more than $2.7 billion over 20 years. My part is making those benefits real for the people who fly: user preferred routes, a single flight data region, wake turbulence management, and conflict detection tools.</p>
+        <p class="hp-more-t" aria-hidden="true">Enabling the benefits of CMATS, Australia's new air traffic system.</p>
+        <p class="hp-body">CMATS is Australia's new civil and military air traffic system, and its business case estimates the benefits at more than $2.7 billion over 20 years: the programme's estimate, not my result. My part is making those benefits real for the people who fly: user preferred routes, a single flight data region, wake turbulence management, and conflict detection tools.</p>
       </div>
     </li>
   </ol>

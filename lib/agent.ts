@@ -55,6 +55,8 @@ export function llmsTxt(): string {
     "",
     p.summary,
     "",
+    `Now: ${p.now}`,
+    "",
     `Contact: ${p.email} (${p.contact}) LinkedIn: ${p.sameAs.find((s) => s.label === "LinkedIn")?.url} GitHub: ${p.sameAs.find((s) => s.label === "GitHub")?.url}`,
     "",
     "Every fact below is also on the web pages; nothing here is extra. The full text, essays included, is at",

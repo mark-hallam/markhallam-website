@@ -21,8 +21,12 @@ export type EssayMeta = EssayFrontmatter & {
 };
 
 export type Essay = EssayMeta & {
-  body: string; // rendered HTML
+  body: string; // rendered HTML, with an id on every section heading
+  sections: { id: string; title: string }[];
 };
+
+const slugify = (t: string) =>
+  t.toLowerCase().replace(/<[^>]+>/g, "").replace(/&[a-z#0-9]+;/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 function readEssayFile(slug: string) {
   const filePath = path.join(ESSAYS_DIR, `${slug}.md`);
@@ -51,10 +55,18 @@ export async function getEssayBySlug(slug: string): Promise<Essay | null> {
   if (!fs.existsSync(filePath)) return null;
   const { data, content } = readEssayFile(slug);
   const processed = await remark().use(html, { sanitize: false }).process(content);
+  // Section headings get ids so a contents list (and anyone sharing a link) can point at them.
+  const sections: { id: string; title: string }[] = [];
+  const body = processed.toString().replace(/<h2>([\s\S]*?)<\/h2>/g, (_m, inner: string) => {
+    const id = slugify(inner);
+    sections.push({ id, title: inner.replace(/<[^>]+>/g, "") });
+    return `<h2 id="${id}">${inner}</h2>`;
+  });
   return {
     slug,
     ...(data as EssayFrontmatter),
-    body: processed.toString(),
+    body,
+    sections,
   };
 }
 

@@ -233,3 +233,8 @@ p .gradient-text {
 [data-theme="dark"] .essay-prose aside > div {
   color: var(--color-muted) !important;
 }
+
+/* Section headings in essays land clear of the sticky header when jumped to. */
+.essay-prose h2 {
+  scroll-margin-top: 72px;
+}
