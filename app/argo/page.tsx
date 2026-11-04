@@ -9,7 +9,7 @@ import { SITE, pageMeta, profile } from "@/lib/agent";
 export const metadata = pageMeta(
   "/argo",
   "The Argo story",
-  "Argo: AI teammates built from a template or plain English, with approvals and a tamper evident log, built in 57 days by one person directing AI agents. What was live, what was only built, and what it taught.",
+  "Argo let a business hire AI teammates from a template or plain English, with approvals and an audit log. One person directing AI agents built it in 57 days. What was live, what was only built, and what it taught.",
   { "text/markdown": "/argo.md" },
 );
 
@@ -201,7 +201,7 @@ export default function ArgoPage() {
       <section aria-labelledby="sources" className={section + " pb-20"}>
         <h2 id="sources" className="text-[1.0625rem] font-semibold mb-3 text-[var(--color-ink)]">Sources</h2>
         <ul className="list-none p-0 m-0 space-y-1.5 text-[0.875rem] text-[var(--color-body)]">
-          <li>Argo: its git history and GitHub pull requests (repository created 29 April 2026; last pull request merged 24 June 2026), its verified state record of 23 June 2026, and its voice hand-off notes of 2 June 2026.</li>
+          <li>Argo&apos;s git history and GitHub pull requests, from the repository&apos;s creation on 29 April 2026 to the last merged pull request on 24 June 2026. Its verified state record of 23 June 2026, and its voice handover notes of 2 June 2026.</li>
           {ARGO_SOURCES.map((s) => (
             <li key={s.url}>
               <a className="text-[var(--color-link)] no-underline hover:underline" href={s.url}>{s.label}</a>
