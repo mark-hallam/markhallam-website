@@ -239,3 +239,25 @@ p .gradient-text {
 .essay-prose h2 {
   scroll-margin-top: 72px;
 }
+
+/* Argo story: status pills, light and dark. */
+.argo-state {
+  background: var(--color-rule);
+  color: var(--color-ink);
+}
+.argo-state[data-state="Live"] {
+  background: #e3f5e8;
+  color: #1a5c2c;
+}
+.argo-state[data-state="Built, off"] {
+  background: #fdf0dc;
+  color: #6b4205;
+}
+[data-theme="dark"] .argo-state[data-state="Live"] {
+  background: #163a22;
+  color: #9be8b1;
+}
+[data-theme="dark"] .argo-state[data-state="Built, off"] {
+  background: #3a2a0c;
+  color: #f5cf8a;
+}

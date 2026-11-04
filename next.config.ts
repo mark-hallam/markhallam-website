@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
       beforeFiles: [
         { source: "/", destination: "/home-page" },
         { source: "/writing/:slug.md", destination: "/writing-md/:slug" },
+        { source: "/argo.md", destination: "/argo-md" },
       ],
       afterFiles: [],
       fallback: [],
