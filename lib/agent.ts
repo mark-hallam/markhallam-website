@@ -35,7 +35,9 @@ export function essayMarkdown(slug: string): string | null {
     `Web page: ${essayUrl(slug)}`,
   ];
   if (data.dek) parts.push(`> ${data.dek}`);
-  parts.push(asideToMarkdown(content.trim()), "---", `Contact ${profile.name}: ${profile.email}`);
+  // Highlighted phrases are HTML spans in the essay files; agents get them as bold Markdown.
+  const body = asideToMarkdown(content.trim()).replace(/<span class="accent">([\s\S]*?)<\/span>/g, "**$1**");
+  parts.push(body, "---", `Contact ${profile.name}: ${profile.email}`);
   return parts.join("\n\n") + "\n";
 }
 
@@ -53,7 +55,7 @@ export function llmsTxt(): string {
     "",
     p.summary,
     "",
-    `Contact: ${p.email} (${p.contact}) LinkedIn: ${p.sameAs.find((s) => s.label === "LinkedIn")?.url}`,
+    `Contact: ${p.email} (${p.contact}) LinkedIn: ${p.sameAs.find((s) => s.label === "LinkedIn")?.url} GitHub: ${p.sameAs.find((s) => s.label === "GitHub")?.url}`,
     "",
     "Every fact below is also on the web pages; nothing here is extra. The full text, essays included, is at",
     `${SITE}/llms-full.txt, and the same facts as JSON are at ${SITE}/profile.json.`,
@@ -160,6 +162,14 @@ export function pageMeta(pathname: string, title: string, description: string, e
     title,
     description,
     alternates: { canonical: pathname, types: { "text/plain": "/llms.txt", ...extraTypes } },
-    openGraph: { title: `${title} | ${profile.name}`, description, url: `${SITE}${pathname}`, type: "website" as const, locale: "en_AU" },
+    openGraph: {
+      title: `${title} | ${profile.name}`,
+      description,
+      url: `${SITE}${pathname}`,
+      type: "website" as const,
+      locale: "en_AU",
+      images: [{ url: `${SITE}/opengraph-image`, width: 1200, height: 630, alt: `${profile.name}: ${profile.positioning[0]}` }],
+    },
+    twitter: { card: "summary_large_image" as const, site: "@MarkHallam" },
   };
 }

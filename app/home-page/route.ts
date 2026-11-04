@@ -24,6 +24,7 @@ function posts() {
 export function GET() {
   let page = fs.readFileSync(path.join(process.cwd(), "public", "home.html"), "utf8");
   page = page.replace(/<ul class="posts">[\s\S]*?<\/ul>(\s*<!-- posts:end -->)/, `${posts()}$1`);
+  page = page.replace(/<!--[\s\S]*?-->\n?/g, ""); // design notes in the source are for the repository, not for readers or agents
   const data = JSON.stringify(personJsonLd()).replace(/</g, "\\u003c");
   page = page.replace("</head>", `<script type="application/ld+json">${data}</script>\n</head>`);
   return new Response(page, { headers: { "Content-Type": "text/html; charset=utf-8" } });

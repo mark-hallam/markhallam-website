@@ -58,7 +58,7 @@ body {
   background: var(--color-page);
   color: var(--color-ink);
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.6;
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
@@ -130,14 +130,14 @@ body {
    Kept here (not as Tailwind utilities) because the rules need to nest
    into <p>, <h2>, <blockquote> etc inside dangerouslySetInnerHTML output. */
 .essay-prose p {
-  font-size: 19px;
+  font-size: 1.1875rem;
   line-height: 1.75;
   margin-bottom: 28px;
   color: var(--color-prose);
   max-width: 64ch;
 }
 .essay-prose h2 {
-  font-size: 26px;
+  font-size: 1.625rem;
   font-weight: 600;
   letter-spacing: -0.015em;
   margin: 56px 0 24px;
@@ -150,7 +150,7 @@ body {
   padding: 8px 0 8px 28px;
   border-left: 3px solid;
   border-image: linear-gradient(180deg, var(--color-brand-purple), var(--color-brand-pink)) 1;
-  font-size: 22px;
+  font-size: 1.375rem;
   line-height: 1.45;
   color: var(--color-quote);
   font-weight: 400;

@@ -41,8 +41,7 @@ export const BELIEFS = [
 
 export const CONTACT_HEADING = "Say hello.";
 
-export const CONTACT_BODY =
-  "Building something with agents, or want to compare notes on first-principles problem solving? Email is the most reliable way to reach me.";
+export const CONTACT_BODY = `${profile.contact} Email is the most reliable way to reach me.`;
 
 export const CONTACT_TOPICS = [
   "Roles and projects building with, or for, AI agents",

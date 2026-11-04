@@ -5,7 +5,7 @@ import { SOCIAL } from "@/lib/social";
 export function SiteFooter() {
   return (
     <footer className="border-t border-[var(--color-rule)]">
-      <div className="max-w-[1080px] mx-auto px-6 pt-7 pb-11 flex flex-col sm:flex-row justify-between gap-3 text-[14px] text-[var(--color-body)]">
+      <div className="max-w-[1080px] mx-auto px-6 pt-7 pb-11 flex flex-col sm:flex-row justify-between gap-3 text-[0.875rem] text-[var(--color-body)]">
         <div>© 2026 Mark Hallam · Melbourne, Australia</div>
         <ul className="flex flex-wrap gap-x-5 gap-y-1 list-none m-0 p-0">
           <li><a className="text-[var(--color-link)] no-underline hover:underline" href={`mailto:${EMAIL}`}>{EMAIL}</a></li>

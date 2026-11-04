@@ -102,7 +102,7 @@ export function SiteHeader() {
       <div className="h-full max-w-[1080px] mx-auto px-4 min-[700px]:px-6 lg:max-w-none lg:px-[clamp(18px,1.6vw,32px)] flex items-center gap-5">
         <Link
           href="/"
-          className="gradient-text text-[19px] tracking-[0.01em] leading-none no-underline py-1.5"
+          className="gradient-text text-[1.1875rem] tracking-[0.01em] leading-none no-underline py-1.5"
           style={{ fontFamily: "var(--font-audiowide)" }}
         >
           Mark Hallam
@@ -118,7 +118,7 @@ export function SiteHeader() {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={
-                      "text-[14px] no-underline py-1.5 hover:text-[var(--color-link)] " +
+                      "text-[0.875rem] no-underline py-1.5 hover:text-[var(--color-link)] " +
                       (active ? "text-[var(--color-link)] font-medium" : "text-[var(--color-ink)]")
                     }
                   >
@@ -157,7 +157,7 @@ export function SiteHeader() {
                   href={item.href}
                   aria-current={item.match(pathname) ? "page" : undefined}
                   onClick={() => setOpen(false)}
-                  className="block py-3.5 text-[22px] font-semibold tracking-[-0.02em] text-[var(--color-ink)] no-underline border-b border-[var(--color-rule)]"
+                  className="block py-3.5 text-[1.375rem] font-semibold tracking-[-0.02em] text-[var(--color-ink)] no-underline border-b border-[var(--color-rule)]"
                 >
                   {item.label}
                 </Link>
