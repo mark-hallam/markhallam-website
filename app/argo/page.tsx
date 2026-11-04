@@ -45,7 +45,7 @@ export default function ArgoPage() {
           {ARGO.title}.
         </h1>
         <p className="text-[1.1875rem] sm:text-[1.3125rem] leading-[1.55] text-[var(--color-ink)] max-w-[60ch]">{ARGO.lede}</p>
-        <dl className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-10">
+        <dl className="grid grid-cols-[repeat(auto-fit,minmax(9.5rem,1fr))] gap-3 mt-10">
           {ARGO.stats.map((s) => (
             <div key={s.l} className="rounded-2xl border border-[var(--color-rule)] p-4">
               <dt className="sr-only">{s.l}</dt>
@@ -57,6 +57,13 @@ export default function ArgoPage() {
           ))}
         </dl>
         <p className="mt-4 text-[0.875rem] text-[var(--color-muted)] max-w-[64ch]">{ARGO.statsNote}</p>
+        <p className="mt-6 text-[1rem]">
+          <a href={`mailto:${profile.email}?subject=${encodeURIComponent("About Argo")}`} className="text-[var(--color-link)] font-medium no-underline hover:underline">
+            Email me about Argo
+          </a>
+          <span className="text-[var(--color-muted)]"> · </span>
+          <a href="#next" className="text-[var(--color-link)] font-medium no-underline hover:underline">What I want next</a>
+        </p>
       </section>
 
       <section aria-labelledby="what" className={section}>
@@ -66,9 +73,9 @@ export default function ArgoPage() {
             <p key={p} className={body}>{p}</p>
           ))}
         </div>
-        <ul className="list-none p-0 m-0 mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5">
-          {ARGO.shots.map((s) => (
-            <li key={s.src}>
+        <ul className="list-none p-0 m-0 mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {ARGO.shots.map((s, i) => (
+            <li key={s.src} className={i === 0 ? "sm:col-span-2" : ""}>
               <figure className="m-0">
                 <a href={s.src} className="block rounded-xl overflow-hidden border border-[var(--color-rule)]" aria-label={`Open full size: ${s.caption}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -99,7 +106,7 @@ export default function ArgoPage() {
                     <>
                       {" "}
                       <a className="text-[var(--color-link)] no-underline hover:underline whitespace-nowrap" href={ARGO_SOURCES[t.source].url}>
-                        Source
+                        {ARGO_SOURCES[t.source].short}
                       </a>
                     </>
                   )}

@@ -9,7 +9,7 @@ export const ARGO = {
     "Between April and June 2026 I built Argo, a platform where a business hires AI teammates from a template or a plain English description. A person approves anything sensitive, and every action goes into a tamper evident log. It ran live. It had no paying customers. This page is the evidence, with what worked, what didn't and what I learned.",
   stats: [
     { n: "57", l: "days, 29 April to 24 June 2026" },
-    { n: "13,803", l: "commits" },
+    { n: "13,803", l: "commits, about 9,000 of them ledger updates" },
     { n: "2,901", l: "merged pull requests" },
     { n: "1", l: "person directing Claude and Codex agents" },
   ],
@@ -22,8 +22,8 @@ export const ARGO = {
   ],
 
   shots: [
-    { src: "/assets/argo/genesis.jpg", alt: "Argo's Genesis screen: describe the role in plain English and Genesis drafts a real teammate, with persona, charter and skills", caption: "Genesis: describe a teammate in plain English." },
     { src: "/assets/argo/approvals.jpg", alt: "Argo's Approvals inbox: decisions AI teammates queued for a person, sorted by risk, with Approve and Refuse buttons", caption: "Approvals: sensitive work waits for a person." },
+    { src: "/assets/argo/genesis.jpg", alt: "Argo's Genesis screen: describe the role in plain English and Genesis drafts a real teammate, with persona, charter and skills", caption: "Genesis: describe a teammate in plain English." },
     { src: "/assets/argo/audit.jpg", alt: "Argo's Audit screen: every action hash chained and replayable, such as approval asked, policy evaluated, tool call and teammate hired", caption: "Audit: every action, hash chained." },
   ],
   shotsNote: "Argo's own screens from its 29 May 2026 walkthrough, in a sample workspace. It ran under the SKYCOT name.",
@@ -34,16 +34,16 @@ export const ARGO = {
     { date: "3 May 2026", who: "Argo", what: "First role template." },
     { date: "6 May 2026", who: "Argo", what: "Genesis: a plain English description becomes a teammate, with a safety check on every action." },
     { date: "11 May 2026", who: "Argo", what: "Delegation contracts: what one teammate may hand to another." },
-    { date: "1 to 2 Jun 2026", who: "Argo", what: "Live voice teammates you could talk to, with both sides of each conversation saved to the audit log." },
+    { date: "1 to 2 Jun 2026", who: "Argo", what: "Voice teammates you could talk to in real time, built and tested in development, with both sides of each conversation saved to the audit log; not switched on in production." },
     { date: "23 Jun 2026", who: "Argo", what: "Verified live in production: sign up, hiring through Genesis, the audit log and payment." },
     { date: "24 Jun 2026", who: "Argo", what: "Last change merged; retired, production torn down in late June." },
-    { date: "11 Aug 2026", who: "xAI", what: "Grok Bot beta: always on AI teammates.", source: 0 },
-    { date: "8 Sep 2026", who: "Meta", what: "Muse, a personal AI agent with realtime voice.", source: 2 },
+    { date: "11 Aug 2026", who: "xAI", what: "Grok Bot beta: AI teammates you can give real work to, each on its own cloud computer.", source: 0 },
+    { date: "8 Sep 2026", who: "Meta", what: "Muse, a personal AI agent that asks permission before sensitive actions.", source: 2 },
     { date: "17 Sep 2026", who: "xAI", what: "Grok Bot adds voice.", source: 1 },
-    { date: "29 Sep 2026", who: "OpenAI", what: "Dots: always on agents with rules for when they must ask for approval.", source: 3 },
+    { date: "29 Sep 2026", who: "OpenAI", what: "dots: always on agents, with approval needed for actions that affect your accounts.", source: 3 },
   ] as { date: string; who: string; what: string; source?: number }[],
   timelineNote:
-    "These are other companies' products with their own scope, not copies of Argo. The point is the dates: the same ideas, AI teammates, templates, approvals and voice, were already running in Argo in May and June 2026.",
+    "These are other companies' products with their own scope, and they go further than Argo did: their agents act on their own, on their own computers, which Argo built but kept switched off. The overlap is the dated part: Genesis, approvals and the audit log were live in Argo's production by 23 June 2026; templates and voice were built in May and June but were not part of that production check.",
 
   status: [
     { item: "Genesis: plain English to a working teammate", state: "Live", note: "Verified in production with a real AI model, 23 June 2026." },
@@ -82,10 +82,10 @@ export const ARGO = {
 } as const;
 
 export const ARGO_SOURCES = [
-  { label: "Grok Bot beta, 11 August 2026 (iPhone in Canada, 12 Aug 2026)", url: "https://www.iphoneincanada.ca/2026/08/12/xai-debuts-grok-bot-ai-teammates-you-can-give-real-work-to/" },
-  { label: "Grok Bot voice, 17 September 2026 (Tesla North, 18 Sep 2026)", url: "https://teslanorth.com/2026/09/18/grok-bot-voice-mode-desktop-mobile" },
-  { label: "Meta Muse, 8 September 2026 (Meta newsroom, Connect 2026)", url: "https://about.fb.com/de/news/2026/09/meta-connect-2026/" },
-  { label: "OpenAI Dots, 29 September 2026 (The Next Web)", url: "https://thenextweb.com/news/openai-dots-always-on-ai-agents-cloud-computers-devday" },
+  { label: "xAI, Introducing Grok Bot (11 August 2026)", short: "xAI announcement", url: "https://x.ai/news/introducing-grok-bot" },
+  { label: "Grok Bot voice, 17 September 2026 (Tesla North, press report, 18 September 2026)", short: "press report", url: "https://teslanorth.com/2026/09/18/grok-bot-voice-mode-desktop-mobile" },
+  { label: "Meta, Introducing Muse (8 September 2026)", short: "Meta announcement", url: "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/" },
+  { label: "OpenAI, Introducing dots (29 September 2026)", short: "OpenAI announcement", url: "https://openai.com/index/introducing-dots/" },
 ];
 
 export const ARGO_PROOF = [
