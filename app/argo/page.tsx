@@ -45,7 +45,12 @@ export default function ArgoPage() {
           {ARGO.title}.
         </h1>
         <p className="gradient-text text-[1.5rem] sm:text-[2.125rem] leading-[1.15] font-semibold tracking-[-0.025em] -mt-3 mb-7">{ARGO.titleAccent}</p>
-        <p className="text-[1.1875rem] sm:text-[1.3125rem] leading-[1.55] text-[var(--color-ink)] max-w-[60ch]">{ARGO.lede}</p>
+        <div className="space-y-5 max-w-[60ch] mb-10">
+          {ARGO.story.map((p) => (
+            <p key={p} className="text-[1.1875rem] sm:text-[1.3125rem] leading-[1.6] text-[var(--color-ink)]">{p}</p>
+          ))}
+        </div>
+        <p className="text-[1.0625rem] sm:text-[1.125rem] leading-[1.6] text-[var(--color-body)] max-w-[60ch] pt-8 border-t border-[var(--color-rule)]">{ARGO.lede}</p>
         <p className="mt-4 text-[1.0625rem] sm:text-[1.125rem] leading-[1.6] text-[var(--color-body)] max-w-[60ch]">{ARGO.voiceLine}</p>
         <blockquote className="gradient-border-left mt-8 pl-5 m-0 text-[1.1875rem] sm:text-[1.375rem] leading-[1.45] font-semibold text-[var(--color-ink)] max-w-[52ch]">
           {ARGO.ownLine}

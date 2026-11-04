@@ -6,8 +6,17 @@
 export const ARGO = {
   title: "Six months ago I started building a platform so I could talk to my team of AI agents and get tasks done for me",
   titleAccent: "Now we have Grok Bot, Muse and Dots.",
+  story: [
+    "I love building with AI. From the start I could see where it was heading, and I wanted to build towards it.",
+    "I don't write strict specs and long lists of requirements. I build the foundation and set the outcome I want, then I let the agents work out the best way to get there. I want them to question me and put forward better ways of doing things. On Argo the agents wrote their own plans, and I checked what came back.",
+    "I want you to feel the joy I feel when I'm building. I wonder about it too. Once we can just ask for something and it appears, will we lose that joy? I think part of the joy is the journey to get there.",
+    "Building with AI, I've found you can only be about six months ahead of what's coming. Whatever you build ends up in the next model or the next update eventually. Argo was like that.",
+    "I build the things I want to see, and I've been building for a long time. SKYCOT alone has been an app builder, a payments app, a personal team of AI agents and then Argo's teammates. But I kept most of what I built private. I think now is the time to build in public, share what I make, and maybe inspire others to do the same.",
+    "I don't come from a software or developer background. I'm an engineer and I think like one.",
+    "I dream of working at a frontier AI company, and I think a lot of people share that dream. So I built LVLme, a tool that measures my chances. It started me at a very low baseline. I hope I can raise it.",
+  ],
   lede:
-    "My first commit on Argo was on 29 April 2026. By 23 June it was live in production. You described a teammate in plain English and Argo built it. A person approved anything sensitive, and every action went into an audit log nobody could quietly change. I also built role templates, a lead teammate that hands work to the others, and voice teammates you could talk to. The templates and the lead teammate weren't part of the production check. Voice was, and it was switched off in production. Seven weeks later, on 11 August, xAI opened Grok Bot's public beta with AI teammates. It added voice on 17 September.",
+    "Here's what happened. My first commit on Argo was on 29 April 2026. By 23 June it was live in production. You described a teammate in plain English and Argo built it. A person approved anything sensitive, and every action went into an audit log nobody could quietly change. I also built role templates, a lead teammate that hands work to the others, and voice teammates you could talk to. The templates and the lead teammate weren't part of the production check. Voice was, and it was switched off in production. Seven weeks later, on 11 August, xAI opened Grok Bot's public beta with AI teammates. It added voice on 17 September.",
   voiceLine:
     "I built and tuned the voice teammates between 25 May and 10 June 2026. From 1 June you could talk to them in real time, and both sides of every conversation went into the audit log. I never switched voice on in production because I couldn't pay for the voice service.",
   ownLine: "I'm better at building than at go to market. Argo had no paying customers, so I shut it down and wrote up why.",

@@ -7,6 +7,7 @@ export function argoMarkdown(): string {
   return [
     `# ${ARGO.title}. ${ARGO.titleAccent}`,
     `By ${profile.name}. Web page: ${SITE}/argo`,
+    ...ARGO.story,
     ARGO.lede,
     ARGO.voiceLine,
     `> ${ARGO.ownLine}`,
