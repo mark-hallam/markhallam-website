@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { getEssayMetaList, type EssayMeta } from "@/lib/essays";
 import { FollowMe } from "@/components/follow-me";
+import { pageMeta } from "@/lib/agent";
 
-export const metadata = {
-  title: "Writing",
-  alternates: { canonical: "/writing", types: { "application/rss+xml": "/feed.xml" } },
-  description:
-    "Essays on building real software with AI agents: framing work so agents can't misread it, keeping a swarm from drifting, and checking the result. By Mark Hallam.",
-};
+export const metadata = pageMeta(
+  "/writing",
+  "Writing",
+  "Essays on building real software with AI agents: framing work so agents can't misread it, keeping a swarm from drifting, and checking the result. By Mark Hallam.",
+  { "application/rss+xml": "/feed.xml" },
+);
 
 function formatShortMonth(iso: string) {
   const d = new Date(iso);

@@ -136,10 +136,6 @@ body {
   color: var(--color-prose);
   max-width: 64ch;
 }
-.essay-prose p:first-of-type::first-letter {
-  font-size: 1.25em;
-  font-weight: 500;
-}
 .essay-prose h2 {
   font-size: 26px;
   font-weight: 600;
@@ -219,4 +215,21 @@ p .gradient-text {
 }
 [data-theme="dark"] .theme-ic-moon {
   display: none;
+}
+
+/* The "at a glance" box in the case study is written with inline light colours; keep it readable in
+   the dark theme. */
+[data-theme="dark"] .essay-prose aside {
+  background: #161618 !important;
+  border-color: var(--color-rule) !important;
+}
+[data-theme="dark"] .essay-prose aside dl,
+[data-theme="dark"] .essay-prose aside dd {
+  color: var(--color-prose) !important;
+}
+[data-theme="dark"] .essay-prose aside dt {
+  color: var(--color-ink) !important;
+}
+[data-theme="dark"] .essay-prose aside > div {
+  color: var(--color-muted) !important;
 }

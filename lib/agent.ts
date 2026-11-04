@@ -14,19 +14,29 @@ export { profile };
 
 const essayUrl = (slug: string) => `${SITE}/writing/${slug}`;
 
+/** An "at a glance" box written as HTML in an essay becomes a plain Markdown list. */
+function asideToMarkdown(md: string): string {
+  return md.replace(/<aside[^>]*>([\s\S]*?)<\/aside>/g, (_m, inner: string) => {
+    const title = /<div[^>]*>([\s\S]*?)<\/div>/.exec(inner)?.[1]?.trim();
+    const pairs = [...inner.matchAll(/<dt[^>]*>([\s\S]*?)<\/dt>\s*<dd[^>]*>([\s\S]*?)<\/dd>/g)];
+    const head = title ? `**${title.charAt(0) + title.slice(1).toLowerCase()}**\n\n` : "";
+    return head + pairs.map((p) => `- **${p[1].trim()}:** ${p[2].trim()}`).join("\n");
+  });
+}
+
 export function essayMarkdown(slug: string): string | null {
   const file = path.join(process.cwd(), "content", "essays", `${slug}.md`);
   if (!fs.existsSync(file)) return null;
   const { data, content } = matter(fs.readFileSync(file, "utf8"));
-  const lines = [
+  const date = new Date(data.date).toLocaleDateString("en-AU", { day: "numeric", month: "long", year: "numeric" });
+  const parts = [
     `# ${data.title}`,
-    "",
-    `By ${profile.name}, ${new Date(data.date).toLocaleDateString("en-AU", { day: "numeric", month: "long", year: "numeric" })}. ${data.readMinutes} minute read.`,
+    `By ${profile.name}, ${date}. ${data.readMinutes} minute read.`,
     `Web page: ${essayUrl(slug)}`,
-    "",
   ];
-  if (data.dek) lines.push(`> ${data.dek}`, "");
-  return lines.join("\n") + content.trim() + `\n\n---\nContact ${profile.name}: ${profile.email}\n`;
+  if (data.dek) parts.push(`> ${data.dek}`);
+  parts.push(asideToMarkdown(content.trim()), "---", `Contact ${profile.name}: ${profile.email}`);
+  return parts.join("\n\n") + "\n";
 }
 
 function essayLine(e: EssayMeta) {
@@ -74,6 +84,7 @@ export function llmsTxt(): string {
     `- [Writing](${SITE}/writing): every essay`,
     `- [About](${SITE}/about): background and how I work`,
     `- [Contact](${SITE}/contact): email and links`,
+    `- [DAC](${SITE}/dac): what DAC is and where its code and documentation live`,
     `- [RSS feed](${SITE}/feed.xml): new essays`,
     "",
   ];
@@ -85,30 +96,49 @@ export function llmsFullTxt(): string {
   return [llmsTxt(), "", "# Essays in full", "", ...essays.map((e) => essayMarkdown(e.slug) + "\n")].join("\n");
 }
 
-/** schema.org Person, the structured data search engines and agents read. */
+/** schema.org structured data: the person, and each thing he made, with him as its creator. */
 export function personJsonLd() {
   const p = profile;
+  const me = { "@id": `${SITE}/#mark` };
+  const orgs = new Set(["Project Management Institute", "Southpac Aerospace", "Amazon Web Services", "RMIT University", "HBA Learning Centres"]);
   return {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": `${SITE}/#mark`,
-    name: p.name,
-    url: `${SITE}/`,
-    email: `mailto:${p.email}`,
-    description: `${p.positioning.join(" ")} ${p.summary}`,
-    address: { "@type": "PostalAddress", addressLocality: "Melbourne", addressRegion: "VIC", addressCountry: "AU" },
-    jobTitle: ["Project Manager", "Founder"],
-    worksFor: [
-      { "@type": "Organization", name: "Airservices Australia" },
-      { "@type": "Organization", name: "SKYCOT", url: "https://skycot.com" },
+    "@graph": [
+      {
+        "@type": "Person",
+        ...me,
+        name: p.name,
+        url: `${SITE}/`,
+        email: `mailto:${p.email}`,
+        description: `${p.positioning.join(" ")} ${p.summary}`,
+        address: { "@type": "PostalAddress", addressLocality: "Melbourne", addressRegion: "VIC", addressCountry: "AU" },
+        jobTitle: ["Project Manager", "Founder"],
+        worksFor: [
+          { "@type": "Organization", name: "Airservices Australia" },
+          { "@type": "Organization", name: "SKYCOT", url: "https://skycot.com" },
+        ],
+        alumniOf: { "@type": "CollegeOrUniversity", name: "RMIT University" },
+        hasCredential: p.credentials.map((c) => {
+          const org = c.issuer.split(",")[0];
+          return {
+            "@type": "EducationalOccupationalCredential",
+            name: c.name,
+            description: c.issuer,
+            ...(orgs.has(org) ? { recognizedBy: { "@type": "Organization", name: org } } : {}),
+          };
+        }),
+        knowsAbout: ["AI agents", "Aviation engineering", "Aircraft maintenance", "Project management", "Regulatory approvals"],
+        sameAs: p.sameAs.map((s) => s.url),
+      },
+      ...p.builds.map((b) => ({
+        "@type": b.links.some((l) => l.includes("github.com")) ? "SoftwareSourceCode" : "CreativeWork",
+        name: b.name,
+        description: b.summary,
+        creativeWorkStatus: b.status,
+        creator: me,
+        ...(b.links.length ? { url: b.links[0], sameAs: b.links.slice(1) } : {}),
+      })),
     ],
-    alumniOf: { "@type": "CollegeOrUniversity", name: "RMIT University" },
-    hasCredential: p.credentials.map((c) => ({ "@type": "EducationalOccupationalCredential", name: c.name, recognizedBy: c.issuer })),
-    knowsAbout: ["AI agents", "First-principles problem solving", "Aviation engineering", "Project management", "Airworthiness and regulatory approvals"],
-    sameAs: p.sameAs.map((s) => s.url),
-    subjectOf: p.builds
-      .filter((b) => b.links.length)
-      .map((b) => ({ "@type": "CreativeWork", name: b.name, description: b.summary, url: b.links[0] })),
   };
 }
 
@@ -121,5 +151,15 @@ export function articleJsonLd(e: EssayMeta) {
     datePublished: e.date,
     url: essayUrl(e.slug),
     author: { "@id": `${SITE}/#mark`, "@type": "Person", name: profile.name, url: `${SITE}/` },
+  };
+}
+
+/** Metadata for a page: its own canonical address and Open Graph card, and the llms.txt link for agents. */
+export function pageMeta(pathname: string, title: string, description: string, extraTypes: Record<string, string> = {}) {
+  return {
+    title,
+    description,
+    alternates: { canonical: pathname, types: { "text/plain": "/llms.txt", ...extraTypes } },
+    openGraph: { title: `${title} | ${profile.name}`, description, url: `${SITE}${pathname}`, type: "website" as const, locale: "en_AU" },
   };
 }

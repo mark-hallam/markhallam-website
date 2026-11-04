@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 // The same bar as the homepage (public/home.html): name on the left, the same five places, a light and
 // dark switch, and a menu on phones. Work and Career are sections of the homepage.
 const NAV = [
-  { href: "/#work", label: "Work", match: () => false },
+  { href: "/#made", label: "Work", match: () => false },
   { href: "/#career", label: "Career", match: () => false },
   { href: "/writing", label: "Writing", match: (p: string) => p.startsWith("/writing") },
   { href: "/about", label: "About", match: (p: string) => p === "/about" },
@@ -55,7 +55,7 @@ function ThemeButton() {
       onClick={toggle}
       aria-pressed="false"
       aria-label="Dark mode"
-      className="w-[34px] h-[34px] rounded-full inline-flex items-center justify-center text-[var(--color-ink)] hover:bg-[var(--color-rule)] flex-none"
+      className="w-11 h-11 rounded-full inline-flex items-center justify-center text-[var(--color-ink)] hover:bg-[var(--color-rule)] flex-none"
     >
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
         <g className="theme-ic-moon">
@@ -99,7 +99,7 @@ export function SiteHeader() {
       >
         Skip to content
       </a>
-      <div className="h-full px-6 lg:px-8 flex items-center gap-5">
+      <div className="h-full max-w-[1080px] mx-auto px-4 min-[700px]:px-6 lg:max-w-none lg:px-[clamp(18px,1.6vw,32px)] flex items-center gap-5">
         <Link
           href="/"
           className="gradient-text text-[19px] tracking-[0.01em] leading-none no-underline py-1.5"
@@ -138,7 +138,7 @@ export function SiteHeader() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label="Menu"
-            className="min-[700px]:hidden w-10 h-10 flex items-center justify-center rounded-[10px] text-[var(--color-ink)]"
+            className="min-[700px]:hidden w-11 h-11 flex items-center justify-center rounded-[10px] text-[var(--color-ink)]"
             onClick={() => setOpen(!open)}
           >
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden>

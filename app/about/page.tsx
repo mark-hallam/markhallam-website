@@ -1,15 +1,11 @@
 import Link from "next/link";
 import { WebAddress } from "@/components/web-address";
 import { BELIEFS, SITE_DESCRIPTION } from "@/lib/profile";
-import { profile } from "@/lib/agent";
+import { pageMeta, profile } from "@/lib/agent";
 
 // About tells the same story as the homepage, from the same facts (content/profile.json), so a person
 // and an agent get one answer whichever page they read.
-export const metadata = {
-  title: "About",
-  description: SITE_DESCRIPTION,
-  alternates: { canonical: "/about" },
-};
+export const metadata = pageMeta("/about", "About", SITE_DESCRIPTION);
 
 const label = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 
@@ -22,7 +18,7 @@ export default function AboutPage() {
           {profile.positioning[0]}
         </h1>
         <div className="space-y-[22px] max-w-[60ch]">
-          {[...profile.about, profile.summary].map((p) => (
+          {profile.about.map((p) => (
             <p key={p} className="text-[19px] sm:text-[21px] leading-[1.55] text-[var(--color-ink)]">
               {p}
             </p>

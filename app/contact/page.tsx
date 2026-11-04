@@ -1,12 +1,9 @@
 import { SOCIAL } from "@/lib/social";
+import { pageMeta } from "@/lib/agent";
 import { WebAddress } from "@/components/web-address";
 import { CONTACT_BODY, CONTACT_HEADING, CONTACT_TOPICS, EMAIL } from "@/lib/profile";
 
-export const metadata = {
-  title: "Contact",
-  alternates: { canonical: "/contact" },
-  description: CONTACT_BODY,
-};
+export const metadata = pageMeta("/contact", "Contact", CONTACT_BODY);
 
 type Channel = { label: string; href: string; value: string; note?: string };
 
