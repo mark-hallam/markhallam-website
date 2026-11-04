@@ -9,16 +9,15 @@ export const ARGO = {
     "Between April and June 2026 I built Argo, a platform where a business hires AI teammates from a template or a plain English description. A person approves anything sensitive, and every action goes into a tamper evident log. It ran live. It had no paying customers. This page is the evidence, with what worked, what didn't and what I learned.",
   stats: [
     { n: "57", l: "days, 29 April to 24 June 2026" },
-    { n: "13,803", l: "commits, about 9,000 of them ledger updates" },
     { n: "2,901", l: "merged pull requests" },
     { n: "1", l: "person directing Claude and Codex agents" },
   ],
   statsNote:
-    "Counts from Argo's git history and GitHub pull requests. Apart from the agents and automated checks I ran, every change is under my GitHub account; no one else worked on it. The code is private for now.",
+    "Counts from Argo's git history and GitHub pull requests: 13,803 commits in all, about 9,000 of them ledger updates and about 2,160 touching the Rust core. Apart from the agents and automated checks I ran, every change is under my GitHub account; no one else worked on it. The code is private for now.",
 
   what: [
     "A business could hire an AI teammate the way it hires a person. Pick one of 37 role templates, such as receptionist, recruiter or executive assistant, or describe the job in plain English, and Argo's builder, Genesis, wrote the teammate: its role, its instructions and its safety rules. Anything sensitive was set to wait for a person's approval, and Genesis would not let a sensitive action skip that.",
-    "Every action went into a hash chained audit log, so nobody could quietly change the record. Teammates worked with any AI model, connected to business tools, and a lead teammate could hand work out to the rest of the team. It ran hosted on AWS in Sydney as SKYCOT AI Teammates, with sign up, hiring and payment working.",
+    "Every action went into a hash chained audit log, so nobody could quietly change the record. Teammates could run on several AI providers, including Anthropic, Amazon Bedrock and OpenAI compatible services (production ran on Anthropic), and connected to 17 business tools through access tokens. A lead teammate could hand work out to the rest of the team; that was built but not part of the production check. It ran hosted on AWS in Sydney as SKYCOT AI Teammates, with sign up, hiring and payment working.",
   ],
 
   shots: [
@@ -32,7 +31,7 @@ export const ARGO = {
     { date: "29 Apr 2026", who: "Argo", what: "First commit: the core, permissions and command line." },
     { date: "30 Apr 2026", who: "Argo", what: "Hash chained audit log." },
     { date: "3 May 2026", who: "Argo", what: "First role template." },
-    { date: "6 May 2026", who: "Argo", what: "Genesis: a plain English description becomes a teammate, with a safety check on every action." },
+    { date: "6 May 2026", who: "Argo", what: "Genesis: a plain English description becomes a teammate, with a rule that every sensitive action waits for approval." },
     { date: "11 May 2026", who: "Argo", what: "Delegation contracts: what one teammate may hand to another." },
     { date: "1 to 2 Jun 2026", who: "Argo", what: "Voice teammates you could talk to in real time, built and tested in development, with both sides of each conversation saved to the audit log; not switched on in production." },
     { date: "23 Jun 2026", who: "Argo", what: "Verified live in production: sign up, hiring through Genesis, the audit log and payment." },
@@ -43,7 +42,7 @@ export const ARGO = {
     { date: "29 Sep 2026", who: "OpenAI", what: "dots: always on agents, with approval needed for actions that affect your accounts.", source: 3 },
   ] as { date: string; who: string; what: string; source?: number }[],
   timelineNote:
-    "These are other companies' products with their own scope, and they go further than Argo did: their agents act on their own, on their own computers, which Argo built but kept switched off. The overlap is the dated part: Genesis, approvals and the audit log were live in Argo's production by 23 June 2026; templates and voice were built in May and June but were not part of that production check.",
+    "These are other companies' products with their own scope, and they go further than Argo did: their agents act on their own, on their own computers, which Argo built but kept switched off. The overlap is the dated part: Genesis, approvals and the audit log were live in Argo's production by 23 June 2026; templates and voice were built in May and June but were not part of that production check. Approvals and audit logs for AI agents weren't new in 2026. What I'm showing is that one person directing agents built a working stack like this in 57 days.",
 
   status: [
     { item: "Genesis: plain English to a working teammate", state: "Live", note: "Verified in production with a real AI model, 23 June 2026." },
@@ -67,7 +66,7 @@ export const ARGO = {
   wrong: [
     "No paying customers. In late June I had agents argue the business case against me. The verdict: a general platform for governing AI teammates was a losing position, because the big AI companies were shipping the same building blocks. They were right, and go to market is my weakest skill.",
     "I built the checks too late. A merge gate that wouldn't let an agent call work done until the checks passed, and a second agent to check every change, both shipped switched off.",
-    "Work that looked done wasn't always done. A safety check stamped a pass without running; a voice feature was called live before production had its key. The no theatre rule came from those moments.",
+    "Work that looked done wasn't always done. The check meant to test a newly built teammate before it could be hired stamped a pass without running its tests; a voice feature was called live before production had its key. The no theatre rule came from those moments.",
   ],
   learned: [
     "Build from one customer with one painful job, and test the market before the platform.",
