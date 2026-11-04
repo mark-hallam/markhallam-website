@@ -45,7 +45,11 @@ export default function ArgoPage() {
           {ARGO.title}.
         </h1>
         <p className="text-[1.1875rem] sm:text-[1.3125rem] leading-[1.55] text-[var(--color-ink)] max-w-[60ch]">{ARGO.lede}</p>
-        <dl className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,6.5rem),1fr))] gap-3 mt-10">
+        <p className="mt-4 text-[1.0625rem] sm:text-[1.125rem] leading-[1.6] text-[var(--color-body)] max-w-[60ch]">{ARGO.voiceLine}</p>
+        <blockquote className="gradient-border-left mt-8 pl-5 m-0 text-[1.1875rem] sm:text-[1.375rem] leading-[1.45] font-semibold text-[var(--color-ink)] max-w-[52ch]">
+          {ARGO.ownLine}
+        </blockquote>
+        <dl className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-10 [&>div:last-child:nth-child(odd)]:col-span-2 sm:[&>div:last-child:nth-child(odd)]:col-span-1">
           {ARGO.stats.map((s) => (
             <div key={s.l} className="rounded-2xl border border-[var(--color-rule)] p-4">
               <dt className="sr-only">{s.l}</dt>

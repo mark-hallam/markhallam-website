@@ -4,9 +4,13 @@
 // Other companies' launch dates come from the press sources listed in `sources`. No dashes in Mark's voice.
 
 export const ARGO = {
-  title: "Argo: AI teammates, built by one person directing AI agents",
+  title: "Six months ago I started building AI agent teams like the ones launching today",
   lede:
-    "Between April and June 2026 I built Argo, a platform where a business hires AI teammates from a template or a plain English description. A person approves anything sensitive, and every action goes into a tamper evident log. It ran live in production for about two weeks in June 2026. It had no paying customers. This page is my account of it, with what worked, what didn't and what I learned, and what you can and can't check.",
+    "My first commit on Argo was on 29 April 2026. By 23 June it was live in production: describe a teammate in plain English and Argo built it, with a person approving anything sensitive and every action in a tamper evident audit log. Role templates, a lead teammate that hands work to the others, and voice teammates were built too, though they weren't part of that production check. Seven weeks later, on 11 August, xAI opened Grok Bot's public beta with AI teammates, and added voice on 17 September.",
+  voiceLine:
+    "Voice: I built and tuned voice teammates from 25 May to 10 June 2026, with real time conversations from 1 June, both sides saved to the audit log. They were never switched on in production, because I couldn't pay for the voice service.",
+  ownLine:
+    "I'm better at building than at go to market. Argo had no paying customers, so I shut it down and wrote up why. That's the lesson I bring: build it, check it's real, and know your gaps.",
   stats: [
     { n: "57", l: "days, 29 April to 24 June 2026" },
     { n: "2,901", l: "merged pull requests" },

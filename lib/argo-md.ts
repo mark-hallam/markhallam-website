@@ -8,6 +8,8 @@ export function argoMarkdown(): string {
     `# ${ARGO.title}`,
     `By ${profile.name}. Web page: ${SITE}/argo`,
     ARGO.lede,
+    ARGO.voiceLine,
+    `> ${ARGO.ownLine}`,
     ARGO.stats.map((s) => `- **${s.n}** ${s.l}`).join("\n"),
     ARGO.statsNote,
     "## What it was",

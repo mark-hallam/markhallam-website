@@ -61,7 +61,7 @@
     {
       "name": "Argo",
       "status": "Retired in June 2026; code private; figures self-reported",
-      "summary": "Argo let a business hire AI teammates from 37 role templates or a plain English description, with a person approving anything sensitive and every action in a tamper evident audit log. AI coding agents built it under my direction in 57 days: 2,901 merged pull requests and 13,803 commits, about 9,000 of them ledger updates. It ran live in production in late June 2026, seven weeks before xAI's Grok Bot, an internal prototype until then, opened a public beta with similar AI teammates. It had no paying customers, so I retired it, put its lessons into SKYCOT and wrote up what went wrong.",
+      "summary": "Argo let a business hire AI teammates from 37 role templates or a plain English description, with a person approving anything sensitive and every action in a tamper evident audit log. AI coding agents built it under my direction in 57 days: 2,901 merged pull requests and 13,803 commits, about 9,000 of them ledger updates. It ran live in production in June 2026, seven weeks before xAI's Grok Bot, an internal prototype until then, opened a public beta with similar AI teammates. It had no paying customers, so I retired it, put its lessons into SKYCOT and wrote up what went wrong.",
       "links": [
         "https://www.markhallam.com.au/argo",
         "https://www.markhallam.com.au/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"
