@@ -120,7 +120,7 @@ export function personJsonLd() {
         email: `mailto:${p.email}`,
         description: `${p.positioning.join(" ")} ${p.summary}`,
         address: { "@type": "PostalAddress", addressLocality: "Melbourne", addressRegion: "VIC", addressCountry: "AU" },
-        jobTitle: ["Project Manager, OneSKY CMATS Program", "Founder"],
+        jobTitle: ["OneSKY Air Traffic Management Service Process Project Manager", "Founder"],
         worksFor: [
           { "@type": "Organization", name: "Airservices Australia" },
           { "@type": "Organization", name: "SKYCOT", url: "https://skycot.com" },

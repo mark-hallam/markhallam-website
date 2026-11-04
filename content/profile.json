@@ -157,14 +157,13 @@
       "title": "Accountable to CASA for a university drone operator's certificate.",
       "where": "Swinburne AIR Hub, 2022 to 2023.",
       "story": "Set up Swinburne's CASA drone operator's certificate (CASA.ReOC.8111) and was its Accountable Manager, the person CASA held accountable for the leadership, oversight and safety of its drone operations.",
-      "register": "https://www.casa.gov.au/drones/remotely-piloted-aircraft-operators-certificate/remotely-piloted-aircraft-operators-certificate-reoc-holders",
       "video": "https://www.youtube.com/watch?v=sqEgjOA--dY"
     },
     {
       "stat": "Now",
       "title": "Enabling the benefits of CMATS, Australia's new air traffic system.",
       "where": "Airservices Australia, in progress.",
-      "story": "CMATS is Australia's new civil and military air traffic system. My part is making its benefits real for the people who fly: user preferred routes, a single flight data region, wake turbulence management, and conflict detection tools."
+      "story": "CMATS is Australia's new civil and military air traffic system, bringing user preferred routes, a single flight data region, wake turbulence management, and conflict detection tools. My part is the procedures operators will use under CMATS and standardising the processes behind them."
     }
   ],
   "career": [
@@ -184,7 +183,7 @@
       "when": "Nov 2022 to Sep 2023",
       "org": "Swinburne University of Technology, AIR Hub",
       "role": "Accountable Manager, CASA Drone Operator's Certificate (ReOC)",
-      "detail": "I was the key person CASA, Australia's aviation safety regulator, held accountable for Swinburne's remotely piloted aircraft operator's certificate (ReOC, CASA.ReOC.8111): the leadership, oversight and safety of the university's commercial drone operations. I set the certificate up from November 2022, CASA issued it on 9 February 2023, and I held the role until I handed it to a colleague in September 2023. CASA lists current certificates on its public ReOC register: https://www.casa.gov.au/drones/remotely-piloted-aircraft-operators-certificate/remotely-piloted-aircraft-operators-certificate-reoc-holders"
+      "detail": "I was the key person CASA, Australia's aviation safety regulator, held accountable for Swinburne's remotely piloted aircraft operator's certificate (ReOC, CASA.ReOC.8111): the leadership, oversight and safety of the university's commercial drone operations. I set the certificate up from November 2022, CASA issued it on 9 February 2023, and I held the role until I handed it to a colleague in September 2023."
     },
     {
       "when": "Aug 2022 to Jun 2023",
@@ -259,5 +258,5 @@
       "issuer": "HBA Learning Centres"
     }
   ],
-  "now": "Project Manager, OneSKY CMATS Program, at Airservices Australia, and founder of SKYCOT. Open to roles building with, or for, AI agents."
+  "now": "OneSKY Air Traffic Management Service Process Project Manager at Airservices Australia, and founder of SKYCOT. Open to roles building with, or for, AI agents."
 }
