@@ -45,7 +45,7 @@ export default function ArgoPage() {
           {ARGO.title}.
         </h1>
         <p className="text-[1.1875rem] sm:text-[1.3125rem] leading-[1.55] text-[var(--color-ink)] max-w-[60ch]">{ARGO.lede}</p>
-        <dl className="grid grid-cols-[repeat(auto-fit,minmax(9.5rem,1fr))] gap-3 mt-10">
+        <dl className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,6.5rem),1fr))] gap-3 mt-10">
           {ARGO.stats.map((s) => (
             <div key={s.l} className="rounded-2xl border border-[var(--color-rule)] p-4">
               <dt className="sr-only">{s.l}</dt>
@@ -95,12 +95,12 @@ export default function ArgoPage() {
           {ARGO.timeline.map((t) => {
             const mine = t.who === "Argo";
             return (
-              <li key={t.date + t.what} className="grid grid-cols-[7.5rem_1fr] sm:grid-cols-[9.5rem_6rem_1fr] gap-x-4 gap-y-1 py-3.5 border-b border-[var(--color-rule)]">
+              <li key={t.date + t.what} className="grid grid-cols-1 sm:grid-cols-[9.5rem_6rem_1fr] gap-x-4 gap-y-1 py-3.5 border-b border-[var(--color-rule)]">
                 <span className="text-[0.9375rem] font-semibold text-[var(--color-ink)] tabular-nums">{t.date}</span>
                 <span className={"text-[0.8125rem] font-semibold self-center justify-self-start rounded-full px-2.5 py-0.5 " + (mine ? "bg-[var(--color-ink)] text-[var(--color-page)]" : "bg-[var(--color-rule)] text-[var(--color-ink)]")}>
                   {t.who}
                 </span>
-                <span className="col-span-2 sm:col-span-1 text-[1rem] leading-[1.5] text-[var(--color-body)]">
+                <span className="text-[1rem] leading-[1.5] text-[var(--color-body)]">
                   {t.what}
                   {t.source !== undefined && (
                     <>

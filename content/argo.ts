@@ -6,7 +6,7 @@
 export const ARGO = {
   title: "Argo: AI teammates, built by one person directing AI agents",
   lede:
-    "Between April and June 2026 I built Argo, a platform where a business hires AI teammates from a template or a plain English description. A person approves anything sensitive, and every action goes into a tamper evident log. It ran live in production for about two weeks in June 2026. It had no paying customers. This page is the evidence, with what worked, what didn't and what I learned.",
+    "Between April and June 2026 I built Argo, a platform where a business hires AI teammates from a template or a plain English description. A person approves anything sensitive, and every action goes into a tamper evident log. It ran live in production for about two weeks in June 2026. It had no paying customers. This page is my account of it, with what worked, what didn't and what I learned, and what you can and can't check.",
   stats: [
     { n: "57", l: "days, 29 April to 24 June 2026" },
     { n: "2,901", l: "merged pull requests" },
@@ -25,7 +25,7 @@ export const ARGO = {
     { src: "/assets/argo/genesis.jpg", alt: "Argo's Genesis screen: describe the role in plain English and Genesis drafts a real teammate, with persona, charter and skills", caption: "Genesis: describe a teammate in plain English." },
     { src: "/assets/argo/audit.jpg", alt: "Argo's Audit screen: every action hash chained and replayable, such as approval asked, policy evaluated, tool call and teammate hired", caption: "Audit: every action, hash chained." },
   ],
-  shotsNote: "Argo's own screens from its 29 May 2026 walkthrough, in a sample workspace. It ran under the SKYCOT name.",
+  shotsNote: "Argo's own screens from its 29 May 2026 walkthrough, in a proof of concept workspace with sample data, two weeks before the first production deployment. It ran under the SKYCOT name.",
 
   timeline: [
     { date: "29 Apr 2026", who: "Argo", what: "First commit: the core, permissions and command line." },

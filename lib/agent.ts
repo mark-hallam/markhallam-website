@@ -6,6 +6,7 @@ import path from "node:path";
 import matter from "gray-matter";
 import profile from "@/content/profile.json";
 import { getEssayMetaList, type EssayMeta } from "@/lib/essays";
+import { argoMarkdown } from "@/lib/argo-md";
 
 export const SITE = profile.url; // https://www.markhallam.com.au, the address the site is served from
 
@@ -109,7 +110,7 @@ export function llmsTxt(): string {
 
 export function llmsFullTxt(): string {
   const essays = getEssayMetaList();
-  return [llmsTxt(), "", "# Essays in full", "", ...essays.map((e) => essayMarkdown(e.slug) + "\n")].join("\n");
+  return [llmsTxt(), "", "# The Argo story in full", "", argoMarkdown(), "", "# Essays in full", "", ...essays.map((e) => essayMarkdown(e.slug) + "\n")].join("\n");
 }
 
 /** schema.org structured data: the person, and each thing he made, with him as its creator. */
