@@ -76,12 +76,19 @@ export default async function EssayPage({
             </p>
           )}
           <div className="flex flex-wrap gap-x-6 gap-y-2 items-center text-[13px] text-[var(--color-muted)] font-medium">
-            <span>{formatMonth(essay.date)}</span>
-            <span className="text-[#d1d5db]">·</span>
+            <span>
+              By{" "}
+              <Link href="/about" className="text-[var(--color-ink)] no-underline hover:underline" rel="author">
+                Mark Hallam
+              </Link>
+            </span>
+            <span className="text-[var(--color-muted)]" aria-hidden>·</span>
+            <time dateTime={essay.date}>{formatMonth(essay.date)}</time>
+            <span className="text-[var(--color-muted)]">·</span>
             <span>{essay.readMinutes} min read</span>
             {essay.category && (
               <>
-                <span className="text-[#d1d5db]">·</span>
+                <span className="text-[var(--color-muted)]">·</span>
                 <span>{essay.category}</span>
               </>
             )}

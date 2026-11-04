@@ -24,7 +24,7 @@ Section sources: nav = A; hero = D (problem tiles and micro-animations) with C a
 <script defer src="/_vercel/insights/script.js"></script>
 
 <script>
-(function(r){r.classList.add('js');try{if(localStorage.getItem('mh-v2-theme')==='dark'){r.setAttribute('data-theme','dark');}}catch(e){}
+(function(r){r.classList.add('js');var t=null;try{t=localStorage.getItem('mh-v2-theme');}catch(e){}if(t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)){r.setAttribute('data-theme','dark');}
 var m=/[?&]hero=([123])\b/.exec(location.search);r.setAttribute('data-hero',m?m[1]:'2');
 if(window.matchMedia&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add('motion');setTimeout(function(){if(!window.__v2){r.classList.remove('motion');}},3000);}})(document.documentElement);
 </script>
@@ -638,6 +638,8 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 
 /* Footer (A) */
 .footer{border-top:1px solid var(--line);padding:28px 0 44px;font-size:14px;color:var(--text-2)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 20px}
+.foot-links{display:flex;flex-wrap:wrap;gap:4px 20px;list-style:none;margin:0;padding:0}
 
 /* Small screens */
 @media (max-width:699px){
@@ -1516,7 +1518,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 </main>
 
 <footer class="footer">
-  <div class="wrap">© 2026 Mark Hallam · Melbourne, Australia</div>
+  <div class="wrap foot-row"><span>© 2026 Mark Hallam · Melbourne, Australia</span><ul class="foot-links"><li><a href="mailto:markhallam@skycot.com">markhallam@skycot.com</a></li><li><a href="https://www.linkedin.com/in/mark-hallam/">LinkedIn</a></li><li><a href="https://github.com/mark-hallam">GitHub</a></li></ul></div>
 </footer>
 
 <script>
@@ -1536,7 +1538,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
     return io;
   }
 
-  /* ---------- Theme toggle (A): manual only, light is the default ---------- */
+  /* ---------- Theme: follows the Mac or phone setting until the visitor picks one with the button ---------- */
   var themeBtn = doc.querySelector('.theme-btn');
   function setTheme(dark, save) {
     if (dark) { root.setAttribute('data-theme', 'dark'); } else { root.removeAttribute('data-theme'); }
@@ -1546,9 +1548,14 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
   if (themeBtn) {
     setTheme(root.getAttribute('data-theme') === 'dark', false);
     themeBtn.addEventListener('click', function () { setTheme(root.getAttribute('data-theme') !== 'dark', true); });
+    var schemeMq = win.matchMedia('(prefers-color-scheme: dark)');
+    onMq(schemeMq, function () { var saved = null; try { saved = localStorage.getItem('mh-v2-theme'); } catch (e) {} if (!saved) { setTheme(schemeMq.matches, false); } });
   }
   var menu = doc.querySelector('.nav-menu');
-  if (menu) { menu.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('a')) { menu.removeAttribute('open'); } }); }
+  if (menu) {
+    menu.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('a')) { menu.removeAttribute('open'); } });
+    doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.hasAttribute('open')) { menu.removeAttribute('open'); menu.querySelector('summary').focus(); } });
+  }
 
   /* ---------- Hero tiles ---------- */
   var hero = doc.querySelector('.hero'), grid = hero.querySelector('.hp-grid');

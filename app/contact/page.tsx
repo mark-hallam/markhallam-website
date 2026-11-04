@@ -66,7 +66,7 @@ export default function ContactPage() {
             <div className="min-w-0">
               <a
                 href={c.href}
-                className="web-address text-[19px] sm:text-[22px] font-medium text-[var(--color-ink)] no-underline border-b border-[#d1d5db] inline mb-2.5 hover:border-[var(--color-brand-purple)] transition-colors"
+                className="web-address text-[19px] sm:text-[22px] font-medium text-[var(--color-ink)] no-underline border-b border-[var(--color-rule)] inline mb-2.5 hover:border-[var(--color-brand-purple)] transition-colors"
               >
                 <WebAddress text={c.value} />
               </a>

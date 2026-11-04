@@ -108,7 +108,7 @@ export default function AboutPage() {
           <div className="flex gap-4 items-center md:justify-end flex-wrap">
             <Link
               href="/contact"
-              className="bg-[var(--color-ink)] text-white px-6 py-[13px] rounded-lg text-[15px] font-medium no-underline hover:opacity-85 transition-opacity"
+              className="bg-[var(--color-ink)] text-[var(--color-page)] px-6 py-[13px] rounded-lg text-[15px] font-medium no-underline hover:opacity-85 transition-opacity"
             >
               Get in touch
             </Link>
