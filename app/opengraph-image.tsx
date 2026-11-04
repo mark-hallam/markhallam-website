@@ -6,7 +6,7 @@ import path from "node:path";
 // Renders to 1200x630 (the standard og:image size for LinkedIn, X, Slack, etc.)
 
 export const runtime = "nodejs";
-export const alt = "Mark Hallam: first-principles builder";
+export const alt = "Mark Hallam: solving hard problems from first principles and shipping with agents";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -73,8 +73,9 @@ export default async function OGImage() {
           <div
             style={{
               fontFamily: "Audiowide",
-              fontSize: 156,
-              lineHeight: 1.05,
+              fontSize: 120,
+              lineHeight: 1.1,
+              whiteSpace: "nowrap",
               letterSpacing: "0.02em",
               backgroundImage: "linear-gradient(90deg, #8B5CF6, #EC4899)",
               backgroundClip: "text",
@@ -102,6 +103,9 @@ export default async function OGImage() {
             <div style={{ display: "flex", color: "#6b7280" }}>
               Building for agents first.
             </div>
+            <div style={{ display: "flex", marginTop: 22, fontSize: 26, color: "#48484c" }}>
+              Project Manager, CMATS Service Processes, at Airservices Australia, and founder of SKYCOT.
+            </div>
           </div>
         </div>
 
@@ -112,7 +116,7 @@ export default async function OGImage() {
             justifyContent: "flex-end",
             fontFamily: "Inter",
             fontSize: 24,
-            color: "#9ca3af",
+            color: "#6e6e73",
             fontWeight: 600,
           }}
         >

@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { getEssayMetaList, type EssayMeta } from "@/lib/essays";
 import { FollowMe } from "@/components/follow-me";
+import { pageMeta } from "@/lib/agent";
 
-export const metadata = {
-  title: "Writing",
-  description:
-    "Essays on building real software with AI agents: framing work so agents can't misread it, keeping a swarm from drifting, and checking the result. By Mark Hallam.",
-};
+export const metadata = pageMeta(
+  "/writing",
+  "Writing",
+  "Essays on building real software with AI agents: framing work so agents can't misread it, keeping a swarm from drifting, and checking the result. By Mark Hallam.",
+  { "application/rss+xml": "/feed.xml" },
+);
 
 function formatShortMonth(iso: string) {
   const d = new Date(iso);
@@ -25,14 +27,14 @@ export default function WritingIndexPage() {
   return (
     <>
       <section className="max-w-[880px] mx-auto px-6 sm:px-8 pt-[96px] sm:pt-[120px] pb-20">
-        <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-8">
+        <div className="gradient-text uppercase text-[0.8125rem] font-semibold tracking-[0.04em] mb-8">
           Writing
         </div>
-        <h1 className="text-[38px] sm:text-[56px] leading-[1.05] font-semibold tracking-[-0.025em] max-w-[18ch] mb-8 text-[var(--color-ink)]">
+        <h1 className="text-[2.375rem] sm:text-[3.5rem] leading-[1.05] font-semibold tracking-[-0.025em] max-w-[18ch] mb-8 text-[var(--color-ink)]">
           Essays on building with, and for,{" "}
           <span className="gradient-text">AI agents</span>.
         </h1>
-        <p className="text-[19px] sm:text-[21px] leading-[1.55] text-[var(--color-body)] max-w-[56ch]">
+        <p className="text-[1.1875rem] sm:text-[1.3125rem] leading-[1.55] text-[var(--color-body)] max-w-[56ch]">
           Notes from building real software with Claude and Codex as the team: how to frame work so agents can&apos;t misread it, how to stop a swarm of agents drifting, and how to check the result like an engineer.
         </p>
         {essays.length > 0 && (
@@ -60,15 +62,15 @@ export default function WritingIndexPage() {
               className="writing-link block py-7 border-b border-[var(--color-rule)] last:border-b-0 no-underline text-inherit"
             >
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 sm:gap-6 mb-2">
-                <div className="text-[22px] font-medium text-[var(--color-ink)] leading-[1.3] max-w-[56ch]">
+                <h2 className="text-[1.375rem] font-medium text-[var(--color-ink)] leading-[1.3] max-w-[56ch]">
                   {essay.title}
-                </div>
-                <div className="text-[13px] text-[var(--color-muted)] font-medium flex-shrink-0">
+                </h2>
+                <div className="text-[0.8125rem] text-[var(--color-muted)] font-medium flex-shrink-0">
                   {essay.readMinutes} min · {formatShortMonth(essay.date)}
                 </div>
               </div>
               {essay.dek && (
-                <div className="text-[16px] text-[var(--color-body)] leading-[1.55] max-w-[64ch]">
+                <div className="text-[1rem] text-[var(--color-body)] leading-[1.55] max-w-[64ch]">
                   {essay.dek}
                 </div>
               )}

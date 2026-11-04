@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/lib/profile";
+import { JsonLd } from "@/components/json-ld";
+import { SITE, personJsonLd } from "@/lib/agent";
 import "./globals.css";
 
 // Fonts are served from the site itself: no build-time download from Google Fonts
@@ -22,7 +24,8 @@ export const metadata: Metadata = {
     template: "%s | Mark Hallam",
   },
   description: SITE_DESCRIPTION,
-  metadataBase: new URL("https://markhallam.com.au"),
+  metadataBase: new URL(SITE),
+  alternates: { types: { "text/plain": "/llms.txt" } },
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
@@ -37,11 +40,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU" className={`${audiowide.variable} h-full`}>
+    <html lang="en-AU" className={`${audiowide.variable} h-full`} suppressHydrationWarning>
+      <head>
+        {/* Before the first paint: the visitor's own choice, else the Mac or phone setting (as on the homepage). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(r){var t=null;try{t=localStorage.getItem('mh-v2-theme')}catch(e){}if(t==='dark'||(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)){r.setAttribute('data-theme','dark')}})(document.documentElement)",
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">
-        <div className="gradient-line" />
+        <JsonLd data={personJsonLd()} />
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main id="main" className="flex-1">{children}</main>
         <SiteFooter />
         <Analytics />
       </body>

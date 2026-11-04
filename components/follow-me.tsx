@@ -37,37 +37,37 @@ function YouTubeIcon() {
 export function FollowMe() {
   return (
     <section className="max-w-[880px] mx-auto px-6 sm:px-8 py-24 border-t border-[var(--color-rule)] text-center">
-      <div className="gradient-text uppercase text-[13px] font-semibold tracking-[0.04em] mb-5">
+      <div className="gradient-text uppercase text-[0.8125rem] font-semibold tracking-[0.04em] mb-5">
         Follow along
       </div>
-      <p className="text-[18px] text-[var(--color-soft)] mb-9 max-w-[52ch] mx-auto leading-[1.55]">
+      <p className="text-[1.125rem] text-[var(--color-soft)] mb-9 max-w-[52ch] mx-auto leading-[1.55]">
         Code on GitHub, short notes on X and LinkedIn, and the occasional video. Pick whichever you already use.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-[560px] mx-auto">
         <a
           href={SOCIAL.github.url}
-          className="flex items-center justify-center gap-3 px-5 py-3 border border-[var(--color-rule)] rounded-lg text-[15px] font-medium text-[var(--color-ink)] no-underline hover:border-[var(--color-brand-purple)] transition-colors"
+          className="flex items-center justify-center gap-3 px-5 py-3 border border-[var(--color-rule)] rounded-lg text-[0.9375rem] font-medium text-[var(--color-ink)] no-underline hover:border-[var(--color-brand-purple)] transition-colors"
         >
           <GitHubIcon />
           <span>Code on GitHub</span>
         </a>
         <a
           href={SOCIAL.x.url}
-          className="flex items-center justify-center gap-3 px-5 py-3 border border-[var(--color-rule)] rounded-lg text-[15px] font-medium text-[var(--color-ink)] no-underline hover:border-[var(--color-brand-purple)] transition-colors"
+          className="flex items-center justify-center gap-3 px-5 py-3 border border-[var(--color-rule)] rounded-lg text-[0.9375rem] font-medium text-[var(--color-ink)] no-underline hover:border-[var(--color-brand-purple)] transition-colors"
         >
           <XIcon />
           <span>{SOCIAL.x.handle} on X</span>
         </a>
         <a
           href={SOCIAL.linkedin.url}
-          className="flex items-center justify-center gap-3 px-5 py-3 border border-[var(--color-rule)] rounded-lg text-[15px] font-medium text-[var(--color-ink)] no-underline hover:border-[var(--color-brand-purple)] transition-colors"
+          className="flex items-center justify-center gap-3 px-5 py-3 border border-[var(--color-rule)] rounded-lg text-[0.9375rem] font-medium text-[var(--color-ink)] no-underline hover:border-[var(--color-brand-purple)] transition-colors"
         >
           <LinkedInIcon />
           <span>Connect on LinkedIn</span>
         </a>
         <a
           href={SOCIAL.youtube.url}
-          className="flex items-center justify-center gap-3 px-5 py-3 border border-[var(--color-rule)] rounded-lg text-[15px] font-medium text-[var(--color-ink)] no-underline hover:border-[var(--color-brand-purple)] transition-colors"
+          className="flex items-center justify-center gap-3 px-5 py-3 border border-[var(--color-rule)] rounded-lg text-[0.9375rem] font-medium text-[var(--color-ink)] no-underline hover:border-[var(--color-brand-purple)] transition-colors"
         >
           <YouTubeIcon />
           <span>Subscribe on YouTube</span>
