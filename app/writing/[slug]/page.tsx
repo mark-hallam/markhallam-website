@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getEssayBySlug, getEssayMetaList, getEssaySlugs } from "@/lib/essays";
 import { EMAIL } from "@/lib/profile";
+import { JsonLd } from "@/components/json-ld";
+import { articleJsonLd } from "@/lib/agent";
 
 export async function generateStaticParams() {
   return getEssaySlugs().map((slug) => ({ slug }));
@@ -19,10 +21,13 @@ export async function generateMetadata({
   return {
     title: essay.title,
     description: essay.dek,
+    alternates: { canonical: `/writing/${slug}`, types: { "text/markdown": `/writing/${slug}.md` } },
     openGraph: {
       title: essay.title,
       description: essay.dek,
       type: "article",
+      publishedTime: essay.date,
+      authors: ["Mark Hallam"],
     },
   };
 }
@@ -47,6 +52,7 @@ export default async function EssayPage({
 
   return (
     <>
+      <JsonLd data={articleJsonLd(essay)} />
       <div className="max-w-[680px] mx-auto px-6 sm:px-8">
         <div className="pt-12">
           <Link

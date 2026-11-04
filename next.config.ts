@@ -9,9 +9,18 @@ const UNPUBLISHED_ESSAYS = [
 ];
 
 const nextConfig: NextConfig = {
-  // The homepage is a hand-built static page (public/home.html) with its own motion and styles.
+  // The homepage is a hand-built static page (public/home.html) with its own motion and styles,
+  // served through app/home-page, which adds the structured data for agents at build time.
   async rewrites() {
-    return { beforeFiles: [{ source: "/", destination: "/home.html" }], afterFiles: [], fallback: [] };
+    // Each essay is also served as Markdown for agents, at /writing/<slug>.md.
+    return {
+      beforeFiles: [
+        { source: "/", destination: "/home-page" },
+        { source: "/writing/:slug.md", destination: "/writing-md/:slug" },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
   },
   async redirects() {
     return UNPUBLISHED_ESSAYS.map((slug) => ({

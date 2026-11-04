@@ -1,0 +1,104 @@
+{
+  "_about": "The one source of facts about Mark for agents: llms.txt, llms-full.txt, the structured data (JSON-LD) on every page and the homepage's copy of it are all built from this file. Every line here is already published on the homepage; change the homepage and this file together. Never add a fact Mark has not approved.",
+  "name": "Mark Hallam",
+  "url": "https://www.markhallam.com.au",
+  "email": "markhallam@skycot.com",
+  "location": "Melbourne, Australia",
+  "positioning": [
+    "Solving hard problems from first principles and shipping with agents.",
+    "Building for agents first."
+  ],
+  "summary": "I solve hard problems and make things that work in the real world. Most of my career has been in aviation: bringing ten Airbus A320s into Australia, writing the maintenance manuals a new airline started flying with, and getting a hydrogen drone program up and flying. Now I work out the problem from first principles and get AI agents to build it.",
+  "about": [
+    "I'm not a developer. My background is aerospace and aviation, and in every role the job was the same: find where a complicated system isn't working, work out what's actually true, and fix the cause.",
+    "Now I use the same method with AI. I strip a problem back to what's actually true, write it down so clearly that an agent can't misread it, then let a team of AI agents build it while I check the results like an engineer would. I'm writing up what I learn as I go, from Melbourne."
+  ],
+  "contact": "Get in touch about roles and projects building with, or for, AI agents.",
+  "sameAs": [
+    {"label": "LinkedIn", "url": "https://www.linkedin.com/in/mark-hallam/"},
+    {"label": "GitHub", "url": "https://github.com/mark-hallam"},
+    {"label": "X", "url": "https://x.com/MarkHallam"},
+    {"label": "YouTube", "url": "https://www.youtube.com/@markhallam-ai"}
+  ],
+  "builds": [
+    {
+      "name": "LVLme",
+      "status": "Open source, built in public",
+      "summary": "Free, open source software that helps you land the job you want. It works with the AI you already use, such as Claude, Codex or Cursor, and runs on your own computer, so your information stays private.",
+      "links": ["https://lvlme.com", "https://github.com/mark-hallam/lvlme/releases"]
+    },
+    {
+      "name": "SKYCOT",
+      "status": "Beta",
+      "summary": "A Mac app where kids describe the app they want and AI builds it, with a parent in the loop. 39 beta builds in eight days.",
+      "links": ["https://skycot.com"]
+    },
+    {
+      "name": "Argo",
+      "status": "Retired in June 2026; code private",
+      "summary": "A platform for AI teammates, with permissions, approvals and a tamper-evident audit trail. A swarm of AI coding agents built it around the clock under my direction: 2,901 pull requests merged in eight weeks. Retired in June 2026; its lessons went into SKYCOT.",
+      "links": ["https://www.markhallam.com.au/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"]
+    },
+    {
+      "name": "My agent job board",
+      "status": "Private",
+      "summary": "I post jobs on GitHub and Claude and Codex pick them up, do the work, ask me when something is unclear, and report back done or blocked. My first board closed 95 jobs across three computers in eight days.",
+      "links": []
+    },
+    {
+      "name": "DAC (Declarative Agent Compilation)",
+      "status": "Open source, MIT licensed",
+      "summary": "An open-source prompt compiler, MIT licensed, that turns a plain-English idea into a plan many agents can run in parallel. It started life as GYSOM.",
+      "links": ["https://github.com/mark-hallam/DAC-Declarative-Agent-Compilation", "https://gysom.com"]
+    },
+    {
+      "name": "AI Insider Threat Test",
+      "status": "Toolkit, not yet in use",
+      "summary": "A toolkit that checks whether a business's AI assistant stays inside its agreed limits: 23 tests on what it can read, what it can do without approval, and whether it stops when told. Built in September 2026; not yet run with a real client.",
+      "links": []
+    },
+    {
+      "name": "AI Beyond Alignment",
+      "status": "Research, paused",
+      "summary": "An independent research record asking whether behavioural alignment is enough to keep highly capable autonomous AI safe. 139 claims checked against 219 sources over 33 audit rounds, including an adversarial review that withdrew two of my own claims. Paused in September 2026; no paper yet.",
+      "links": []
+    },
+    {
+      "name": "Hydrogen to the Skies",
+      "status": "Team project, Swinburne AIR Hub, 2022 to 2023",
+      "summary": "Team project at Swinburne's AIR Hub: Australia's first hydrogen-propelled drone program.",
+      "links": ["https://www.youtube.com/watch?v=sqEgjOA--dY"]
+    }
+  ],
+  "hardProblems": [
+    {"stat": "10", "title": "Bringing ten A320s into Australia.", "where": "Tigerair, 2007 to 2014.", "story": "Every aircraft needed regulator approvals, paperwork and a delivery slot before it could carry a passenger. I held all three, through to the airline's last A320 in 2014."},
+    {"stat": "2007", "title": "Writing the rules a new airline flew by.", "where": "Tigerair, 2007.", "story": "When Tigerair Australia started up, I wrote its maintenance documents, including the aircraft maintenance schedule, minimum equipment list and configuration deviation list."},
+    {"stat": "2×", "title": "A maintenance base from a blank page.", "where": "Tigerair.", "story": "Took the Adelaide line maintenance base from tender to regulator approval, doubling the maintenance ports in the network."},
+    {"stat": "$500k+", "title": "Finding fuel in the engines.", "where": "Tigerair.", "story": "An engine wash program recovered 2 to 3 percent engine performance and saved more than $500,000 a year in fuel."},
+    {"stat": "Every record", "title": "Moving every maintenance record without losing one.", "where": "Tigerair, 2015.", "story": "Migrated the fleet's maintenance data from SIA Engineering's SAP system to Air New Zealand: the records that prove every aircraft is safe to fly."},
+    {"stat": "2014", "title": "Phones on, gate to gate.", "where": "Tigerair, 2014.", "story": "Ran the program that won CASA approval for passengers to use their devices from boarding to arrival.", "source": "https://australianaviation.com.au/2014/09/tigerair-australia-joins-gate-to-gate-club/"},
+    {"stat": "2015", "title": "New rules for twin-engine jets.", "where": "Tigerair, 2015.", "story": "Moved the fleet onto CASA's new extended diversion time rules (EDTO), which set how far a two-engine jet may fly from a suitable airport."},
+    {"stat": "133%", "title": "Selling through COVID.", "where": "PPG Aerospace, 2020.", "story": "My best sales month came in May 2020, at 133 percent of the year before."},
+    {"stat": "H2", "title": "Australia's first hydrogen drone, cleared for takeoff.", "where": "Swinburne AIR Hub, 2022 to 2023.", "story": "Set up the university's drone operator's certificate and was the person accountable to CASA for it. Worked through the rules for carrying hydrogen gas, and held the schedule and budget for Hydrogen to the Skies.", "source": "https://www.youtube.com/watch?v=sqEgjOA--dY"},
+    {"stat": "$2.7B", "title": "Enabling $2.7 billion in industry benefits.", "where": "Airservices Australia, in progress.", "story": "CMATS is Australia's new civil and military air traffic system, and its business case values the benefits at more than $2.7 billion over 20 years. My part is making those benefits real for the people who fly: user preferred routes, a single flight data region, wake turbulence management, and conflict detection tools."}
+  ],
+  "career": [
+    {"when": "Nov 2023 to now", "org": "Airservices Australia", "role": "Project Manager", "detail": "Enabling the benefits of CMATS, the national civil and military air traffic management system Airservices is delivering with Defence through OneSKY: user preferred routes, a single flight data region, wake turbulence management, and medium-term and long-term conflict detection."},
+    {"when": "Jan 2025 to now", "org": "SKYCOT", "role": "Founder", "detail": "The family-friendly AI developer: kids dream it up, SKYCOT builds it, and nothing goes online without a grown-up's code. Separate from my work at Airservices."},
+    {"when": "Aug 2022 to Jun 2023", "org": "Swinburne University of Technology, AIR Hub", "role": "Project Leader, Clean Propulsion (drones and advanced air mobility)", "detail": "Hydrogen to the Skies. Set up the university's CASA drone operator's certificate and was the person accountable to CASA for it; the regulatory requirements for hydrogen gas, the schedule, the budget, design work and training."},
+    {"when": "Jul 2020 to Aug 2022", "org": "Independent consultant", "role": "Aerospace, aviation and defence", "detail": "Clients confidential."},
+    {"when": "Jun 2019 to Jun 2020", "org": "PPG Aerospace", "role": "Account Manager, Military and General Aviation", "detail": "Best sales month in May 2020, at 133 percent of the year before, in the middle of COVID."},
+    {"when": "Apr 2018 to Oct 2020", "org": "Box Hill Institute", "role": "Commercial pilot training (Diploma of Aviation)", "detail": "Flight training after Tigerair, alongside the PPG role from 2019. Private pilot licence, about 300 hours, including a four-day outback navigation trip. The course was stopped before completion."},
+    {"when": "Oct 2007 to Mar 2018", "org": "Tigerair Australia", "role": "Project Manager (Engineering), Deputy Quality Manager, Executive Engineer", "detail": "Ten and a half years. Entry into service of ten A320s, through to the airline's last in 2014; the move to the new EDTO rules, gate-to-gate device approval, the digital maintenance records program, and the 2015 migration of maintenance data to Air New Zealand. Ran the engineering audit program as Deputy Quality Manager. As Executive Engineer, wrote the start-up maintenance documents, ran the regulator approvals and paperwork for new A320 deliveries, set up the Adelaide maintenance base, introduced the engine wash program, contracted ground support equipment across the network, and recovered more than $1 million in hail damage insurance claims."},
+    {"when": "2005 to 2007", "org": "RMIT University", "role": "Bachelor of Aerospace Engineering studies", "detail": "Left to join Tigerair."},
+    {"when": "2004", "org": "RMIT University", "role": "Advanced Diploma of Aerospace Engineering", "detail": ""}
+  ],
+  "credentials": [
+    {"name": "Project Management Professional (PMP)", "issuer": "Project Management Institute, since 2018"},
+    {"name": "Quality and Safety Lead Auditor", "issuer": "Southpac Aerospace, 2016"},
+    {"name": "AWS Certified Cloud Practitioner", "issuer": "Amazon Web Services"},
+    {"name": "Private Pilot Licence", "issuer": "about 300 hours, including a four-day outback navigation trip"},
+    {"name": "Advanced Diploma of Aerospace Engineering", "issuer": "RMIT University"},
+    {"name": "Certificate IV in Training and Assessment", "issuer": "HBA Learning Centres"}
+  ]
+}
