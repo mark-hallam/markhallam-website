@@ -11,6 +11,7 @@ export function SiteFooter() {
           <li><a className="text-[var(--color-link)] no-underline hover:underline" href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
           <li><a className="text-[var(--color-link)] no-underline hover:underline" href={SOCIAL.linkedin.url}>LinkedIn</a></li>
           <li><a className="text-[var(--color-link)] no-underline hover:underline" href={SOCIAL.github.url}>GitHub</a></li>
+          <li><a className="text-[var(--color-link)] no-underline hover:underline" href="https://github.com/mark-hallam/mstack">mStack</a></li>
         </ul>
       </div>
     </footer>

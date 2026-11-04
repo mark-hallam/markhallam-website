@@ -680,6 +680,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 
 /* Show more for the less headline projects (Mark 2026-11-02) */
 .more-grid{margin-top:clamp(20px,2.2vw,32px)}
+.card-grid>.card:last-child:nth-child(odd){grid-column:1/-1}
 .js .more-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s cubic-bezier(.2,.8,.2,1)}
 .js .more-wrap > .more-inner{overflow:hidden;min-height:0}
 .js .more-wrap.open{grid-template-rows:1fr}
@@ -1237,6 +1238,26 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
       <article class="card">
         <div class="card-art" aria-hidden="true">
           <svg class="art" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
+            <rect class="st thin" x="150" y="176" width="180" height="44" rx="12"/>
+            <rect class="st" x="150" y="122" width="180" height="44" rx="12"/>
+            <rect class="sg fb" x="150" y="68" width="180" height="44" rx="12"/>
+            <path class="st thin" d="M172 90 H250 M172 144 H236 M172 198 H226"/>
+            <path class="st" d="M296 84 l6 6 12 -13"/>
+            <circle class="st fb" cx="96" cy="112" r="24"/><circle class="st fb" cx="384" cy="112" r="24"/>
+            <path class="st" d="M86 113 l7 7 13 -15 M374 113 l7 7 13 -15"/>
+            <path class="flow" d="M120 112 H146 M334 112 H360"/>
+          </svg>
+        </div>
+        <h3>mStack</h3>
+        <p>My open source collection of skills: reusable instructions that work with whichever AI agent you already use, built for people and agents alike. MIT licensed. The first is the design review loop I run on this site: two AI reviewers from different makers score every journey out of 10, I fix what they find, and we repeat until both give it 10. An outcome-first skill for autonomous work is next.</p>
+        <div class="card-links">
+          <a class="more" href="https://github.com/mark-hallam/mstack">GitHub<svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-art" aria-hidden="true">
+          <svg class="art" viewBox="0 0 480 280" preserveAspectRatio="xMidYMid meet">
             <rect class="st" x="56" y="40" width="112" height="200" rx="14"/>
             <rect class="st" x="184" y="40" width="112" height="200" rx="14"/>
             <rect class="st" x="312" y="40" width="112" height="200" rx="14"/>
@@ -1320,7 +1341,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
         </div>
       </div>
     </div>
-    <div class="more-toggle-row"><button class="more-toggle" type="button" aria-expanded="false" aria-controls="more-things"><span class="mt-label">Show 4 more</span><svg class="mt-chev" viewBox="0 0 14 8" aria-hidden="true"><path d="M1.5 1.5 7 6.5l5.5-5"/></svg></button></div>
+    <div class="more-toggle-row"><button class="more-toggle" type="button" aria-expanded="false" aria-controls="more-things"><span class="mt-label">Show 5 more</span><svg class="mt-chev" viewBox="0 0 14 8" aria-hidden="true"><path d="M1.5 1.5 7 6.5l5.5-5"/></svg></button></div>
 
   </div>
 </section>
@@ -1518,7 +1539,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
 </main>
 
 <footer class="footer">
-  <div class="wrap foot-row"><span>© 2026 Mark Hallam · Melbourne, Australia</span><ul class="foot-links"><li><a href="mailto:markhallam@skycot.com">markhallam@skycot.com</a></li><li><a href="https://www.linkedin.com/in/mark-hallam/">LinkedIn</a></li><li><a href="https://github.com/mark-hallam">GitHub</a></li></ul></div>
+  <div class="wrap foot-row"><span>© 2026 Mark Hallam · Melbourne, Australia</span><ul class="foot-links"><li><a href="mailto:markhallam@skycot.com">markhallam@skycot.com</a></li><li><a href="https://www.linkedin.com/in/mark-hallam/">LinkedIn</a></li><li><a href="https://github.com/mark-hallam">GitHub</a></li><li><a href="https://github.com/mark-hallam/mstack">mStack</a></li></ul></div>
 </footer>
 
 <script>
@@ -2020,7 +2041,7 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
     var open = !w.classList.contains('open');
     w.classList.toggle('open', open);
     b.setAttribute('aria-expanded', open ? 'true' : 'false');
-    b.querySelector('.mt-label').textContent = open ? 'Show fewer' : 'Show 4 more';
+    b.querySelector('.mt-label').textContent = open ? 'Show fewer' : 'Show 5 more';
     if (open) { window.dispatchEvent(new Event('resize')); }
   });
 })();
