@@ -36,7 +36,7 @@
     {
       "name": "LVLme",
       "status": "Open source, built in public",
-      "summary": "Free, open source software that helps you land the job you want. It works with the AI you already use, such as Claude, Codex or Cursor, and runs on your own computer, so your information stays private.",
+      "summary": "Free, open source software that helps you land the job you want. It runs inside Claude Code on your own computer and keeps your files there; whatever the AI reads goes to your AI provider, as with any AI tool.",
       "links": [
         "https://lvlme.com",
         "https://github.com/mark-hallam/lvlme/releases"
@@ -61,7 +61,7 @@
     {
       "name": "Argo",
       "status": "Retired in June 2026; code private; figures self-reported",
-      "summary": "A platform for AI teammates, with permissions, approvals and a tamper-evident audit trail. A swarm of AI coding agents built it around the clock under my direction: 2,901 pull requests merged in eight weeks. Retired in June 2026; its lessons went into SKYCOT.",
+      "summary": "A platform for AI teammates, with permissions, approvals and a tamper evident audit trail. AI coding agents built it around the clock under my direction: 13,803 commits and 2,901 merged pull requests in 57 days. It had no paying customers; I retired it in June 2026, put its lessons into SKYCOT and wrote up what went wrong.",
       "links": [
         "https://www.markhallam.com.au/writing/eight-weeks-running-a-swarm-of-ai-coding-agents"
       ]
@@ -96,7 +96,7 @@
     {
       "name": "Hydrogen to the Skies",
       "status": "Team project, Swinburne AIR Hub, 2022 to 2023",
-      "summary": "Team project at Swinburne's AIR Hub: Australia's first hydrogen-propelled drone program.",
+      "summary": "Team project at Swinburne's AIR Hub: a hydrogen drone program.",
       "links": [
         "https://www.youtube.com/watch?v=sqEgjOA--dY"
       ]
@@ -125,7 +125,7 @@
       "stat": "$500k+",
       "title": "Finding fuel in the engines.",
       "where": "Tigerair.",
-      "story": "An engine wash program recovered 2 to 3 percent engine performance and saved more than $500,000 a year in fuel."
+      "story": "By my estimate at the time, an engine wash program recovered 2 to 3 percent engine performance and saved more than $500,000 a year in fuel."
     },
     {
       "stat": "Every record",
@@ -153,17 +153,17 @@
       "story": "My best sales month came in May 2020, at 133 percent of the year before."
     },
     {
-      "stat": "H2",
-      "title": "Australia's first hydrogen drone, cleared for takeoff.",
+      "stat": "9 Feb 2023",
+      "title": "Accountable to CASA for a university drone operator's certificate.",
       "where": "Swinburne AIR Hub, 2022 to 2023.",
-      "story": "Set up the university's drone operator's certificate and was the person accountable to CASA for it. Worked through the rules for carrying hydrogen gas, and held the schedule and budget for Hydrogen to the Skies.",
+      "story": "Set up Swinburne's CASA drone operator's certificate (CASA.ReOC.8111) and was its Accountable Manager, the person CASA held accountable for the leadership, oversight and safety of its drone operations.",
       "source": "https://www.youtube.com/watch?v=sqEgjOA--dY"
     },
     {
       "stat": "Now",
       "title": "Enabling the benefits of CMATS, Australia's new air traffic system.",
       "where": "Airservices Australia, in progress.",
-      "story": "My part at Airservices Australia is making the benefits of CMATS, Australia's new air traffic system, real for the people who fly."
+      "story": "CMATS is Australia's new civil and military air traffic system. My part is making its benefits real for the people who fly: user preferred routes, a single flight data region, wake turbulence management, and conflict detection tools."
     }
   ],
   "career": [
@@ -171,7 +171,7 @@
       "when": "Nov 2023 to now",
       "org": "Airservices Australia",
       "role": "OneSKY Air Traffic Management Service Process Project Manager",
-      "detail": "Enabling the benefits of CMATS, Australia's new air traffic system."
+      "detail": "Enabling the benefits of CMATS, the national civil and military air traffic management system Airservices is delivering with Defence through OneSKY: user preferred routes, a single flight data region, wake turbulence management, and medium-term and long-term conflict detection. My part is the procedures operators will use under CMATS and standardising the processes behind them. The program's published business case estimates the benefits at more than $2.7 billion over 20 years."
     },
     {
       "when": "Jan 2025 to now",
@@ -180,10 +180,16 @@
       "detail": "A Mac app where families build together with AI: risky steps wait for a grown-up, and nothing goes online without a grown-up's code. Free beta. Separate from my work at Airservices."
     },
     {
+      "when": "Nov 2022 to Sep 2023",
+      "org": "Swinburne University of Technology, AIR Hub",
+      "role": "Accountable Manager, CASA Drone Operator's Certificate (ReOC)",
+      "detail": "I was the key person CASA, Australia's aviation safety regulator, held accountable for Swinburne's remotely piloted aircraft operator's certificate (ReOC, CASA.ReOC.8111): the leadership, oversight and safety of the university's commercial drone operations. I set the certificate up from November 2022, CASA issued it on 9 February 2023, and I held the role until I handed it to a colleague in September 2023. The certificate is on CASA's public ReOC register."
+    },
+    {
       "when": "Aug 2022 to Jun 2023",
       "org": "Swinburne University of Technology, AIR Hub",
-      "role": "Project Leader, Clean Propulsion (drones and advanced air mobility)",
-      "detail": "Hydrogen to the Skies. Set up the university's CASA drone operator's certificate and was the person accountable to CASA for it; the regulatory requirements for hydrogen gas, the schedule, the budget, design work and training."
+      "role": "Project Leader, UAS & AAM (drones and advanced air mobility)",
+      "detail": "I set up the university's drone operator's certificate for the AIR Hub's SHADE hydrogen drone work (Small Hydrogen Aircraft Development and Evolution) and was its Accountable Manager (the role above). I worked through the regulatory requirements for carrying hydrogen gas, held the schedule and budget, and contributed to design work and training development. The SHADE work led into Hydrogen to the Skies, Swinburne's hydrogen drone program, funded by a $1.3 million Australian Government grant announced in November 2022."
     },
     {
       "when": "Jul 2020 to Aug 2022",
@@ -207,7 +213,7 @@
       "when": "Oct 2007 to Mar 2018",
       "org": "Tigerair Australia",
       "role": "Project Manager (Engineering), Deputy Quality Manager, Executive Engineer",
-      "detail": "Ten and a half years. Entry into service of ten A320s, through to the airline's last in 2014; the move to the new EDTO rules, gate-to-gate device approval, the digital maintenance records program, and the 2015 migration of maintenance data to Air New Zealand. Ran the engineering audit program as Deputy Quality Manager. As Executive Engineer, wrote the start-up maintenance documents, ran the regulator approvals and paperwork for new A320 deliveries, set up the Adelaide maintenance base, introduced the engine wash program, contracted ground support equipment across the network, and recovered more than $1 million in hail damage insurance claims."
+      "detail": "Ten and a half years. Entry into service of ten A320s, through to the airline's last in 2014; the move to the new EDTO rules, gate-to-gate device approval, the digital maintenance records program, and the 2015 migration of maintenance data to Air New Zealand. Ran the engineering audit program as Deputy Quality Manager. As Executive Engineer, wrote the start-up maintenance documents, ran the regulator approvals and paperwork for new A320 deliveries, set up the Adelaide maintenance base, introduced the engine wash program (by my estimate at the time it saved more than $500,000 a year in fuel), contracted ground support equipment across the network, and recovered more than $1 million in hail damage insurance claims."
     },
     {
       "when": "2005 to 2007",
@@ -233,11 +239,15 @@
     },
     {
       "name": "AWS Certified Cloud Practitioner",
-      "issuer": "Amazon Web Services"
+      "issuer": "Amazon Web Services, 2022 to 2025, lapsed"
     },
     {
       "name": "Private Pilot Licence",
       "issuer": "about 300 hours, including a four-day outback navigation trip"
+    },
+    {
+      "name": "Remote Pilot Licence (RePL)",
+      "issuer": "Civil Aviation Safety Authority, multirotor up to 25 kg"
     },
     {
       "name": "Advanced Diploma of Aerospace Engineering",
