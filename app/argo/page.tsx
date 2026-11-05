@@ -72,6 +72,8 @@ export default function ArgoPage() {
             Email me about Argo
           </a>
           <span className="text-[var(--color-muted)]"> · </span>
+          <a href="https://github.com/mark-hallam/argo" className="text-[var(--color-link)] font-medium no-underline hover:underline">Argo&apos;s code on GitHub</a>
+          <span className="text-[var(--color-muted)]"> · </span>
           <a href="#next" className="text-[var(--color-link)] font-medium no-underline hover:underline">What I want next</a>
         </p>
       </section>
@@ -171,7 +173,7 @@ export default function ArgoPage() {
       </section>
 
       <section aria-labelledby="proof" className={section}>
-        <h2 id="proof" className={h2}>Related work you can check</h2>
+        <h2 id="proof" className={h2}>What you can check</h2>
         <ul className="list-none p-0 m-0 border-t border-[var(--color-rule)]">
           {ARGO_PROOF.map((p) => (
             <li key={p.url}>

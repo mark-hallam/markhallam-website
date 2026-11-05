@@ -26,7 +26,7 @@ export const ARGO = {
     { n: "1", l: "person directing Claude and Codex agents" },
   ],
   statsNote:
-    "Counts come from Argo's git history and GitHub pull requests. There were 13,803 commits in all. About 9,000 were ledger updates and about 2,160 touched the Rust core. Apart from the agents and automated checks I ran, every change is under my GitHub account. No one else worked on it. The code is private for now.",
+    "Counts come from Argo's git history and GitHub pull requests. There were 13,803 commits in all. About 9,000 were ledger updates and about 2,160 touched the Rust core. Apart from the agents and automated checks I ran, every change is under my GitHub account. No one else worked on it. The code is now open source on GitHub under the MIT licence, with its commits dated from 29 April 2026.",
 
   what: [
     "A business could hire an AI teammate the way it hires a person. You picked one of 37 role templates, like receptionist, recruiter or executive assistant, or you described the job in plain English. Argo's builder, Genesis, then wrote the teammate with its role, instructions and safety rules. Anything sensitive had to wait for a person's approval, and Genesis wouldn't let a teammate skip that.",
@@ -102,10 +102,11 @@ export const ARGO_SOURCES = [
 ];
 
 export const ARGO_PROOF = [
+  { label: "Argo's code on GitHub, open source under the MIT licence", url: "https://github.com/mark-hallam/argo" },
   { label: "The case study, eight weeks running a swarm of AI coding agents", url: "/writing/eight-weeks-running-a-swarm-of-ai-coding-agents" },
   { label: "mStack, the open source skills that came out of Argo", url: "https://github.com/mark-hallam/mstack" },
   { label: "LVLme, built the same way, with every release on GitHub", url: "https://github.com/mark-hallam/lvlme/releases" },
 ];
 
 export const ARGO_RECORDS =
-  "Argo's verified state record from 23 June 2026 was a check of the code and the live production system by five of my verification agents. It confirmed Genesis, sign up, separate workspaces, the hash chained audit log, the tool connectors and payment were live. It also listed what wasn't. Voice ran a stand in without the paid key, sign in for Gmail and CRMs wasn't registered, and teammates acting on their own was switched off. Argo's code is private for now. I'm getting it ready to publish as open source with its full history.";
+  "Argo's verified state record from 23 June 2026 was a check of the code and the live production system by five of my verification agents. It confirmed Genesis, sign up, separate workspaces, the hash chained audit log, the tool connectors and payment were live. It also listed what wasn't. Voice ran a stand in without the paid key, sign in for Gmail and CRMs wasn't registered, and teammates acting on their own was switched off. Argo's code is now open source on GitHub, with its commits dated from 29 April 2026.";
