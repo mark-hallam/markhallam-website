@@ -103,6 +103,7 @@ export const ARGO_SOURCES = [
 
 export const ARGO_PROOF = [
   { label: "Argo's code on GitHub, open source under the MIT licence", url: "https://github.com/mark-hallam/argo" },
+  { label: "Argo's code in the Software Heritage archive, a permanent public record of the release commit", url: "https://archive.softwareheritage.org/swh:1:rev:12bf99ab612baf50a7819322b2a5d9a853c90e4e;origin=https://github.com/mark-hallam/argo" },
   { label: "The case study, eight weeks running a swarm of AI coding agents", url: "/writing/eight-weeks-running-a-swarm-of-ai-coding-agents" },
   { label: "mStack, the open source skills that came out of Argo", url: "https://github.com/mark-hallam/mstack" },
   { label: "LVLme, built the same way, with every release on GitHub", url: "https://github.com/mark-hallam/lvlme/releases" },
