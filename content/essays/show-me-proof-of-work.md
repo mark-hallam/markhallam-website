@@ -4,7 +4,6 @@ date: "2026-11-05"
 dek: "My agent told me it was working and it wasn't. Now I want the before and after, with the change marked, or the test that passed. I can approve that in seconds, and I don't have to take anyone's word."
 readMinutes: 3
 category: "Method"
-draft: true
 number: 16
 ---
 

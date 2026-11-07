@@ -4,7 +4,6 @@ date: "2026-11-05"
 dek: "I follow most agent jobs from my phone, and the tools kept waiting for me at a screen. Two small rules, written down so any agent follows them, changed how much I can hand over."
 readMinutes: 2
 category: "Method"
-draft: true
 number: 17
 ---
 

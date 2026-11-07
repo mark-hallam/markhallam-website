@@ -4,7 +4,6 @@ date: "2026-11-05"
 dek: "Most of my lost time with agents is them stopping to ask something. So I settle the outcome and every question up front, and the agent runs to a result it can prove."
 readMinutes: 3
 category: "Method"
-draft: true
 number: 14
 ---
 

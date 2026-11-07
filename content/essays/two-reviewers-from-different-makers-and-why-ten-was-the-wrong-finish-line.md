@@ -4,7 +4,6 @@ date: "2026-11-05"
 dek: "Thirteen rounds in one day, two AI reviewers, and not one journey scored 10 from both. The finish line I set was above what the reviewers could give. Here is what I changed."
 readMinutes: 3
 category: "Method"
-draft: true
 number: 15
 ---
 
