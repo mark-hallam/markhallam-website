@@ -1,42 +1,54 @@
 ---
-title: "Mission shape: zoom out to one hundred thousand feet"
+title: "Write the claims before the code"
 date: "2026-05-23"
-dek: "Without a 100,000-foot view, every local decision is rational and the aggregate trajectory is nowhere in particular. The cure is dull: write down the load-bearing claims first, and only commit work that advances one of them."
-readMinutes: 4
+revised: "2026-11-05"
+dek: "Argo's agents started building a week before I wrote down what it was for. Here is what that week cost, and the dull rule I now run every project under."
+readMinutes: 2
 category: "Strategy"
 number: 9
 ---
 
-A small confession. I have built more things in the past decade that did not need to exist than things that did. Not in a corrupt way. In a perfectly reasonable, well-intentioned, locally-rational way. Every one of them was, in the moment of building, a sensible response to a sensible request. None of them, in retrospect, advanced anything that actually mattered.
+The code for Argo began on 29 April 2026. The six sentences saying what Argo exists to make true were written on 6 May. For that week a swarm of AI agents shipped around the clock with nothing to aim at, and some of that week's work was later thrown away.
 
-This is the cost of building without a 100,000-foot view. Without one, every individual decision is locally rational and the aggregate trajectory is nowhere in particular. The work feels productive while it happens and feels confusing six months later.
+I wish I had written the six first.
 
-## A discipline distilled from twenty years of getting it wrong
+I know this mistake. In eighteen years of aviation projects I built things that did not need to exist. Each was a sound response to a sound request. None advanced anything that mattered.
 
-I now run every project I touch — including Skycot, and including my one-person side projects — under a discipline I have stolen from no particular methodology but distilled from twenty years of doing the wrong thing. The rule is: every change you commit must trace back to a small number of load-bearing claims about what this thing is for. If you cannot name the claim your change advances, you do not commit the change. You go back to thinking about what the change is actually for.
+## The rule
 
-This sounds like a slogan. It is dull in practice and saves projects routinely. Let me make it concrete.
+Every change must trace back to a small number of claims about what the thing is for. If you cannot name the claim your change advances, you do not make the change. You go back and work out what it is actually for.
 
-Skycot has six mission claims that I wrote down before I wrote a single line of code. Six sentences. They name the things Skycot exists to make true in the world. Every brief I write, every PR that gets merged, every roadmap item — each has to name which of those six claims it advances. If it does not advance one, it does not get worked on.
+It sounds like a slogan. In practice it is dull, and it saves projects.
 
-This is harder than it looks. The natural mode of any building team is to chase locally interesting problems. A new model drops, a vendor releases a feature, a customer asks for a thing. Each of those is interesting. Each of those is locally rational. Without the claims, you cannot tell which interesting things are also necessary things.
+## How it went on Argo
 
-## What the discipline gives you
+Once the claims existed, I set a rule for the conductor agent (the one that directs the others), as I remember it. Every brief and roadmap item had to name which of the six it advanced. If it advanced none, it was not worked on. It was not applied perfectly every time. The audits that followed are the evidence.
 
-The discipline does two things that I find more valuable the longer I live with them.
+Then an evaluator agent checked the code against the claims directly. On 23 May it went through every package (one unit of the code, 89 that day) against the six and logged 29 gaps. That is the hundred thousand foot view turned into a checklist an agent can run.
 
-The first thing it does is filter incoming requests at a speed nothing else can match. A founder sends me an idea. The idea sounds great. I look at the six claims. The idea advances none of them. I say no, with reasoning, in a sentence. I save the team between two weeks and three months of effort that would have produced a perfectly competent feature nobody at Skycot would have remembered building.
+## What it gives you
 
-The second thing it does is reveal when the work you are doing is wrong even when nothing is technically wrong. A team can be shipping cleanly, hitting deadlines, producing high-craft output, and quietly drifting away from the load-bearing claims. The claims are how you detect that. Without them you do not detect it at all. You discover it years later by the absence of the thing you meant to build.
+It filters work fast. An agent proposes a feature and it sounds great. I look at the six and it advances none. I say no, with the reason, in a sentence. Nobody spends two weeks on a perfectly competent feature that nothing needed.
 
-> A team can be shipping cleanly, hitting deadlines, producing high-craft output, and quietly drifting away from the load-bearing claims.
+It also shows drift (work wandering off course) when nothing is technically wrong. A team can ship cleanly, pass every test, and quietly move away from the claims. Without them you find out years later, by the absence of the thing you meant to build.
 
-There is a side effect of running this way that I had not anticipated. Decision-making gets faster, not slower. Most of the disagreements that slow down decisions are second-order disagreements about implementation. The claim-trace question — "which mission claim does this advance" — short-circuits most of them. If everyone agrees on the claims, most implementation arguments resolve themselves in the direction of the claim being best advanced.
+Decisions get faster too. "Which claim does this advance?" cuts short most of the arguments.
 
-## Strategy as the structure that makes "no" obvious
+## The limit
 
-I think this is what people mean when they say strategy is about saying no. Saying no is the visible part. The invisible part is having a thing you can point to that makes saying no obvious instead of arbitrary.
+All six claims were reported live by late May. In late June an adversarial review of the business found that a general platform for governing AI teammates was a losing position, with no job a customer was desperate to have done. I shut it down.
 
-If you are building something — a company, a product, a piece of infrastructure, a swarm of agents — write the claims first. They will feel embarrassingly few when you are done. Five or six is normal. Three is fine. More than ten and you have not yet done the work of deciding what the thing is for.
+The rule kept the swarm pointed at the mission. It could not tell me the mission was wrong. That needed a different question, asked of the market, and I asked it late.
 
-After that, <span class="accent">the next ten thousand commits write themselves.</span>
+So write the claims first. They will feel embarrassingly few. My rule of thumb, nothing more: five or six is normal, three is fine, and more than ten means you have not yet decided what the thing is for. Then ask someone outside the building whether those claims are worth making true.
+
+## Try it
+
+The nearest thing I have published is the [outcome-first](https://github.com/mark-hallam/mstack/blob/main/skills/outcome-first/SKILL.md) skill in mStack, open source. It pins one job's outcome before the agent starts, not a project's claims. The claims are still on you. The June verdict on Argo, and why the claims were not enough, is in the [case study](/writing/eight-weeks-running-a-swarm-of-ai-coding-agents).
+
+## Sources
+
+- How Argo ran, the six claims reported live, and the June business verdict: [Eight weeks running a swarm of AI coding agents](/writing/eight-weeks-running-a-swarm-of-ai-coding-agents)
+- The dates of the first code (29 April 2026) and the mission claims file (6 May 2026), and the evaluator's 23 May check of 89 packages against the six claims with 29 gaps logged, are from the Argo repository (its agents' shared log; the code is public since 6 November 2026 at [github.com/mark-hallam/argo](https://github.com/mark-hallam/argo)), read on 4 November 2026.
+- "Eighteen years" matches my dated career on the [About](/about) page.
+- First published 23 May 2026. Revised 5 November 2026: the original said the claims were written "before I wrote a single line of code" and called the project Skycot (in May 2026 Argo was going to take the SKYCOT name; SKYCOT is now a different product); both corrected. The section on the limit of the rule is new, written with what I knew by June.

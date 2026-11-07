@@ -1,44 +1,49 @@
 ---
-title: "The path of least resistance for agents"
+title: "If the agent keeps asking, fix its instructions"
 date: "2026-05-22"
-dek: "If your AI worker keeps asking for clarification, the problem isn't the model. The problem is the surface you handed it. The interesting craft is shaping the workspace so the agent can just go."
-readMinutes: 4
+revised: "2026-11-05"
+dek: "My agent spent its time asking me questions I could not answer. A better model was not the fix. Better instructions were."
+readMinutes: 3
 category: "Practice"
 number: 12
 ---
 
-I sat watching an agent that I had asked to make a small fix on a piece of software. Twelve minutes in, it had not changed any code. It was asking me whether the variable name should match an adjacent style or the project-wide convention. I said: match the project. It then asked whether the project convention included acronym capitalisation, or whether acronyms followed the older rules used in three specific files. I said: I do not know, pick the more common one. It then asked which it should consider more common, the older files or the newer ones.
+I sat watching an agent I had asked to make a small fix. Several minutes in, it had not changed any code.
 
-This was not a model problem. This was an environment problem. I had handed the agent a piece of work with under-specified context, then watched it spend a tenth of its working life trying to extract clarifications from me one nano-decision at a time.
+It was asking whether a variable name should match the file next to it or the project wide convention. I said: match the project. It asked whether the convention covered how acronyms were capitalised, or whether acronyms followed the older style used in three particular files. I said: I do not know, pick the more common one. It asked which it should consider more common, the older files or the newer ones. (This is from memory. I did not keep the transcript.)
 
-The fix took me twenty minutes. I rewrote the brief. I added a one-line "match newer-file style" directive. I added a project-style file at the root of the repo that the agent could read. I added a brief-quality gate that refused to claim any work where the style was ambiguous. The next agent run shipped in four minutes without a single clarifying question.
+My read is that the model was not the problem. I had handed it work with the context missing, then watched it spend its working life pulling that context out of me, one tiny decision at a time. That one was on me.
 
-## The variable is the surface, not the model
+## What I changed
 
-The lesson, which I now believe is the central craft of working with capable agents: the model is not the variable you control most. The surface is.
+The fix was not a better model. It was the surface (what the agent reads before it starts). On Argo, the platform a swarm of agents built for me in 2026, that became four things:
 
-The model is roughly the same model your competitor is using. The surface — the briefs, the ledgers, the freshness gates, the file budgets, the canonical types, the routing rules — is yours to design. <span class="accent">That surface is where most of the work lives.</span>
+**A project instructions file** every agent reads first. The rules, the limits, where things live. It has been there since the first day of code.
 
-I have been thinking of it as the path of least resistance. The agent will take whichever path is most frictionless to advance the work. If the most frictionless path is "ask the human a clarifying question", the agent will do that, possibly forever. If the most frictionless path is "read the style file and proceed", the agent will proceed.
+**A standard brief** (the written job). Each one names the exact commit it was written against, the intent, the files it may touch and the test that proves it is done. A lint (a script that checks a file against house rules) warns when a field is missing. A freshness check refuses a stale brief.
 
-You can engineer this. It is mostly unglamorous. Some examples from the systems I have built or watched work:
+**A ledger** that is the single source of truth for what is claimed, by whom, and in what state. The agent reads it. It does not ask the conductor.
 
-**A canonical brief format** that contains a freshness header, the load-bearing intent, the file budget, the verification gate. Briefs without those fields fail the linter before they can be claimed. The agent never sees a brief that lacks the surface it needs to act.
+**Two rules from my drift playbook**, wire or defer and grep before write. Both run before the brief is written, not after the code lands.
 
-**A ledger that is the single source of truth** for what is claimed, who claimed it, what state it is in. The agent does not ask the conductor whether anything is in flight. The agent reads the ledger.
+I did not time the before and after. My impression, not a measurement, is that the clarifying questions stopped being what I spent my day on.
 
-**A "wire or defer" rule** that says: every new public symbol in a brief must name its consumer. If the consumer is not landed in the same batch, the brief carries a one-line justification. Dead code does not accumulate because dead code is impossible to declare.
+## Same Claude, same Codex
 
-**A "grep before write" rule** that requires the brief author to verify a same-named surface does not already exist before declaring a new one. Parallel abstractions do not accumulate because they cannot pass the lint.
+The agent takes whichever path is easiest. If that path is "ask the human", it will do that, possibly forever. If it is "read the instructions file and proceed", it proceeds.
 
-Each of these is a small piece of surface design. None of them are model-level changes. All of them dramatically increase the percentage of agent time spent shipping rather than negotiating.
+I think most teams reach for the wrong lever. They tune the model, switch providers, adjust the system prompt. Those changes are real, but they are second order.
 
-## The wrong lever
+What surprised me is that once the surface was designed well, the same agent did, to my eye, much better work. The same Claude. The same Codex. No one changed its weights (the numbers inside the model). The environment just favoured the moves it was already inclined to make.
 
-I keep going back to this because I think most teams trying to get agents working are reaching for the wrong lever. They are tuning the model. They are switching providers. They are adjusting the system prompt. Those changes are real, but they are second-order.
+So stop tuning the model. The agent is not the variable. The surface is.
 
-The first-order change — the one that most teams are not making — is the surface change. Build the workspace such that the path of least resistance is forward progress.
+## Start here
 
-There is a side effect of working this way that took me by surprise. Once the surface is well-designed, the same agent does much better work. The same Claude. The same Codex. No model change. Surface change. The agent becomes more capable not because anyone changed its weights but because the environment now favours the moves it was already inclined to make.
+The instructions file every agent read first is [AGENTS.md in the Argo code](https://github.com/mark-hallam/argo/blob/main/AGENTS.md), public now. The briefs and the ledger are in the [Argo case study](/writing/eight-weeks-running-a-swarm-of-ai-coding-agents). Start with the instructions file. Every agent reads it first.
 
-This is the closest I have come to an actual operating principle in this space. The agent is not the variable. <span class="accent">The surface is.</span>
+## Sources
+
+- How the swarm ran on briefs and a ledger: [Eight weeks running a swarm of AI coding agents](/writing/eight-weeks-running-a-swarm-of-ai-coding-agents)
+- The brief format, the brief linting script (14 May 2026), the freshness check (8 May 2026) and the wire or defer and grep before write rules are in the Argo repository (public since 6 November 2026 at [github.com/mark-hallam/argo](https://github.com/mark-hallam/argo)), read on 4 November 2026. The rules are also in [Drift is the silent killer of agent swarms](/writing/drift-is-the-silent-killer).
+- First published 22 May 2026. Revised 5 November 2026: the opening story is now labelled as recollection and the minute counts are gone; the four pieces of surface are described as they were built.

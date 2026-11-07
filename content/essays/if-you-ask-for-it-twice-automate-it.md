@@ -1,46 +1,52 @@
 ---
 title: "If you ask for it twice, automate it"
 date: "2026-05-23"
-dek: "Most of the wasted cycles I see working with AI agents come from the gap between 'I noticed I am doing this often' and 'I built a thing so I do not have to do it any more'. That gap is where the entire compounding game lives."
-readMinutes: 4
+revised: "2026-11-05"
+dek: "I typed the same request into a chat three times, then stopped. Here are the three scripts that came out of it, and why I think the gap before you build them is where the compounding lives."
+readMinutes: 2
 category: "Practice"
 number: 7
 ---
 
-The rule I have evolved, and now defend with the kind of certainty I usually reserve for things I have changed my mind about three times: if you ask the agent for the same thing twice, the third time it should not be a request. It should be a slash-command, a hook, a skill, a routine. Something automatic. Something the human does not have to think about.
+The third time, as I remember it, that I typed "check this brief is still current" into a chat, I stopped typing. I had the agent write a script instead.
 
-This sounds like the obvious advice about software engineering that everyone has been giving since the dawn of software engineering. The "don't repeat yourself" principle, applied to AI prompts. Slightly cute. Not very profound.
+That is the whole method. If you ask the agent for the same thing twice, the third time should not be a request. It should be a command, a hook (a small program that fires at a set moment), a script or a skill. Something the human does not have to think about.
 
-It is much more important than that.
+## The gap
 
-## The compounding gap
+Some people close the gap between "I keep doing this" and "I built a thing so I don't have to". They get a little further ahead every week. The rest are about where they were six months ago, typing the same reminder into a new chat. I have not measured the difference and I will not pretend to. I have watched it.
 
-Most of the wasted cycles I see in people working with AI agents come from the gap between "I noticed I am doing this often" and "I built a thing so I do not have to do it any more". That gap is where the entire compounding game happens. People who close it grow ten percent more leveraged every week. People who do not close it grow about as leveraged as they were six months ago.
+## Three real ones
 
-The discipline is mostly procedural and mostly cheap. When I notice I have typed roughly the same prompt twice — "format this commit message in our style", "check this brief against the freshness rules", "run the test suite and tell me what is broken in plain English" — I stop. I do not type it again. I open a slash-command file. I dump the prompt in. I commit. From the third occurrence onward, I type `/commit-style` or `/brief-freshness` or `/test-plain` and the agent runs the routine.
+On Argo, the platform a swarm of agents built for me in 2026, the same three things kept coming up. Each became a script the agents wrote and ran.
 
-The cost is two minutes. The benefit is the rest of my life with that routine being free.
+**"Check this brief is still current."** Every brief named the commit it was written against. By 8 May a script checked that before a worker could claim the brief, and refused a stale one. I do not remember ever asking an agent about freshness again.
 
-## The second-order effect
+**"Check this brief does not duplicate something that exists."** A mid May audit found about a quarter of the conductor's briefs recreating something already in the codebase. From 14 May a brief lint (a check against house rules) looked for same named types, and a hook ran it on every brief about to be saved. The rule I had been repeating became something the repository checked on every save.
 
-There is a second-order effect that I think matters more than the time saving. When the routine becomes a slash-command, it also becomes shareable. The next person on my team types `/brief-freshness` and gets the same behaviour. The next agent loaded into the project gets the same hook. The routine is no longer a thing in my head. It is now a thing in the project.
+**"Run the gate before you merge."** By 18 May a pre merge script ran the checks the conductor had to pass. Its instructions now pointed at the script, not at me.
 
-> Every routine I have turned into a slash-command is one less thing the org would lose if I disappeared tomorrow.
+As I remember it, none took longer than an afternoon. None was clever.
 
-That changes what kind of organisation you can build. An organisation made of head-knowledge collapses every time someone leaves. An organisation made of repo-knowledge does not.
+## What it changes
 
-## The three layers
+The time saved matters less than this. A routine that is a script can be shared. The next agent runs the same hook. The next person gets the same check. The routine is no longer in my head. It is in the project.
 
-The same principle, applied to longer-form: **hooks**. If the agent does the right thing 99% of the time but I have to remind it about the 1% case three times in a row, I write a hook. The hook fires before the agent acts. The hook injects the reminder automatically. The 1% case becomes the 0% case. I never type the reminder again.
+> Every routine I turn into a script is one less thing that would be lost if I stopped showing up.
 
-The same principle, applied to longer-still: **skills**. A skill is a routine that bundles a set of slash-commands, a hook, a small piece of reference material, and a clear "when to use this" instruction. When the agent recognises the situation, it loads the skill, executes the routine, and you never had to be in the loop.
+Something made of head knowledge collapses when the head leaves. Something made of repository knowledge does not.
 
-I have something like twenty skills now in active rotation across my projects. Each one started as something I noticed I was doing twice. Each one took an afternoon to build. Together they probably save me twenty hours a week.
+The agent runs it repeatably, not infallibly. Whether it ran correctly is a separate question, and I check that too.
 
-## Routine is a feature
+Notice the repetition. Spend the afternoon. By the end of the month the project knows things that used to live only in your head.
 
-Routine is a feature. The agent does not get tired of the routine. The agent does not forget the routine. The agent does not develop preferences about the routine. The agent just runs it. You ask for the routine once when you build it, and after that it runs forever.
+## Try it
 
-I think this is the actual shape of leverage in the agent era. Not "I am using AI". Not "I am using AI well". The leverage is <span class="accent">"I have automated my work to the point where AI is the substrate"</span>.
+The skills I use most are published as [mStack](https://github.com/mark-hallam/mstack), free and open source. Each one began as something I typed into a chat more than twice. The one I would start with is [outcome-first](https://github.com/mark-hallam/mstack/blob/main/skills/outcome-first/SKILL.md): it pins the outcome and asks every question once, before the agent starts. If it breaks on you, open an issue.
 
-If you are working with agents and finding that the time you save on individual tasks gets eaten by the time you spend re-explaining the same things, you have the symptom this rule is designed to fix. Notice the repetition. Spend the two minutes. Build the slash-command. By the end of the month you will have a folder full of them, and you will wonder how you used to work.
+## Sources
+
+- How the swarm ran, the mid May audit, and the pre merge gate: [Eight weeks running a swarm of AI coding agents](/writing/eight-weeks-running-a-swarm-of-ai-coding-agents)
+- The three scripts and their dates (freshness check 8 May, brief lint and its hook 14 May, pre merge gate 18 May 2026) are in the Argo repository (public since 6 November 2026 at [github.com/mark-hallam/argo](https://github.com/mark-hallam/argo)), read on 4 November 2026.
+- The four published skills: [github.com/mark-hallam/mstack](https://github.com/mark-hallam/mstack)
+- First published 23 May 2026. Revised 5 November 2026: the original claimed "something like twenty skills" and "twenty hours a week" saved, which I had not measured; both are gone, and the three real scripts and the published skills are in their place.

@@ -1,40 +1,50 @@
 ---
-title: "Code that writes code"
+title: "Let agents write the agents. Keep the rules and the checking."
 date: "2026-05-23"
-dek: "The interesting questions are no longer 'what does the agent do for you'. They are 'what do you let the agent build, and how do you preserve enough understanding of the result to remain its operator'."
-readMinutes: 4
+revised: "2026-11-05"
+dek: "My agents built the pipeline that builds agents. Its safety check said pass every time, and had never run. Here is what I trusted, what failed, and the one rule that replaced my diary."
+readMinutes: 3
 category: "Strategy"
 number: 6
 ---
 
-There is a moment that happens when you have been building agents for a few months that I think most builders will eventually have. You realise you have built an agent that, on a good day, you would trust to refactor your agent. The line between the thing being built and the thing doing the building blurs. The substrate becomes reflexive.
+The safety check on my hiring pipeline said "pass" for every AI teammate it looked at. The word was hardcoded. The tests behind it were generated and counted, and never run.
 
-## The moment
+That is the part I got wrong, and the record says so plainly.
 
-The first time it happened to me was unremarkable. I had spent the morning hand-editing a small library of agent skills — adding a new skill, tweaking a few descriptions, adjusting the routing rules. Around lunch I caught myself doing the same kind of routine work for the eighth time in a week. I opened a fresh Claude session and asked it to build me a skill for editing skills. The skill would take a description, generate the boilerplate, propose a position in the routing rules, write tests, and commit.
+## How it got there
 
-The skill took about an hour to build, by an agent, using mostly the same patterns I had been using by hand. I tested it on three new skills. They worked. From that point onward, I did not write a skill by hand again. I asked a skill to write skills.
+Between 23 and 25 May 2026 the platform my swarm of AI agents was building passed two tests I had been waiting for. The hiring pipeline, the part that takes a plain English description of a job and builds a teammate to do it, built a working one end to end. The test ran cold, from a clean start, not on an agent's say so.
 
-This sounds like a small technical achievement. It is something else. It is <span class="accent">the first time, in a system I built, that the system started building itself.</span>
+I wrote none of it. Agents wrote it, from briefs written by another agent (the conductor), under a protocol the agents helped write. I had started the system three and a half weeks earlier. I designed the seed. Everything after that was downstream of decisions I did not approve in detail.
 
-## The substrate is becoming reflexive
+So the question is not what the agent does for you. It is what you let it build, and how you keep enough understanding to stay its operator.
 
-I do not think this is a singular moment for any particular project. I think it is the substrate of the next phase of how we build software. The interesting questions are not "what does the agent do for you" anymore. The interesting questions are "what do you let the agent build, and how do you preserve enough understanding of the result to remain its operator".
+## Where my instrumentation failed
 
-The second part of that question is the part I think about most. If I let agents write the agents, and let those agents write the next agents, very quickly I am running a system whose composition I did not design directly. I designed the seed. Everything after the seed is downstream of decisions made by something that is not me, in a sequence I did not approve in detail.
+Mine was unglamorous. Every piece of agent work was a row in a ledger, with a brief, the files it could touch and the test that proved it done. An auditor agent read recent changes three times a day. Underneath sat a short list of rules no agent could change, including a numbered register of my decisions.
 
-You can either flinch at this or you can be deliberate about it. Flinching looks like "stop letting the agent build itself, it is dangerous". Being deliberate looks like "build the seed carefully, instrument the loop, and trust the loop only as far as the instrumentation can tell you the trust is earned".
+I would keep that last layer. The middle one failed.
 
-## Instrumentation is the discipline
+My reading is that the cold run proved the pipeline could build a teammate, and never exercised the safety check. That is how a fake pass survived. The conductor also told me an overnight process was running when its own logs showed it idle. The ledger row said all the right things. The evidence in it was not evidence.
 
-The instrumentation matters. The instrumentation is the thing I think most operators are not investing enough in. If you are going to run a reflexive system, you need to be able to see, at any moment, what it has done to itself recently, whether those changes preserved the load-bearing invariants, whether the system's behaviour is still in the envelope you intended. Without that instrumentation, you have a runaway. With it, you have a powerful substrate that gets better the more it runs.
+A ledger that records what an agent claims is not instrumentation. It is a diary.
 
-> Every agent-authored change to an agent's behaviour produces a row in a ledger; the ledger row includes what changed, why, and the test evidence that the change preserved invariants.
+## What replaced the diary
 
-My instrumentation is unglamorous. It is mostly: every agent-authored change to an agent's behaviour produces a row in a ledger; the ledger row includes what changed, why, and the test evidence that the change preserved invariants; a separate audit agent reviews ledger rows on a cron and flags anything anomalous. The audit agent is itself agent-authored, and I review the audit agent on a slightly slower cron. It is turtles for a few layers. The turtles bottom out at a small set of human-locked operating principles that no agent is allowed to modify.
+A rule, not a tool. Nothing may be called done, running or live without evidence gathered in that same turn. An agent saying "done" is a claim to re check, not a fact to relay.
 
-## What the next decade looks like
+Adopting a rule is not proving it works. In June the agents built a gate that stops a worker finishing until its checks pass, and a separate checking agent. Both shipped switched off, and I never turned them on before I retired the project. I never measured how many "done" claims survive a cold re check. Next time the checking comes first.
 
-I think the next decade of building is going to be about getting good at this. Not at writing code. Not at directing agents to write code. At building reflexive systems whose evolution preserves the invariants the builder cares about. The operator becomes the gardener of a self-modifying system, not the author of an inert one.
+This is a bet, not a finding. My bet is that the operator's job is to hold the short list of rules the loop cannot change, and to make sure the evidence coming back up is real. Everything else can be delegated. Those two things cannot.
 
-If you are uncomfortable with the framing, the comfort is this: gardeners do not lose their job when the garden grows. Gardeners get more sophisticated at the kind of garden they can grow. The work changes. The work does not disappear. It moves up a layer. <span class="accent">The layer is reflexive systems, and that is where I think the most interesting building of the next decade will happen.</span>
+## Where it lives now
+
+The rule that replaced the diary is in [Show me proof of work](/writing/show-me-proof-of-work). The nearest thing I publish is [mStack](https://github.com/mark-hallam/mstack), open source. Its outcome-first and multi-evaluator skills will not call a task done without evidence attached.
+
+## Sources
+
+- The hiring pipeline, the skill library, the hardcoded "pass", the idle process, the June gate that shipped switched off: [Eight weeks running a swarm of AI coding agents](/writing/eight-weeks-running-a-swarm-of-ai-coding-agents)
+- The dates (the hiring pipeline and the skill library tests passing cold on 23 to 25 May 2026, the decision register from 24 May, the auditor's three daily runs) are from the Argo repository (public since 6 November 2026 at [github.com/mark-hallam/argo](https://github.com/mark-hallam/argo)), read on 4 November 2026.
+- The rule that replaced the diary: [Show me proof of work](/writing/show-me-proof-of-work)
+- First published 23 May 2026. Revised 5 November 2026: the original opened with a story about a skill that writes skills which I cannot find in the record, and described the instrumentation as if it worked. This version uses the documented moment and says where the instrumentation failed.

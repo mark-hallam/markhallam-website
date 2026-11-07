@@ -29,7 +29,8 @@ export function essayMarkdown(slug: string): string | null {
   const file = path.join(process.cwd(), "content", "essays", `${slug}.md`);
   if (!fs.existsSync(file)) return null;
   const { data, content } = matter(fs.readFileSync(file, "utf8"));
-  const date = new Date(data.date).toLocaleDateString("en-AU", { day: "numeric", month: "long", year: "numeric" });
+  const asDate = (iso: string) => new Date(iso).toLocaleDateString("en-AU", { day: "numeric", month: "long", year: "numeric" });
+  const date = asDate(data.date) + (data.revised ? `, revised ${asDate(data.revised)}` : "");
   const parts = [
     `# ${data.title}`,
     `By ${profile.name}, ${date}. ${data.readMinutes} minute read.`,
@@ -167,6 +168,7 @@ export function articleJsonLd(e: EssayMeta) {
     headline: e.title,
     description: e.dek,
     datePublished: e.date,
+    ...(e.revised ? { dateModified: e.revised } : {}),
     url: essayUrl(e.slug),
     author: { "@id": `${SITE}/#mark`, "@type": "Person", name: profile.name, url: `${SITE}/` },
   };

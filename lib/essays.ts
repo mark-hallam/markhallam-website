@@ -12,9 +12,13 @@ export type EssayFrontmatter = {
   dek?: string;
   readMinutes: number;
   category?: string;
-  draft?: boolean;
+  draft?: boolean; // a draft is built at its address but not listed, fed or put in llms.txt
+  revised?: string; // ISO date of a later revision, shown beside the original date
   number?: number;
 };
+
+// SHOW_DRAFTS=1 at build time lists drafts too, for a local preview or a review round. Never set it in production.
+const showDrafts = () => process.env.SHOW_DRAFTS === "1";
 
 export type EssayMeta = EssayFrontmatter & {
   slug: string;
@@ -46,7 +50,7 @@ export function getEssayMetaList(): EssayMeta[] {
     } satisfies EssayMeta;
   });
   return essays
-    .filter((e) => !e.draft)
+    .filter((e) => !e.draft || showDrafts())
     .sort((a, b) => (a.date === b.date ? a.title.localeCompare(b.title) : a.date < b.date ? 1 : -1));
 }
 
