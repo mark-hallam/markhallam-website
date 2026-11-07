@@ -5,8 +5,9 @@ import { SITE, profile } from "@/lib/agent";
 export function argoMarkdown(): string {
   const link = (u: string) => (u.startsWith("/") ? SITE + u : u);
   return [
-    `# ${ARGO.title}`,
+    `# ${ARGO.title}. ${ARGO.titleAccent}`,
     `By ${profile.name}. Web page: ${SITE}/argo`,
+    ...ARGO.story,
     ARGO.lede,
     ARGO.voiceLine,
     `> ${ARGO.ownLine}`,
@@ -26,7 +27,7 @@ export function argoMarkdown(): string {
     ARGO.wrong.map((p) => `- ${p}`).join("\n"),
     ARGO.learnedLead,
     ARGO.learned.map((p, i) => `${i + 1}. ${p}`).join("\n"),
-    "## Related work you can check",
+    "## What you can check",
     ARGO_PROOF.map((p) => `- [${p.label}](${link(p.url)})`).join("\n"),
     "## What I want next",
     `${ARGO.wants} Email: ${profile.email}`,

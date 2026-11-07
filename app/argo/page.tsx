@@ -9,7 +9,7 @@ import { SITE, pageMeta, profile } from "@/lib/agent";
 export const metadata = pageMeta(
   "/argo",
   "The Argo story",
-  "Argo: AI teammates built from a template or plain English, with approvals and a tamper evident log, built in 57 days by one person directing AI agents. What was live, what was only built, and what it taught.",
+  "Argo let a business hire AI teammates from a template or plain English, with approvals and an audit log. One person directing AI agents built it in 57 days. What was live, what was only built, and what it taught.",
   { "text/markdown": "/argo.md" },
 );
 
@@ -21,7 +21,7 @@ export default function ArgoPage() {
   const data = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: ARGO.title,
+    headline: `${ARGO.title}. ${ARGO.titleAccent}`,
     description: ARGO.lede,
     url: `${SITE}/argo`,
     datePublished: "2026-11-05",
@@ -44,7 +44,13 @@ export default function ArgoPage() {
         <h1 className="text-[2.125rem] sm:text-[3.25rem] leading-[1.06] font-semibold tracking-[-0.03em] max-w-[20ch] mb-7 text-[var(--color-ink)]">
           {ARGO.title}.
         </h1>
-        <p className="text-[1.1875rem] sm:text-[1.3125rem] leading-[1.55] text-[var(--color-ink)] max-w-[60ch]">{ARGO.lede}</p>
+        <p className="gradient-text text-[1.5rem] sm:text-[2.125rem] leading-[1.15] font-semibold tracking-[-0.025em] -mt-3 mb-7">{ARGO.titleAccent}</p>
+        <div className="space-y-5 max-w-[60ch] mb-10">
+          {ARGO.story.map((p) => (
+            <p key={p} className="text-[1.1875rem] sm:text-[1.3125rem] leading-[1.6] text-[var(--color-ink)]">{p}</p>
+          ))}
+        </div>
+        <p className="text-[1.0625rem] sm:text-[1.125rem] leading-[1.6] text-[var(--color-body)] max-w-[60ch] pt-8 border-t border-[var(--color-rule)]">{ARGO.lede}</p>
         <p className="mt-4 text-[1.0625rem] sm:text-[1.125rem] leading-[1.6] text-[var(--color-body)] max-w-[60ch]">{ARGO.voiceLine}</p>
         <blockquote className="gradient-border-left mt-8 pl-5 m-0 text-[1.1875rem] sm:text-[1.375rem] leading-[1.45] font-semibold text-[var(--color-ink)] max-w-[52ch]">
           {ARGO.ownLine}
@@ -65,6 +71,8 @@ export default function ArgoPage() {
           <a href={`mailto:${profile.email}?subject=${encodeURIComponent("About Argo")}`} className="text-[var(--color-link)] font-medium no-underline hover:underline">
             Email me about Argo
           </a>
+          <span className="text-[var(--color-muted)]"> · </span>
+          <a href="https://github.com/mark-hallam/argo" className="text-[var(--color-link)] font-medium no-underline hover:underline">Argo&apos;s code on GitHub</a>
           <span className="text-[var(--color-muted)]"> · </span>
           <a href="#next" className="text-[var(--color-link)] font-medium no-underline hover:underline">What I want next</a>
         </p>
@@ -165,7 +173,7 @@ export default function ArgoPage() {
       </section>
 
       <section aria-labelledby="proof" className={section}>
-        <h2 id="proof" className={h2}>Related work you can check</h2>
+        <h2 id="proof" className={h2}>What you can check</h2>
         <ul className="list-none p-0 m-0 border-t border-[var(--color-rule)]">
           {ARGO_PROOF.map((p) => (
             <li key={p.url}>
@@ -200,7 +208,7 @@ export default function ArgoPage() {
       <section aria-labelledby="sources" className={section + " pb-20"}>
         <h2 id="sources" className="text-[1.0625rem] font-semibold mb-3 text-[var(--color-ink)]">Sources</h2>
         <ul className="list-none p-0 m-0 space-y-1.5 text-[0.875rem] text-[var(--color-body)]">
-          <li>Argo: its git history and GitHub pull requests (repository created 29 April 2026; last pull request merged 24 June 2026), its verified state record of 23 June 2026, and its voice hand-off notes of 2 June 2026.</li>
+          <li>Argo&apos;s git history and GitHub pull requests, from the repository&apos;s creation on 29 April 2026 to the last merged pull request on 24 June 2026. Its verified state record of 23 June 2026, and its voice handover notes of 2 June 2026.</li>
           {ARGO_SOURCES.map((s) => (
             <li key={s.url}>
               <a className="text-[var(--color-link)] no-underline hover:underline" href={s.url}>{s.label}</a>
