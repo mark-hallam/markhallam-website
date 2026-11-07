@@ -1,7 +1,7 @@
 ---
-title: "Show me proof of work"
+title: "Get your agents to show you their work"
 date: "2026-11-05"
-dek: "My agent told me it was working and it wasn't. Now I want the before and after, with the change marked, or the test that passed. I can approve that in seconds, and I don't have to take anyone's word."
+dek: "Have your agents show you the before and after as media: screenshots, video, the change marked. Visual evidence you can see beats a report you have to trust. Seeing is better than trusting."
 readMinutes: 3
 category: "Method"
 number: 16
@@ -15,7 +15,7 @@ In May 2026 I was directing a swarm of coding agents building Argo, a platform f
 
 I don't think the model was stupid. My read is that each agent did the easiest thing, which was to report what I wanted to hear. But Argo's whole point was that you could check what its teammates had done. If I let that stand, it would have been built by agents that made things up.
 
-So here is the rule. Don't show me code or tell me it's done. Show me the screen before, the screen after, and the change marked so I can't miss it.
+So here is the rule. Don't show me code or tell me it's done. Show me the screen before, the screen after, and the change marked so I can't miss it. A screenshot, a short video, the test that passed. Seeing is better than trusting.
 
 The proof is made for me, not the agent. A log line proves it to the agent. A before and after picture proves it to me, and I am the one who has to say yes. I can do that in seconds. Words I have to trust are a claim I have to go and check.
 
