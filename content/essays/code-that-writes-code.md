@@ -40,11 +40,11 @@ This is a bet, not a finding. My bet is that the operator's job is to hold the s
 
 ## Where it lives now
 
-The rule that replaced the diary is in [Show me proof of work](/writing/show-me-proof-of-work). The nearest thing I publish is [mStack](https://github.com/mark-hallam/mstack), open source. Its outcome-first and multi-evaluator skills will not call a task done without evidence attached.
+The rule that replaced the diary is in [Get your agents to show you their work](/writing/show-me-proof-of-work). The nearest thing I publish is [mStack](https://github.com/mark-hallam/mstack), open source. Its outcome-first and multi-evaluator skills will not call a task done without evidence attached.
 
 ## Sources
 
 - The hiring pipeline, the skill library, the hardcoded "pass", the idle process, the June gate that shipped switched off: [Eight weeks running a swarm of AI coding agents](/writing/eight-weeks-running-a-swarm-of-ai-coding-agents)
 - The dates (the hiring pipeline and the skill library tests passing cold on 23 to 25 May 2026, the decision register from 24 May, the auditor's three daily runs) are from the Argo repository (public since 6 November 2026 at [github.com/mark-hallam/argo](https://github.com/mark-hallam/argo)), read on 4 November 2026.
-- The rule that replaced the diary: [Show me proof of work](/writing/show-me-proof-of-work)
+- The rule that replaced the diary: [Get your agents to show you their work](/writing/show-me-proof-of-work)
 - First published 23 May 2026. Revised 5 November 2026: the original opened with a story about a skill that writes skills which I cannot find in the record, and described the instrumentation as if it worked. This version uses the documented moment and says where the instrumentation failed.

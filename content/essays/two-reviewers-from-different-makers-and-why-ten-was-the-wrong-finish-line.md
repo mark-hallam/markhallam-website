@@ -1,23 +1,23 @@
 ---
 title: "Multiple agent reviewers from different makers equals better UX and UI"
 date: "2026-11-05"
-dek: "Thirteen rounds in one day, two AI reviewers, and not one journey scored 10 from both. The finish line I set was above what the reviewers could give. Here is what I changed."
+dek: "Two AI reviewers from different makers, each driving the real thing in a real browser, found the bugs I would have shipped and made the site better every round. Here is the method, and the finish line that works: ready for people, not a perfect 10."
 readMinutes: 3
 category: "Method"
 number: 15
 ---
 
-On 4 November 2026 I ran thirteen rounds of design review in one day. Not one journey (a path a real person takes, start to finish) ever scored 10 from both reviewers.
+Two AI reviewers from different makers made my site better in a day. On 4 November 2026 Claude and Codex each drove the real thing in a real browser, in fresh context (a new session that has seen nothing of the work). Each scored every journey (a path a real person takes, start to finish) 0 to 10, said what it would score if its fixes were made, and listed the fixes. I fixed, captured the same screens, and went again. Thirteen rounds.
 
-I had set that rule myself: keep going until every journey hits 10. So I kept going. Claude and Codex each drove the real thing in a real browser, in fresh context (a new session that has seen nothing of the work). Each scored every journey 0 to 10, said what it would score if its fixes were made, and listed the fixes. I fixed, captured the same screens, and went again.
+They found a wrong count, a counter that did not update, a raw error message on screen, a title that broke one of my own rules. Real bugs I would have shipped. That is the method working, and I would run it again on anything I put in front of people.
 
-Then I sat down to review the method itself. The rule was wrong.
+What did not work was my finish line. I had set the rule myself: keep going until every journey hits 10. Not one ever did, from both. When I sat down to review the method itself, the rule was wrong, not the reviewers.
 
 Of sixteen journeys, the best any got was 9 from Claude and 8 from Codex. Codex never went above 8 across seven rounds on one piece of work. Asked what it would give if its fixes were made, it never said more than 9. Its ceiling was 9. My finish line was above its ceiling.
 
 One review had kept scoring an unchanged baseline every round, by accident. On something that did not change at all, Claude's score moved by up to two points and Codex's by one. I had been reading one point rises as progress, and making decisions on them.
 
-The sharp findings all came early: a wrong count, a counter that did not update, a raw error message on screen, a title that broke one of my own rules. That is what the reviewers are for.
+The sharp findings all came early, in the first rounds. That is what the reviewers are for.
 
 And I was part of the problem. My brief handed each reviewer last round's screenshots and carried my own design taste. I was anchoring (nudging toward earlier answers) the reviewers I had set up to be independent. The research says adjacent things in more careful words. Judges favour text their own model wrote (Panickssery, Bowman and Feng, 2024). Kapetanovic and others (2026) found that a judge pulls toward scores it has already seen. My own reading is that a perfect score on a stand in measure is a warning sign, not proof.
 

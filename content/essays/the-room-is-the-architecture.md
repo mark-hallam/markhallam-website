@@ -42,5 +42,5 @@ The full record, 722 pull requests and the mistakes, is in the [Argo case study]
 
 - How the swarm ran, the 722 pull requests in the first week, the supervisor and stop file, and the reporting problems found in late May: [Eight weeks running a swarm of AI coding agents](/writing/eight-weeks-running-a-swarm-of-ai-coding-agents)
 - The agents, their timers and their heartbeats are from the Argo agent overview written on 21 May 2026, in the Argo repository (public since 6 November 2026 at [github.com/mark-hallam/argo](https://github.com/mark-hallam/argo)), read on 4 November 2026. The marketing drafts for 21 and 22 May are there too.
-- The "nothing is done without evidence" rule: [Show me proof of work](/writing/show-me-proof-of-work)
+- The "nothing is done without evidence" rule: [Get your agents to show you their work](/writing/show-me-proof-of-work)
 - First published 23 May 2026. Revised 5 November 2026: the original said nine months and a tenfold rise in output, and gave the wrong timers for the conductor and the auditor. The durations, timers and the section on what the room did not do now match the record.
