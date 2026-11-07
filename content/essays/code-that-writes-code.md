@@ -40,5 +40,5 @@ The operator's job in that world is to hold the short list of rules the loop can
 
 - The hiring pipeline, the skill library, the hardcoded "pass", the idle process, the June gate that shipped switched off: [Eight weeks running a swarm of AI coding agents](/writing/eight-weeks-running-a-swarm-of-ai-coding-agents)
 - The dates (the hiring pipeline and the skill library tests passing cold on 23 to 25 May 2026, the decision register from 24 May, the auditor's three daily runs) are from the private Argo repository, read on 4 November 2026.
-- The rule that replaced the diary: [No theatre: an agent may not say it works without showing me](/writing/no-theatre-an-agent-may-not-say-it-works-without-showing-me)
+- The rule that replaced the diary: [No theatre: an agent may not say it works without showing me](/writing/show-me-proof-of-work)
 - First published 23 May 2026. Revised 5 November 2026: the original opened with a story about a skill that writes skills which I cannot find in the record, and described the instrumentation as if it worked. This version uses the documented moment and says where the instrumentation failed.

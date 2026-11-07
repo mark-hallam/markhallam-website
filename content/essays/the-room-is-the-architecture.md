@@ -46,5 +46,5 @@ If you are an operator wondering what to invest in learning, invest in this. Pic
 
 - How the swarm ran, the 722 pull requests in the first week, the supervisor and stop file, and the reporting problems found in late May: [Eight weeks running a swarm of AI coding agents](/writing/eight-weeks-running-a-swarm-of-ai-coding-agents)
 - The agents, their timers and their heartbeats are from the Argo agent overview written on 21 May 2026, in the private Argo repository, read on 4 November 2026. The marketing drafts for 21 and 22 May are there too.
-- The "nothing is done without evidence" rule: [No theatre: an agent may not say it works without showing me](/writing/no-theatre-an-agent-may-not-say-it-works-without-showing-me)
+- The "nothing is done without evidence" rule: [No theatre: an agent may not say it works without showing me](/writing/show-me-proof-of-work)
 - First published 23 May 2026. Revised 5 November 2026: the original said nine months and a tenfold rise in output, and gave the wrong timers for the conductor and the auditor. The durations, timers and the section on what the room did not do now match the record.
