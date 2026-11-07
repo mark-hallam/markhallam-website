@@ -118,7 +118,7 @@ export function llmsFullTxt(): string {
 export function personJsonLd() {
   const p = profile;
   const me = { "@id": `${SITE}/#mark` };
-  const orgs = new Set(["Project Management Institute", "Southpac Aerospace", "Amazon Web Services", "RMIT University", "HBA Learning Centres", "Civil Aviation Safety Authority"]);
+  const orgs = new Set(["Project Management Institute", "Southpac Aerospace", "Anthropic", "RMIT University", "HBA Learning Centres", "Civil Aviation Safety Authority"]);
   return {
     "@context": "https://schema.org",
     "@graph": [
