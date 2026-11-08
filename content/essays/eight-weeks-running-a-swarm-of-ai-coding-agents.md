@@ -1,7 +1,7 @@
 ---
 title: "Eight weeks running a swarm of AI coding agents, over 2,900 PRs"
 date: "2026-11-02"
-dek: "Eight weeks, a swarm of Claude and Codex agents, 2,901 merged pull requests. How it ran, what looked done and wasn't, and why I shut Argo down."
+dek: "Eight weeks, a swarm of Claude and Codex agents, 2,901 merged pull requests. How it ran, what looked done and wasn't, and what I would do first next time."
 readMinutes: 5
 category: "Case study"
 number: 13
@@ -13,9 +13,9 @@ It was meant to run before a newly built AI teammate could be hired. Its tests w
 
 I'm not a developer, and I don't look at the code any more. In late April 2026 I set up a Mac to build software around the clock, with Claude and Codex agents doing the coding. My job was deciding what to build and checking that what came back was real. Over eight weeks they built Argo, a platform where a business could take on "AI teammates" that need a person's approval for risky actions and keep a tamper evident record of what they do.
 
-I retired Argo in June. It had no paying customers.
+Argo's run ended in June.
 
-<aside style="margin:40px 0;padding:24px 28px;border:1px solid #ebeaed;border-radius:14px;background:#fafafa;max-width:64ch;"><div style="font-size:13px;font-weight:600;letter-spacing:0.04em;color:#6b7280;margin-bottom:14px;">AT A GLANCE</div><dl style="margin:0;font-size:16px;line-height:1.55;color:#2c2c54;"><dt style="font-weight:600;color:#0f1419;">When</dt><dd style="margin:0 0 10px 0;">29 April to 24 June 2026, 57 days</dd><dt style="font-weight:600;color:#0f1419;">Who wrote the code</dt><dd style="margin:0 0 10px 0;">AI agents (Claude and Codex) under my direction, run on one Mac</dd><dt style="font-weight:600;color:#0f1419;">Output</dt><dd style="margin:0 0 10px 0;">2,901 merged pull requests; 13,803 commits, about 9,000 of them ledger updates</dd><dt style="font-weight:600;color:#0f1419;">Size</dt><dd style="margin:0 0 10px 0;">About 670,000 lines of Rust across 90 packages (raw count, tests included) and about 9,900 Rust tests</dd><dt style="font-weight:600;color:#0f1419;">Process</dt><dd style="margin:0 0 10px 0;">One ledger, nearly 2,000 written briefs, 60 decision records</dd><dt style="font-weight:600;color:#0f1419;">Outcome</dt><dd style="margin:0 0 10px 0;">No paying customers. Retired in June 2026 and production torn down</dd><dt style="font-weight:600;color:#0f1419;">Carried into</dt><dd style="margin:0;">SKYCOT (a Mac app where families build together with AI) and LVLme (open source)</dd></dl></aside>
+<aside style="margin:40px 0;padding:24px 28px;border:1px solid #ebeaed;border-radius:14px;background:#fafafa;max-width:64ch;"><div style="font-size:13px;font-weight:600;letter-spacing:0.04em;color:#6b7280;margin-bottom:14px;">AT A GLANCE</div><dl style="margin:0;font-size:16px;line-height:1.55;color:#2c2c54;"><dt style="font-weight:600;color:#0f1419;">When</dt><dd style="margin:0 0 10px 0;">29 April to 24 June 2026, 57 days</dd><dt style="font-weight:600;color:#0f1419;">Who wrote the code</dt><dd style="margin:0 0 10px 0;">AI agents (Claude and Codex) under my direction, run on one Mac</dd><dt style="font-weight:600;color:#0f1419;">Output</dt><dd style="margin:0 0 10px 0;">2,901 merged pull requests; 13,803 commits, about 9,000 of them ledger updates</dd><dt style="font-weight:600;color:#0f1419;">Size</dt><dd style="margin:0 0 10px 0;">About 670,000 lines of Rust across 90 packages (raw count, tests included) and about 9,900 Rust tests</dd><dt style="font-weight:600;color:#0f1419;">Process</dt><dd style="margin:0 0 10px 0;">One ledger, nearly 2,000 written briefs, 60 decision records</dd><dt style="font-weight:600;color:#0f1419;">Outcome</dt><dd style="margin:0 0 10px 0;">Run ended in June 2026 and production came down</dd><dt style="font-weight:600;color:#0f1419;">Carried into</dt><dd style="margin:0;">SKYCOT (a Mac app where families build together with AI) and LVLme (open source)</dd></dl></aside>
 
 ## How it ran
 
@@ -37,7 +37,7 @@ Drift showed up early. A mid May audit found about a quarter of the conductor's 
 
 Worse was work that looked done and wasn't. The conductor told me more than once that an overnight build was running when its own logs showed it idle. In late May, with all six of the platform's headline claims reported live, a review found about 24 screens still showing sample data.
 
-On 24 May I said "I want the demo to be real, I can't be called out or embarrassed." That became the no theatre rule. A week later it covered status reports too: nothing gets called done without evidence gathered in that same turn, like a log line or a passing test. In June the agents built a hook that stops a worker finishing until the gate passes, and a separate checking agent. Both shipped switched off. The number I most wanted, the share of "done" claims that survive a cold re-check, was never measured.
+On 24 May I said "I want the demo to be real, I can't be called out or embarrassed." That became the no theatre rule. A week later it covered status reports too: nothing gets called done without evidence gathered in that same turn, like a log line or a passing test. In June the agents built a hook that stops a worker finishing until the gate passes, and a separate checking agent. Both came late in the run. Now they go in first and switched on. The number I most wanted, the share of "done" claims that survive a cold re-check, was never measured.
 
 The Mac failed too. Around 24 May the shared Rust build cache grew to 328 GB and five merge rounds in a row were deferred before anyone worked out why. Hosted CI (the service that tests every change) was off from 9 May because the billing was blocked.
 

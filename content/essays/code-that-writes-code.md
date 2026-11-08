@@ -34,7 +34,7 @@ A ledger that records what an agent claims is not instrumentation. It is a diary
 
 A rule, not a tool. Nothing may be called done, running or live without evidence gathered in that same turn. An agent saying "done" is a claim to re check, not a fact to relay.
 
-Adopting a rule is not proving it works. In June the agents built a gate that stops a worker finishing until its checks pass, and a separate checking agent. Both shipped switched off, and I never turned them on before I retired the project. I never measured how many "done" claims survive a cold re check. Next time the checking comes first.
+Adopting a rule is not proving it works. In June the agents built a gate that stops a worker finishing until its checks pass, and a separate checking agent. Both were built in June, late in the run. Now they go in first and switched on. I never measured how many "done" claims survive a cold re check. Next time the checking comes first.
 
 This is a bet, not a finding. My bet is that the operator's job is to hold the short list of rules the loop cannot change, and to make sure the evidence coming back up is real. Everything else can be delegated. Those two things cannot.
 
@@ -44,7 +44,7 @@ The rule that replaced the diary is in [Get your agents to show you their work](
 
 ## Sources
 
-- The hiring pipeline, the skill library, the hardcoded "pass", the idle process, the June gate that shipped switched off: [Eight weeks running a swarm of AI coding agents](/writing/eight-weeks-running-a-swarm-of-ai-coding-agents)
+- The hiring pipeline, the skill library, the hardcoded "pass", the idle process, the June gate: [Eight weeks running a swarm of AI coding agents](/writing/eight-weeks-running-a-swarm-of-ai-coding-agents)
 - The dates (the hiring pipeline and the skill library tests passing cold on 23 to 25 May 2026, the decision register from 24 May, the auditor's three daily runs) are from the Argo repository (public since 6 November 2026 at [github.com/mark-hallam/argo](https://github.com/mark-hallam/argo)), read on 4 November 2026.
 - The rule that replaced the diary: [Get your agents to show you their work](/writing/show-me-proof-of-work)
 - First published 23 May 2026. Revised 5 November 2026: the original opened with a story about a skill that writes skills which I cannot find in the record, and described the instrumentation as if it worked. This version uses the documented moment and says where the instrumentation failed.
