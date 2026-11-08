@@ -34,6 +34,14 @@
   ],
   "builds": [
     {
+      "name": "SKYCOT",
+      "status": "Free beta for Mac",
+      "summary": "skycot.com, the platform where parents can introduce AI to their kids. A Mac app where families build together with AI: risky steps wait for a grown-up, and nothing goes online without a grown-up's code. Free beta: 39 beta builds in eight days.",
+      "links": [
+        "https://skycot.com"
+      ]
+    },
+    {
       "name": "LVLme",
       "status": "Open source, built in public",
       "summary": "Free, open source software that helps you land the job you want. It runs inside Claude Code on your own computer and keeps your files there; whatever the AI reads goes to your AI provider, as with any AI tool.",
@@ -48,14 +56,6 @@
       "summary": "My open source collection of skills for people and their AI agents, agent agnostic and MIT licensed. ping-me tells you on your phone when your agent needs you; outcome-first runs a task to a verified result; multi-evaluator improves a design in rounds with independent AI reviewers from different makers until it is ready for real people. I use it on this site.",
       "links": [
         "https://github.com/mark-hallam/mstack"
-      ]
-    },
-    {
-      "name": "SKYCOT",
-      "status": "Free beta for Mac",
-      "summary": "A Mac app where families build together with AI. Risky steps wait for a grown-up, and nothing goes online without a grown-up's code. Free beta: 39 beta builds in eight days.",
-      "links": [
-        "https://skycot.com"
       ]
     },
     {
@@ -180,7 +180,7 @@
       "when": "Jan 2025 to now",
       "org": "SKYCOT",
       "role": "Founder",
-      "detail": "A Mac app where families build together with AI: risky steps wait for a grown-up, and nothing goes online without a grown-up's code. Free beta. Separate from my work at Airservices."
+      "detail": "skycot.com, the platform where parents can introduce AI to their kids. A Mac app where families build together with AI: risky steps wait for a grown-up, and nothing goes online without a grown-up's code. Free beta. Separate from my work at Airservices."
     },
     {
       "when": "Nov 2022 to Sep 2023",
