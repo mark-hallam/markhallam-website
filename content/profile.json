@@ -58,8 +58,8 @@
     },
     {
       "name": "mStack",
-      "status": "Agent agnostic skills; I use them on this site",
-      "summary": "My collection of skills for people and their AI agents, agent agnostic. outcome-first settles the goal and every question up front, then runs to a proven result; multi-evaluator improves a product in rounds with AI reviewers from different makers; design-direction builds whole working directions to choose from; ping-me and away-mode keep me in the loop from my phone; crew runs work in the background. Written for Claude, Codex or Cursor.",
+      "status": "Open source, MIT licensed",
+      "summary": "My open source collection of skills for people and their AI agents, agent agnostic and MIT licensed. outcome-first settles the goal and every question up front, then runs to a proven result; multi-evaluator improves a product in rounds with AI reviewers from different makers; design-direction builds whole working directions to choose from; ping-me and away-mode keep me in the loop from my phone; crew runs work in the background. Written for Claude, Codex or Cursor. I use it on this site.",
       "links": [
         "https://github.com/mark-hallam/mstack"
       ]
