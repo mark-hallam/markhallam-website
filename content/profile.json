@@ -36,15 +36,21 @@
     {
       "name": "SKYCOT",
       "status": "Free beta for Mac",
-      "summary": "skycot.com, the platform where parents can introduce AI to their kids. A Mac app where families build together with AI: risky steps wait for a grown-up, and nothing goes online without a grown-up's code. Free beta: 39 beta builds in eight days.",
+      "summary": "skycot.com, the platform where parents can introduce AI to their kids. A Mac app where families build with AI together. Every request is a plan first, anything risky needs the parent, and nothing goes online without a grown-up's code. Built with Claude and Codex on T3 Code. Free beta: 44 beta builds in 16 days.",
       "links": [
         "https://skycot.com"
       ]
     },
     {
+      "name": "Spliz",
+      "status": "Private, on my Mac; built November 2026",
+      "summary": "A video studio that lives on your Mac. Put an idea on the board, get a storyboard you can read from, record once, drop the files in, and Spliz hands back a finished cut with captions and the upright clips for Shorts and TikTok. The transcript is the editor: delete a word and the cut is made. Your own AI agent checks the recording and proposes chapters and show notes, and nothing it writes gets past the no-slop gate. Nothing is uploaded, no accounts, no keys. Built in four days with Claude, Codex and Cursor, improved over 49 blind review rounds.",
+      "links": []
+    },
+    {
       "name": "LVLme",
       "status": "Open source, built in public",
-      "summary": "Free, open source software that helps you land the job you want. It runs inside Claude Code on your own computer and keeps your files there; whatever the AI reads goes to your AI provider, as with any AI tool.",
+      "summary": "For the job you can't get yet. LVLme works out honestly how far you are from it, turns the gap into things you can go and do, and measures again as you climb: every open role at the organisations you choose, evidence from sources you approve, a recruiter screen, a consistency check of your CV, LinkedIn and website, and a plan it re-scores as you act. Runs inside Claude Code or Codex on your own computer. Open source, MIT, sixteen public releases in its first six days.",
       "links": [
         "https://lvlme.com",
         "https://github.com/mark-hallam/lvlme/releases"
@@ -52,16 +58,16 @@
     },
     {
       "name": "mStack",
-      "status": "Open source, MIT licensed",
-      "summary": "My open source collection of skills for people and their AI agents, agent agnostic and MIT licensed. ping-me tells you on your phone when your agent needs you; outcome-first runs a task to a verified result; multi-evaluator improves a design in rounds with independent AI reviewers from different makers until it is ready for real people. I use it on this site.",
+      "status": "Agent agnostic skills; I use them on this site",
+      "summary": "My collection of skills for people and their AI agents, agent agnostic. outcome-first settles the goal and every question up front, then runs to a proven result; multi-evaluator improves a product in rounds with AI reviewers from different makers; design-direction builds whole working directions to choose from; ping-me and away-mode keep me in the loop from my phone; crew runs work in the background. Written for Claude, Codex or Cursor.",
       "links": [
         "https://github.com/mark-hallam/mstack"
       ]
     },
     {
       "name": "Argo",
-      "status": "Retired in June 2026; open source under the MIT licence; figures self-reported",
-      "summary": "Argo let a business hire AI teammates from 37 role templates or a plain English description, with a person approving anything sensitive and every action in a tamper evident audit log. AI coding agents built it under my direction in 57 days: 2,901 merged pull requests and 13,803 commits, about 9,000 of them ledger updates. It ran live in production in June 2026, seven weeks before xAI's Grok Bot, an internal prototype until then, opened a public beta with similar AI teammates. It had no paying customers, so I retired it, put its lessons into SKYCOT and wrote up what went wrong.",
+      "status": "Open source under the MIT licence; figures self-reported",
+      "summary": "AI teammates you could talk to and hand work to. You described a teammate in plain English and Argo built it, a person approved anything sensitive, and every action went into a tamper evident audit log. A Rust core, Claude and OpenAI models, voice through ElevenLabs and Deepgram, connectors to Slack, Gmail, Notion and HubSpot. AI coding agents built it under my direction in 57 days: 2,901 merged pull requests. It ran live in production in June 2026, before Grok Bot, Muse and Dots.",
       "links": [
         "https://www.markhallam.com.au/argo",
         "https://github.com/mark-hallam/argo",
@@ -210,7 +216,7 @@
       "when": "Apr 2018 to Oct 2020",
       "org": "Box Hill Institute",
       "role": "Commercial pilot training (Diploma of Aviation)",
-      "detail": "Flight training after Tigerair, alongside the PPG role from 2019. Private pilot licence, about 300 hours, including a four-day outback navigation trip. The course was stopped before completion."
+      "detail": "Flight training after Tigerair, alongside the PPG role from 2019. Private pilot licence, about 300 hours, including a four-day outback navigation trip."
     },
     {
       "when": "Oct 2007 to Mar 2018",

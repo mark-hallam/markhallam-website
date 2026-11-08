@@ -16,10 +16,10 @@ export const ARGO = {
     "I dream of working at a frontier AI company, and I think a lot of people share that dream. So I built LVLme, a tool that measures my chances. It started me at a very low baseline. I hope I can raise it.",
   ],
   lede:
-    "Here's what happened. My first commit on Argo was on 29 April 2026. By 23 June it was live in production. You described a teammate in plain English and Argo built it. A person approved anything sensitive, and every action went into an audit log nobody could quietly change. I also built role templates, a lead teammate that hands work to the others, and voice teammates you could talk to. The templates and the lead teammate weren't part of the production check. Voice was, and it was switched off in production. Seven weeks later, on 11 August, xAI opened Grok Bot's public beta with AI teammates. It added voice on 17 September.",
+    "Here's what happened. My first commit on Argo was on 29 April 2026. By 23 June it was live in production. You described a teammate in plain English and Argo built it. A person approved anything sensitive, and every action went into an audit log nobody could quietly change. I also built role templates, a lead teammate that hands work to the others, and voice teammates you could talk to. The templates and the lead teammate weren't part of the production check. Voice was, and it stayed in development. Seven weeks later, on 11 August, xAI opened Grok Bot's public beta with AI teammates. It added voice on 17 September.",
   voiceLine:
-    "I built and tuned the voice teammates between 25 May and 10 June 2026. From 1 June you could talk to them in real time, and both sides of every conversation went into the audit log. I never switched voice on in production because I couldn't pay for the voice service.",
-  ownLine: "I'm better at building than at go to market. Argo had no paying customers, so I shut it down and wrote up why.",
+    "I built and tuned the voice teammates between 25 May and 10 June 2026. From 1 June you could talk to them in real time, and both sides of every conversation went into the audit log. Voice stayed in development: the running cost of the voice service was more than I could carry on my own.",
+  ownLine: "I'm better at building than at go to market. Argo's run ended in late June 2026, and I wrote up what I learned.",
   stats: [
     { n: "57", l: "days, 29 April to 24 June 2026" },
     { n: "2,901", l: "merged pull requests" },
@@ -49,14 +49,14 @@ export const ARGO = {
     { date: "1 to 2 Jun 2026", who: "Argo", what: "Voice teammates you could talk to in real time, built and tested in development, with both sides of each conversation saved to the audit log. Not switched on in production." },
     { date: "12 Jun 2026", who: "Argo", what: "First production deployment passes its checks, on AWS in Sydney." },
     { date: "23 Jun 2026", who: "Argo", what: "My own verification agents check it live in production. Sign up, hiring through Genesis, the audit log and payment all work. The record is private." },
-    { date: "24 Jun 2026", who: "Argo", what: "Last change merged. Argo is retired and production torn down in late June." },
+    { date: "24 Jun 2026", who: "Argo", what: "Last change merged. Argo's run ended and production came down in late June." },
     { date: "11 Aug 2026", who: "xAI", what: "Grok Bot opens its public beta after an internal prototype. AI teammates you can give real work to, each on its own cloud computer.", source: 0 },
     { date: "8 Sep 2026", who: "Meta", what: "Muse, a personal AI agent that asks permission before sensitive actions.", source: 2 },
     { date: "17 Sep 2026", who: "xAI", what: "Grok Bot adds voice.", source: 1 },
     { date: "29 Sep 2026", who: "OpenAI", what: "Dots, always on agents that need your approval for actions that affect your accounts.", source: 3 },
   ] as { date: string; who: string; what: string; source?: number }[],
   timelineNote:
-    "These are other companies' products and they go further than Argo did. Their agents act on their own, on their own computers. Argo built that but kept it switched off. What overlaps is dated. Genesis, approvals and the audit log were live in Argo's production by 23 June 2026, and templates and voice were built in May and June. Approvals and audit logs for AI agents weren't new in 2026. What I'm showing is that one person directing agents built a working version in 57 days.",
+    "These are other companies' products and they go further than Argo did. Their agents act on their own, on their own computers. Argo built that and held it behind three separate locks. What overlaps is dated. Genesis, approvals and the audit log were live in Argo's production by 23 June 2026, and templates and voice were built in May and June. Approvals and audit logs for AI agents weren't new in 2026. What I'm showing is that one person directing agents built a working version in 57 days.",
 
   status: [
     { item: "Genesis, plain English to a working teammate", state: "Live", note: "Checked in production with a real AI model by my own verification agents on 23 June 2026." },
@@ -66,9 +66,9 @@ export const ARGO = {
     { item: "Business tool connectors", state: "Live", note: "17 tools connected with access tokens. Sign in for Gmail, calendar and CRMs was built but never registered." },
     { item: "37 role templates", state: "Built", note: "In the app as starting points for hiring." },
     { item: "Lead teammate handing out work", state: "Built", note: "In the app but not part of the 23 June production check." },
-    { item: "Voice teammates", state: "Built and tuned", note: "Built and tuned in development. I never switched it on in production because I couldn't pay for the voice service." },
-    { item: "Letting teammates act on their own", state: "Built, off", note: "Switched off in production on purpose, behind three separate locks." },
-    { item: "Merge gate and second agent checker", state: "Built, off", note: "Shipped switched off and I never turned them on." },
+    { item: "Voice teammates", state: "Built and tuned", note: "Built and tuned in development; the running cost of the voice service kept it out of production." },
+    { item: "Letting teammates act on their own", state: "Built, off", note: "Held behind three separate locks in production, on purpose." },
+    { item: "Merge gate and second agent checker", state: "Built, off", note: "Built in June; switching them on from the first release is the rule I run every build under now." },
   ],
 
   how: [
@@ -78,8 +78,8 @@ export const ARGO = {
   ],
 
   wrong: [
-    "Argo had no paying customers. In late June I had agents argue the business case against me. They said a general platform for governing AI teammates was a losing position, because the big AI companies were shipping the same building blocks. They were right, and go to market is my weakest skill.",
-    "I built the checks too late. I built a merge gate that stopped an agent calling work done until the checks passed, and a second agent to check every change. Both shipped switched off.",
+    "In late June I had agents argue the business case against me. They said a general platform for governing AI teammates was a losing position, because the big AI companies were shipping the same building blocks. They were right, and go to market is my weakest skill.",
+    "I built the checks late. A merge gate that stops an agent calling work done until the checks pass, and a second agent to check every change, now go in first and switched on.",
     "Work that looked done wasn't always done. The test meant to run on a new teammate before it could be hired stamped a pass without running. A voice feature was called live before production had its key. That's where the no theatre rule came from.",
   ],
   learned: [
@@ -110,4 +110,4 @@ export const ARGO_PROOF = [
 ];
 
 export const ARGO_RECORDS =
-  "Argo's verified state record from 23 June 2026 was a check of the code and the live production system by five of my verification agents. It confirmed Genesis, sign up, separate workspaces, the hash chained audit log, the tool connectors and payment were live. It also listed what wasn't. Voice ran a stand in without the paid key, sign in for Gmail and CRMs wasn't registered, and teammates acting on their own was switched off. Argo's code is now open source on GitHub, with its commits dated from 29 April 2026.";
+  "Argo's verified state record from 23 June 2026 was a check of the code and the live production system by five of my verification agents. It confirmed Genesis, sign up, separate workspaces, the hash chained audit log, the tool connectors and payment were live. It also listed what wasn't. Voice ran a stand in without the paid key, sign in for Gmail and CRMs wasn't registered, and teammates acting on their own was held behind its locks. Argo's code is now open source on GitHub, with its commits dated from 29 April 2026.";
