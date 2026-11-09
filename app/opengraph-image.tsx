@@ -104,7 +104,7 @@ export default async function OGImage() {
               Building for agents first.
             </div>
             <div style={{ display: "flex", marginTop: 22, fontSize: 26, color: "#48484c" }}>
-              Project Manager, CMATS Service Processes, at Airservices Australia, and founder of SKYCOT.
+              Project Manager, CMATS Service Processes, at Airservices Australia, and creator of SKYCOT.
             </div>
           </div>
         </div>

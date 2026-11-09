@@ -185,7 +185,7 @@
     {
       "when": "Jan 2025 to now",
       "org": "SKYCOT",
-      "role": "Founder",
+      "role": "Creator",
       "detail": "skycot.com, the platform where parents can introduce AI to their kids. A Mac app where families build together with AI: risky steps wait for a grown-up, and nothing goes online without a grown-up's code. Free beta. Separate from my work at Airservices."
     },
     {
@@ -247,8 +247,8 @@
       "issuer": "Southpac Aerospace, 2016"
     },
     {
-      "name": "Anthropic Academy, five courses",
-      "issuer": "Anthropic, April 2026: Building with the Claude API, Introduction to Model Context Protocol, Introduction to agent skills, Claude Code in Action, AI Fluency"
+      "name": "Anthropic Academy, four courses",
+      "issuer": "Anthropic, April 2026: Building with the Claude API, Introduction to Model Context Protocol, Introduction to agent skills, Claude Code in Action"
     },
     {
       "name": "Private Pilot Licence",
@@ -267,5 +267,5 @@
       "issuer": "HBA Learning Centres"
     }
   ],
-  "now": "Project Manager, CMATS Service Processes, at Airservices Australia, and founder of SKYCOT. Open to roles building with, or for, AI agents."
+  "now": "Project Manager, CMATS Service Processes, at Airservices Australia, and creator of SKYCOT. Open to roles building with, or for, AI agents."
 }
