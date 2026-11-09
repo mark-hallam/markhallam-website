@@ -218,6 +218,7 @@ a.now-row:hover b{color:var(--link)}
 .now-text b{display:block;color:var(--text);font-weight:650;font-size:1rem;transition:color .3s}
 .now-text a{font-weight:600}
 .now-row .chev{flex:none;color:var(--text-2)}
+.now-pop{display:none}
 .motion .hh-now{opacity:0;transform:translate3d(0,18px,0);animation:rise 1s var(--ease-out) forwards;animation-delay:.7s}
 
 /* Pause and play every animation on the page */
@@ -290,7 +291,17 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
   .js[data-hero="2"] .hh-main,.js[data-hero="2"] .hh-side{flex:0 0 auto}
   .js[data-hero="2"] .hh-now{display:flex;flex-direction:column;min-height:0;flex:1 1 auto}
   .js[data-hero="2"] .hh-now-t{flex:0 0 auto}
-  .js[data-hero="2"] .now-list{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to bottom,#000 calc(100% - 28px),transparent)}
+  .js[data-hero="2"] .hh-now{--nf:1;--np:1}
+  .js[data-hero="2"] .now-list{min-height:0;overflow:hidden}
+  .js[data-hero="2"] .now-list[data-fit]{overflow:visible}
+  .js[data-hero="2"] .now-list[data-clamp] .now-d{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:var(--nl,2);line-clamp:var(--nl,2);overflow:hidden}
+  .js[data-hero="2"] .now-list[data-clamp] .now-row[data-l="0"] .now-text > .now-d{display:none}
+  .js[data-hero="2"] .now-list[data-tight] .now-row > .now-stat small{display:none}
+  .js[data-hero="2"] .now-row{position:relative}
+  .js[data-hero="2"] .now-pop{display:none}
+  .js[data-hero="2"] .now-list[data-clamp] .now-pop{display:flex;align-items:center;gap:14px;position:absolute;left:-9px;right:-9px;top:var(--pt,-5px);min-height:calc(100% + 10px);padding:9px 11px;box-sizing:border-box;background:var(--tile);border:1px solid var(--line-s);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.16);z-index:5;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s ease,visibility .18s}
+  .js[data-hero="2"] .now-list[data-clamp] .now-row.is-cut:hover .now-pop,.js[data-hero="2"] .now-list[data-clamp] .now-row.is-cut:focus-visible .now-pop{opacity:1;visibility:visible}
+  .js[data-hero="2"] .now-pop .now-d{display:block!important;-webkit-line-clamp:unset!important;line-clamp:unset!important;overflow:visible!important}
   .js[data-hero="2"] .hh-side{margin:0;padding-top:clamp(12px,2.4cqh,22px);border-top:1px solid var(--line)}
   .js[data-hero="2"] .hh-label{font-size:clamp(0.9375rem,min(3cqw,3.4cqh),1.3125rem)}
   .js[data-hero="2"] .hh-intro{font-size:clamp(0.8438rem,min(2.6cqw,3cqh),1.0625rem);color:var(--text)}
@@ -312,10 +323,10 @@ html:not(.js) .hp-in{height:auto;overflow:visible}
   .js[data-hero="2"] .hh-now{margin-top:clamp(6px,1.8cqh,26px)}
   .js[data-hero="2"] .hh-side{margin-top:auto;padding-top:clamp(8px,1.4cqh,18px)}
   .js[data-hero="2"] .hh-now-t{font-size:clamp(0.9375rem,min(3.6cqw,2.5cqh),1.375rem);margin-bottom:clamp(4px,1cqh,10px)}
-  .js[data-hero="2"] .now-row{padding:clamp(4px,0.9cqh,12px) 2px}
-  .js[data-hero="2"] .now-stat{font-size:clamp(1.375rem,min(6.6cqw,4.6cqh),2.625rem)}
-  .js[data-hero="2"] .now-text{font-size:clamp(0.78rem,min(3.1cqw,1.8cqh),1.0625rem)}
-  .js[data-hero="2"] .now-text b{font-size:clamp(0.875rem,min(3.6cqw,2.2cqh),1.1875rem)}
+  .js[data-hero="2"] .now-row{padding:calc(clamp(4px,0.9cqh,12px)*var(--np)) 2px}
+  .js[data-hero="2"] .now-stat{font-size:calc(clamp(1.375rem,min(6.6cqw,4.6cqh),2.625rem)*var(--np))}
+  .js[data-hero="2"] .now-text{font-size:calc(clamp(0.78rem,min(3.1cqw,1.8cqh),1.0625rem)*var(--nf))}
+  .js[data-hero="2"] .now-text b{font-size:calc(clamp(0.875rem,min(3.6cqw,2.2cqh),1.1875rem)*var(--nf))}
   .js[data-hero="1"] .hh-now,.js[data-hero="3"] .hh-now{display:none}
   @container head (max-height: 760px){
     .js[data-hero="2"] .hero-title{font-size:clamp(1.5rem,min(9.4cqw,8.4cqh),4.625rem)}
@@ -829,11 +840,11 @@ html:not(.js) .card-art .shot{opacity:1;transform:none}
     <section class="hh-now" aria-labelledby="now-title">
       <h2 class="hh-now-t" id="now-title">Built with AI agents</h2>
       <ul class="now-list">
-        <li><a class="now-row" href="https://skycot.com"><span class="now-stat">44<small>beta builds</small></span><span class="now-text"><b>SKYCOT</b> The platform where parents can introduce AI to their kids. A Mac app where families build together with AI, where every request is a plan first and anything risky needs the parent code.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
-        <li><a class="now-row" href="#spliz"><span class="now-stat">49<small>review rounds</small></span><span class="now-text"><b>Spliz</b> A private video studio that runs on your own Mac. It takes a project from idea to finished video, script, voice, visuals and edit, with nothing leaving your computer.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
-        <li><a class="now-row" href="https://github.com/mark-hallam/lvlme/releases"><span class="now-stat">16<small>releases</small></span><span class="now-text"><b>LVLme</b> Your personal career level up assistant, for the job you can’t get yet. It measures how far you are from a role you want, with every point traced to evidence, and runs a campaign to close the gap.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
-        <li><a class="now-row" href="/argo"><span class="now-stat">2,901<small>pull requests</small></span><span class="now-text"><b>Argo</b> I built personal AI agents you could talk to and hand work off to. A Rust core, Claude and OpenAI models, voice through ElevenLabs and Deepgram, connectors to Slack, Gmail, Notion and HubSpot. Live June 2026, before Grok Bot, Muse and Dots.</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
-        <li><a class="now-row" href="https://github.com/mark-hallam"><span class="now-stat">4</span><span class="now-text"><b>Open source</b> LVLme, mStack, Argo and DAC, on GitHub</span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><a class="now-row" href="https://skycot.com"><span class="now-stat">44<small>beta builds</small></span><span class="now-text"><b>SKYCOT</b> <span class="now-d">The platform where parents can introduce AI to their kids. A Mac app where families build together with AI, where every request is a plan first and anything risky needs the parent code.</span></span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><a class="now-row" href="#spliz"><span class="now-stat">49<small>review rounds</small></span><span class="now-text"><b>Spliz</b> <span class="now-d">A private video studio that runs on your own Mac. It takes a project from idea to finished video, script, voice, visuals and edit, with nothing leaving your computer.</span></span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><a class="now-row" href="https://github.com/mark-hallam/lvlme/releases"><span class="now-stat">16<small>releases</small></span><span class="now-text"><b>LVLme</b> <span class="now-d">Your personal career level up assistant, for the job you can’t get yet. It measures how far you are from a role you want, with every point traced to evidence, and runs a campaign to close the gap.</span></span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><a class="now-row" href="/argo"><span class="now-stat">2,901<small>pull requests</small></span><span class="now-text"><b>Argo</b> <span class="now-d">I built personal AI agents you could talk to and hand work off to. A Rust core, Claude and OpenAI models, voice through ElevenLabs and Deepgram, connectors to Slack, Gmail, Notion and HubSpot. Live June 2026, before Grok Bot, Muse and Dots.</span></span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
+        <li><a class="now-row" href="https://github.com/mark-hallam"><span class="now-stat">4</span><span class="now-text"><b>Open source</b> <span class="now-d">LVLme, mStack, Argo and DAC, on GitHub</span></span><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1.5 1.5 6.5 7l-5 5.5"/></svg></a></li>
       </ul>
     </section>
     <div class="hh-side">
@@ -2246,6 +2257,48 @@ html:not(.js) .card-art .shot{opacity:1;transform:none}
     if (open) { w.removeAttribute('inert'); } else { w.setAttribute('inert', ''); }
     if (open) { window.dispatchEvent(new Event('resize')); }
   });
+})();
+</script>
+<script>
+/* Built with AI agents list: always fits its tile, no scroll bar. Tighten a little first, then shorten each description to the lines that fit; the full text shows on hover or keyboard focus. */
+(function(){
+  var list=document.querySelector('.now-list'),box=document.querySelector('.hh-now'),head=document.querySelector('.hero-head');
+  if(!list||!box||!head)return;
+  var rows=[].slice.call(list.querySelectorAll('.now-row'));
+  rows.forEach(function(r){
+    var pop=document.createElement('span');pop.className='now-pop';pop.setAttribute('aria-hidden','true');
+    ['.now-stat','.now-text'].forEach(function(q){var el=r.querySelector(q);if(el)pop.appendChild(el.cloneNode(true));});
+    r.appendChild(pop);
+    function place(){pop.style.setProperty('--pt','-5px');var over=pop.getBoundingClientRect().bottom-(head.getBoundingClientRect().bottom-10);if(over>0)pop.style.setProperty('--pt',(-5-over)+'px');}
+    r.addEventListener('mouseenter',place);r.addEventListener('focus',place);
+  });
+  function over(){var l=list.lastElementChild;return l.getBoundingClientRect().bottom>list.getBoundingClientRect().bottom+1;}
+  function lines(r,n){r.setAttribute('data-l',n);r.style.setProperty('--nl',n||1);}
+  function scale(f,base){box.style.setProperty('--np',f);box.style.setProperty('--nf',Math.max(f,Math.min(1,12/base)));}
+  function reset(){box.style.setProperty('--nf','1');box.style.setProperty('--np','1');['data-clamp','data-fit','data-tight'].forEach(function(a){list.removeAttribute(a);});rows.forEach(function(r){r.removeAttribute('data-l');r.style.removeProperty('--nl');r.classList.remove('is-cut');});}
+  var busy=false;
+  function fit(){
+    if(busy)return;busy=true;reset();
+    if(getComputedStyle(box).display==='flex'&&over()){
+      var base=parseFloat(getComputedStyle(list.querySelector('.now-text')).fontSize),F=[1,0.92,0.84],ok=false,n,k;
+      for(k=0;k<F.length&&!ok;k++){scale(F[k],base);ok=!over();}
+      if(!ok){
+        list.setAttribute('data-clamp','');
+        for(n=6;n>=0&&!ok;n--){rows.forEach(function(r){lines(r,n);});for(k=0;k<F.length&&!ok;k++){scale(F[k],base);ok=!over();}}
+        n++;
+        if(!ok){list.setAttribute('data-tight','');}
+        else rows.forEach(function(r){lines(r,n+1);if(over())lines(r,n);});
+        rows.forEach(function(r){var d=r.querySelector('.now-text > .now-d');r.classList.toggle('is-cut',!!d&&(r.getAttribute('data-l')==='0'||d.scrollHeight>d.clientHeight+1));});
+      }
+      list.setAttribute('data-fit','');
+    }
+    busy=false;
+  }
+  var q;function later(){clearTimeout(q);q=setTimeout(fit,60);}
+  fit();window.addEventListener('load',fit);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+  if(window.ResizeObserver)new ResizeObserver(later).observe(head);else window.addEventListener('resize',later);
+  new MutationObserver(later).observe(document.documentElement,{attributes:true,attributeFilter:['data-hero']});
 })();
 </script>
 </body>
